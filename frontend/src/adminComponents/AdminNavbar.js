@@ -30,6 +30,8 @@ const AdminNavbar = ()=>{
             <Link to='/admin/about'>About Us</Link> |
             <Link to='/admin/profile'>Profile</Link> |
             <Link to='/login'>Logout</Link>
+            
+
         </div>
     );
 }

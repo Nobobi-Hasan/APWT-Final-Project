@@ -1,17 +1,35 @@
 import { useState } from "react";
 import AdminNavbar from "./adminComponents/AdminNavbar";
 import { useFetch } from './adminComponents/useFetch';
+import AdminAddEmployee from "./adminComponents/AdminAddEmployee";
 
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 
 function App() {
+
+
+    const adminAddEmployee = (newEmployee) => { 
+
+        const axios = require('axios').default;
+
+        axios({
+            method: 'post',
+            url: 'http://127.0.0.1:8000/api/admin/add-employee',
+            //data: JSON.stringify(newUser)
+            data:newEmployee,
+          });
+        //   setEmployees([...myuser, newEmployee]);
+        //   console.log(newEmployee);
+    };
+
+
   return (
     <Router>
             {/* <Navbar /> */}
             <Switch>
           
-                <Route path="/admin">
+                <Route exact path="/admin">
                     <AdminNavbar />
                     <div>
                         {/* <UserList list={myuser} callback={deleteCallback} /> */}
@@ -50,7 +68,7 @@ function App() {
                 <Route path="/admin/add-employee">
                     <AdminNavbar />
                     <div>
-                        {/* <UserList list={myuser} callback={deleteCallback} /> */}
+                        <AdminAddEmployee status="Employee" callback={adminAddEmployee} />
                     </div>
                 </Route>
 
@@ -210,7 +228,7 @@ function App() {
                 <Route path="*">
                     <h3>404 not found</h3>
                 </Route>
-            </Switch> nhiosahf  
+            </Switch>
         </Router>
   );
 }
