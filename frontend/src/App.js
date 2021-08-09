@@ -1,16 +1,31 @@
 //import { useState } from "react";
 import EmployeeNavbar from "./employeeComponents/EmployeeNavbar";
 //import { useFetch } from './employeeComponents/useFetch';
+import EmployeeAddSalary from "./employeeComponents/EmployeeAddSalary";
 
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 function App() {
+
+  const employeeAddSalary = (newSalary) => { 
+
+    const axios = require('axios').default;
+
+    axios({
+        method: 'post',
+        url: 'http://127.0.0.1:8000/api/employee/salary',
+        //data: JSON.stringify(newUser)
+        data:newSalary,
+      });
+};
+
+
   return (
     <Router>
         {/* <EmployeeNavbar /> */}
         <Switch>
             
-        <Route path="/employee">
+        <Route exact path="/employee">
                     <EmployeeNavbar />
                     <h2>Welcome to the  Employee Dashboard...</h2>
         </Route>
@@ -45,6 +60,9 @@ function App() {
 
         <Route path="/employee/salary">
                     <EmployeeNavbar />
+                    <div>
+                    <EmployeeAddSalary status="Salary" callback={employeeAddSalary} />
+                    </div>
         </Route>
 
         <Route path="/employee/salary/List">
