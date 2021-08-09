@@ -13,7 +13,7 @@ class AdminEmployeeController extends Controller
         return view('admin.empAdd');
     }
 
-    public function employeeAddVerify(AddRequest $req){
+    public function employeeAddVerify(Request $req){
 
         $employees = Employee::all();
         foreach ($employees as $e)
@@ -27,21 +27,21 @@ class AdminEmployeeController extends Controller
         
         
         $employee = new Employee;
-        // $employee -> firstname = $req->firstname;
-        // $employee -> lastname = $req->lastname;
-        // $employee -> gender = $req->gender;
-        // $employee -> email = $req->email;
-        // $employee -> username = $req->username;
-        // $employee -> password = $req->password;
-        // $employee -> status ='Active';
-
-        $employee -> firstname = "bsuaif";
-        $employee -> lastname = "bsuaif";
-        $employee -> gender = "bsuaif";
-        $employee -> email = "bsuaif@gmail.com";
-        $employee -> username = "bsuaif";
-        $employee -> password = 6666;
+        $employee -> firstname = $req->firstname;
+        $employee -> lastname = $req->lastname;
+        $employee -> gender = $req->gender;
+        $employee -> email = $req->email;
+        $employee -> username = $req->username;
+        $employee -> password = $req->password;
         $employee -> status ='Active';
+
+        // $employee -> firstname = "bsuaif";
+        // $employee -> lastname = "bsuaif";
+        // $employee -> gender = "bsuaif";
+        // $employee -> email = "bsuaif@gmail.com";
+        // $employee -> username = "bsuaif";
+        // $employee -> password = 6666;
+        // $employee -> status ='Active';
 
         try
         {
