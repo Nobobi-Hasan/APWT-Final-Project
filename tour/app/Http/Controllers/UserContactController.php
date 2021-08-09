@@ -12,7 +12,7 @@ class UserContactController extends Controller
         return view('user.contact');
     }
 
-    public function verify (UserContactRequest $req){
+    public function verify (Request $req){
 
         $contact = new Support;
         $contact -> username = $req->username;
@@ -20,7 +20,6 @@ class UserContactController extends Controller
         $contact -> email = $req->email;
         $contact -> message = $req->message;
         $contact->save();
-        return redirect()->route('userContact.index');
         
     }
 

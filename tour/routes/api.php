@@ -16,3 +16,6 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::post('/user/give_review', 'UserReviewController@verify')->name('userReview.verify');
+Route::post('/user/contact', 'UserContactController@verify')->name('userContact.verify');
