@@ -60,7 +60,8 @@ class AdminEmployeeController extends Controller
 
     public function employeeList(){
         $employees = Employee::all();
-        return view('admin.empList')->with('allEmployeeList', $employees);
+        return response()->json($employees);
+        // return view('admin.empList')->with('allEmployeeList', $employees);
     }
 
     public function activeEmployeeList(){
@@ -79,9 +80,15 @@ class AdminEmployeeController extends Controller
 
     }
 
-    public function employeeDestroy($id){
-        Employee::destroy($id);
-        return redirect()->route('adminEmployee.employeeList');
+    public function employeeDestroy(Request $req){
+        // Employee::destroy($id);
+        // return redirect()->route('adminEmployee.employeeList');
+
+
+        $emp = Employee::find($req->id);
+        
+        $emp->delete();
+        
     }
 
 }

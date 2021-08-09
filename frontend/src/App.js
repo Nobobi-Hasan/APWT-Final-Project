@@ -2,11 +2,17 @@ import { useState } from "react";
 import AdminNavbar from "./adminComponents/AdminNavbar";
 import { useFetch } from './adminComponents/useFetch';
 import AdminAddEmployee from "./adminComponents/AdminAddEmployee";
+import EmployeeList from "./adminComponents/EmployeeList";
 
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 
 function App() {
+
+
+    const [myemployee, setEmployees] = useState([]);
+    const url = 'http://127.0.0.1:8000/api/admin/all-employees';
+    useFetch(url, setEmployees);
 
 
     const adminAddEmployee = (newEmployee) => { 
@@ -19,8 +25,23 @@ function App() {
             //data: JSON.stringify(newUser)
             data:newEmployee,
           });
-        //   setEmployees([...myuser, newEmployee]);
-        //   console.log(newEmployee);
+          setEmployees([...myemployee, newEmployee]);
+          console.log(newEmployee);
+    };
+
+    const adminEmployeeDeleteCallback = (id) => {
+        const axios = require('axios').default;
+
+        axios({
+            method: 'post',
+            url: 'http://127.0.0.1:8000/api/admin/employee/delete',
+            data:{
+                id:id,
+            }
+          });
+
+        const data = myemployee.filter((employee) => employee.id != id);
+        setEmployees(data);
     };
 
 
@@ -75,7 +96,7 @@ function App() {
                 <Route path="/admin/all-employees">
                     <AdminNavbar />
                     <div>
-                        {/* <UserList list={myuser} callback={deleteCallback} /> */}
+                        <EmployeeList list={myemployee} callback={adminEmployeeDeleteCallback} />
                     </div>
                 </Route>
 
