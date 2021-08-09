@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 import { useHistory } from 'react-router-dom';
+import './Admin.css';
 
 const AdminAddEmployee = ({ status, callback }) => {
     //const { id: eid } = useParams();
@@ -28,7 +29,7 @@ const AdminAddEmployee = ({ status, callback }) => {
                 {/* This is {status} employee page id: {eid} */}
                 This is {status} Add page
             </h2>
-            <form onSubmit={onSubmit}>
+            <form className='form' onSubmit={onSubmit}>
             <fieldset>
             <legend>Basic Information: </legend>
                 <label>
@@ -79,7 +80,7 @@ const AdminAddEmployee = ({ status, callback }) => {
                 <br />
                 </fieldset>
 
-                <input type="submit" value="Submit" />
+                <input id='submit' type="submit" value="Submit" />
             </form>
         </div>
     );

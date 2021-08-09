@@ -2,17 +2,25 @@ import { useState } from "react";
 import AdminNavbar from "./adminComponents/AdminNavbar";
 import { useFetch } from './adminComponents/useFetch';
 import AdminAddEmployee from "./adminComponents/AdminAddEmployee";
-import EmployeeList from "./adminComponents/EmployeeList";
+import AdminEmployeeList from "./adminComponents/AdminEmployeeList";
+
+
+import AdminAdminList from "./adminComponents/AdminAdminList";
 
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 
 function App() {
 
-
-    const [myemployee, setEmployees] = useState([]);
+// Show all employees by admin
+    const [adminemployee, setAdminEmployees] = useState([]);
     const url = 'http://127.0.0.1:8000/api/admin/all-employees';
-    useFetch(url, setEmployees);
+    useFetch(url, setAdminEmployees);
+
+// Show all Admins by admin
+    const [adminadmin, setAdminAdmins] = useState([]);
+    const url2 = 'http://127.0.0.1:8000/api/admin/all-admins';
+    useFetch(url2, setAdminAdmins);
 
 
     const adminAddEmployee = (newEmployee) => { 
@@ -25,10 +33,12 @@ function App() {
             //data: JSON.stringify(newUser)
             data:newEmployee,
           });
-          setEmployees([...myemployee, newEmployee]);
+          setAdminEmployees([...adminemployee, newEmployee]);
           console.log(newEmployee);
     };
 
+
+// Delete an Employee by admin
     const adminEmployeeDeleteCallback = (id) => {
         const axios = require('axios').default;
 
@@ -40,8 +50,25 @@ function App() {
             }
           });
 
-        const data = myemployee.filter((employee) => employee.id != id);
-        setEmployees(data);
+        const data = adminemployee.filter((employee) => employee.id != id);
+        setAdminEmployees(data);
+    };
+
+
+// Delete an Admin by admin
+    const adminAdminDeleteCallback = (id) => {
+        const axios = require('axios').default;
+
+        axios({
+            method: 'post',
+            url: 'http://127.0.0.1:8000/api/admin/admin/delete',
+            data:{
+                id:id,
+            }
+          });
+
+        const data = adminadmin.filter((admin) => admin.id != id);
+        setAdminAdmins(data);
     };
 
 
@@ -66,9 +93,9 @@ function App() {
                 </Route>
 
                 <Route path="/admin/all-admins">
-                    <AdminNavbar />
+                <AdminNavbar />
                     <div>
-                        {/* <UserList list={myuser} callback={deleteCallback} /> */}
+                        <AdminAdminList list={adminadmin} callback={adminAdminDeleteCallback} />
                     </div>
                 </Route>
 
@@ -96,7 +123,7 @@ function App() {
                 <Route path="/admin/all-employees">
                     <AdminNavbar />
                     <div>
-                        <EmployeeList list={myemployee} callback={adminEmployeeDeleteCallback} />
+                        <AdminEmployeeList list={adminemployee} callback={adminEmployeeDeleteCallback} />
                     </div>
                 </Route>
 

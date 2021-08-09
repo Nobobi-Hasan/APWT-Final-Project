@@ -136,7 +136,8 @@ class AdminController extends Controller
 
     public function adminList(){
         $admins = Admin::all();
-        return view('admin.adminList')->with('adminList', $admins);
+        return response()->json($admins);
+        //return view('admin.adminList')->with('adminList', $admins);
     }
 
     public function adminDelete($id){
@@ -145,9 +146,10 @@ class AdminController extends Controller
 
     }
 
-    public function adminDestroy($id){
-        Admin::destroy($id);
-        return redirect()->route('admin.adminList');
+    public function adminDestroy(Request $req){
+        $admin = Admin::find($req->id);      
+        $admin->delete();
     }
+
 
 }
