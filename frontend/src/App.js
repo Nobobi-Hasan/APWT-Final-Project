@@ -1,24 +1,58 @@
-//import { useState } from "react";
+import { useState } from "react";
 import EmployeeNavbar from "./employeeComponents/EmployeeNavbar";
-//import { useFetch } from './employeeComponents/useFetch';
+import { useFetch } from './employeeComponents/useFetch';
 import EmployeeAddSalary from "./employeeComponents/EmployeeAddSalary";
+import EmployeeAddStatement from "./employeeComponents/EmployeeAddStatement";
+import EmployeeAddTransaction from "./employeeComponents/EmployeeAddTransaction";
+import EmployeeSalaryList from "./employeeComponents/EmployeeSalaryList";
 
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
+
 function App() {
 
-  const employeeAddSalary = (newSalary) => { 
+  //Add Salary by employee
+  const employeeAddSalary = (newEmployeeSalary) => { 
 
     const axios = require('axios').default;
 
     axios({
         method: 'post',
         url: 'http://127.0.0.1:8000/api/employee/salary',
-        //data: JSON.stringify(newUser)
-        data:newSalary,
+        data:newEmployeeSalary,
       });
+      setEmployeeSalary([...employeesalary, newEmployeeSalary]);
+          console.log(newEmployeeSalary);
+};
+//show salary to employee
+const [employeesalary, setEmployeeSalary] = useState([]);
+const url = 'http://127.0.0.1:8000/api/employee/salary/List';
+useFetch(url, setEmployeeSalary);
+
+//add statement by employee
+const employeeAddStatement = (newIncome) => { 
+
+  const axios = require('axios').default;
+
+  axios({
+      method: 'post',
+      url: 'http://127.0.0.1:8000/api/employee/statementAdd',
+      data:newIncome,
+    });
 };
 
+//add transaction by employee
+const employeeAddTransaction = (newTransaction) => { 
+
+  const axios = require('axios').default;
+
+  axios({
+      method: 'post',
+      url: 'http://127.0.0.1:8000/api/employee/transactionAdd',
+      //data: JSON.stringify(newUser)
+      data:newTransaction,
+    });
+};
 
   return (
     <Router>
@@ -58,19 +92,25 @@ function App() {
                     <EmployeeNavbar />
         </Route>
 
-        <Route path="/employee/salary">
+        <Route exact path="/employee/salary">
                     <EmployeeNavbar />
                     <div>
                     <EmployeeAddSalary status="Salary" callback={employeeAddSalary} />
                     </div>
         </Route>
 
-        <Route path="/employee/salary/List">
+        <Route exact path="/employee/salary/List">
                     <EmployeeNavbar />
+                    <div>
+                    <EmployeeSalaryList list={employeesalary} />
+                    </div>
         </Route>
 
-        <Route path="/employee/satementAdd">
+        <Route path="/employee/statementAdd">
                     <EmployeeNavbar />
+                    <div>
+                      <EmployeeAddStatement status="Statement" callback={employeeAddStatement} />
+                    </div>
         </Route>
 
         <Route path="/employee/statement">
@@ -79,6 +119,9 @@ function App() {
 
         <Route path="/employee/transactionAdd">
                     <EmployeeNavbar />
+                    <div>
+                      <EmployeeAddTransaction status="Transaction" callback={employeeAddTransaction} />
+                    </div>
         </Route>
 
         <Route path="/employee/transaction">

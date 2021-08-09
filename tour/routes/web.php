@@ -168,11 +168,11 @@ Route::group(['middleware'=>['employeeCheck']] , function(){
         Route::get('/employee/salaryGen', 'EmployeeSalaryController@genSalary')->name('employee.genSalary');
 
         Route::get('/employee/statementAdd', 'EmployeeAccountController@addStatement') ->name('employee.addStatement');
-        Route::post('employee/statementAdd', 'EmployeeAccountController@statementAdded')->name('employee.statemsentAdded');
+        Route::post('/employee/statementAdd', 'EmployeeAccountController@statementAdded')->name('employee.statemsentAdded');
         Route::get('/employee/statement', 'EmployeeAccountController@statement') ->name('employee.statement');
         Route::get('/employee/statementGen', 'EmployeeAccountController@genStatement')->name('employee.genStatement');
         Route::get('/employee/transactionAdd', 'EmployeeAccountController@addTransaction') ->name('employee.addTransaction');
-        Route::post('employee/transactionAdd', 'EmployeeAccountController@transactionAdded')->name('employee.transactionAdded');
+        Route::post('/employee/transactionAdd', 'EmployeeAccountController@transactionAdded')->name('employee.transactionAdded');
         Route::get('/employee/transaction', 'EmployeeAccountController@transaction') ->name('employee.transaction');
         Route::get('/employee/transactionGen', 'EmployeeAccountController@genTransaction')->name('employee.genTransaction');
        

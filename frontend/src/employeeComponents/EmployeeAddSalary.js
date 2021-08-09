@@ -1,6 +1,7 @@
 import { useState } from "react";
 //import { useParams } from "react-router-dom";
 import { useHistory } from 'react-router-dom';
+import './Employee.css';
 
 const EmployeeAddSalary = ({ status, callback }) => {
     //const { id: eid } = useParams();
@@ -8,8 +9,6 @@ const EmployeeAddSalary = ({ status, callback }) => {
     const [username, setUsername] = useState("");
     const [salary, setSalary] = useState("");
     const [bonus, setBonus] = useState("");
-
-    //const [user, setUser] = useState({id:'',name: '', dept: ''});
 
     const history = useHistory();
 
@@ -22,10 +21,9 @@ const EmployeeAddSalary = ({ status, callback }) => {
     return (
         <div>
             <h2>
-                {/* This is {status} employee page id: {eid} */}
                 This is {status} Add page
             </h2>
-            <form onSubmit={onSubmit}>
+            <form className='form' onSubmit={onSubmit}>
             <fieldset>
             <legend>Add Salary and Festival Bonus</legend>
                 <label>
@@ -52,7 +50,7 @@ const EmployeeAddSalary = ({ status, callback }) => {
                 </fieldset>
 
 
-                <input type="submit" value="Submit" />
+                <input id="submit" type="submit" value="Submit" />
             </form>
         </div>
     );

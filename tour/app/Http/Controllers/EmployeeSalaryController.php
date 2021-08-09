@@ -32,7 +32,8 @@ class EmployeeSalaryController extends Controller
 
     public function salaryList(){
         $salaries = Salary::where('req', 'Approved')->get();
-        return view('employee.salaryList')->with('salaries', $salaries);
+        return response()->json($salaries);
+        //return view('employee.salaryList')->with('salaries', $salaries);
     }
 
     function genSalary()
