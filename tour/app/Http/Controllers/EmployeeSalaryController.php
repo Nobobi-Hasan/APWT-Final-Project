@@ -22,18 +22,11 @@ class EmployeeSalaryController extends Controller
        $salary -> save();
 
 
-    //     $salary -> employee_id = 4;
-    //    $salary -> username = "aaa";
-    //    $salary -> salary = 500;
-    //    $salary -> bonus = 200;
-    //    $salary -> req = "Pending";
-    //    $salary -> save();
     }
 
     public function salaryList(){
         $salaries = Salary::where('req', 'Approved')->get();
         return response()->json($salaries);
-        //return view('employee.salaryList')->with('salaries', $salaries);
     }
 
     function genSalary()

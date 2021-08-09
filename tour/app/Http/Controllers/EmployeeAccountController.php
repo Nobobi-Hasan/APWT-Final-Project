@@ -27,7 +27,8 @@ class EmployeeAccountController extends Controller
 
     public function statement(){
         $incomes = Income::all();
-        return view('employee.StatementShow')->with('incomes', $incomes);
+        return response()->json($incomes);
+        
     }
 
 
@@ -60,9 +61,10 @@ class EmployeeAccountController extends Controller
 
     public function transaction(){
         $transactions = Transaction::all();
-        return view('employee.TransactionShow')->with('transactions', $transactions);
+        return response()->json($transactions);
+        
     }
-
+ 
     function genTransaction()
     {
 

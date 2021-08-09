@@ -21,5 +21,7 @@ Route::post('/employee/salary', 'EmployeeSalaryController@salaryReq') ->name('em
 Route::get('/employee/salary/List', 'EmployeeSalaryController@salaryList') ->name('employeeSalary.salaryList');
 
 Route::post('/employee/statementAdd', 'EmployeeAccountController@statementAdded')->name('employee.statemsentAdded');
+Route::get('/employee/statement', 'EmployeeAccountController@statement') ->name('employee.statement');
 
 Route::post('/employee/transactionAdd', 'EmployeeAccountController@transactionAdded')->name('employee.transactionAdded');
+Route::get('/employee/transaction', 'EmployeeAccountController@transaction') ->name('employee.transaction');

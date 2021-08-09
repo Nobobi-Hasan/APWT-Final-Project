@@ -1,4 +1,4 @@
-import Salary from './EmployeeSalary';
+import EmployeeSalary from './EmployeeSalary';
 import './Employee.css';
 
 const EmployeeSalaryList = ({list})=>{
@@ -16,7 +16,7 @@ const EmployeeSalaryList = ({list})=>{
                     list.map((salary)=>{
 
 
-                            return <Salary {...salary} />
+                            return <EmployeeSalary {...salary} />
 
                     })
                 }

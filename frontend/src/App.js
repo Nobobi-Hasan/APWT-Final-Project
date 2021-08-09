@@ -5,8 +5,11 @@ import EmployeeAddSalary from "./employeeComponents/EmployeeAddSalary";
 import EmployeeAddStatement from "./employeeComponents/EmployeeAddStatement";
 import EmployeeAddTransaction from "./employeeComponents/EmployeeAddTransaction";
 import EmployeeSalaryList from "./employeeComponents/EmployeeSalaryList";
+import EmployeeStatementList from "./employeeComponents/EmployeeStatementList";
+import EmployeeTransactionList from "./employeeComponents/EmployeeTransactionList";
 
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+
 
 
 function App() {
@@ -24,35 +27,48 @@ function App() {
       setEmployeeSalary([...employeesalary, newEmployeeSalary]);
           console.log(newEmployeeSalary);
 };
-//show salary to employee
-const [employeesalary, setEmployeeSalary] = useState([]);
-const url = 'http://127.0.0.1:8000/api/employee/salary/List';
-useFetch(url, setEmployeeSalary);
+    //show salary to employee
+    const [employeesalary, setEmployeeSalary] = useState([]);
+    const url = 'http://127.0.0.1:8000/api/employee/salary/List';
+    useFetch(url, setEmployeeSalary);
 
-//add statement by employee
-const employeeAddStatement = (newIncome) => { 
+    //add statement by employee
+    const employeeAddStatement = (newEmployeeStatement) => { 
 
-  const axios = require('axios').default;
+      const axios = require('axios').default;
 
-  axios({
-      method: 'post',
-      url: 'http://127.0.0.1:8000/api/employee/statementAdd',
-      data:newIncome,
-    });
-};
+      axios({
+          method: 'post',
+          url: 'http://127.0.0.1:8000/api/employee/statementAdd',
+          data:newEmployeeStatement,
+        });
+        setEmployeeStatement([...employeestatement, newEmployeeStatement]);
+          console.log(newEmployeeStatement);
+    };
 
-//add transaction by employee
-const employeeAddTransaction = (newTransaction) => { 
+    //show Statement to employee
+    const [employeestatement, setEmployeeStatement] = useState([]);
+    const url2 = 'http://127.0.0.1:8000/api/employee/statement';
+    useFetch(url2, setEmployeeStatement);
 
-  const axios = require('axios').default;
+    //add transaction by employee
+    const employeeAddTransaction = (newEmployeeTransaction) => { 
 
-  axios({
-      method: 'post',
-      url: 'http://127.0.0.1:8000/api/employee/transactionAdd',
-      //data: JSON.stringify(newUser)
-      data:newTransaction,
-    });
-};
+      const axios = require('axios').default;
+
+      axios({
+          method: 'post',
+          url: 'http://127.0.0.1:8000/api/employee/transactionAdd',
+          data:newEmployeeTransaction,
+        });
+        setEmployeeTransaction([...employeetransaction, newEmployeeTransaction]);
+          console.log(newEmployeeTransaction);
+    };
+
+      //show Transaction history to employee
+      const [employeetransaction, setEmployeeTransaction] = useState([]);
+      const url3 = 'http://127.0.0.1:8000/api/employee/transaction';
+      useFetch(url3, setEmployeeTransaction);
 
   return (
     <Router>
@@ -115,6 +131,9 @@ const employeeAddTransaction = (newTransaction) => {
 
         <Route path="/employee/statement">
                     <EmployeeNavbar />
+                    <div>
+                      <EmployeeStatementList list={employeestatement} />
+                    </div>
         </Route>
 
         <Route path="/employee/transactionAdd">
@@ -126,6 +145,9 @@ const employeeAddTransaction = (newTransaction) => {
 
         <Route path="/employee/transaction">
                     <EmployeeNavbar />
+                    <div>
+                      <EmployeeTransactionList list={employeetransaction} />
+                    </div>
         </Route>
 
         <Route path="/employee/advertisement">
