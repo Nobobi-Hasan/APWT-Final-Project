@@ -259,7 +259,7 @@ class FlightController extends Controller
         return view('flightDashboard.flightsupport');
     }
 
-    public function flightsupportconfirm(FlightSupportRequest $req){
+    public function flightsupportconfirm(Request $req){
 
         $support = new Support;
         $support -> username = $req->username;
@@ -267,7 +267,7 @@ class FlightController extends Controller
         $support -> email = $req->email;
         $support -> message = $req->message;
         $support->save();
-        return redirect()->route('flight.flightsupport');
+        // return redirect()->route('flight.flightsupport');
 
     }
 }

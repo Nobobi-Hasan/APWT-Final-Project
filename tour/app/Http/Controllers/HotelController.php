@@ -40,30 +40,31 @@ class HotelController extends Controller
         return view('hotelDashboard.addhotelfacility');
     }
 
-    public function addhotelfacilityVerify(AddHotelFacilityRequest $req){
+    public function addhotelfacilityVerify(Request $req){
 
-        if($req->hasFile('image')){
+        // if($req->hasFile('image')){
 
-            $file = $req->file('image');
-            echo "File Name: ".$file->getClientOriginalName()."<br>";
-            echo "File Extension: ".$file->getClientOriginalExtension()."<br>";
-            echo "File Mime Type: ".$file->getMimeType()."<br>";
-            echo "File Size: ".$file->getSize()."<br>";
+        //     $file = $req->file('image');
+        //     echo "File Name: ".$file->getClientOriginalName()."<br>";
+        //     echo "File Extension: ".$file->getClientOriginalExtension()."<br>";
+        //     echo "File Mime Type: ".$file->getMimeType()."<br>";
+        //     echo "File Size: ".$file->getSize()."<br>";
 
-            if($file->move('upload','hotel'.$req->title.'.'.$file->getClientOriginalExtension())){
-                echo "success";
-            }else{
-                echo "error";
-            }
-        }
-           $img='hotel'.$req->title.'.'.$file->getClientOriginalExtension();
+        //     if($file->move('upload','hotel'.$req->title.'.'.$file->getClientOriginalExtension())){
+        //         echo "success";
+        //     }else{
+        //         echo "error";
+        //     }
+        // }
+        //    $img='hotel'.$req->title.'.'.$file->getClientOriginalExtension();
 
             $facility = new Facility;
             $facility -> title = $req->title;
             $facility -> description = $req->description;
-            $facility -> image = $img;
+            $facility -> image =$req->image->store('facility');
             $facility->save();
-            return redirect()->route('hotel.addhotelfacility');
+            return facility;
+            // return redirect()->route('hotel.addhotelfacility');
     }
 
 
@@ -108,34 +109,34 @@ class HotelController extends Controller
         return view('hotelDashboard.addhotelroom');
     }
 
-    public function addhotelroomVerify(AddHotelRoomRequest $req){
+    public function addhotelroomVerify(Request $req){
 
-        if($req->hasFile('image')){
+        // if($req->hasFile('image')){
 
-            $file = $req->file('image');
-            echo "File Name: ".$file->getClientOriginalName()."<br>";
-            echo "File Extension: ".$file->getClientOriginalExtension()."<br>";
-            echo "File Mime Type: ".$file->getMimeType()."<br>";
-            echo "File Size: ".$file->getSize()."<br>";
+        //     $file = $req->file('image');
+        //     echo "File Name: ".$file->getClientOriginalName()."<br>";
+        //     echo "File Extension: ".$file->getClientOriginalExtension()."<br>";
+        //     echo "File Mime Type: ".$file->getMimeType()."<br>";
+        //     echo "File Size: ".$file->getSize()."<br>";
 
-            if($file->move('upload','hotel'.$req->name.'.'.$file->getClientOriginalExtension())){
-                echo "success";
-            }else{
-                echo "error";
-            }
-        }
+        //     if($file->move('upload','hotel'.$req->name.'.'.$file->getClientOriginalExtension())){
+        //         echo "success";
+        //     }else{
+        //         echo "error";
+        //     }
+        // }
 
-            $img='hotel'.$req->name.'.'.$file->getClientOriginalExtension();
+            // $img='hotel'.$req->name.'.'.$file->getClientOriginalExtension();
 
             $room = new Room;
-            $room ->hotel_id = session()->get('id');
+            $room ->hotel_id = 7;               //session()->get('id');
             $room -> name = $req->name;
             $room -> price = $req->price;
             $room -> description = $req->description;
             $room -> availability = 'Available';
-            $room -> image =$img;
+            $room -> image =$req->image;
             $room->save();
-            return redirect()->route('hotel.addhotelroom');
+            // return redirect()->route('hotel.addhotelroom');
     }
 
     public function managehotelroom(){
@@ -264,7 +265,7 @@ class HotelController extends Controller
         return view('hotelDashboard.hotelsupport');
     }
 
-    public function hotelsupportconfirm(HotelSupportRequest $req){
+    public function hotelsupportconfirm(Request $req){
 
         $support = new Support;
         $support -> username = $req->username;
@@ -272,7 +273,7 @@ class HotelController extends Controller
         $support -> email = $req->email;
         $support -> message = $req->message;
         $support->save();
-        return redirect()->route('hotel.hotelsupport');
+        // return redirect()->route('hotel.hotelsupport');
 
     }
 

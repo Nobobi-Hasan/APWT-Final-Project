@@ -50,7 +50,7 @@ const ServiceAddRoom = ({ status, callback }) => {
 
                 <label>
                    Room Image:
-                    <input type="file" name="image" value={image} onChange={(e) => setImage(e.target.value)}
+                    <input type="file" name="image" value={image} onChange={(e) => setImage(e.target.files[0])}
                     />
                 </label>
                 </fieldset>

@@ -22,9 +22,10 @@ import ServiceCarSupport from "./serviceComponents/Car/ServiceCarSupport";
 
 // Flight Import
 import FlightNavbar from "./serviceComponents/Flight/FlightNavbar";
-
-
-
+import ServiceAddFlight from "./serviceComponents/Flight/ServiceAddFlight";
+import ServiceFlightType from "./serviceComponents/Flight/ServiceFlightType";
+import ServiceFlightAvailability from "./serviceComponents/Flight/ServiceFlightAvailability";
+import ServiceFlightSupport from "./serviceComponents/Flight/ServiceFlightSupport";
 
 function App() {
 
@@ -65,6 +66,12 @@ function App() {
                 });
           };
 
+
+
+
+
+
+          
   // Car API Work
               const serviceAddCar = (newCar) => { 
 
@@ -124,6 +131,53 @@ function App() {
 
 
   // Flight API Work
+              const serviceAddFlight = (newFlight) => { 
+
+                const axios = require('axios').default;
+
+                axios({
+                    method: 'post',
+                    url: 'http://127.0.0.1:8000/api/flightDashboard/addflight',
+                    
+                    data:newFlight,
+                  });
+            };
+
+            const serviceFlightType = (newType) => { 
+
+              const axios = require('axios').default;
+
+              axios({
+                  method: 'post',
+                  url: 'http://127.0.0.1:8000/api/flightDashboard/flighttype',
+                  
+                  data:newType,
+                });
+          };
+
+          const serviceFlightAvailability = (newAvailable) => { 
+
+            const axios = require('axios').default;
+
+            axios({
+                method: 'post',
+                url: 'http://127.0.0.1:8000/api/flightDashboard/flightavailability',
+                
+                data:newAvailable,
+              });
+        };
+
+        const serviceFlightSupport = (newSupport) => { 
+
+          const axios = require('axios').default;
+
+          axios({
+              method: 'post',
+              url: 'http://127.0.0.1:8000/api/flightDashboard/flightsupport',
+              
+              data:newSupport,
+            });
+      };
 
 
 
@@ -206,10 +260,46 @@ function App() {
             </Route>
 
 
+
+
+
             {/* Flight Route */}
             <Route exact path="/flightDashboard">
               <FlightNavbar/>
             </Route>
+
+            <Route path="/flightDashboard/addflight">
+                    <FlightNavbar />
+                    <div>
+                        <ServiceAddFlight status="Flight" callback={serviceAddFlight} />
+                    </div>
+            </Route>
+
+            <Route path="/flightDashboard/flighttype">
+                    <FlightNavbar />
+                    <div>
+                        <ServiceFlightType status="Type" callback={serviceFlightType} />
+                    </div>
+            </Route>
+
+            <Route path="/flightDashboard/flightavailability">
+                    <FlightNavbar />
+                    <div>
+                        <ServiceFlightAvailability status="Availability" callback={serviceFlightAvailability} />
+                    </div>
+            </Route>
+
+            <Route path="/flightDashboard/flightsupport">
+                    <FlightNavbar />
+                    <div>
+                        <ServiceFlightSupport status="Support" callback={serviceFlightSupport} />
+                    </div>
+            </Route>
+
+
+
+
+
 
 
         </Switch>

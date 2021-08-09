@@ -225,7 +225,7 @@ class CarController extends Controller
         return view('carDashboard.carsupport');
     }
 
-    public function carsupportconfirm(CarSupportRequest $req){
+    public function carsupportconfirm(Request $req){
 
         $support = new Support;
         $support -> username = $req->username;
@@ -233,7 +233,7 @@ class CarController extends Controller
         $support -> email = $req->email;
         $support -> message = $req->message;
         $support->save();
-        return redirect()->route('car.carsupport');
+        // return redirect()->route('car.carsupport');
 
     }
 
