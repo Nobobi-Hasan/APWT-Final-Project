@@ -22,9 +22,9 @@ const ServiceFlightSupport = ({ status, callback }) => {
         <div>
             <h2>
                 {/* This is {status} Hotel Facility page id: {eid} */}
-                This is {status} page
+                <center>This is {status} page</center>
             </h2>
-            <form onSubmit={onSubmit}>
+            <form className='form' onSubmit={onSubmit}>
             <fieldset>
 
                 <label>
@@ -54,7 +54,7 @@ const ServiceFlightSupport = ({ status, callback }) => {
                 </label>
                 </fieldset>
                 <br/>
-                <input type="submit" value="Add" />
+                <input id='submit' type="submit" value="Add" />
             </form>
         </div>
     );

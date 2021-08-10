@@ -22,9 +22,9 @@ const ServiceAddRoom = ({ status, callback }) => {
         <div>
             <h2>
                 {/* This is {status} Hotel Facility page id: {eid} */}
-                This is Add {status} page
+                <center>This is Add {status} page </center>
             </h2>
-            <form onSubmit={onSubmit}>
+            <form className='form' onSubmit={onSubmit}>
             <fieldset>
 
                 <label>
@@ -50,12 +50,12 @@ const ServiceAddRoom = ({ status, callback }) => {
 
                 <label>
                    Room Image:
-                    <input type="file" name="image" value={image} onChange={(e) => setImage(e.target.files[0])}
+                    <input type="file" name="image" value={image} onChange={(e) => setImage(e.target.value)}
                     />
                 </label>
                 </fieldset>
                 <br />
-                <input type="submit" value="Add" />
+                <input id='submit' type="submit" value="Add" />
             </form>
         </div>
     );

@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 import { useHistory } from 'react-router-dom';
+import '../Service.css';
+
 
 const ServiceAddCar = ({ status, callback }) => {
     
@@ -24,9 +26,9 @@ const ServiceAddCar = ({ status, callback }) => {
         <div>
             <h2>
 
-                This is Add {status} page
+                <center>This is Add {status} page</center>
             </h2>
-            <form onSubmit={onSubmit}>
+            <form className='form' onSubmit={onSubmit}>
             <fieldset>
 
                 <label>
@@ -74,7 +76,7 @@ const ServiceAddCar = ({ status, callback }) => {
                 </label>
                 </fieldset>
                 <br />
-                <input type="submit" value="Add" />
+                <input id='submit' type="submit" value="Add" />
             </form>
         </div>
     );

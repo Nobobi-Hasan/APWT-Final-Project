@@ -23,9 +23,9 @@ const ServiceAddFlight = ({ status, callback }) => {
         <div>
             <h2>
 
-                This is Add {status} page
+               <center>This is Add {status} page</center> 
             </h2>
-            <form onSubmit={onSubmit}>
+            <form className='form' onSubmit={onSubmit}>
             <fieldset>
 
                 <label>
@@ -66,7 +66,7 @@ const ServiceAddFlight = ({ status, callback }) => {
                 </label>
                 </fieldset>
                 <br />
-                <input type="submit" value="Add" />
+                <input id='submit' type="submit" value="Add" />
             </form>
         </div>
     );

@@ -1,5 +1,6 @@
 
 import { useState } from "react";
+import { useFetch } from './serviceComponents/useFetch';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 // Hotel Import
@@ -7,7 +8,7 @@ import HotelNavbar from "./serviceComponents/Hotel/HotelNavbar";
 import ServiceAddFacility from "./serviceComponents/Hotel/ServiceAddFacility";
 import ServiceAddRoom from "./serviceComponents/Hotel/ServiceAddRoom";
 import ServiceHotelSupport from "./serviceComponents/Hotel/ServiceHotelSupport";
-
+import ServiceFacilityList from "./serviceComponents/Hotel/ServiceFacilityList";
 
 
 
@@ -30,6 +31,14 @@ import ServiceFlightSupport from "./serviceComponents/Flight/ServiceFlightSuppor
 function App() {
 
   // Hotel API Work
+
+              // Show all faccilities by service Hotel
+              const [servicefacility, setServiceFacilitys] = useState([]);
+              const serviceurl1 = 'http://127.0.0.1:8000/api/hotelDashboard/managehotelfacility';
+              useFetch(serviceurl1, setServiceFacilitys);
+
+
+
                 const serviceAddFacility = (newFacility) => { 
 
                   const axios = require('axios').default;
@@ -64,6 +73,21 @@ function App() {
                   
                   data:newSupport,
                 });
+          };
+
+            // Delete an Facility by Service Hotel
+            const serviceFacilityDeletecallback = (id) => {
+              const axios = require('axios').default;
+
+              axios({
+                  method: 'post',
+                  url: 'http://127.0.0.1:8000/api/hotelDashboard/facilitydelete',
+                  data:{
+                      id:id,
+                  }
+                });
+              const data = servicefacility.filter((service) => service.id != id);
+              setServiceFacilitys(data);
           };
 
 
@@ -214,6 +238,13 @@ function App() {
                         <ServiceHotelSupport status="Support" callback={serviceHotelSupport} />
                     </div>
             </Route>
+
+            <Route path="/hotelDashboard/managehotelfacility">
+                <HotelNavbar />
+                    <div>
+                        <ServiceFacilityList list={servicefacility} callback={serviceFacilityDeletecallback} />
+                    </div>
+                </Route>
 
 
 

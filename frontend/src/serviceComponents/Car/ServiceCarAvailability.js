@@ -19,9 +19,9 @@ const ServiceCarAvailability = ({ status, callback }) => {
     return (
         <div>
             <h2>
-                This is Car {status} page
+                <center>This is Car {status} page </center>
             </h2>
-            <form onSubmit={onSubmit}>
+            <form  className='form' onSubmit={onSubmit}>
             <fieldset>
                 
                 <label>
@@ -44,7 +44,7 @@ const ServiceCarAvailability = ({ status, callback }) => {
 
                 </fieldset>
                 <br />
-                <input type="submit" value="Submit" />
+                <input id='submit' type="submit" value="Submit" />
             </form>
         </div>
     );

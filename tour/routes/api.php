@@ -18,8 +18,10 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 //HOTEL
-//Facility Add
+//Facility Add/Show/delete
 Route::post('/hotelDashboard/addhotelfacility','HotelController@addhotelfacilityVerify')->name('hotel.addhotelfacilityVerify');
+Route::get('/hotelDashboard/managehotelfacility','HotelController@managehotelfacility')->name('hotel.managehotelfacility');
+Route::post('/hotelDashboard/facilitydelete','HotelController@facilitydestroy')->name('hotel.facilitydestroy');
 
 //Room Add
 Route::post('/hotelDashboard/addhotelroom','HotelController@addhotelroomVerify')->name('hotel.addhotelroomVerify');
