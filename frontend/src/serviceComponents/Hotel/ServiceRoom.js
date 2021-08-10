@@ -1,18 +1,20 @@
 import {Link} from 'react-router-dom';
-const ServiceFacility = ({id, title, description, image, created, serviceFacilityDeletecallback})=>{
+const ServiceRoom = ({id, name, description, image,price, created,availability, serviceRoomDeletecallback})=>{
     return(
         <>
 
         <tr>
             <td>{id}</td>
-            <td>{title}</td>
+            <td>{name}</td>
             <td>{description}</td>
             {/* <td>{image}</td> */}
             <td><img className="userimg" src={process.env.PUBLIC_URL + "/images/" + image}/></td>
+            <td>{price}</td>
             <td>{created}</td>
+            <td>{availability}</td>
             <td> 
             <Link to='/hotelDashboard'className='edit-button'>Edit</Link> |
-            <button className='delete-button' onClick={()=>serviceFacilityDeletecallback(id)}>Delete</button>
+            <button className='delete-button' onClick={()=>serviceRoomDeletecallback(id)}>Delete</button>
             </td>
 
         </tr>
@@ -21,4 +23,4 @@ const ServiceFacility = ({id, title, description, image, created, serviceFacilit
     );
 }
 
-export default ServiceFacility;
+export default ServiceRoom;

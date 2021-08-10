@@ -25,7 +25,22 @@ Route::post('/hotelDashboard/facilitydelete','HotelController@facilitydestroy')-
 
 //Room Add
 Route::post('/hotelDashboard/addhotelroom','HotelController@addhotelroomVerify')->name('hotel.addhotelroomVerify');
+Route::get('/hotelDashboard/managehotelroom','HotelController@managehotelroom')->name('hotel.managehotelroom');
+Route::post('/hotelDashboard/roomdelete','HotelController@roomdestroy')->name('hotel.roomdestroy');
 
+//Booking
+Route::get('/hotelDashboard/showhotelallboking','HotelController@showhotelallboking')->name('hotel.showhotelallboking');
+Route::post('/hotelDashboard/bookingdelete','HotelController@bookingdestroy')->name('hotel.bookingdestroy');
+
+//Pending Booking
+Route::get('/hotelDashboard/room-book-pending','HotelController@ADroomBookList')->name('hotel.ADroomBookList');
+Route::post('/hotelDashboard/bookingdecline','HotelController@bookingremove')->name('hotel.bookingremove');
+
+//Review
+Route::get('/hotelDashboard/checkhotelreview','HotelController@checkhotelreview')->name('hotel.checkhotelreview');
+
+//Transaction
+Route::get('/hotelDashboard/hoteltransactionhistory','HotelController@hoteltransactionhistory')->name('hotel.hoteltransactionhistory');
 
 // Support
 Route::post('/hotelDashboard/hotelsupport','HotelController@hotelsupportconfirm')->name('hotel.hotelsupportconfirm');

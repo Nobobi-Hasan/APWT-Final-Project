@@ -435,7 +435,7 @@ Route::group(['middleware'=>['employeeCheck']] , function(){
 
 		//Hotel room delete
 		Route::get('/hotelDashboard/roomdelete{id}','HotelController@roomdelete')->name('hotel.roomdelete');
-		Route::post('/hotelDashboard/roomdelete{id}','HotelController@roomdestroy')->name('hotel.roomdestroy');
+		Route::post('/hotelDashboard/roomdelete','HotelController@roomdestroy')->name('hotel.roomdestroy');
 
 		//Hotel room add
 		Route::get('/hotelDashboard/addhotelroom','HotelController@addhotelroom')->name('hotel.addhotelroom');
@@ -450,9 +450,9 @@ Route::group(['middleware'=>['employeeCheck']] , function(){
 		Route::get('/hotelDashboard/bookingapprove{id}','HotelController@bookingapprove')->name('hotel.bookingapprove');
 		Route::post('/hotelDashboard/bookingapprove{id}','HotelController@bookingadd')->name('hotel.bookingadd');
 		Route::get('/hotelDashboard/bookingdecline{id}','HotelController@bookingdecline')->name('hotel.bookingdecline');
-		Route::post('/hotelDashboard/bookingdecline{id}','HotelController@bookingremove')->name('hotel.bookingremove');
+		Route::post('/hotelDashboard/bookingdecline','HotelController@bookingremove')->name('hotel.bookingremove');
 		Route::get('/hotelDashboard/bookingdelete{id}','HotelController@bookingdelete')->name('hotel.bookingdelete');
-		Route::post('/hotelDashboard/bookingdelete{id}','HotelController@bookingdestroy')->name('hotel.bookingdestroy');
+		Route::post('/hotelDashboard/bookingdelete','HotelController@bookingdestroy')->name('hotel.bookingdestroy');
 		Route::get('/hotelDashboard/showhotelallboking','HotelController@showhotelallboking')->name('hotel.showhotelallboking');
 		Route::get('/hotelDashboard/information{id}','HotelController@showcustomerroominfo')->name('hotel.showcustomerroominfo');
 

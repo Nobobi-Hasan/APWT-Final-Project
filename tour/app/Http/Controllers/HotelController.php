@@ -61,7 +61,7 @@ class HotelController extends Controller
 
             $facility = new Facility;
             $facility -> title = $req->title;
-            $facility -> description = 'fuckme';
+            $facility -> description = '';
             $facility -> image =$req->image;
             $facility->save();
             
@@ -144,7 +144,8 @@ class HotelController extends Controller
 
     public function managehotelroom(){
         $room = Room::all();
-        return view('hotelDashboard.managehotelroom')->with('room', $room);
+        return response()->json($room);
+       // return view('hotelDashboard.managehotelroom')->with('room', $room);
     }
 
 
@@ -170,14 +171,16 @@ class HotelController extends Controller
 
      //hotel room delete 
      public function roomdelete($id){
-        $room = Room::find($id);
+         $room = Room::find($id);
          return view('hotelDashboard.roomdelete')->with('room', $room);
     }
 
-    //hotel room delete
-    public function roomdestroy($id){
-        Room::destroy($id);
-        return redirect()->route('hotel.managehotelroom');
+    //hotel room destroy
+    public function roomdestroy(Request $req){
+
+        $room=Room::find($req->id);
+        $room->delete();
+        // return redirect()->route('hotel.managehotelroom');
     }
 
     
@@ -185,7 +188,8 @@ class HotelController extends Controller
     public function ADroomBookList(){
 
             $roombooks = Roombook::where('req', 'Pending')->get();
-            return view('hotelDashboard.ADroomBookList')->with('ADroomBookList', $roombooks);
+            return response()->json($roombooks);
+            //return view('hotelDashboard.ADroomBookList')->with('ADroomBookList', $roombooks);
     }
     //hotel booking pending approve list
     public function bookingapprove($id){
@@ -208,11 +212,11 @@ class HotelController extends Controller
     }
 
     //hotel booking remove request
-    public function bookingremove($id){
-        $roombook = Roombook::find($id);
+    public function bookingremove(Request $req){
+        $roombook = Roombook::find($req->id);
         $roombook->req = 'Declined';
         $roombook->save();
-        return redirect()->route('hotel.ADroomBookList');
+        //return redirect()->route('hotel.ADroomBookList');
     }
 
 
@@ -224,18 +228,21 @@ class HotelController extends Controller
  
 
      //hotel booking delete request from main list
-     public function bookingdestroy($id){
-        $roombook = Roombook::find($id);
+     public function bookingdestroy(Request $req){
+        $roombook = Roombook::find($req->id);
         $roombook->req = 'Canceled';
         $roombook->save();
-        return redirect()->route('hotel.showhotelallboking');
+
+        //return redirect()->route('hotel.showhotelallboking');
+    
     }
 
 
     //hotel booking list
     public function showhotelallboking(){
             $roombooks = Roombook::where('req', 'Approved')->get();
-            return view('hotelDashboard.showhotelallboking')->with('showhotelallboking', $roombooks);
+            return response()->json($roombooks);
+            //return view('hotelDashboard.showhotelallboking')->with('showhotelallboking', $roombooks);
     }
     
     //hotel booking user-car information
@@ -250,18 +257,25 @@ class HotelController extends Controller
                                                        
     }
 
-    public function checkhotelreview(){
-        $reviews = Review::where('service_id', session()->get('id'))
-                       ->where('service_type', session()->get('type'))->get();
+    public function checkhotelreview(Request $req){
+        // $reviews = Review::where('service_id', session()->get('id'))
+        //                ->where('service_type', session()->get('type'))->get();
 
-        return view('hotelDashboard.checkhotelreview')->with('reviews', $reviews);
+        $reviews = Review::all();
+        return response()->json($reviews);
+
+        //return view('hotelDashboard.checkhotelreview')->with('reviews', $reviews);
+
     }
 
-    public function hoteltransactionhistory(){
-        $transactions = Transaction::where('receiver_id', session()->get('id'))
-        ->where('receiver', session()->get('type'))->get();
+    public function hoteltransactionhistory(Request $req){
+        $transactions = Transaction::all();
+        return response()->json($transactions);
 
-        return view('hotelDashboard.hoteltransactionhistory')->with('transactions', $transactions);
+        // $transactions = Transaction::where('receiver_id', session()->get('id'))
+        // ->where('receiver', session()->get('type'))->get();
+
+        // return view('hotelDashboard.hoteltransactionhistory')->with('transactions', $transactions);
     }
 
     public function hotelsupport(){

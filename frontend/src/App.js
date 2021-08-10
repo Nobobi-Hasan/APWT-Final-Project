@@ -9,7 +9,11 @@ import ServiceAddFacility from "./serviceComponents/Hotel/ServiceAddFacility";
 import ServiceAddRoom from "./serviceComponents/Hotel/ServiceAddRoom";
 import ServiceHotelSupport from "./serviceComponents/Hotel/ServiceHotelSupport";
 import ServiceFacilityList from "./serviceComponents/Hotel/ServiceFacilityList";
-
+import ServiceRoomList from "./serviceComponents/Hotel/ServiceRoomList";
+import ServiceBookingList from "./serviceComponents/Hotel/ServiceBookingList";
+import ServicePendingBookingList from "./serviceComponents/Hotel/ServicePendingBookingList";
+import ServiceReviewList from "./serviceComponents/Hotel/ServiceReviewList";
+import ServiceTransactionList from "./serviceComponents/Hotel/ServiceTransactionList";
 
 
 // Car Import
@@ -32,10 +36,41 @@ function App() {
 
   // Hotel API Work
 
-              // Show all faccilities by service Hotel
+              // Show all faccilities list by service Hotel
               const [servicefacility, setServiceFacilitys] = useState([]);
               const serviceurl1 = 'http://127.0.0.1:8000/api/hotelDashboard/managehotelfacility';
               useFetch(serviceurl1, setServiceFacilitys);
+
+      
+              // Show all room list by service Hotel
+              const [serviceroom, setServiceRooms] = useState([]);
+              const serviceurl2 = 'http://127.0.0.1:8000/api/hotelDashboard/managehotelroom';
+              useFetch(serviceurl2, setServiceRooms);
+
+              // Show all booking list  by service Hotel
+              const [servicebooking, setServiceBookings] = useState([]);
+              const serviceurl3 = 'http://127.0.0.1:8000/api/hotelDashboard/showhotelallboking';
+              useFetch(serviceurl3, setServiceBookings);
+
+               // Show all pending booking list  by service Hotel
+               const [servicependingbooking, setServicePendingBookings] = useState([]);
+               const serviceurl4 = 'http://127.0.0.1:8000/api/hotelDashboard/room-book-pending';
+               useFetch(serviceurl4, setServicePendingBookings);
+
+              // Show all review list  by service Hotel
+              const [servicereview, setServiceReviews] = useState([]);
+              const serviceurl5 = 'http://127.0.0.1:8000/api/hotelDashboard/checkhotelreview';
+              useFetch(serviceurl5, setServiceReviews);
+
+              // Show all transaction list  by service Hotel
+              const [servicetransaction, setServiceTransactions] = useState([]);
+              const serviceurl6 = 'http://127.0.0.1:8000/api/hotelDashboard/hoteltransactionhistory';
+              useFetch(serviceurl6, setServiceTransactions);
+
+
+
+
+
 
 
 
@@ -89,6 +124,53 @@ function App() {
               const data = servicefacility.filter((service) => service.id != id);
               setServiceFacilitys(data);
           };
+
+          // Delete a Room by Service Hotel
+          const serviceRoomDeletecallback = (id) => {
+            const axios = require('axios').default;
+
+            axios({
+                method: 'post',
+                url: 'http://127.0.0.1:8000/api/hotelDashboard/roomdelete',
+                data:{
+                    id:id,
+                }
+              });
+            const data = serviceroom.filter((service) => service.id != id);
+            setServiceRooms(data);
+        };
+
+        // Delete a Booking by Service Hotel
+        const serviceBookingDeletecallback = (id) => {
+          const axios = require('axios').default;
+
+          axios({
+              method: 'post',
+              url: 'http://127.0.0.1:8000/api/hotelDashboard/bookingdelete',
+              data:{
+                  id:id,
+              }
+            });
+          const data = servicebooking.filter((service) => service.id != id);
+          setServiceBookings(data);
+      };
+
+      // Delete a Pending Booking by Service Hotel
+      const servicePendingBookingDeletecallback = (id) => {
+        const axios = require('axios').default;
+
+        axios({
+            method: 'post',
+            url: 'http://127.0.0.1:8000/api/hotelDashboard/bookingdecline',
+            data:{
+                id:id,
+            }
+          });
+        const data = servicependingbooking.filter((service) => service.id != id);
+        setServicePendingBookings(data);
+    };
+
+
 
 
 
@@ -245,6 +327,41 @@ function App() {
                         <ServiceFacilityList list={servicefacility} callback={serviceFacilityDeletecallback} />
                     </div>
                 </Route>
+
+            <Route path="/hotelDashboard/managehotelroom">
+                <HotelNavbar />
+                    <div>
+                        <ServiceRoomList list={serviceroom} callback={serviceRoomDeletecallback} />
+                    </div>
+            </Route>
+
+            <Route path="/hotelDashboard/showhotelallboking">
+                <HotelNavbar />
+                    <div>
+                        <ServiceBookingList list={servicebooking} callback={serviceBookingDeletecallback} />
+                    </div>
+            </Route>
+
+            <Route path="/hotelDashboard/room-book-pending">
+                <HotelNavbar />
+                    <div>
+                        <ServicePendingBookingList list={servicependingbooking} callback={servicePendingBookingDeletecallback} />
+                    </div>
+            </Route>
+
+            <Route path="/hotelDashboard/checkhotelreview">
+                <HotelNavbar />
+                    <div>
+                        <ServiceReviewList list={servicereview} />
+                    </div>
+            </Route>
+
+            <Route path="/hotelDashboard/hoteltransactionhistory">
+                <HotelNavbar />
+                    <div>
+                        <ServiceTransactionList list={servicetransaction} />
+                    </div>
+            </Route>
 
 
 
