@@ -9,7 +9,8 @@ class EmployeePackageController extends Controller
 {
     public function package(){
         $packages = Package::where('req', 'Approved')->get();
-        return view('employee.packageManage')->with('packages', $packages);
+        //return view('employee.packageManage')->with('packages', $packages);
+        return response()->json($packages);
     }
 
 
@@ -18,7 +19,7 @@ class EmployeePackageController extends Controller
         
     }
 
-    public function packageAdded(EmpPackageRequest $req){
+    public function packageAdded(Request $req){
         if ($req->hasFile('image')) {
             $file = $req->file('image');
             if($file->move('upload', 'employeePackage'.$req->id.'.'.$file->getClientOriginalExtension())){
@@ -41,7 +42,7 @@ class EmployeePackageController extends Controller
         $package -> status = 'Upcoming';
         $package -> req = 'Pending';
         $package -> save();
-        return redirect()->route('employeePackage.packageAdd');
+       
         
     }
 

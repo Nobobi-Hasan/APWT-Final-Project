@@ -48,13 +48,14 @@ class EmployeeAdvertisementController extends Controller
 
 
 
-    public function promoIndex(){
+    public function promo(){
         
         $promos = Promo::all();
-        return view('employee.SendPromo')->with('promos', $promos);
+       // return view('employee.SendPromo')->with('promos', $promos);
+       return response()->json($promos);
     }
 
-    public function promotions(EmpPromoRequest $req){
+    public function promoAdd(Request $req){
 
 
         if ($req->hasFile('image')) {
@@ -72,7 +73,6 @@ class EmployeeAdvertisementController extends Controller
         $promos -> image = $img;
         $promos -> message = $req->message;
         $promos -> save();
-        return redirect()->route('employee.promoIndex');
         
     }
 
@@ -83,8 +83,9 @@ class EmployeeAdvertisementController extends Controller
     }
     
     public function promoDestroy($id){
-        Promo::destroy($id);
-        return redirect()->route('employee.promoIndex');
+        // Promo::destroy($id);
+        // return redirect()->route('employee.promoIndex');
+        Promo::destroy($req -> id);
     }
 
     

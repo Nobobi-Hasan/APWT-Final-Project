@@ -16,6 +16,11 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+//emp package
+Route::post('/employee/packageAdd', 'EmployeePackageController@PackageAdded') ->name('employeePackage.packageAdded');
+//emp place
+Route::post('/employee/placeAdd', 'EmployeePlaceController@PlaceAdded') ->name('employeePlace.placeAdded');
 //emp salary
 Route::post('/employee/salary', 'EmployeeSalaryController@salaryReq') ->name('employeeSalary.salaryReq');
 Route::get('/employee/salary/list', 'EmployeeSalaryController@salaryList') ->name('employeeSalary.salaryList');
@@ -27,6 +32,10 @@ Route::post('/employee/transactionAdd', 'EmployeeAccountController@transactionAd
 Route::get('/employee/transaction', 'EmployeeAccountController@transaction') ->name('employee.transaction');
 //emp review
 Route::get('/employee/review', 'EmployeeReviewController@showReview') ->name('employeeReview.showReview');
+//emp promo
+Route::post('/employee/promo', 'EmployeeAdvertisementController@promoAdd') ->name('employeePromo.promoAdd');
+Route::get('/employee/promo/list', 'EmployeeAdvertisementController@promo') ->name('employeePromo.promo');
+Route::post('/employee/promo/delete', 'EmployeeAdvertisementController@promoDestroy')->name('employeeFaq.promoDestroy');
 //emp faq
 Route::post('/employee/faq', 'EmployeeFaqController@faqAdd') ->name('employeeFaq.faqAdd');
 Route::get('/employee/faq/list', 'EmployeeFaqController@faq') ->name('employeeFaq.faq');

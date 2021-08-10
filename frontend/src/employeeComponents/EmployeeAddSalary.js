@@ -38,13 +38,13 @@ const EmployeeAddSalary = ({ status, callback }) => {
                 <br />
                 <label>
                     Salary:
-                    <input type="text" name="salary" value={salary} onChange={(e) => setSalary(e.target.value)}
+                    <input type="number" name="salary" value={salary} onChange={(e) => setSalary(e.target.value)}
                     />
                 </label>
                 <br />
                 <label>
                     Bonus:
-                    <input type="text" name="bonus" value={bonus} onChange={(e) => setBonus(e.target.value)}
+                    <input type="number" name="bonus" value={bonus} onChange={(e) => setBonus(e.target.value)}
                     />
                 </label>
                 </fieldset>

@@ -33,12 +33,12 @@ const EmployeeAddStatement = ({ status, callback }) => {
                 <br />
                 <label>
                     Revenue:
-                    <input  type="text" name="revenue" value={revenue} onChange={(e) => setRevenue(e.target.value)} />
+                    <input  type="number" name="revenue" value={revenue} onChange={(e) => setRevenue(e.target.value)} />
                 </label>
                 <br />
                 <label>
                     Cost:
-                    <input type="text" name="cost" value={cost} onChange={(e) => setCost(e.target.value)}
+                    <input type="number" name="cost" value={cost} onChange={(e) => setCost(e.target.value)}
                     />
                 </label>
                 <br/>

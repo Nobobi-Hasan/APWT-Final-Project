@@ -4,16 +4,49 @@ import { useFetch } from './employeeComponents/useFetch';
 import EmployeeAddSalary from "./employeeComponents/EmployeeAddSalary";
 import EmployeeAddStatement from "./employeeComponents/EmployeeAddStatement";
 import EmployeeAddTransaction from "./employeeComponents/EmployeeAddTransaction";
+import EmployeeAddPromo from "./employeeComponents/EmployeeAddPromo";
+import EmployeeAddFaq from "./employeeComponents/EmployeeAddFaq";
+import EmployeeAddPackage from "./employeeComponents/EmployeeAddPackage";
+import EmployeeAddPlace from "./employeeComponents/EmployeeAddPlace";
 import EmployeeSalaryList from "./employeeComponents/EmployeeSalaryList";
 import EmployeeStatementList from "./employeeComponents/EmployeeStatementList";
 import EmployeeTransactionList from "./employeeComponents/EmployeeTransactionList";
 import EmployeeReviewList from "./employeeComponents/EmployeeReviewList";
-import EmployeeAddFaq from "./employeeComponents/EmployeeAddFaq";
 import EmployeeFaqList from "./employeeComponents/EmployeeFaqList";
+import EmployeePromoList from "./employeeComponents/EmployeePromoList";
 
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 function App() {
+
+  //Add package by employee
+  const employeeAddPackage = (newEmployeePackage) => { 
+
+    const axios = require('axios').default;
+
+    axios({
+        method: 'post',
+        url: 'http://127.0.0.1:8000/api/employee/packageAdd',
+        data:newEmployeePackage,
+      });
+      //setEmployeePackage([...employeepackage, newEmployeePackage]);
+        //  console.log(newEmployeePackage);
+};
+
+
+ //Add place by employee
+ const employeeAddPlace = (newEmployeePlace) => { 
+
+  const axios = require('axios').default;
+
+  axios({
+      method: 'post',
+      url: 'http://127.0.0.1:8000/api/employee/placeAdd',
+      data:newEmployeePlace,
+    });
+    //setEmployeePlace([...employeeplace, newEmployeePlace]);
+      //  console.log(newEmployeePlace);
+};
 
   //Add Salary by employee
   const employeeAddSalary = (newEmployeeSalary) => { 
@@ -111,6 +144,41 @@ function App() {
       setEmployeeFaq(data);
   };
 
+   //send promo by employee
+   const employeeAddPromo = (newEmployeePromo) => { 
+
+    const axios = require('axios').default;
+
+    axios({
+        method: 'post',
+        url: 'http://127.0.0.1:8000/api/employee/promo',
+        data:newEmployeePromo,
+      });
+      setEmployeePromo([...employeepromo, newEmployeePromo]);
+      console.log(newEmployeePromo);
+  };
+
+  //show promo list to employee
+  const [employeepromo, setEmployeePromo] = useState([]);
+  const emp6 = 'http://127.0.0.1:8000/api/employee/promo/list';
+  useFetch(emp6, setEmployeePromo);
+
+  // Delete promo by employee
+ const employeePromoDeletecallback = (id) => {
+   const axios = require('axios').default;
+
+   axios({
+       method: 'post',
+       url: 'http://127.0.0.1:8000/api/employee/promo/delete',
+       data:{
+           id:id,
+       }
+     });
+
+   const data = employeepromo.filter((employee) => employee.id !== id);
+   setEmployeePromo(data);
+};
+
 
   return (
     <Router>
@@ -139,7 +207,8 @@ function App() {
         <Route exact path="/employee/packageAdd">
         <div className="wrapper">
             <EmployeeNavbar />
-              <div className="main-container">      
+              <div className="main-container">  
+              <EmployeeAddPackage status="Package" callback={employeeAddPackage} />       
               </div>
 
           </div>
@@ -157,7 +226,8 @@ function App() {
         <Route exact path="/employee/placeAdd">
           <div className="wrapper">
               <EmployeeNavbar />
-                <div className="main-container">      
+                <div className="main-container">
+                <EmployeeAddPlace status="Place" callback={employeeAddPlace} />          
                 </div>
 
             </div>
@@ -267,7 +337,8 @@ function App() {
         <Route exact path="/employee/promo">
         <div className="wrapper">
             <EmployeeNavbar />
-              <div className="main-container">      
+              <div className="main-container">    
+              <EmployeeAddPromo status="Promo" callback={employeeAddPromo} />  
               </div>
 
         </div>
@@ -276,7 +347,8 @@ function App() {
         <Route exact path="/employee/promo/list">
         <div className="wrapper">
             <EmployeeNavbar />
-              <div className="main-container">      
+              <div className="main-container">     
+              <EmployeePromoList list={employeepromo} callback={employeePromoDeletecallback} /> 
               </div>
 
         </div>

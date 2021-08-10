@@ -39,7 +39,7 @@ const EmployeeNavbar = ()=>{
 
 					<li className="item" id="package">
 						<a href="#package" className="menu-btn">
-							<i className="fa fa-users"></i><span>Package<i className="fas fa-chevron-down drop-down"></i></span>
+                        <i className="fa fa-briefcase"></i><span>Package<i className="fas fa-chevron-down drop-down"></i></span>
 						</a>
 						<div className="sub-menu">
                             <Link to='/employee/packageAdd'>Package Add</Link>

@@ -52,7 +52,7 @@ const EmployeeAddTransaction = ({ status, callback }) => {
                 <br/>
                 <label>
                     Amount:
-                    <input type="text" name="amount" value={amount} onChange={(e) => setAmount(e.target.value)}
+                    <input type="number" name="amount" value={amount} onChange={(e) => setAmount(e.target.value)}
                     />
                 </label>
                 <br/>

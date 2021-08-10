@@ -9,7 +9,8 @@ class EmployeePlaceController extends Controller
 {
     public function place(){
         $places = Place::all();
-        return view('employee.placeManage')->with('places', $places);
+        //return view('employee.placeManage')->with('places', $places);
+        return response()->json($places);
     }
 
 
@@ -18,7 +19,7 @@ class EmployeePlaceController extends Controller
         
     }
 
-    public function placeAdded(EmpPlaceRequest $req){
+    public function placeAdded(Request $req){
 
         if ($req->hasFile('image')) {
             $file = $req->file('image');
@@ -42,7 +43,6 @@ class EmployeePlaceController extends Controller
         $place -> image = $img;
         $place -> req= 'Pending';
         $place->save();
-        return redirect()->route('employeePlace.placeAdd');
         
     }
 
