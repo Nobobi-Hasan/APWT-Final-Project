@@ -65,9 +65,9 @@ body{
   transition-property: color;
 }
 
-.wrapper .header .header-menu .sidebar-btn:hover{
+/* .wrapper .header .header-menu .sidebar-btn:hover{
   color: #4CCEE8;
-}
+} */
 
 .wrapper .header .header-menu ul{
   display: flex;
@@ -99,7 +99,7 @@ body{
   position: fixed;
   top: 70px;
   width: 250px;
-  height: 100%;
+  height: 93%;
   transition: 0.3s;
   transition-property: width;
   overflow-y: auto;
@@ -161,7 +161,7 @@ body{
 .wrapper .sidebar .sidebar-menu .item .sub-menu a{
   display: block;
   position: relative;
-  color: #fff;
+  color: rgb(255, 255, 255);
   white-space: nowrap;
   font-size: 15px;
   padding: 15px;
@@ -183,7 +183,7 @@ body{
 }
 
 .wrapper .sidebar .sidebar-menu .item:target .sub-menu{
-  max-height: 1200px;
+  max-height: 900px;
 }
 
 .wrapper .main-container{

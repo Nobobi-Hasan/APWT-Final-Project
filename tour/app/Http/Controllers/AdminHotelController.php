@@ -12,7 +12,8 @@ class AdminHotelController extends Controller
 {
     public function adHotel(){
         $ADHotelList = Hotel::where('req', 'Pending')->get();
-        return view('admin.ADHotel')->with('ADHotelList', $ADHotelList);
+        // return view('admin.ADHotel')->with('ADHotelList', $ADHotelList);
+        return response()->json($ADHotelList);
     }
 
     public function hotelApprove($id){
@@ -20,12 +21,12 @@ class AdminHotelController extends Controller
         return view('admin.hotelApprove')->with('hotel', $hotel);
     }
 
-    public function hotelAdd($id){
-        $hotel = Hotel::find($id);
+    public function hotelAdd(Request $req){
+        $hotel = Hotel::find($req -> id);
         $hotel->req = 'Approved';
         $hotel->save();
 
-        return redirect()->route('adminHotel.adHotel');
+        //return redirect()->route('adminHotel.adHotel');
     }
 
 
@@ -34,15 +35,19 @@ class AdminHotelController extends Controller
         return view('admin.hotelDecline')->with('hotel', $hotel);
     }
 
-    public function hotelRemove($id){
-        Hotel::destroy($id);
-        return redirect()->route('adminHotel.adHotel');
+    public function hotelRemove(Request $req){
+        $hotel = Hotel::find($req -> id);
+        $hotel->req = 'Declined';
+        $hotel->save();
+        //Hotel::destroy($req -> id);
+        //return redirect()->route('adminHotel.adHotel');
     }
 
 
     public function hotelList(){
         $hotels = Hotel::where('req', 'Approved')->get();
-        return view('admin.hotelList')->with('hotels', $hotels);
+        // return view('admin.hotelList')->with('hotels', $hotels);
+        return response()->json($hotels);
     }
     
     public function hotelDelete($id){
@@ -51,9 +56,9 @@ class AdminHotelController extends Controller
 
     }
 
-    public function hotelDestroy($id){
-        Hotel::destroy($id);
-        return redirect()->route('adminHotel.hotelList');
+    public function hotelDestroy(Request $req){
+        Hotel::destroy($req -> id);
+        //return redirect()->route('adminHotel.hotelList');
     }
 
     public function hotelBookings(){

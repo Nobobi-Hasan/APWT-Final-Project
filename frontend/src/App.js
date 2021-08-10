@@ -4,6 +4,10 @@ import AdminNavbar2 from "./adminComponents/AdminNavbar2";
 import { useFetch } from './adminComponents/useFetch';
 import AdminAddEmployee from "./adminComponents/AdminAddEmployee";
 import AdminEmployeeList from "./adminComponents/AdminEmployeeList";
+import AdminHotelADList from "./adminComponents/AdminHotelADList";
+import AdminHotelList from "./adminComponents/AdminHotelList";
+
+import 'font-awesome/css/font-awesome.min.css';
 
 
 import AdminAdminList from "./adminComponents/AdminAdminList";
@@ -24,6 +28,23 @@ function App() {
     useFetch(url2, setAdminAdmins);
 
 
+// Show all Pending Hotels by admin
+    const [adminHotelAD, setAdminHotelAD] = useState([]);
+    const url3 = 'http://127.0.0.1:8000/api/admin/hotels-pending';
+    useFetch(url3, setAdminHotelAD);
+
+
+
+// Show all Hotels by admin
+    const [adminHotel, setAdminHotel] = useState([]);
+    const url4 = 'http://127.0.0.1:8000/api/admin/all-hotels';
+    useFetch(url4, setAdminHotel);
+
+
+
+
+
+// Add Employee by admin
     const adminAddEmployee = (newEmployee) => { 
 
         const axios = require('axios').default;
@@ -73,6 +94,59 @@ function App() {
     };
 
 
+// Approve Hotel by admin
+    const adminHotelApproveCallback = (id) => {
+        const axios = require('axios').default;
+
+        axios({
+            method: 'post',
+            url: 'http://127.0.0.1:8000/api/admin/hotel/approve',
+            data:{
+                id:id,
+            }
+          });
+
+        const data = adminHotelAD.filter((hotelAD) => hotelAD.id != id);
+        setAdminHotelAD(data);
+        
+    };
+
+
+// Decline Hotel by admin
+    const adminHotelDeclineCallback = (id) => {
+        const axios = require('axios').default;
+
+        axios({
+            method: 'post',
+            url: 'http://127.0.0.1:8000/api/admin/hotel/decline',
+            data:{
+                id:id,
+            }
+          });
+
+        const data = adminHotelAD.filter((hotelAD) => hotelAD.id != id);
+        setAdminHotelAD(data);
+    };
+
+
+// Delete Hotel by admin
+    const adminHotelDeleteCallback = (id) => {
+        const axios = require('axios').default;
+
+        axios({
+            method: 'post',
+            url: 'http://127.0.0.1:8000/api/admin/hotel/delete',
+            data:{
+                id:id,
+            }
+          });
+
+        const data = adminHotel.filter((hotel) => hotel.id != id);
+        setAdminHotel(data);
+    };
+
+
+
   return (
     <Router>
             {/* <Navbar /> */}
@@ -108,7 +182,7 @@ function App() {
 
                         <AdminNavbar2 />
                         <div className="main-container"> 
-                            <AdminAdminList list={adminadmin} callback={adminAdminDeleteCallback} />
+                            <AdminAdminList list={adminadmin} list2={adminemployee} callback={adminAdminDeleteCallback} />
                         </div>
 
                     </div>
@@ -180,7 +254,7 @@ function App() {
 
                         <AdminNavbar2 />
                         <div className="main-container"> 
-                            
+                            <AdminHotelADList list={adminHotelAD} callbackA={adminHotelApproveCallback} callbackD={adminHotelDeclineCallback} />
                         </div>
 
                     </div>
@@ -191,7 +265,7 @@ function App() {
 
                         <AdminNavbar2 />
                         <div className="main-container"> 
-                            
+                            <AdminHotelList list={adminHotel} callback={adminHotelDeleteCallback} />
                         </div>
 
                     </div>
