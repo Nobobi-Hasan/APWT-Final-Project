@@ -1,5 +1,6 @@
 import { useState } from "react";
 import AdminNavbar from "./adminComponents/AdminNavbar";
+import AdminNavbar2 from "./adminComponents/AdminNavbar2";
 import { useFetch } from './adminComponents/useFetch';
 import AdminAddEmployee from "./adminComponents/AdminAddEmployee";
 import AdminEmployeeList from "./adminComponents/AdminEmployeeList";
@@ -78,195 +79,361 @@ function App() {
             <Switch>
           
                 <Route exact path="/admin">
-                    <AdminNavbar />
-                    <div>
-                        {/* <UserList list={myuser} callback={deleteCallback} /> */}
+                    <div className="wrapper">
+
+                        <AdminNavbar2 />
+                        <div className="main-container"> 
+                            
+                        </div>
+
                     </div>
+                    
                 </Route>
 
                 
                 <Route path="/admin/add-admin">
-                    <AdminNavbar />
-                    <div>
-                        {/* <UserList list={myuser} callback={deleteCallback} /> */}
+                    <div className="wrapper">
+
+                        <AdminNavbar2 />
+                        <div className="main-container"> 
+                            
+                        </div>
+
                     </div>
                 </Route>
 
                 <Route path="/admin/all-admins">
-                <AdminNavbar />
-                    <div>
-                        <AdminAdminList list={adminadmin} callback={adminAdminDeleteCallback} />
+
+                    <div className="wrapper">
+
+                        <AdminNavbar2 />
+                        <div className="main-container"> 
+                            <AdminAdminList list={adminadmin} callback={adminAdminDeleteCallback} />
+                        </div>
+
                     </div>
+
                 </Route>
 
                 <Route path="/admin/all-users">
-                    <AdminNavbar />
-                    <div>
-                        {/* <UserList list={myuser} callback={deleteCallback} /> */}
+                    <div className="wrapper">
+
+                        <AdminNavbar2 />
+                        <div className="main-container"> 
+                            
+                        </div>
+
                     </div>
                 </Route>
 
                 <Route path="/admin/active-users">
-                    <AdminNavbar />
-                    <div>
-                        {/* <UserList list={myuser} callback={deleteCallback} /> */}
+                    <div className="wrapper">
+
+                        <AdminNavbar2 />
+                        <div className="main-container"> 
+                            
+                        </div>
+
                     </div>
                 </Route>
 
                 <Route path="/admin/add-employee">
-                    <AdminNavbar />
-                    <div>
-                        <AdminAddEmployee status="Employee" callback={adminAddEmployee} />
+
+
+                    <div className="wrapper">
+
+                        <AdminNavbar2 />
+                        <div className="main-container"> 
+                            <AdminAddEmployee status="Employee" callback={adminAddEmployee} />
+                        </div>
+
                     </div>
+                   
                 </Route>
 
                 <Route path="/admin/all-employees">
-                    <AdminNavbar />
-                    <div>
-                        <AdminEmployeeList list={adminemployee} callback={adminEmployeeDeleteCallback} />
+
+                    <div className="wrapper">
+
+                        <AdminNavbar2 />
+                        <div className="main-container"> 
+                            <AdminEmployeeList list={adminemployee} callback={adminEmployeeDeleteCallback} />
+                        </div>
+
                     </div>
+                    
                 </Route>
 
                 <Route path="/admin/active-employees">
-                    <AdminNavbar />
-                    <div>
-                        {/* <UserList list={myuser} callback={deleteCallback} /> */}
+                    <div className="wrapper">
+
+                        <AdminNavbar2 />
+                        <div className="main-container"> 
+                            
+                        </div>
+
                     </div>
                 </Route>
 
                 <Route path="/admin/hotels-pending">
-                    <AdminNavbar />
-                    <div>
-                        {/* <UserList list={myuser} callback={deleteCallback} /> */}
+                    <div className="wrapper">
+
+                        <AdminNavbar2 />
+                        <div className="main-container"> 
+                            
+                        </div>
+
                     </div>
                 </Route>
 
                 <Route path="/admin/all-hotels">
-                    <AdminNavbar />
-                    <div>
-                        {/* <UserList list={myuser} callback={deleteCallback} /> */}
+                    <div className="wrapper">
+
+                        <AdminNavbar2 />
+                        <div className="main-container"> 
+                            
+                        </div>
+
                     </div>
                 </Route>
 
                 <Route path="/admin/hotel-bookings">
-                    <AdminNavbar />
-                    <div>
-                        {/* <UserList list={myuser} callback={deleteCallback} /> */}
+                    <div className="wrapper">
+
+                        <AdminNavbar2 />
+                        <div className="main-container"> 
+                            
+                        </div>
+
                     </div>
                 </Route>
 
                 <Route path="/admin/transports-pending">
-                    <AdminNavbar />
-                    <div>
-                        {/* <UserList list={myuser} callback={deleteCallback} /> */}
+                    <div className="wrapper">
+
+                        <AdminNavbar2 />
+                        <div className="main-container"> 
+                            
+                        </div>
+
                     </div>
                 </Route>
 
                 <Route path="/admin/all-cars">
-                    <AdminNavbar />
-                    <div>
-                        {/* <UserList list={myuser} callback={deleteCallback} /> */}
+                    <div className="wrapper">
+
+                        <AdminNavbar2 />
+                        <div className="main-container"> 
+                            
+                        </div>
+
                     </div>
                 </Route>
 
                 <Route path="/admin/all-flight">
-                    <AdminNavbar />
-                    <div>
-                        {/* <UserList list={myuser} callback={deleteCallback} /> */}
+                    <div className="wrapper">
+
+                        <AdminNavbar2 />
+                        <div className="main-container"> 
+                            
+                        </div>
+
                     </div>
                 </Route>
 
                 <Route path="/admin/car-bookings">
-                    <AdminNavbar />
-                    <div>
-                        {/* <UserList list={myuser} callback={deleteCallback} /> */}
+                    <div className="wrapper">
+
+                        <AdminNavbar2 />
+                        <div className="main-container"> 
+                            
+                        </div>
+
                     </div>
                 </Route>
 
                 <Route path="/admin/flight-bookings">
-                    <AdminNavbar />
-                    <div>
-                        {/* <UserList list={myuser} callback={deleteCallback} /> */}
+                    <div className="wrapper">
+
+                        <AdminNavbar2 />
+                        <div className="main-container"> 
+                            
+                        </div>
+
                     </div>
                 </Route>
 
+
+
+
+                <Route path="/admin/package-pending">
+                    <div className="wrapper">
+
+                        <AdminNavbar2 />
+                        <div className="main-container"> 
+                            
+                        </div>
+
+                    </div>
+                </Route>
+
+                <Route path="/admin/all-packages">
+                    <div className="wrapper">
+
+                        <AdminNavbar2 />
+                        <div className="main-container"> 
+                            
+                        </div>
+
+                    </div>
+                </Route>
+
+                <Route path="/admin/package-bookings">
+                    <div className="wrapper">
+
+                        <AdminNavbar2 />
+                        <div className="main-container"> 
+                            
+                        </div>
+
+                    </div>
+                </Route>
+
+                <Route path="/admin/package-status">
+                    <div className="wrapper">
+
+                        <AdminNavbar2 />
+                        <div className="main-container"> 
+                            
+                        </div>
+
+                    </div>
+                </Route>
+
+
+
+
                 <Route path="/admin/place-pending">
-                    <AdminNavbar />
-                    <div>
-                        {/* <UserList list={myuser} callback={deleteCallback} /> */}
+                    <div className="wrapper">
+
+                        <AdminNavbar2 />
+                        <div className="main-container"> 
+                            
+                        </div>
+
                     </div>
                 </Route>
 
                 <Route path="/admin/all-places">
-                    <AdminNavbar />
-                    <div>
-                        {/* <UserList list={myuser} callback={deleteCallback} /> */}
+                    <div className="wrapper">
+
+                        <AdminNavbar2 />
+                        <div className="main-container"> 
+                            
+                        </div>
+
                     </div>
                 </Route>
 
                 
                 <Route path="/admin/income-statement">
-                    <AdminNavbar />
-                    <div>
-                        {/* <UserList list={myuser} callback={deleteCallback} /> */}
+                    <div className="wrapper">
+
+                        <AdminNavbar2 />
+                        <div className="main-container"> 
+                            
+                        </div>
+
                     </div>
                 </Route>
 
                 <Route path="/admin/transaction-history">
-                    <AdminNavbar />
-                    <div>
-                        {/* <UserList list={myuser} callback={deleteCallback} /> */}
+                    <div className="wrapper">
+
+                        <AdminNavbar2 />
+                        <div className="main-container"> 
+                            
+                        </div>
+
                     </div>
                 </Route>
 
                 <Route path="/admin/pending-salary">
-                    <AdminNavbar />
-                    <div>
-                        {/* <UserList list={myuser} callback={deleteCallback} /> */}
+                    <div className="wrapper">
+
+                        <AdminNavbar2 />
+                        <div className="main-container"> 
+                            
+                        </div>
+
                     </div>
                 </Route>
 
                 <Route path="/admin/support">
-                    <AdminNavbar />
-                    <div>
-                        {/* <UserList list={myuser} callback={deleteCallback} /> */}
+                    <div className="wrapper">
+
+                        <AdminNavbar2 />
+                        <div className="main-container"> 
+                            
+                        </div>
+
                     </div>
                 </Route>
 
                 <Route path="/admin/policy">
-                    <AdminNavbar />
-                    <div>
-                        {/* <UserList list={myuser} callback={deleteCallback} /> */}
+                    <div className="wrapper">
+
+                        <AdminNavbar2 />
+                        <div className="main-container"> 
+                            
+                        </div>
+
                     </div>
                 </Route>
 
                 <Route path="/admin/guidelines">
-                    <AdminNavbar />
-                    <div>
-                        {/* <UserList list={myuser} callback={deleteCallback} /> */}
+                    <div className="wrapper">
+
+                        <AdminNavbar2 />
+                        <div className="main-container"> 
+                            
+                        </div>
+
                     </div>
                 </Route>
 
                 <Route path="/admin/about">
-                    <AdminNavbar />
-                    <div>
-                        {/* <UserList list={myuser} callback={deleteCallback} /> */}
+                    <div className="wrapper">
+
+                        <AdminNavbar2 />
+                        <div className="main-container"> 
+                            
+                        </div>
+
                     </div>
                 </Route>
 
 
                 <Route path="/admin/profile">
-                    <AdminNavbar />
-                    <div>
-                        {/* <UserList list={myuser} callback={deleteCallback} /> */}
+                    <div className="wrapper">
+
+                        <AdminNavbar2 />
+                        <div className="main-container"> 
+                            
+                        </div>
+
                     </div>
                 </Route>
 
 
                 <Route path="/login">
-                    <AdminNavbar />
-                    <div>
-                        {/* <UserList list={myuser} callback={deleteCallback} /> */}
+                    <div className="wrapper">
+
+                        <AdminNavbar2 />
+                        <div className="main-container"> 
+                            
+                        </div>
+
                     </div>
                 </Route>
 
@@ -274,7 +441,15 @@ function App() {
 
                 {/* <Route path='/edit/:id' children={<AddUser status='edit'/>}></Route> */}
                 <Route path="*">
-                    <h3>404 not found</h3>
+                    <div className="wrapper">
+
+                        <AdminNavbar2 />
+                        <div className="main-container"> 
+                            <h3>404 not found</h3>
+                        </div>
+
+                    </div>
+                    
                 </Route>
             </Switch>
         </Router>
