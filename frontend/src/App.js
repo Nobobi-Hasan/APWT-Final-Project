@@ -7,6 +7,7 @@ import EmployeeAddTransaction from "./employeeComponents/EmployeeAddTransaction"
 import EmployeeSalaryList from "./employeeComponents/EmployeeSalaryList";
 import EmployeeStatementList from "./employeeComponents/EmployeeStatementList";
 import EmployeeTransactionList from "./employeeComponents/EmployeeTransactionList";
+import EmployeeReviewList from "./employeeComponents/EmployeeReviewList";
 
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
@@ -29,8 +30,8 @@ function App() {
 };
     //show salary to employee
     const [employeesalary, setEmployeeSalary] = useState([]);
-    const url = 'http://127.0.0.1:8000/api/employee/salary/List';
-    useFetch(url, setEmployeeSalary);
+    const emp1 = 'http://127.0.0.1:8000/api/employee/salary/List';
+    useFetch(emp1, setEmployeeSalary);
 
     //add statement by employee
     const employeeAddStatement = (newEmployeeStatement) => { 
@@ -48,8 +49,8 @@ function App() {
 
     //show Statement to employee
     const [employeestatement, setEmployeeStatement] = useState([]);
-    const url2 = 'http://127.0.0.1:8000/api/employee/statement';
-    useFetch(url2, setEmployeeStatement);
+    const emp2 = 'http://127.0.0.1:8000/api/employee/statement';
+    useFetch(emp2, setEmployeeStatement);
 
     //add transaction by employee
     const employeeAddTransaction = (newEmployeeTransaction) => { 
@@ -67,8 +68,13 @@ function App() {
 
       //show Transaction history to employee
       const [employeetransaction, setEmployeeTransaction] = useState([]);
-      const url3 = 'http://127.0.0.1:8000/api/employee/transaction';
-      useFetch(url3, setEmployeeTransaction);
+      const emp3 = 'http://127.0.0.1:8000/api/employee/transaction';
+      useFetch(emp3, setEmployeeTransaction);
+
+       //show user review to employee
+       const [employeereview, setEmployeeReview] = useState([]);
+       const emp4 = 'http://127.0.0.1:8000/api/employee/review';
+       useFetch(emp4, setEmployeeReview);
 
   return (
     <Router>
@@ -80,31 +86,31 @@ function App() {
                     <h2>Welcome to the  Employee Dashboard...</h2>
         </Route>
 
-        <Route path="/employee/userList">
+        <Route exact path="/employee/userList">
                     <EmployeeNavbar />
         </Route>
 
-        <Route path="/employee/packageAdd">
+        <Route exact path="/employee/packageAdd">
                     <EmployeeNavbar />
         </Route>
 
-        <Route path="/employee/package">
+        <Route exact path="/employee/package">
                     <EmployeeNavbar />
         </Route>
 
-        <Route path="/employee/placeAdd">
+        <Route exact path="/employee/placeAdd">
                     <EmployeeNavbar />
         </Route>
 
-        <Route path="/employee/place">
+        <Route exact path="/employee/place">
                     <EmployeeNavbar />
         </Route>
 
-        <Route path="/employee/gallery">
+        <Route exact path="/employee/gallery">
                     <EmployeeNavbar />
         </Route>
 
-        <Route path="/employee/galleryManage">
+        <Route exact path="/employee/galleryManage">
                     <EmployeeNavbar />
         </Route>
 
@@ -122,42 +128,60 @@ function App() {
                     </div>
         </Route>
 
-        <Route path="/employee/statementAdd">
+        <Route exact path="/employee/statementAdd">
                     <EmployeeNavbar />
                     <div>
                       <EmployeeAddStatement status="Statement" callback={employeeAddStatement} />
                     </div>
         </Route>
 
-        <Route path="/employee/statement">
+        <Route exact path="/employee/statement">
                     <EmployeeNavbar />
                     <div>
                       <EmployeeStatementList list={employeestatement} />
                     </div>
         </Route>
 
-        <Route path="/employee/transactionAdd">
+        <Route exact path="/employee/transactionAdd">
                     <EmployeeNavbar />
                     <div>
                       <EmployeeAddTransaction status="Transaction" callback={employeeAddTransaction} />
                     </div>
         </Route>
 
-        <Route path="/employee/transaction">
+        <Route exact path="/employee/transaction">
                     <EmployeeNavbar />
                     <div>
                       <EmployeeTransactionList list={employeetransaction} />
                     </div>
         </Route>
 
-        <Route path="/employee/advertisement">
+        <Route exact path="/employee/advertisement">
                     <EmployeeNavbar />
         </Route>
 
-        <Route path="/employee/promo">
+        <Route exact path="/employee/promo">
                     <EmployeeNavbar />
         </Route>
 
+        <Route exact path="/employee/review">
+                    <EmployeeNavbar />
+                    <div>
+                      <EmployeeReviewList list={employeereview} />
+                    </div>
+        </Route>
+
+        <Route exact path="/employee/support">
+                    <EmployeeNavbar />
+        </Route>
+
+        <Route exact path="/employee/guideline">
+                    <EmployeeNavbar />
+        </Route>
+
+        <Route exact path="/employee/faq">
+                    <EmployeeNavbar />
+        </Route>
         </Switch>
     </Router>    
   );

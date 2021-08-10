@@ -185,7 +185,7 @@ Route::group(['middleware'=>['employeeCheck']] , function(){
         Route::get('/employee/promodelete{id}', 'EmployeeAdvertisementController@promoDelete')->name('employee.promoDelete');
         Route::post('/employee/promodelete{id}', 'EmployeeAdvertisementController@promoDestroy')->name('employee.promoDestroy');
 
-        Route::get('/employee/Review', 'EmployeeReviewController@showReview') ->name('employeeReview.showReview');
+        Route::get('/employee/review', 'EmployeeReviewController@showReview') ->name('employeeReview.showReview');
 
         Route::get('/employee/support', 'EmployeeSupportController@supportList') ->name('employee.supportList');
         Route::get('/employee/support/delete{id}', 'EmployeeSupportController@supportDelete') ->name('employee.supportDelete');

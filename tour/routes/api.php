@@ -16,12 +16,14 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
-
+//emp salary
 Route::post('/employee/salary', 'EmployeeSalaryController@salaryReq') ->name('employeeSalary.salaryReq');
 Route::get('/employee/salary/List', 'EmployeeSalaryController@salaryList') ->name('employeeSalary.salaryList');
-
+//emp statement
 Route::post('/employee/statementAdd', 'EmployeeAccountController@statementAdded')->name('employee.statemsentAdded');
 Route::get('/employee/statement', 'EmployeeAccountController@statement') ->name('employee.statement');
-
+//emp transaction
 Route::post('/employee/transactionAdd', 'EmployeeAccountController@transactionAdded')->name('employee.transactionAdded');
 Route::get('/employee/transaction', 'EmployeeAccountController@transaction') ->name('employee.transaction');
+//emp review
+Route::get('/employee/review', 'EmployeeReviewController@showReview') ->name('employeeReview.showReview');
