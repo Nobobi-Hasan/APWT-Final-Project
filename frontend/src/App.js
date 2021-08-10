@@ -196,7 +196,15 @@ function App() {
                     <EmployeeNavbar />
         </Route>
 
+        <Route exact path="/employee/advertisement/list">
+                    <EmployeeNavbar />
+        </Route>
+
         <Route exact path="/employee/promo">
+                    <EmployeeNavbar />
+        </Route>
+
+        <Route exact path="/employee/promo/list">
                     <EmployeeNavbar />
         </Route>
 

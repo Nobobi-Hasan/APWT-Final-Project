@@ -17,8 +17,10 @@ const EmployeeNavbar = ()=>{
             <Link to='/employee/statement'>Income Statement</Link> |
             <Link to='/employee/transactionAdd'>Add in Transaction History</Link> |
             <Link to='/employee/transaction'>Transaction History</Link> |
-            <Link to='/employee/advertisement'>Advertisement</Link> |
+            <Link to='/employee/advertisement'>Send Advertisement</Link> |
+            <Link to='/employee/advertisement/list'>Advertisement List</Link> |
             <Link to='/employee/promo'>Send Promo</Link> |
+            <Link to='/employee/promo/list'>Promo List</Link> |
             <Link to='/employee/Review'>Review</Link> |
             <Link to='/employee/support'>Support</Link> |
             <Link to='/employee/guideline'>Guideline</Link> |
