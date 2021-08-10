@@ -118,125 +118,213 @@ function App() {
         <Switch>
             
         <Route exact path="/employee">
-                    <EmployeeNavbar />
-                    <h2>Welcome to the  Employee Dashboard...</h2>
-        </Route>
+          <div className="wrapper">
+            <EmployeeNavbar />
+              <div className="main-container">      
+              </div>
+
+          </div>
+          
+      </Route>
 
         <Route exact path="/employee/userList">
-                    <EmployeeNavbar />
+        <div className="wrapper">
+            <EmployeeNavbar />
+              <div className="main-container">      
+              </div>
+
+          </div>
         </Route>
 
         <Route exact path="/employee/packageAdd">
-                    <EmployeeNavbar />
+        <div className="wrapper">
+            <EmployeeNavbar />
+              <div className="main-container">      
+              </div>
+
+          </div>
         </Route>
 
         <Route exact path="/employee/package">
-                    <EmployeeNavbar />
+        <div className="wrapper">
+            <EmployeeNavbar />
+              <div className="main-container">      
+              </div>
+
+          </div>
         </Route>
 
         <Route exact path="/employee/placeAdd">
-                    <EmployeeNavbar />
+          <div className="wrapper">
+              <EmployeeNavbar />
+                <div className="main-container">      
+                </div>
+
+            </div>
         </Route>
 
         <Route exact path="/employee/place">
-                    <EmployeeNavbar />
+        <div className="wrapper">
+            <EmployeeNavbar />
+              <div className="main-container">      
+              </div>
+
+          </div>
         </Route>
 
         <Route exact path="/employee/gallery">
-                    <EmployeeNavbar />
+        <div className="wrapper">
+            <EmployeeNavbar />
+              <div className="main-container">      
+              </div>
+
+          </div>
         </Route>
 
         <Route exact path="/employee/galleryManage">
-                    <EmployeeNavbar />
+        <div className="wrapper">
+            <EmployeeNavbar />
+              <div className="main-container">      
+              </div>
+
+          </div>
         </Route>
 
         <Route exact path="/employee/salary">
-                    <EmployeeNavbar />
-                    <div>
-                    <EmployeeAddSalary status="Salary" callback={employeeAddSalary} />
-                    </div>
+        <div className="wrapper">
+            <EmployeeNavbar />
+              <div className="main-container">   
+              <EmployeeAddSalary status="Salary" callback={employeeAddSalary} />   
+              </div>
+
+          </div>     
         </Route>
 
         <Route exact path="/employee/salary/list">
-                    <EmployeeNavbar />
-                    <div>
-                    <EmployeeSalaryList list={employeesalary} />
-                    </div>
+        <div className="wrapper">
+            <EmployeeNavbar />
+              <div className="main-container">   
+              <EmployeeSalaryList list={employeesalary} />   
+              </div>
+        </div>            
         </Route>
 
         <Route exact path="/employee/statementAdd">
-                    <EmployeeNavbar />
-                    <div>
-                      <EmployeeAddStatement status="Statement" callback={employeeAddStatement} />
-                    </div>
+        <div className="wrapper">
+            <EmployeeNavbar />
+              <div className="main-container">   
+              <EmployeeAddStatement status="Statement" callback={employeeAddStatement} />   
+              </div>
+                      
+        </div>
         </Route>
 
         <Route exact path="/employee/statement">
-                    <EmployeeNavbar />
-                    <div>
+        <div className="wrapper">
+            <EmployeeNavbar />
+              <div className="main-container">   
                       <EmployeeStatementList list={employeestatement} />
                     </div>
+        </div>            
         </Route>
 
         <Route exact path="/employee/transactionAdd">
-                    <EmployeeNavbar />
-                    <div>
+        <div className="wrapper">
+            <EmployeeNavbar />
+              <div className="main-container">   
                       <EmployeeAddTransaction status="Transaction" callback={employeeAddTransaction} />
                     </div>
+        </div>            
         </Route>
 
         <Route exact path="/employee/transaction">
-                    <EmployeeNavbar />
-                    <div>
+        <div className="wrapper">
+            <EmployeeNavbar />
+              <div className="main-container">   
                       <EmployeeTransactionList list={employeetransaction} />
                     </div>
+        </div>
         </Route>
 
         <Route exact path="/employee/advertisement">
-                    <EmployeeNavbar />
+        <div className="wrapper">
+            <EmployeeNavbar />
+              <div className="main-container">      
+              </div>
+
+        </div>
         </Route>
 
         <Route exact path="/employee/advertisement/list">
-                    <EmployeeNavbar />
+        <div className="wrapper">
+            <EmployeeNavbar />
+              <div className="main-container">      
+              </div>
+
+        </div>
         </Route>
 
         <Route exact path="/employee/promo">
-                    <EmployeeNavbar />
+        <div className="wrapper">
+            <EmployeeNavbar />
+              <div className="main-container">      
+              </div>
+
+        </div>
         </Route>
 
         <Route exact path="/employee/promo/list">
-                    <EmployeeNavbar />
+        <div className="wrapper">
+            <EmployeeNavbar />
+              <div className="main-container">      
+              </div>
+
+        </div>
         </Route>
 
         <Route exact path="/employee/review">
-                    <EmployeeNavbar />
-                    <div>
+        <div className="wrapper">
+            <EmployeeNavbar />
+              <div className="main-container">   
                       <EmployeeReviewList list={employeereview} />
                     </div>
+        </div>            
         </Route>
 
         <Route exact path="/employee/support">
-                    <EmployeeNavbar />
+        <div className="wrapper">
+            <EmployeeNavbar />
+              <div className="main-container">      
+              </div>
+
+        </div>
         </Route>
 
         <Route exact path="/employee/guideline">
-                    <EmployeeNavbar />
+        <div className="wrapper">
+            <EmployeeNavbar />
+              <div className="main-container">      
+              </div>
+
+        </div>
         </Route>
 
         <Route exact path="/employee/faq">
-                    <EmployeeNavbar />
-                    <div>
+        <div className="wrapper">
+            <EmployeeNavbar />
+              <div className="main-container">   
                         <EmployeeAddFaq status="Faq" callback={employeeAddFaq} />
                     </div>
-                    
+        </div>            
         </Route>
 
         <Route exact path="/employee/faq/list">
-                    <EmployeeNavbar />
-                    <div>
+        <div className="wrapper">
+            <EmployeeNavbar />
+              <div className="main-container">   
                         <EmployeeFaqList list={employeefaq} callback={employeeFaqDeletecallback} />
                     </div>
-                    
+        </div>            
         </Route>
         </Switch>
     </Router>    
