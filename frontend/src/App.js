@@ -8,10 +8,10 @@ import EmployeeSalaryList from "./employeeComponents/EmployeeSalaryList";
 import EmployeeStatementList from "./employeeComponents/EmployeeStatementList";
 import EmployeeTransactionList from "./employeeComponents/EmployeeTransactionList";
 import EmployeeReviewList from "./employeeComponents/EmployeeReviewList";
+import EmployeeAddFaq from "./employeeComponents/EmployeeAddFaq";
+import EmployeeFaqList from "./employeeComponents/EmployeeFaqList";
 
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-
-
 
 function App() {
 
@@ -30,7 +30,7 @@ function App() {
 };
     //show salary to employee
     const [employeesalary, setEmployeeSalary] = useState([]);
-    const emp1 = 'http://127.0.0.1:8000/api/employee/salary/List';
+    const emp1 = 'http://127.0.0.1:8000/api/employee/salary/list';
     useFetch(emp1, setEmployeeSalary);
 
     //add statement by employee
@@ -75,6 +75,42 @@ function App() {
        const [employeereview, setEmployeeReview] = useState([]);
        const emp4 = 'http://127.0.0.1:8000/api/employee/review';
        useFetch(emp4, setEmployeeReview);
+
+      //add faq by employee
+    const employeeAddFaq = (newEmployeeFaq) => { 
+
+      const axios = require('axios').default;
+
+      axios({
+          method: 'post',
+          url: 'http://127.0.0.1:8000/api/employee/faq',
+          data:newEmployeeFaq,
+        });
+        setEmployeeFaq([...employeefaq, newEmployeeFaq]);
+          console.log(newEmployeeFaq);
+    };
+
+     //show faq to employee
+     const [employeefaq, setEmployeeFaq] = useState([]);
+     const emp5 = 'http://127.0.0.1:8000/api/employee/faq/list';
+     useFetch(emp5, setEmployeeFaq);
+
+     // Delete faq by employee
+    const employeeFaqDeletecallback = (id) => {
+      const axios = require('axios').default;
+
+      axios({
+          method: 'post',
+          url: 'http://127.0.0.1:8000/api/employee/faq/delete',
+          data:{
+              id:id,
+          }
+        });
+
+      const data = employeefaq.filter((employee) => employee.id !== id);
+      setEmployeeFaq(data);
+  };
+
 
   return (
     <Router>
@@ -121,7 +157,7 @@ function App() {
                     </div>
         </Route>
 
-        <Route exact path="/employee/salary/List">
+        <Route exact path="/employee/salary/list">
                     <EmployeeNavbar />
                     <div>
                     <EmployeeSalaryList list={employeesalary} />
@@ -181,6 +217,18 @@ function App() {
 
         <Route exact path="/employee/faq">
                     <EmployeeNavbar />
+                    <div>
+                        <EmployeeAddFaq status="Faq" callback={employeeAddFaq} />
+                    </div>
+                    
+        </Route>
+
+        <Route exact path="/employee/faq/list">
+                    <EmployeeNavbar />
+                    <div>
+                        <EmployeeFaqList list={employeefaq} callback={employeeFaqDeletecallback} />
+                    </div>
+                    
         </Route>
         </Switch>
     </Router>    

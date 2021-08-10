@@ -12,7 +12,7 @@ const EmployeeNavbar = ()=>{
             <Link to='/employee/gallery'>Add Image</Link> |
             <Link to='/employee/galleryManage'>Manage Album</Link> |
             <Link to='/employee/salary'>Generate Salary</Link> |
-            <Link to='/employee/salary/List'>Salary List</Link> |
+            <Link to='/employee/salary/list'>Salary List</Link> |
             <Link to='/employee/statementAdd'>Add Income Statement</Link> |
             <Link to='/employee/statement'>Income Statement</Link> |
             <Link to='/employee/transactionAdd'>Add in Transaction History</Link> |
@@ -23,6 +23,7 @@ const EmployeeNavbar = ()=>{
             <Link to='/employee/support'>Support</Link> |
             <Link to='/employee/guideline'>Guideline</Link> |
             <Link to='/employee/faq'>FAQ</Link> |
+            <Link to='/employee/faq/list'>FAQ List</Link> |
             <Link to='/employee/profile'>Profile</Link> |
             <Link to='/login'>Logout</Link>
         </div>

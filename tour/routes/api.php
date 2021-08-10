@@ -18,7 +18,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 //emp salary
 Route::post('/employee/salary', 'EmployeeSalaryController@salaryReq') ->name('employeeSalary.salaryReq');
-Route::get('/employee/salary/List', 'EmployeeSalaryController@salaryList') ->name('employeeSalary.salaryList');
+Route::get('/employee/salary/list', 'EmployeeSalaryController@salaryList') ->name('employeeSalary.salaryList');
 //emp statement
 Route::post('/employee/statementAdd', 'EmployeeAccountController@statementAdded')->name('employee.statemsentAdded');
 Route::get('/employee/statement', 'EmployeeAccountController@statement') ->name('employee.statement');
@@ -27,3 +27,7 @@ Route::post('/employee/transactionAdd', 'EmployeeAccountController@transactionAd
 Route::get('/employee/transaction', 'EmployeeAccountController@transaction') ->name('employee.transaction');
 //emp review
 Route::get('/employee/review', 'EmployeeReviewController@showReview') ->name('employeeReview.showReview');
+//emp faq
+Route::post('/employee/faq', 'EmployeeFaqController@faqAdd') ->name('employeeFaq.faqAdd');
+Route::get('/employee/faq/list', 'EmployeeFaqController@faq') ->name('employeeFaq.faq');
+Route::post('/employee/faq/delete', 'EmployeeFaqController@faqDestroy')->name('employeeFaq.faqDestroy');
