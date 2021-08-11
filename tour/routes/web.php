@@ -159,8 +159,8 @@ Route::group(['middleware'=>['employeeCheck']] , function(){
 
         Route::get('/employee/gallery', 'EmployeeGalleryController@index')->name('employeeGallery.index');
         Route::post('/employee/gallery', 'EmployeeGalleryController@upload')->name('employeeGallery.upload');
-        Route::get('/employee/galleryManage', 'EmployeeGalleryController@manage')->name('employeeGallery.manage');
-        Route::get('/employee/gallerydelete{id}', 'EmployeeGalleryController@pictureDelete') ->name('employeeGallery.pictureDelete');
+        Route::get('/employee/gallery/manage', 'EmployeeGalleryController@manage')->name('employeeGallery.manage');
+        Route::get('/employee/gallery/delete{id}', 'EmployeeGalleryController@pictureDelete') ->name('employeeGallery.pictureDelete');
 
         Route::get('/employee/salary', 'EmployeeSalaryController@salary') ->name('employeeSalary.salary');
         Route::post('/employee/salary', 'EmployeeSalaryController@salaryReq') ->name('employeeSalary.salaryReq');

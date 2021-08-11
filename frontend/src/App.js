@@ -7,6 +7,7 @@ import EmployeeAddStatement from "./employeeComponents/EmployeeAddStatement";
 import EmployeeAddTransaction from "./employeeComponents/EmployeeAddTransaction";
 import EmployeeAddAdvertisement from "./employeeComponents/EmployeeAddAdvertisement";
 import EmployeeAddPromo from "./employeeComponents/EmployeeAddPromo";
+import EmployeeAddGallery from "./employeeComponents/EmployeeAddGallery";
 import EmployeeAddFaq from "./employeeComponents/EmployeeAddFaq";
 import EmployeeAddPackage from "./employeeComponents/EmployeeAddPackage";
 import EmployeeAddPlace from "./employeeComponents/EmployeeAddPlace";
@@ -16,11 +17,13 @@ import EmployeeTransactionList from "./employeeComponents/EmployeeTransactionLis
 import EmployeeReviewList from "./employeeComponents/EmployeeReviewList";
 import EmployeeFaqList from "./employeeComponents/EmployeeFaqList";
 import EmployeeAdvertisementList from "./employeeComponents/EmployeeAdvertisementList";
+import EmployeeGalleryList from "./employeeComponents/EmployeeGalleryList";
 import EmployeePromoList from "./employeeComponents/EmployeePromoList";
 
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 function App() {
+
 
   //Add package by employee
   const employeeAddPackage = (newEmployeePackage) => { 
@@ -63,89 +66,84 @@ function App() {
       });
       setEmployeeSalary([...employeesalary, newEmployeeSalary]);
           console.log(newEmployeeSalary);
+
+          
 };
-    //show salary to employee
-    const [employeesalary, setEmployeeSalary] = useState([]);
-    const emp1 = 'http://127.0.0.1:8000/api/employee/salary/list';
-    useFetch(emp1, setEmployeeSalary);
 
-    //add statement by employee
-    const employeeAddStatement = (newEmployeeStatement) => { 
 
-      const axios = require('axios').default;
+//add image in gallery by employee
+const employeeAddGallery = (newEmployeeGallery) => { 
 
-      axios({
-          method: 'post',
-          url: 'http://127.0.0.1:8000/api/employee/statementAdd',
-          data:newEmployeeStatement,
-        });
-        setEmployeeStatement([...employeestatement, newEmployeeStatement]);
-          console.log(newEmployeeStatement);
-    };
+  const axios = require('axios').default;
 
-    //show Statement to employee
-    const [employeestatement, setEmployeeStatement] = useState([]);
-    const emp2 = 'http://127.0.0.1:8000/api/employee/statement';
-    useFetch(emp2, setEmployeeStatement);
+  axios({
+      method: 'post',
+      url: 'http://127.0.0.1:8000/api/employee/gallery',
+      data:newEmployeeGallery,
+    });
+    setEmployeeGallery([...employeegallery, newEmployeeGallery]);
+    console.log(newEmployeeGallery);
+};
 
-    //add transaction by employee
-    const employeeAddTransaction = (newEmployeeTransaction) => { 
+//add statement by employee
+const employeeAddStatement = (newEmployeeStatement) => { 
 
-      const axios = require('axios').default;
+  const axios = require('axios').default;
 
-      axios({
-          method: 'post',
-          url: 'http://127.0.0.1:8000/api/employee/transactionAdd',
-          data:newEmployeeTransaction,
-        });
-        setEmployeeTransaction([...employeetransaction, newEmployeeTransaction]);
-          console.log(newEmployeeTransaction);
-    };
+  axios({
+      method: 'post',
+      url: 'http://127.0.0.1:8000/api/employee/statementAdd',
+      data:newEmployeeStatement,
+    });
+    setEmployeeStatement([...employeestatement, newEmployeeStatement]);
+      console.log(newEmployeeStatement);
+};
 
-      //show Transaction history to employee
-      const [employeetransaction, setEmployeeTransaction] = useState([]);
-      const emp3 = 'http://127.0.0.1:8000/api/employee/transaction';
-      useFetch(emp3, setEmployeeTransaction);
+  //add transaction by employee
+  const employeeAddTransaction = (newEmployeeTransaction) => { 
 
-       //show user review to employee
-       const [employeereview, setEmployeeReview] = useState([]);
-       const emp4 = 'http://127.0.0.1:8000/api/employee/review';
-       useFetch(emp4, setEmployeeReview);
+    const axios = require('axios').default;
 
-      //add faq by employee
-    const employeeAddFaq = (newEmployeeFaq) => { 
-
-      const axios = require('axios').default;
-
-      axios({
-          method: 'post',
-          url: 'http://127.0.0.1:8000/api/employee/faq',
-          data:newEmployeeFaq,
-        });
-        setEmployeeFaq([...employeefaq, newEmployeeFaq]);
-          console.log(newEmployeeFaq);
-    };
-
-     //show faq to employee
-     const [employeefaq, setEmployeeFaq] = useState([]);
-     const emp5 = 'http://127.0.0.1:8000/api/employee/faq/list';
-     useFetch(emp5, setEmployeeFaq);
-
-     // Delete faq by employee
-    const employeeFaqDeletecallback = (id) => {
-      const axios = require('axios').default;
-
-      axios({
-          method: 'post',
-          url: 'http://127.0.0.1:8000/api/employee/faq/delete',
-          data:{
-              id:id,
-          }
-        });
-
-      const data = employeefaq.filter((employee) => employee.id !== id);
-      setEmployeeFaq(data);
+    axios({
+        method: 'post',
+        url: 'http://127.0.0.1:8000/api/employee/transactionAdd',
+        data:newEmployeeTransaction,
+      });
+      setEmployeeTransaction([...employeetransaction, newEmployeeTransaction]);
+        console.log(newEmployeeTransaction);
   };
+
+  //add faq by employee
+  const employeeAddFaq = (newEmployeeFaq) => { 
+
+    const axios = require('axios').default;
+
+    axios({
+        method: 'post',
+        url: 'http://127.0.0.1:8000/api/employee/faq',
+        data:newEmployeeFaq,
+      });
+      setEmployeeFaq([...employeefaq, newEmployeeFaq]);
+        console.log(newEmployeeFaq);
+  };
+
+
+   //send promo by employee
+   const employeeAddPromo = (newEmployeePromo) => { 
+
+    const axios = require('axios').default;
+
+    axios({
+        method: 'post',
+        url: 'http://127.0.0.1:8000/api/employee/promo',
+        data:newEmployeePromo,
+      });
+      setEmployeePromo([...employeepromo, newEmployeePromo]);
+      console.log(newEmployeePromo);
+  };
+
+
+
 
   //send advertisement by employee
   const employeeAddAdvertisement = (newEmployeeAdvertisement) => { 
@@ -161,6 +159,51 @@ function App() {
       console.log(newEmployeeAdvertisement);
   };
 
+
+    //show salary to employee
+    const [employeesalary, setEmployeeSalary] = useState([]);
+    const emp1 = 'http://127.0.0.1:8000/api/employee/salary/list';
+    useFetch(emp1, setEmployeeSalary);
+
+
+    //show Statement to employee
+    const [employeestatement, setEmployeeStatement] = useState([]);
+    const emp2 = 'http://127.0.0.1:8000/api/employee/statement';
+    useFetch(emp2, setEmployeeStatement);
+
+  
+    //show Transaction history to employee
+    const [employeetransaction, setEmployeeTransaction] = useState([]);
+    const emp3 = 'http://127.0.0.1:8000/api/employee/transaction';
+    useFetch(emp3, setEmployeeTransaction);
+
+    //show user review to employee
+    const [employeereview, setEmployeeReview] = useState([]);
+    const emp4 = 'http://127.0.0.1:8000/api/employee/review';
+    useFetch(emp4, setEmployeeReview);
+
+     //show faq to employee
+     const [employeefaq, setEmployeeFaq] = useState([]);
+     const emp5 = 'http://127.0.0.1:8000/api/employee/faq/list';
+     useFetch(emp5, setEmployeeFaq);
+
+   // Delete faq by employee
+    const employeeFaqDeletecallback = (id) => {
+      const axios = require('axios').default;
+
+      axios({
+          method: 'post',
+          url: 'http://127.0.0.1:8000/api/employee/faq/delete',
+          data:{
+              id:id,
+          }
+        });
+
+      const data = employeefaq.filter((employee) => employee.id !== id);
+      setEmployeeFaq(data);
+  };
+
+  
   //show advertisement list to employee
   const [employeeadvertisement, setEmployeeAdvertisement] = useState([]);
   const emp6 = 'http://127.0.0.1:8000/api/employee/advertisement/list';
@@ -181,20 +224,7 @@ function App() {
    const data = employeeadvertisement.filter((employee) => employee.id !== id);
    setEmployeeAdvertisement(data);
 };
-
-   //send promo by employee
-   const employeeAddPromo = (newEmployeePromo) => { 
-
-    const axios = require('axios').default;
-
-    axios({
-        method: 'post',
-        url: 'http://127.0.0.1:8000/api/employee/promo',
-        data:newEmployeePromo,
-      });
-      setEmployeePromo([...employeepromo, newEmployeePromo]);
-      console.log(newEmployeePromo);
-  };
+ 
 
   //show promo list to employee
   const [employeepromo, setEmployeePromo] = useState([]);
@@ -217,6 +247,26 @@ function App() {
    setEmployeePromo(data);
 };
 
+//show gallery to employee
+const [employeegallery, setEmployeeGallery] = useState([]);
+const emp8 = 'http://127.0.0.1:8000/api/employee/gallery/manage';
+useFetch(emp8, setEmployeeGallery);
+
+// Delete image from gallery by employee
+const employeeGalleryDeletecallback = (id) => {
+ const axios = require('axios').default;
+
+ axios({
+     method: 'post',
+     url: 'http://127.0.0.1:8000/api/employee/gallery/delete',
+     data:{
+         id:id,
+     }
+   });
+
+ const data = employeegallery.filter((employee) => employee.id !== id);
+ setEmployeeGallery(data);
+};
 
   return (
     <Router>
@@ -283,16 +333,18 @@ function App() {
         <Route exact path="/employee/gallery">
         <div className="wrapper">
             <EmployeeNavbar />
-              <div className="main-container">      
+              <div className="main-container">  
+              <EmployeeAddGallery status="Gallery" callback={employeeAddGallery} />     
               </div>
 
           </div>
         </Route>
 
-        <Route exact path="/employee/galleryManage">
+        <Route exact path="/employee/gallery/manage">
         <div className="wrapper">
             <EmployeeNavbar />
-              <div className="main-container">      
+              <div className="main-container">   
+              <EmployeeGalleryList list={employeegallery} callback={employeeGalleryDeletecallback} />      
               </div>
 
           </div>

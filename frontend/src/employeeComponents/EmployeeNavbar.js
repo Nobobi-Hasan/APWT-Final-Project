@@ -63,7 +63,7 @@ const EmployeeNavbar = ()=>{
 						</a>
 						<div className="sub-menu">
                             <Link to='/employee/gallery'><i className="fa fa-plus"></i><span>Add Image</span></Link>
-							<Link to='/employee/galleryManage'><i className="fa fa-image"></i><span>Manage Gallery</span></Link>
+							<Link to='/employee/gallery/manage'><i className="fa fa-image"></i><span>Manage Gallery</span></Link>
 						</div>
 					</li>
 
