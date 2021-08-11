@@ -9,6 +9,7 @@ class UserTravelHistoryController extends Controller
 {
     public function index(){
         $histories = Packagebook::where('status', 'Completed')->get();
-        return view('user.history')->with('showHistoryList', $histories);
+        return response()->json($histories);
+        //return view('user.history')->with('showHistoryList', $histories);
     }
 }

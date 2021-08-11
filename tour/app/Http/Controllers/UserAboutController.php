@@ -7,9 +7,10 @@ use\App\About;
 
 class UserAboutController extends Controller
 {
-    public function index(){
+    public function index(Request $req){
         $about = About::where('id', 1)->first();
-        return view('user.about')->with('about', $about);
+        return response()->json($about);
+        //return view('user.about')->with('about', $about);
     }
     
 }

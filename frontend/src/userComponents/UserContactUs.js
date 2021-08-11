@@ -50,8 +50,7 @@ const UserContactUs = ({ status, callback }) => {
                 <br />
                 <label>
                     Message:
-                    <input type="text" name="message" value={message} onChange={(e) => setMessage(e.target.value)}
-                    />
+                    <textarea value={message} onChange={(e) => setMessage(e.target.value)} rows="5" cols="40"/>
                 </label>
                 <br />
 

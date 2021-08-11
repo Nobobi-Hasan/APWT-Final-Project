@@ -35,6 +35,7 @@ const UserReview = ({ status, callback }) => {
                     <input type="text" name="service_id" value={service_id} onChange={(e) => setService_id(e.target.value)} />
                 </label>
                 <br />
+                <br />
                 <label>
                     Service Type:
                     <select value={service_type} onChange={(e) => setService_type(e.target.value)}>
@@ -44,18 +45,20 @@ const UserReview = ({ status, callback }) => {
                     </select>
                 </label>
                 <br />
+                <br />
                 <label>
                     Company Name:
                     <input type="text" name="company" value={company} onChange={(e) => setCompany(e.target.value)}
                     />
                 </label>
                 <br />
+                <br />
                 <label>
                     User ID:
                     <input type="text" name="user_id" value={user_id} onChange={(e) => setUser_id(e.target.value)}
                     />
                 </label>
-                
+                <br />
                 <br />
                 <label>
                     Rating:
@@ -68,13 +71,11 @@ const UserReview = ({ status, callback }) => {
                     </select>
                 </label>
                 <br />
+                <br />
                 <label>
                     Message:
-                    <input type="text" name="msg" value={msg} onChange={(e) => setMsg(e.target.value)}
-                    />
+                    <textarea value={msg} onChange={(e) => setMsg(e.target.value)} rows="5" cols="40"/>
                 </label>
-
-                <br></br>
                 </fieldset>
                 <br />
 

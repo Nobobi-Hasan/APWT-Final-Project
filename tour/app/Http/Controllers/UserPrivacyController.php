@@ -7,8 +7,9 @@ use\App\Policy;
 
 class UserPrivacyController extends Controller
 {
-    public function index(){
+    public function index(Request $req){
         $Policy = Policy::where('id', 1)->first();
-        return view('user.privacy_policy')->with('policy', $Policy);
+        return response()->json($Policy);
+        //return view('user.privacy_policy')->with('policy', $Policy);
     }
 }

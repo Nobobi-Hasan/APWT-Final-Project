@@ -9,7 +9,8 @@ class UserHotelController extends Controller
 {
     public function index(){
         $hotelbookings = Roombook::where('req', 'Approved')->get();
-        return view('user.hotel_booking')->with('HotelBookingsList', $hotelbookings);
+        return response()->json($hotelbookings);
+        //return view('user.hotel_booking')->with('HotelBookingsList', $hotelbookings);
     }
 
 }

@@ -10,7 +10,8 @@ class UserFlightController extends Controller
     public function index(){
 
         $flightbookings = Airbook::where('req', 'Approved')->get();
-        return view('user.flight_booking')->with('FlightBookingsList', $flightbookings);
+        return response()->json($flightbookings);
+        //return view('user.flight_booking')->with('FlightBookingsList', $flightbookings);
     }
     
 }
