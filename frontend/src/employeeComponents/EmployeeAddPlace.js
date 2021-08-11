@@ -1,10 +1,8 @@
 import { useState } from "react";
-//import { useParams } from "react-router-dom";
 import { useHistory } from 'react-router-dom';
 import './Employee.css';
 
 const EmployeeAddPlace = ({ status, callback }) => {
-    //const { id: eid } = useParams();
     const [place, setPlace] = useState("");
     const [district, setDistrict] = useState("");
     const [image, setImage] = useState("");

@@ -1,9 +1,11 @@
 import { useState } from "react";
 import EmployeeNavbar from "./employeeComponents/EmployeeNavbar";
 import { useFetch } from './employeeComponents/useFetch';
+import 'font-awesome/css/font-awesome.min.css';
 import EmployeeAddSalary from "./employeeComponents/EmployeeAddSalary";
 import EmployeeAddStatement from "./employeeComponents/EmployeeAddStatement";
 import EmployeeAddTransaction from "./employeeComponents/EmployeeAddTransaction";
+import EmployeeAddAdvertisement from "./employeeComponents/EmployeeAddAdvertisement";
 import EmployeeAddPromo from "./employeeComponents/EmployeeAddPromo";
 import EmployeeAddFaq from "./employeeComponents/EmployeeAddFaq";
 import EmployeeAddPackage from "./employeeComponents/EmployeeAddPackage";
@@ -13,6 +15,7 @@ import EmployeeStatementList from "./employeeComponents/EmployeeStatementList";
 import EmployeeTransactionList from "./employeeComponents/EmployeeTransactionList";
 import EmployeeReviewList from "./employeeComponents/EmployeeReviewList";
 import EmployeeFaqList from "./employeeComponents/EmployeeFaqList";
+import EmployeeAdvertisementList from "./employeeComponents/EmployeeAdvertisementList";
 import EmployeePromoList from "./employeeComponents/EmployeePromoList";
 
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
@@ -144,6 +147,41 @@ function App() {
       setEmployeeFaq(data);
   };
 
+  //send advertisement by employee
+  const employeeAddAdvertisement = (newEmployeeAdvertisement) => { 
+
+    const axios = require('axios').default;
+
+    axios({
+        method: 'post',
+        url: 'http://127.0.0.1:8000/api/employee/advertisement',
+        data:newEmployeeAdvertisement,
+      });
+      setEmployeeAdvertisement([...employeeadvertisement, newEmployeeAdvertisement]);
+      console.log(newEmployeeAdvertisement);
+  };
+
+  //show advertisement list to employee
+  const [employeeadvertisement, setEmployeeAdvertisement] = useState([]);
+  const emp6 = 'http://127.0.0.1:8000/api/employee/advertisement/list';
+  useFetch(emp6, setEmployeeAdvertisement);
+
+  // Delete advertisement by employee
+ const employeeAdvertisementDeletecallback = (id) => {
+   const axios = require('axios').default;
+
+   axios({
+       method: 'post',
+       url: 'http://127.0.0.1:8000/api/employee/advertisement/delete',
+       data:{
+           id:id,
+       }
+     });
+
+   const data = employeeadvertisement.filter((employee) => employee.id !== id);
+   setEmployeeAdvertisement(data);
+};
+
    //send promo by employee
    const employeeAddPromo = (newEmployeePromo) => { 
 
@@ -160,8 +198,8 @@ function App() {
 
   //show promo list to employee
   const [employeepromo, setEmployeePromo] = useState([]);
-  const emp6 = 'http://127.0.0.1:8000/api/employee/promo/list';
-  useFetch(emp6, setEmployeePromo);
+  const emp7 = 'http://127.0.0.1:8000/api/employee/promo/list';
+  useFetch(emp7, setEmployeePromo);
 
   // Delete promo by employee
  const employeePromoDeletecallback = (id) => {
@@ -320,6 +358,7 @@ function App() {
         <div className="wrapper">
             <EmployeeNavbar />
               <div className="main-container">      
+              <EmployeeAddAdvertisement status="Advertisement" callback={employeeAddAdvertisement} />  
               </div>
 
         </div>
@@ -328,7 +367,8 @@ function App() {
         <Route exact path="/employee/advertisement/list">
         <div className="wrapper">
             <EmployeeNavbar />
-              <div className="main-container">      
+              <div className="main-container">   
+              <EmployeeAdvertisementList list={employeeadvertisement} callback={employeeAdvertisementDeletecallback} />    
               </div>
 
         </div>

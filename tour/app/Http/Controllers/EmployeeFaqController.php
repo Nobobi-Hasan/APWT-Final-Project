@@ -27,8 +27,8 @@ class EmployeeFaqController extends Controller
     }
     
     public function faqDestroy(Request $req){
-       // Faq::destroy($id);
-       // return redirect()->route('employee.faq');
+    //    Faq::destroy($id);
+    //     return redirect()->route('employee.faq');
        Faq::destroy($req -> id);
        
     }

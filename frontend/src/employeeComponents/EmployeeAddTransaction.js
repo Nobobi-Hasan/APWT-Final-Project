@@ -1,10 +1,8 @@
 import { useState } from "react";
-//import { useParams } from "react-router-dom";
 import { useHistory } from 'react-router-dom';
 import './Employee.css';
 
 const EmployeeAddTransaction = ({ status, callback }) => {
-    //const { id: eid } = useParams();
     const [receiver_id, setReceiver_id] = useState("");
     const [receiver, setReceiver] = useState("");
     const [username, setUsername] = useState("");

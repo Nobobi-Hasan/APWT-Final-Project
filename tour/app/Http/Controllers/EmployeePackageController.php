@@ -9,7 +9,6 @@ class EmployeePackageController extends Controller
 {
     public function package(){
         $packages = Package::where('req', 'Approved')->get();
-        //return view('employee.packageManage')->with('packages', $packages);
         return response()->json($packages);
     }
 
@@ -20,20 +19,21 @@ class EmployeePackageController extends Controller
     }
 
     public function packageAdded(Request $req){
-        if ($req->hasFile('image')) {
-            $file = $req->file('image');
-            if($file->move('upload', 'employeePackage'.$req->id.'.'.$file->getClientOriginalExtension())){
-                echo "success";
-            }else{
-                echo "error";
-            }
-        }
-        $img='employeePackage'.$req->id.'.'.$file->getClientOriginalExtension();
+        // if ($req->hasFile('image')) {
+        //     $file = $req->file('image');
+        //     if($file->move('upload', 'employeePackage'.$req->id.'.'.$file->getClientOriginalExtension())){
+        //         echo "success";
+        //     }else{
+        //         echo "error";
+        //     }
+        // }
+        // $img='employeePackage'.$req->id.'.'.$file->getClientOriginalExtension();
 
         $package = new Package;
         $package -> place = $req->place;
         $package -> location = $req->location;
-        $package -> image = $img;
+        //$package -> image = $img;
+        $package -> image = $req->image;
         $package -> description = $req->description;
         $package -> duration = $req->duration;
         $package -> transport = $req->transport;

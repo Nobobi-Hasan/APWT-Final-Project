@@ -32,10 +32,14 @@ Route::post('/employee/transactionAdd', 'EmployeeAccountController@transactionAd
 Route::get('/employee/transaction', 'EmployeeAccountController@transaction') ->name('employee.transaction');
 //emp review
 Route::get('/employee/review', 'EmployeeReviewController@showReview') ->name('employeeReview.showReview');
+//emp advertisement
+Route::post('/employee/advertisement', 'EmployeeAdvertisementController@advertisementAdd') ->name('employeeAdvertisement.advertisementAdd');
+Route::get('/employee/advertisement/list', 'EmployeeAdvertisementController@advertisement') ->name('employeeAdvertisement.advertisement');
+Route::post('/employee/advertisement/delete', 'EmployeeAdvertisementController@advertisementDestroy')->name('employeeAdvertisement.advertisementDestroy');
 //emp promo
 Route::post('/employee/promo', 'EmployeeAdvertisementController@promoAdd') ->name('employeePromo.promoAdd');
 Route::get('/employee/promo/list', 'EmployeeAdvertisementController@promo') ->name('employeePromo.promo');
-Route::post('/employee/promo/delete', 'EmployeeAdvertisementController@promoDestroy')->name('employeeFaq.promoDestroy');
+Route::post('/employee/promo/delete', 'EmployeeAdvertisementController@promoDestroy')->name('employeePromo.promoDestroy');
 //emp faq
 Route::post('/employee/faq', 'EmployeeFaqController@faqAdd') ->name('employeeFaq.faqAdd');
 Route::get('/employee/faq/list', 'EmployeeFaqController@faq') ->name('employeeFaq.faq');

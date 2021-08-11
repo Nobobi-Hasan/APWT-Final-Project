@@ -9,7 +9,6 @@ class EmployeePlaceController extends Controller
 {
     public function place(){
         $places = Place::all();
-        //return view('employee.placeManage')->with('places', $places);
         return response()->json($places);
     }
 
@@ -21,26 +20,27 @@ class EmployeePlaceController extends Controller
 
     public function placeAdded(Request $req){
 
-        if ($req->hasFile('image')) {
-            $file = $req->file('image');
-            echo "File Name: ".$file->getClientOriginalName()."<br>";
-            echo "File Extension: ".$file->getClientOriginalExtension()."<br>";
-            echo "File Mime Type: ".$file->getMimeType()."<br>";
-            echo "File Size: ".$file->getSize()."<br>";
+        // if ($req->hasFile('image')) {
+        //     $file = $req->file('image');
+        //     echo "File Name: ".$file->getClientOriginalName()."<br>";
+        //     echo "File Extension: ".$file->getClientOriginalExtension()."<br>";
+        //     echo "File Mime Type: ".$file->getMimeType()."<br>";
+        //     echo "File Size: ".$file->getSize()."<br>";
 
-            if($file->move('upload', 'employeePlace'.$req->place.'.'.$file->getClientOriginalExtension())){
-                echo "success";
-            }else{
-                echo "error";
-            }
-        }
-        $img='employeePlace'.$req->place.'.'.$file->getClientOriginalExtension();
+        //     if($file->move('upload', 'employeePlace'.$req->place.'.'.$file->getClientOriginalExtension())){
+        //         echo "success";
+        //     }else{
+        //         echo "error";
+        //     }
+        // }
+        // $img='employeePlace'.$req->place.'.'.$file->getClientOriginalExtension();
 
         $place = new Place;
         $place -> id = $req->id;
         $place -> place = $req->place;
         $place-> district = $req->district;
-        $place -> image = $img;
+        //$place -> image = $img;
+        $place -> image = $req->image;
         $place -> req= 'Pending';
         $place->save();
         

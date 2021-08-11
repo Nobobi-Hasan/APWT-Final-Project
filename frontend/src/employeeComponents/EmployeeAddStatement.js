@@ -1,10 +1,8 @@
 import { useState } from "react";
-//import { useParams } from "react-router-dom";
 import { useHistory } from 'react-router-dom';
 import './Employee.css';
 
 const EmployeeAddStatement = ({ status, callback }) => {
-    //const { id: eid } = useParams();
     const [month, setMonth] = useState("");
     const [revenue, setRevenue] = useState("");
     const [cost, setCost] = useState("");
