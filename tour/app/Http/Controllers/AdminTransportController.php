@@ -14,7 +14,8 @@ class AdminTransportController extends Controller
 {
     public function adTransport(){
         $transports = Transport::where('req', 'Pending')->get();
-        return view('admin.ADTransport')->with('transports', $transports);
+        return response()->json($transports);
+        // return view('admin.ADTransport')->with('transports', $transports);
     }
 
     public function transportApprove($id){
@@ -22,12 +23,12 @@ class AdminTransportController extends Controller
         return view('admin.transportApprove')->with('transport', $transport);
     }
 
-    public function transportAdd($id){
-        $transport = Transport::find($id);
+    public function transportAdd(Request $req){
+        $transport = Transport::find($req -> id);
         $transport->req = 'Approved';
         $transport->save();
 
-        return redirect()->route('adminTransport.adTransport');
+        //return redirect()->route('adminTransport.adTransport');
     }
 
     public function transportDecline($id){
@@ -35,16 +36,21 @@ class AdminTransportController extends Controller
         return view('admin.transportDecline')->with('transport', $transport);
     }
 
-    public function transportRemove($id){
-        Transport::destroy($id);
-        return redirect()->route('adminTransport.adTransport');
+    public function transportRemove(Request $req){
+        $transport = Transport::find($req -> id);
+        $transport->req = 'Declined';
+        $transport->save();
+
+        // Transport::destroy($id);
+        // return redirect()->route('adminTransport.adTransport');
     }
 
 
     public function carList(){
         $cars = Transport::where('type', 'Car')
                             ->where('req', 'Approved')->get();
-        return view('admin.carList')->with('cars', $cars);
+        // return view('admin.carList')->with('cars', $cars);
+        return response()->json($cars);
     }
 
     public function carDelete($id){
@@ -63,7 +69,8 @@ class AdminTransportController extends Controller
     public function flightList(){
         $flights = Transport::where('type', 'Flight')
                             ->where('req', 'Approved')->get();
-        return view('admin.flightList')->with('flights', $flights);
+        // return view('admin.flightList')->with('flights', $flights);
+        return response()->json($flights);
     }
 
     public function flightDelete($id){

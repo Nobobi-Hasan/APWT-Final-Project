@@ -1,7 +1,7 @@
-import AdminHotel from './AdminHotel';
+import AdminTransportAD from './AdminTransportAD';
 import './Admin.css';
 
-const AdminHotelList = ({list, callback})=>{
+const AdminTransportADList = ({list, callbackA, callbackD})=>{
     console.log(list);
 
     return(
@@ -10,18 +10,16 @@ const AdminHotelList = ({list, callback})=>{
 
                 <th>ID</th>
                 <th>Name</th>
-                <th>Location</th>
-                <th>Address</th>
-                <th>Image</th>
                 <th>Contact No.</th>
                 <th>Email</th>
+                <th>Type</th>
                 <th>Action</th>
 
                 {
-                    list.map((hotel)=>{
+                    list.map((transport)=>{
 
                         
-                            return <AdminHotel {...hotel} adminHotelDeleteCallback={callback} />
+                            return <AdminTransportAD {...transport} adminTransportApproveCallback={callbackA}  adminTransportDeclineCallback={callbackD} />
                     
                     })
                 }
@@ -32,4 +30,4 @@ const AdminHotelList = ({list, callback})=>{
     )
 }
 
-export default AdminHotelList;
+export default AdminTransportADList;

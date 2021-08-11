@@ -38,4 +38,18 @@ Route::get('/admin/hotel-bookings', 'AdminHotelController@hotelBookings')->name(
 Route::get('/admin/hotel-bookings/details{id}', 'AdminHotelController@roomBookDetail')->name('adminHotel.roomBookDetail');
 
 
+Route::get('/admin/transports-pending', 'AdminTransportController@adTransport')->name('adminTransport.adTransport');
+Route::post('/admin/transport/approve', 'AdminTransportController@transportAdd')->name('adminTransport.transportAdd');
+Route::post('/admin/transport/decline', 'AdminTransportController@transportRemove')->name('adminTransport.transportRemove');
+
+Route::get('/admin/all-cars', 'AdminTransportController@carList')->name('adminTransport.carList');
+Route::post('/admin/car/delete', 'AdminTransportController@carDestroy')->name('adminTransport.carDestroy');
+Route::get('/admin/car-bookings', 'AdminTransportController@carBookingList')->name('adminTransport.carBookingList');
+Route::get('/admin/car-bookings/detail{id}', 'AdminTransportController@carBookingDetail')->name('adminTransport.carBookingDetail');
+
+Route::get('/admin/all-flight', 'AdminTransportController@flightList')->name('adminTransport.flightList');
+Route::post('/admin/flight/delete', 'AdminTransportController@flightDestroy')->name('adminTransport.flightDestroy');
+Route::get('/admin/flight-bookings', 'AdminTransportController@flightBookingList')->name('adminTransport.flightBookingList');
+Route::get('/admin/flight-bookings/detail{id}', 'AdminTransportController@flightBookingDetail')->name('adminTransport.flightBookingDetail');
+
 // Admin API End

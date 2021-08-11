@@ -2,10 +2,16 @@ import { useState } from "react";
 import AdminNavbar from "./adminComponents/AdminNavbar";
 import AdminNavbar2 from "./adminComponents/AdminNavbar2";
 import { useFetch } from './adminComponents/useFetch';
+
 import AdminAddEmployee from "./adminComponents/AdminAddEmployee";
 import AdminEmployeeList from "./adminComponents/AdminEmployeeList";
+
 import AdminHotelADList from "./adminComponents/AdminHotelADList";
 import AdminHotelList from "./adminComponents/AdminHotelList";
+
+import AdminTransportADList from "./adminComponents/AdminTransportADList";
+import AdminCarList from "./adminComponents/AdminCarList";
+import AdminFlightList from "./adminComponents/AdminFlightList";
 
 import 'font-awesome/css/font-awesome.min.css';
 
@@ -28,11 +34,10 @@ function App() {
     useFetch(url2, setAdminAdmins);
 
 
-// Show all Pending Hotels by admin
+// Show Pending Hotels by admin
     const [adminHotelAD, setAdminHotelAD] = useState([]);
     const url3 = 'http://127.0.0.1:8000/api/admin/hotels-pending';
     useFetch(url3, setAdminHotelAD);
-
 
 
 // Show all Hotels by admin
@@ -41,7 +46,20 @@ function App() {
     useFetch(url4, setAdminHotel);
 
 
+// Show Pending Transports by admin
+    const [adminTransportAD, setAdminTransportAD] = useState([]);
+    const url5 = 'http://127.0.0.1:8000/api/admin/transports-pending';
+    useFetch(url5, setAdminTransportAD);
 
+// Show all Cars by admin
+    const [adminCar, setAdminCar] = useState([]);
+    const url6 = 'http://127.0.0.1:8000/api/admin/all-cars';
+    useFetch(url6, setAdminCar);
+
+// Show all Flights by admin
+    const [adminFlight, setAdminFlight] = useState([]);
+    const url7 = 'http://127.0.0.1:8000/api/admin/all-flight';
+    useFetch(url7, setAdminFlight);
 
 
 // Add Employee by admin
@@ -107,8 +125,11 @@ function App() {
           });
 
         const data = adminHotelAD.filter((hotelAD) => hotelAD.id != id);
+        const data2 = adminHotelAD.filter((hotelAD) => hotelAD.id == id);
+        console.log(data);
+        console.log(data2);
         setAdminHotelAD(data);
-        
+        setAdminHotel([...adminHotel, ...data2]);
     };
 
 
@@ -143,6 +164,88 @@ function App() {
 
         const data = adminHotel.filter((hotel) => hotel.id != id);
         setAdminHotel(data);
+    };
+
+
+    // Approve Transport by admin
+    const adminTransportApproveCallback = (id) => {
+        const axios = require('axios').default;
+
+        axios({
+            method: 'post',
+            url: 'http://127.0.0.1:8000/api/admin/transport/approve',
+            data:{
+                id:id,
+            }
+          });
+
+        const data = adminTransportAD.filter((transportAD) => transportAD.id != id);
+        const data2 = adminTransportAD.filter((transportAD) => transportAD.id == id);
+        const data3 = {...data2};
+        // const type = data2.type;
+        console.log(data3[0]['type']);
+        const type = data3[0]['type'];
+        setAdminTransportAD(data);
+
+        if(type == "Car"){
+            setAdminCar([...adminCar, ...data2]);
+        }
+        else if(type == "Flight"){
+            setAdminFlight([...adminFlight, ...data2]);
+        }
+        
+        
+    };
+
+
+// Decline Transport by admin
+    const adminTransportDeclineCallback = (id) => {
+        const axios = require('axios').default;
+
+        axios({
+            method: 'post',
+            url: 'http://127.0.0.1:8000/api/admin/transport/decline',
+            data:{
+                id:id,
+            }
+          });
+
+        const data = adminTransportAD.filter((transportAD) => transportAD.id != id);
+        setAdminTransportAD(data);
+    };
+
+
+// Delete Car by admin
+    const adminCarDeleteCallback = (id) => {
+        const axios = require('axios').default;
+
+        axios({
+            method: 'post',
+            url: 'http://127.0.0.1:8000/api/admin/car/delete',
+            data:{
+                id:id,
+            }
+          });
+
+        const data = adminCar.filter((car) => car.id != id);
+        setAdminCar(data);
+    };
+
+
+// Delete Flight by admin
+    const adminFlightDeleteCallback = (id) => {
+        const axios = require('axios').default;
+
+        axios({
+            method: 'post',
+            url: 'http://127.0.0.1:8000/api/admin/flight/delete',
+            data:{
+                id:id,
+            }
+          });
+
+        const data = adminFlight.filter((car) => car.id != id);
+        setAdminFlight(data);
     };
 
 
@@ -287,7 +390,7 @@ function App() {
 
                         <AdminNavbar2 />
                         <div className="main-container"> 
-                            
+                            <AdminTransportADList list={adminTransportAD} callbackA={adminTransportApproveCallback} callbackD={adminTransportDeclineCallback} />
                         </div>
 
                     </div>
@@ -298,7 +401,7 @@ function App() {
 
                         <AdminNavbar2 />
                         <div className="main-container"> 
-                            
+                            <AdminCarList list={adminCar} callbackA={adminCarDeleteCallback} />
                         </div>
 
                     </div>
@@ -309,7 +412,7 @@ function App() {
 
                         <AdminNavbar2 />
                         <div className="main-container"> 
-                            
+                            <AdminFlightList list={adminFlight} callback={adminFlightDeleteCallback} />
                         </div>
 
                     </div>

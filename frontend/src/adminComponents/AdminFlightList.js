@@ -1,27 +1,25 @@
-import AdminHotel from './AdminHotel';
+import AdminFlight from './AdminFlight';
 import './Admin.css';
 
-const AdminHotelList = ({list, callback})=>{
+const AdminFlightList = ({list, callback})=>{
     console.log(list);
 
     return(
-        <div>
+       <div>
             <table id='table'>
 
                 <th>ID</th>
                 <th>Name</th>
-                <th>Location</th>
-                <th>Address</th>
-                <th>Image</th>
                 <th>Contact No.</th>
                 <th>Email</th>
+                <th>Type</th>
                 <th>Action</th>
 
                 {
-                    list.map((hotel)=>{
+                    list.map((flight)=>{
 
                         
-                            return <AdminHotel {...hotel} adminHotelDeleteCallback={callback} />
+                            return <AdminFlight {...flight} adminFlightApproveCallback={callback} />
                     
                     })
                 }
@@ -32,4 +30,4 @@ const AdminHotelList = ({list, callback})=>{
     )
 }
 
-export default AdminHotelList;
+export default AdminFlightList;
