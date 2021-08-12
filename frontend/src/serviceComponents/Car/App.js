@@ -28,7 +28,7 @@ import ServiceCarReviewList from "./serviceComponents/Car/ServiceCarReviewList";
 import ServiceCarTransactionList from "./serviceComponents/Car/ServiceCarTransactionList";
 import ServiceCarManageList from "./serviceComponents/Car/ServiceCarManageList";
 import ServiceCarBookingList from "./serviceComponents/Car/ServiceCarBookingList";
-import ServiceCarPendingBookingList from "./serviceComponents/Car/ServiceCarPendingBookingList";
+
 
 
 
@@ -242,12 +242,6 @@ function App() {
               const [servicecarbooking, setServiceCarBookings] = useState([]);
               const serviceurl24 = 'http://127.0.0.1:8000/api/carDashboard/car-booking-list';
               useFetch(serviceurl24, setServiceCarBookings);
-
-              // Show all pending booking list  by service Hotel
-              const [servicecarpendingbooking, setServiceCarPendingBookings] = useState([]);
-              const serviceurl25 = 'http://127.0.0.1:8000/api/carDashboard/car-pending-list';
-              useFetch(serviceurl25, setServiceCarPendingBookings);
-
                   
                   
 
@@ -336,21 +330,6 @@ function App() {
       const data = servicecarbooking.filter((service) => service.id != id);
       setServiceCarBookings(data);
   };
-
-  // Delete a Car Pending Booking by Service Car
-  const serviceCarPendingBookingDeletecallback = (id) => {
-    const axios = require('axios').default;
-
-    axios({
-        method: 'post',
-        url: 'http://127.0.0.1:8000/api/carDashboard/decline',
-        data:{
-            id:id,
-        }
-      });
-    const data = servicecarpendingbooking.filter((service) => service.id != id);
-    setServiceCarPendingBookings(data);
-};
 
 
 
@@ -553,15 +532,6 @@ function App() {
                 </div>
             </Route>
 
-            <Route path="/carDashboard/car-pending-list">
-                  <div className="wrapper">
-                          <CarNavbar />
-                      <div className="main-container"> 
-                        <ServiceCarPendingBookingList list={servicecarpendingbooking} callback={serviceCarPendingBookingDeletecallback} />
-                      </div>
-                  </div>
-            </Route>
-            
             <Route path="/carDashboard/cartype">
                   <div className="wrapper">
                             <CarNavbar />

@@ -1,12 +1,14 @@
 import {Link} from 'react-router-dom';
-const ServiceBooking = ({id, user_id, room_id, fromdate, todate,detail, serviceBookingDeletecallback})=>{
+const ServiceCarBooking = ({id, user_id, car_id,fromloc,toloc, fromdate, todate,detail, serviceCarBookingDeletecallback})=>{
     return(
         <>
 
         <tr>
             <td>{id}</td>
             <td>{user_id}</td>
-            <td>{room_id}</td>
+            <td>{car_id}</td>
+            <td>{fromloc}</td>
+            <td>{toloc}</td>
             <td>{fromdate}</td>
             <td>{todate}</td>
             <td> 
@@ -14,7 +16,7 @@ const ServiceBooking = ({id, user_id, room_id, fromdate, todate,detail, serviceB
 
             {/* <Link to={`/hotelDashboard/information/${id}`} className='edit-button'>Info</Link> | */}
 
-            <button className='delete-button' onClick={()=>serviceBookingDeletecallback(id)}>Delete</button>
+            <button className='delete-button' onClick={()=>serviceCarBookingDeletecallback(id)}>Delete</button>
             </td>
 
         </tr>
@@ -23,4 +25,4 @@ const ServiceBooking = ({id, user_id, room_id, fromdate, todate,detail, serviceB
     );
 }
 
-export default ServiceBooking;
+export default ServiceCarBooking;

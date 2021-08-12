@@ -246,14 +246,39 @@ class HotelController extends Controller
     }
     
     //hotel booking user-car information
-    public function showcustomerroominfo($id){
-        $roombook = Roombook::find($id); 
-        $room = Room:: where('id', $roombook->room_id)->first();
-        $user = User::where('id', $roombook->user_id)->first();
+    public function showcustomerroominfo(Request $req){
+
+        $room = Room::where('id', $req->room_id)->first();
+        $room_id = $room->id ;
+        $name = $room->name ;
+        $price = $room->price ;
+
+
+        $user = User::where('id',  $req->user_id)->first();
+        $user_id = $user->id ;
+        $firstname = $user->firstname ;
+        $lastname = $user->lastname ;
+        $gender = $user->gender ;
+        $email = $user->email ;
+        $phone = $user->phone ;
+
+        return response()->json([
+                                'uid' => $user_id,
+                                'fname' => $firstname,
+                                'lname' => $lastname,
+                                'gender' => $gender,
+                                'email' => $email, 
+                                'phone' => $phone,
+                                'rid' => $room_id, 
+                                'rname' => $name, 
+                                'rprice' => $price,
+                                 
+    ]);
+
         
-        return view('hotelDashboard.showcustomerroominfo')
-        ->with('room', $room)
-        ->with('user', $user);
+        // return view('hotelDashboard.showcustomerroominfo')
+        // ->with('room', $room)
+        // ->with('user', $user);
                                                        
     }
 

@@ -1,7 +1,7 @@
-import Service from './ServiceBooking';
+import Service from './ServiceCarPendingBooking';
 import '../Service.css';
 
-const ServiceBookingList = ({list,detail, callback})=>{
+const ServiceCarPendingBookingList = ({list, callback})=>{
     console.log(list);
 
     return(
@@ -10,7 +10,9 @@ const ServiceBookingList = ({list,detail, callback})=>{
 
                 <th>Id</th>
                 <th>User Id</th>
-                <th>Room Id</th>
+                <th>Car Id</th>
+                <th>Departure Location</th>
+                <th>Arrival Location</th>
                 <th>Arrival Date</th>
                 <th>Departure Date</th>
                 <th>Action</th>
@@ -19,7 +21,7 @@ const ServiceBookingList = ({list,detail, callback})=>{
                     list.map((service)=>{
 
                         
-                            return <Service {...service} detail={detail} serviceBookingDeletecallback={callback} />
+                            return <Service {...service} serviceCarPendingBookingDeletecallback={callback} />
                     
                     })
                 }
@@ -30,4 +32,4 @@ const ServiceBookingList = ({list,detail, callback})=>{
     )
 }
 
-export default ServiceBookingList;
+export default ServiceCarPendingBookingList;

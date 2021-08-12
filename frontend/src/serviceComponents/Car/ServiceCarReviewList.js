@@ -1,7 +1,7 @@
-import Service from './ServiceBooking';
+import Service from './ServiceCarReview';
 import '../Service.css';
 
-const ServiceBookingList = ({list,detail, callback})=>{
+const ServiceCarReviewList = ({list})=>{
     console.log(list);
 
     return(
@@ -9,17 +9,18 @@ const ServiceBookingList = ({list,detail, callback})=>{
             <table id='table'>
 
                 <th>Id</th>
+                <th>Service Id</th>
+                <th>Service Type</th>
+                <th>Company</th>
                 <th>User Id</th>
-                <th>Room Id</th>
-                <th>Arrival Date</th>
-                <th>Departure Date</th>
-                <th>Action</th>
+                <th>Rating</th>
+                <th>Message</th>
 
                 {
                     list.map((service)=>{
 
                         
-                            return <Service {...service} detail={detail} serviceBookingDeletecallback={callback} />
+                            return <Service {...service} />
                     
                     })
                 }
@@ -30,4 +31,4 @@ const ServiceBookingList = ({list,detail, callback})=>{
     )
 }
 
-export default ServiceBookingList;
+export default ServiceCarReviewList;

@@ -33,8 +33,10 @@ class CarController extends Controller
     }
 
     public function managecar(){
+
         $car = Car::all();
-        return view('carDashboard.managecar')->with('car', $car);
+        return response()->json($car);
+        // return view('carDashboard.managecar')->with('car', $car);
     }
 
     public function addcar(){
@@ -98,9 +100,11 @@ class CarController extends Controller
     }
 
     //car delete
-    public function cardestroy($id){
-        Car::destroy($id);
-        return redirect()->route('car.managecar');
+    public function cardestroy(Request $req){
+
+        $car=Car::destroy($req->id);
+        $car->delete();
+        // return redirect()->route('car.managecar');
     }
 
     //car type
@@ -145,7 +149,8 @@ class CarController extends Controller
     public function ADcarBookList(){
 
         $carbook = Carbook::where('req', 'Pending')->get();
-        return view('carDashboard.ADcarBookList')->with('ADcarBookList', $carbook);
+        return response()->json($carbook);
+        // return view('carDashboard.ADcarBookList')->with('ADcarBookList', $carbook);
     }
 
     //car booking pending approve list
@@ -169,11 +174,11 @@ class CarController extends Controller
     }
 
     //car booking remove request
-    public function bookingremove($id){
-        $carbook = Carbook::find($id);
+    public function bookingremove(Request $req){
+        $carbook = Carbook::find($req->id);
         $carbook->req = 'Declined';
         $carbook->save();
-        return redirect()->route('car.ADcarBookList');
+        // return redirect()->route('car.ADcarBookList');
     }
 
     //car booking delete from main list
@@ -183,17 +188,20 @@ class CarController extends Controller
     }
 
     //car booking delete request from main list
-    public function bookingdestroy($id){
-        $carbook = Carbook::find($id);
+    public function bookingdestroy(Request $req){
+
+        $carbook = Carbook::find($req->id);
         $carbook->req = 'Canceled';
         $carbook->save();
-        return redirect()->route('car.showcarallbooking');
+        // return redirect()->route('car.showcarallbooking');
     }
 
     //car booking list
     public function showcarallbooking(){
         $carbook = Carbook::where('req', 'Approved')->get();
-        return view('carDashboard.showcarallbooking')->with('showcarallbooking', $carbook);
+        return response()->json($carbook);
+        // return view('carDashboard.showcarallbooking')->with('showcarallbooking', $carbook);
+
     }
 
     //car booking user-car information
@@ -208,18 +216,27 @@ class CarController extends Controller
     }
 
 
-    public function checkcarreview(Request $request){
-        $reviews = Review::where('service_id', session()->get('id'))
-        ->where('service_type', session()->get('type'))->get();
+    public function checkcarreview(Request $req){
 
-        return view('carDashboard.checkcarreview')->with('reviews', $reviews);
+        $reviews = Review::all();
+        return response()->json($reviews);
+
+
+        // $reviews = Review::where('service_id', session()->get('id'))
+        // ->where('service_type', session()->get('type'))->get();
+
+        // return view('carDashboard.checkcarreview')->with('reviews', $reviews);
     }
 
-    public function cartransactionhistory(){
-        $transactions = Transaction::where('receiver_id', session()->get('id'))
-        ->where('receiver', session()->get('type'))->get();
+    public function cartransactionhistory(Request $req){
 
-        return view('carDashboard.cartransactionhistory')->with('transactions', $transactions);;
+        $transactions = Transaction::all();
+        return response()->json($transactions);
+
+        // $transactions = Transaction::where('receiver_id', session()->get('id'))
+        // ->where('receiver', session()->get('type'))->get();
+
+        // return view('carDashboard.cartransactionhistory')->with('transactions', $transactions);;
     }
     public function carsupport(){
         return view('carDashboard.carsupport');
