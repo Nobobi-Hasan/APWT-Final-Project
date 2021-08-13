@@ -35,6 +35,7 @@ Route::post('/hotelDashboard/bookingdelete','HotelController@bookingdestroy')->n
 
 //Hotel Pending Booking
 Route::get('/hotelDashboard/room-book-pending','HotelController@ADroomBookList')->name('hotel.ADroomBookList');
+Route::post('/hotelDashboard/bookingapprove','HotelController@bookingadd')->name('hotel.bookingadd');
 Route::post('/hotelDashboard/bookingdecline','HotelController@bookingremove')->name('hotel.bookingremove');
 
 //Hotel Review
@@ -60,10 +61,12 @@ Route::post('/carDashboard/cardelete','CarController@cardestroy')->name('car.car
 
 //Car Booking Show And Delete
 Route::get('/carDashboard/car-booking-list','CarController@showcarallbooking')->name('car.showcarallbooking');
+
 Route::post('/carDashboard/delete','CarController@bookingdestroy')->name('car.bookingdestroy');
 
 //Car Pending Booking
 Route::get('/carDashboard/car-pending-list','CarController@ADcarBookList')->name('car.ADcarBookList');
+Route::post('/carDashboard/approve','CarController@bookingadd')->name('car.bookingadd');
 Route::post('/carDashboard/decline','CarController@bookingremove')->name('car.bookingremove');
 
 //Car Support
@@ -91,6 +94,7 @@ Route::post('/flightDashboard/delete','FlightController@bookingdestroy')->name('
 
 //Flight Pending Booking
 Route::get('/flightDashboard/flight-pending-list','FlightController@ADflightBookList')->name('flight.ADflightBookList');
+Route::post('/flightDashboard/approve','FlightController@bookingadd')->name('flight.bookingadd');
 Route::post('/flightDashboard/decline','FlightController@bookingremove')->name('flight.bookingremove');
 
 //Flight Review

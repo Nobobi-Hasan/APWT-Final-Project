@@ -1,5 +1,5 @@
 import {Link} from 'react-router-dom';
-const ServiceCarPendingBooking = ({id, user_id, car_id,fromloc, toloc, fromdate, todate, serviceCarPendingBookingDeletecallback})=>{
+const ServiceCarPendingBooking = ({id, user_id, car_id,fromloc, toloc, fromdate, todate,serviceCarPendingBookingApprovecallback, serviceCarPendingBookingDeclinecallback})=>{
     return(
         <>
 
@@ -12,8 +12,8 @@ const ServiceCarPendingBooking = ({id, user_id, car_id,fromloc, toloc, fromdate,
             <td>{fromdate}</td>
             <td>{todate}</td>
             <td> 
-            <Link to='/carDashboard/car-pending-list'className='edit-button'>Accept</Link> |
-            <button className='delete-button' onClick={()=>serviceCarPendingBookingDeletecallback(id)}>Decline</button>
+            <button className='delete-button' onClick={()=>serviceCarPendingBookingApprovecallback(id)}>Approve</button>
+            <button className='delete-button' onClick={()=>serviceCarPendingBookingDeclinecallback(id)}>Decline</button>
             </td>
 
         </tr>

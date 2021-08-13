@@ -160,11 +160,11 @@ class FlightController extends Controller
     }   
 
     //flight booking confirmation request
-    public function bookingadd($id){
-        $flightbook = Airbook::find($id);
+    public function bookingadd(Request $req){
+        $flightbook = Airbook::find($req -> id);
         $flightbook->req = 'Approved';
         $flightbook->save();
-        return redirect()->route('flight.ADflightBookList');
+        // return redirect()->route('flight.ADflightBookList');
     }
 
     //flight booking pending decline list

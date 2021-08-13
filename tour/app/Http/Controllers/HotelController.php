@@ -198,11 +198,11 @@ class HotelController extends Controller
     }
     
     //hotel booking confirmation request
-    public function bookingadd($id){
-            $roombook = Roombook::find($id);
+    public function bookingadd(Request $req){
+            $roombook = Roombook::find($req -> id);
             $roombook->req = 'Approved';
             $roombook->save();
-            return redirect()->route('hotel.ADroomBookList');
+            // return redirect()->route('hotel.ADroomBookList');
     }
     
     //hotel booking pending decline list

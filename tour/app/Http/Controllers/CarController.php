@@ -160,11 +160,11 @@ class CarController extends Controller
     }
 
     //car booking confirmation request
-    public function bookingadd($id){
-        $carbook = Carbook::find($id);
+    public function bookingadd(Request $req){
+        $carbook = Carbook::find($req -> id);
         $carbook->req = 'Approved';
         $carbook->save();
-        return redirect()->route('car.ADcarBookList');
+        // return redirect()->route('car.ADcarBookList');
     }
 
     //car bookingpending decline list

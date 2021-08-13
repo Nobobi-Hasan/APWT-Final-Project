@@ -372,7 +372,7 @@ Route::group(['middleware'=>['employeeCheck']] , function(){
 
 		//flight delete
 		Route::get('/flightDashboard/flightdelete{id}','FlightController@flightdelete')->name('flight.flightdelete');
-		Route::post('/flightDashboard/flightdelete{id}','FlightController@flightdestroy')->name('flight.flightdestroy');
+		Route::post('/flightDashboard/flightdelete','FlightController@flightdestroy')->name('flight.flightdestroy');
 
 		//flight type
 		Route::get('/flightDashboard/flighttype','FlightController@flighttype')->name('flight.flighttype');
@@ -390,7 +390,7 @@ Route::group(['middleware'=>['employeeCheck']] , function(){
 		//Flight booking part
 		Route::get('/flightDashboard/flight-pending-list','FlightController@ADflightBookList')->name('flight.ADflightBookList');
 		Route::get('/flightDashboard/approve{id}','FlightController@bookingapprove')->name('flight.bookingapprove');
-		Route::post('/flightDashboard/approve{id}','FlightController@bookingadd')->name('flight.bookingadd');
+		Route::post('/flightDashboard/approve','FlightController@bookingadd')->name('flight.bookingadd');
 		Route::get('/flightDashboard/decline{id}','FlightController@bookingdecline')->name('flight.bookingdecline');
 		Route::post('/flightDashboard/decline','FlightController@bookingremove')->name('flight.bookingremove');
 		Route::get('/flightDashboard/delete{id}','FlightController@bookingdelete')->name('flight.bookingdelete');
@@ -448,7 +448,7 @@ Route::group(['middleware'=>['employeeCheck']] , function(){
 		//Hotel booking part
 		Route::get('/hotelDashboard/room-book-pending','HotelController@ADroomBookList')->name('hotel.ADroomBookList');
 		Route::get('/hotelDashboard/bookingapprove{id}','HotelController@bookingapprove')->name('hotel.bookingapprove');
-		Route::post('/hotelDashboard/bookingapprove{id}','HotelController@bookingadd')->name('hotel.bookingadd');
+		Route::post('/hotelDashboard/bookingapprove','HotelController@bookingadd')->name('hotel.bookingadd');
 		Route::get('/hotelDashboard/bookingdecline{id}','HotelController@bookingdecline')->name('hotel.bookingdecline');
 		Route::post('/hotelDashboard/bookingdecline','HotelController@bookingremove')->name('hotel.bookingremove');
 		Route::get('/hotelDashboard/bookingdelete{id}','HotelController@bookingdelete')->name('hotel.bookingdelete');

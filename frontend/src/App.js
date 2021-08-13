@@ -138,6 +138,26 @@ function App() {
               });
         };
 
+              // Approve Pending Bookign List Hotel
+              const servicePendingBookingApprovecallback = (id) => {
+                const axios = require('axios').default;
+        
+                axios({
+                    method: 'post',
+                    url: 'http://127.0.0.1:8000/api/hotelDashboard/bookingapprove',
+                    data:{
+                        id:id,
+                    }
+                  });
+        
+                const data = servicependingbooking.filter((service) => service.id != id);
+                const data2 = servicependingbooking.filter((service) => service.id == id);
+                console.log(data);
+                console.log(data2);
+                setServicePendingBookings(data);
+                setServiceBookings([...servicebooking, ...data2]);
+            };
+
 
 
 
@@ -187,7 +207,7 @@ function App() {
       };
 
       // Delete a Pending Booking by Service Hotel
-      const servicePendingBookingDeletecallback = (id) => {
+      const servicePendingBookingDeclinecallback = (id) => {
         const axios = require('axios').default;
 
         axios({
@@ -280,6 +300,26 @@ function App() {
                         });
                   };
 
+                  // Approve Pending Bookign List Car
+                  const serviceCarPendingBookingApprovecallback = (id) => {
+                    const axios = require('axios').default;
+            
+                    axios({
+                        method: 'post',
+                        url: 'http://127.0.0.1:8000/api/carDashboard/approve',
+                        data:{
+                            id:id,
+                        }
+                      });
+            
+                    const data = servicecarpendingbooking.filter((service) => service.id != id);
+                    const data2 = servicecarpendingbooking.filter((service) => service.id == id);
+                    console.log(data);
+                    console.log(data2);
+                    setServiceCarPendingBookings(data);
+                    setServiceCarBookings([...servicecarbooking, ...data2]);
+                };
+
 
                       // Delete an Car from manage list by Service Car
                       const serviceCarManageDeletecallback = (id) => {
@@ -311,8 +351,8 @@ function App() {
                       setServiceCarBookings(data);
                   };
 
-                  // Delete a Car Pending Booking by Service Car
-                  const serviceCarPendingBookingDeletecallback = (id) => {
+                  // Decline a Car Pending Booking by Service Car
+                  const serviceCarPendingBookingDeclinecallback = (id) => {
                     const axios = require('axios').default;
 
                     axios({
@@ -405,6 +445,27 @@ function App() {
                     });
               };
 
+              // Approve Pending Bookign List Flight
+              const serviceFlightPendingBookingApprovecallback = (id) => {
+                const axios = require('axios').default;
+        
+                axios({
+                    method: 'post',
+                    url: 'http://127.0.0.1:8000/api/flightDashboard/approve',
+                    data:{
+                        id:id,
+                    }
+                  });
+        
+                const data = serviceflightpendingbooking.filter((service) => service.id != id);
+                const data2 = serviceflightpendingbooking.filter((service) => service.id == id);
+                console.log(data);
+                console.log(data2);
+                setServiceFlightPendingBookings(data);
+                setServiceFlightBookings([...serviceflightbooking, ...data2]);
+            };
+
+
 
 
                   // Delete an Flight from manage list by Service Flight
@@ -437,8 +498,8 @@ function App() {
                   setServiceFlightBookings(data);
               };
 
-              // Delete a Flight Pending Booking by Service Flight
-              const serviceFlightPendingBookingDeletecallback = (id) => {
+              // Decline a Flight Pending Booking by Service Flight
+              const serviceFlightPendingBookingDeclinecallback = (id) => {
                 const axios = require('axios').default;
 
                 axios({
@@ -525,7 +586,7 @@ function App() {
                   <div className="wrapper">
                           <HotelNavbar />
                       <div className="main-container"> 
-                        <ServicePendingBookingList list={servicependingbooking} callback={servicePendingBookingDeletecallback} />
+                        <ServicePendingBookingList list={servicependingbooking} callbackA={servicePendingBookingApprovecallback} callbackD={servicePendingBookingDeclinecallback} />
                       </div>
                   </div>
             </Route>
@@ -597,7 +658,7 @@ function App() {
                   <div className="wrapper">
                           <CarNavbar />
                       <div className="main-container"> 
-                        <ServiceCarPendingBookingList list={servicecarpendingbooking} callback={serviceCarPendingBookingDeletecallback} />
+                        <ServiceCarPendingBookingList list={servicecarpendingbooking} callbackA={serviceCarPendingBookingApprovecallback} callbackD={serviceCarPendingBookingDeclinecallback} />
                       </div>
                   </div>
             </Route>
@@ -692,7 +753,7 @@ function App() {
                   <div className="wrapper">
                           <FlightNavbar />
                       <div className="main-container"> 
-                        <ServiceFlightPendingBookingList list={serviceflightpendingbooking} callback={serviceFlightPendingBookingDeletecallback} />
+                        <ServiceFlightPendingBookingList list={serviceflightpendingbooking} callbackA={serviceFlightPendingBookingApprovecallback} callbackD={serviceFlightPendingBookingDeclinecallback} />
                       </div>
                   </div>
             </Route>

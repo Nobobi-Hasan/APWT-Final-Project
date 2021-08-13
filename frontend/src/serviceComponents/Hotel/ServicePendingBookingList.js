@@ -1,7 +1,7 @@
 import Service from './ServicePendingBooking';
 import '../Service.css';
 
-const ServicePendingBookingList = ({list, callback})=>{
+const ServicePendingBookingList = ({list, callbackA,callbackD})=>{
     console.log(list);
 
     return(
@@ -19,7 +19,8 @@ const ServicePendingBookingList = ({list, callback})=>{
                     list.map((service)=>{
 
                         
-                            return <Service {...service} servicePendingBookingDeletecallback={callback} />
+                            return <Service {...service} servicePendingBookingApprovecallback={callbackA}
+                            servicePendingBookingDeclinecallback={callbackD} />
                     
                     })
                 }
