@@ -84,7 +84,7 @@
 							<p>{{$supportCount}}</p>
 						</div>
 						<div class="detail-section">
-							<a href="{{route('employee.supportList')}}">More Info </a>
+							<a href="{{route('employee.support')}}">More Info </a>
 						</div>
 					</div>
 				</div>

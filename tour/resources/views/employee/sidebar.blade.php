@@ -112,7 +112,7 @@
 
 
 					<li class="item">
-						<a href="{{route('employee.supportList')}}" class="menu-btn">
+						<a href="{{route('employee.support')}}" class="menu-btn">
 							<i class="fa fa-envelope" aria-hidden="true"></i><span>Support</span>
 						</a>
 					</li>
