@@ -19,6 +19,7 @@ import EmployeeFaqList from "./employeeComponents/EmployeeFaqList";
 import EmployeeAdvertisementList from "./employeeComponents/EmployeeAdvertisementList";
 import EmployeeGalleryList from "./employeeComponents/EmployeeGalleryList";
 import EmployeePromoList from "./employeeComponents/EmployeePromoList";
+import EmployeeSupportList from "./employeeComponents/EmployeeSupportList";
 
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
@@ -268,6 +269,27 @@ const employeeGalleryDeletecallback = (id) => {
  setEmployeeGallery(data);
 };
 
+//show support to employee
+const [employeesupport, setEmployeeSupport] = useState([]);
+const emp9 = 'http://127.0.0.1:8000/api/employee/support';
+useFetch(emp9, setEmployeeSupport);
+
+// Delete support by employee
+const employeeSupportDeletecallback = (id) => {
+ const axios = require('axios').default;
+
+ axios({
+     method: 'post',
+     url: 'http://127.0.0.1:8000/api/employee/support/delete',
+     data:{
+         id:id,
+     }
+   });
+
+ const data = employeesupport.filter((employee) => employee.id !== id);
+ setEmployeeSupport(data);
+};
+
   return (
     <Router>
         {/* <EmployeeNavbar /> */}
@@ -458,7 +480,8 @@ const employeeGalleryDeletecallback = (id) => {
         <Route exact path="/employee/support">
         <div className="wrapper">
             <EmployeeNavbar />
-              <div className="main-container">      
+              <div className="main-container">   
+              <EmployeeSupportList list={employeesupport} callback={employeeSupportDeletecallback} />   
               </div>
 
         </div>

@@ -6,9 +6,9 @@ use Illuminate\Http\Request;
 use App\Support;
 class EmployeeSupportController extends Controller
 {
-    public function supportList(){
+    public function support(){
         $support = Support::all();
-        return view('employee.supportList')->with('supports', $support);
+        return response()->json($support);
     }
 
     public function supportDelete($id){
@@ -17,8 +17,7 @@ class EmployeeSupportController extends Controller
          return view('employee.supportDelete')->with('supports', $support);
     }
     
-    public function supportDestroy($id){
-        Support::destroy($id);
-        return redirect()->route('employee.supportList');
+    public function supportDestroy(Request $req){
+        Support::destroy($req -> id);
     }
 }

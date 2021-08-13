@@ -44,6 +44,9 @@ Route::post('/employee/advertisement/delete', 'EmployeeAdvertisementController@a
 Route::post('/employee/promo', 'EmployeeAdvertisementController@promoAdd') ->name('employeePromo.promoAdd');
 Route::get('/employee/promo/list', 'EmployeeAdvertisementController@promo') ->name('employeePromo.promo');
 Route::post('/employee/promo/delete', 'EmployeeAdvertisementController@promoDestroy')->name('employeePromo.promoDestroy');
+//emp support
+Route::get('/employee/support', 'EmployeeSupportController@support') ->name('employee.support');
+Route::post('/employee/support/delete', 'EmployeeSupportController@supportDestroy') ->name('employee.supportDestroy');
 //emp faq
 Route::post('/employee/faq', 'EmployeeFaqController@faqAdd') ->name('employeeFaq.faqAdd');
 Route::get('/employee/faq/list', 'EmployeeFaqController@faq') ->name('employeeFaq.faq');
