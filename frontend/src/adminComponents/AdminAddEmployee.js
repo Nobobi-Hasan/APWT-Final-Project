@@ -21,7 +21,7 @@ const AdminAddEmployee = ({ status, callback }) => {
         e.preventDefault();
        
         callback({ firstname: firstname, lastname: lastname, gender: gender, email: email, username: username, password: password, conPassword: conPassword });
-        history.push('/admin');
+        history.push('/admin/all-employees');
     };
     return (
         <div>

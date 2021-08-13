@@ -9,7 +9,8 @@ class AdminPlaceController extends Controller
 {
     public function adPlace(){
         $places = Place::where('req', 'Pending')->get();
-        return view('admin.ADPlace')->with('ADPlaceList', $places);
+        return response()->json($places);
+        // return view('admin.ADPlace')->with('ADPlaceList', $places);
     }
 
     public function placeApprove($id){
@@ -17,12 +18,12 @@ class AdminPlaceController extends Controller
         return view('admin.placeApprove')->with('place', $place);
     }
 
-    public function placeAdd($id){
-        $place = Place::find($id);
+    public function placeAdd(Request $req){
+        $place = Place::find($req->id);
         $place->req = 'Approved';
         $place->save();
 
-        return redirect()->route('AdminPlace.adPlace');
+        // return redirect()->route('AdminPlace.adPlace');
     }
 
     public function placeDecline($id){
@@ -30,9 +31,11 @@ class AdminPlaceController extends Controller
         return view('admin.placeDecline')->with('place', $place);
     }
 
-    public function placeRemove($id){
-        Place::destroy($id);
-        return redirect()->route('AdminPlace.adPlace');
+    public function placeRemove(Request $req){
+        $place = Place::find($req->id);
+        $place->req = 'Declined';
+        $place->save();
+        // return redirect()->route('AdminPlace.adPlace');
     }
 
 
@@ -47,9 +50,9 @@ class AdminPlaceController extends Controller
 
     }
 
-    public function placeDestroy($id){
-        Place::destroy($id);
-        return redirect()->route('AdminPlace.placeList');
+    public function placeDestroy(Request $req){
+        Place::destroy($req->id);
+        // return redirect()->route('AdminPlace.placeList');
     }
 
 }

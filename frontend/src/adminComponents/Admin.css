@@ -392,7 +392,23 @@ fieldset{
     border-radius: 25px;
   }
 
-  .edit-button{
+  .approve-button{
+    background-color: #1ae23b;
+    color: white;
+    height: 25px;
+    width: 60px;
+    border-radius: 25px;
+  }
+
+  .approve-button:hover{
+    background-color:white;
+    color: #1ae23b;
+    height: 25px;
+    width: 60px;
+    border-radius: 25px;
+  }
+
+  .details-button{
     background-color: #3955d3;
     color: white;
     height: 25px;
@@ -400,7 +416,7 @@ fieldset{
     border-radius: 25px;
   }
 
-  .edit-button:hover{
+  .details-button:hover{
     background-color:white;
     color: #3955d3;
     height: 25px;

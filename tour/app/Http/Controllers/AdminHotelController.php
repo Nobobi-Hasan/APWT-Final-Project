@@ -63,7 +63,8 @@ class AdminHotelController extends Controller
 
     public function hotelBookings(){
         $roomBooks= Roombook::all();
-        return view('admin.hotelBookingList')->with('roomBooks', $roomBooks);
+        return response()->json($roomBooks);
+        // return view('admin.hotelBookingList')->with('roomBooks', $roomBooks);
     }
 
     public function roomBookDetail($id){

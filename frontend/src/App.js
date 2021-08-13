@@ -10,10 +10,17 @@ import AdminUserDetailsList from "./adminComponents/AdminUserDetailsList";
 
 import AdminHotelADList from "./adminComponents/AdminHotelADList";
 import AdminHotelList from "./adminComponents/AdminHotelList";
+import AdminHotelBookingsList from "./adminComponents/AdminHotelBookingsList";
 
 import AdminTransportADList from "./adminComponents/AdminTransportADList";
 import AdminCarList from "./adminComponents/AdminCarList";
 import AdminFlightList from "./adminComponents/AdminFlightList";
+import AdminCarBookingsList from "./adminComponents/AdminCarBookingsList";
+import AdminFlightBookingsList from "./adminComponents/AdminFlightBookingsList";
+
+
+import AdminPlaceADList from "./adminComponents/AdminPlaceADList";
+import AdminPlaceList from "./adminComponents/AdminPlaceList";
 
 import 'font-awesome/css/font-awesome.min.css';
 
@@ -26,13 +33,13 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 function App() {
 
 // Show all employees by admin
-    const [adminemployee, setAdminEmployees] = useState([]);
+    const [adminEmployee, setAdminEmployees] = useState([]);
     const url = 'http://127.0.0.1:8000/api/admin/all-employees';
     useFetch(url, setAdminEmployees);
 
 
 // Show all Active employees by admin
-    const [adminActiveemployee, setAdminActiveEmployees] = useState([]);
+    const [adminActiveEmployee, setAdminActiveEmployees] = useState([]);
     const urlA = 'http://127.0.0.1:8000/api/admin/active-employees';
     useFetch(urlA, setAdminActiveEmployees);
 
@@ -51,8 +58,8 @@ function App() {
 
 // Show user details by admin
     const [adminUserDetails, setAdminUserDetails] = useState([]);
-    const urlUD = 'http://127.0.0.1:8000/api/admin/all-users';
-    useFetch(urlUD, setAdminUserDetails);
+    // const urlUD = 'http://127.0.0.1:8000/api/admin/all-users';
+    // useFetch(urlUD, setAdminUserDetails);
 
 
 
@@ -74,6 +81,13 @@ function App() {
     useFetch(url4, setAdminHotel);
 
 
+
+// Show all Hotel Bookings by admin
+    const [adminHotelBookings, setAdminHotelBookings] = useState([]);
+    const urlHB = 'http://127.0.0.1:8000/api/admin/hotel-bookings';
+    useFetch(urlHB, setAdminHotelBookings);
+
+
 // Show Pending Transports by admin
     const [adminTransportAD, setAdminTransportAD] = useState([]);
     const url5 = 'http://127.0.0.1:8000/api/admin/transports-pending';
@@ -90,6 +104,31 @@ function App() {
     useFetch(url7, setAdminFlight);
 
 
+// Show all Car Bookings by admin
+    const [adminCarBookings, setAdminCarBookings] = useState([]);
+    const urlCB = 'http://127.0.0.1:8000/api/admin/car-bookings';
+    useFetch(urlCB, setAdminCarBookings);
+
+// Show all Flight Bookings by admin
+    const [adminFlightBookings, setAdminFlightBookings] = useState([]);
+    const urlCF = 'http://127.0.0.1:8000/api/admin/flight-bookings';
+    useFetch(urlCF, setAdminFlightBookings);
+
+
+// Show Pending Places by admin
+const [adminPlaceAD, setAdminPlaceAD] = useState([]);
+const urlPAD = 'http://127.0.0.1:8000/api/admin/place-pending';
+useFetch(urlPAD, setAdminPlaceAD);
+
+
+// Show all Places by admin
+const [adminPlace, setAdminPlace] = useState([]);
+const urlP = 'http://127.0.0.1:8000/api/admin/all-places';
+useFetch(urlP, setAdminPlace);
+
+
+
+
 // Add Employee by admin
     const adminAddEmployee = (newEmployee) => { 
 
@@ -101,7 +140,7 @@ function App() {
             //data: JSON.stringify(newUser)
             data:newEmployee,
           });
-          setAdminEmployees([...adminemployee, newEmployee]);
+          setAdminEmployees([...adminEmployee, newEmployee]);
           console.log(newEmployee);
     };
 
@@ -118,10 +157,10 @@ function App() {
             }
           });
 
-        const data = adminemployee.filter((employee) => employee.id != id);
+        const data = adminEmployee.filter((employee) => employee.id != id);
         setAdminEmployees(data);
 
-        const dataA = adminActiveemployee.filter((employee) => employee.id != id);
+        const dataA = adminActiveEmployee.filter((employee) => employee.id != id);
         setAdminActiveEmployees(dataA);
     };
 
@@ -148,8 +187,14 @@ function App() {
 
     // Show an User Details by admin
     const adminUserDetailsCallback = (id) => {
-
         const data = adminUser.filter((user) => user.id == id);
+        setAdminUserDetails(data);
+        console.log(data);
+    };
+
+    // Show an Employee Details by admin
+    const adminEmployeeDetailsCallback = (id) => {
+        const data = adminEmployee.filter((user) => user.id == id);
         setAdminUserDetails(data);
         console.log(data);
     };
@@ -310,6 +355,62 @@ function App() {
 
 
 
+    // Approve Place by admin
+    const adminPlaceApproveCallback = (id) => {
+        const axios = require('axios').default;
+
+        axios({
+            method: 'post',
+            url: 'http://127.0.0.1:8000/api/admin/place/approve',
+            data:{
+                id:id,
+            }
+          });
+
+        const data = adminPlaceAD.filter((placeAD) => placeAD.id != id);
+        const data2 = adminPlaceAD.filter((placeAD) => placeAD.id == id);
+
+        setAdminPlaceAD(data);
+        setAdminPlace([...adminPlace, ...data2]);
+    };
+
+
+// Decline Place by admin
+    const adminPlaceDeclineCallback = (id) => {
+        const axios = require('axios').default;
+
+        axios({
+            method: 'post',
+            url: 'http://127.0.0.1:8000/api/admin/place/decline',
+            data:{
+                id:id,
+            }
+          });
+
+        const data = adminPlaceAD.filter((placeAD) => placeAD.id != id);
+        setAdminPlaceAD(data);
+    };
+
+
+// Delete Place by admin
+    const adminPlaceDeleteCallback = (id) => {
+        const axios = require('axios').default;
+
+        axios({
+            method: 'post',
+            url: 'http://127.0.0.1:8000/api/admin/place/delete',
+            data:{
+                id:id,
+            }
+          });
+
+        const data = adminPlace.filter((place) => place.id != id);
+        setAdminPlace(data);
+    };
+
+
+
+
   return (
     <Router>
             {/* <Navbar /> */}
@@ -345,7 +446,7 @@ function App() {
 
                         <AdminNavbar2 />
                         <div className="main-container"> 
-                            <AdminAdminList list={adminadmin} list2={adminemployee} callback={adminAdminDeleteCallback} />
+                            <AdminAdminList list={adminadmin} list2={adminEmployee} callback={adminAdminDeleteCallback} />
                         </div>
 
                     </div>
@@ -405,7 +506,7 @@ function App() {
 
                         <AdminNavbar2 />
                         <div className="main-container"> 
-                            <AdminEmployeeList list={adminemployee} callback={adminEmployeeDeleteCallback} />
+                            <AdminEmployeeList list={adminEmployee} callback={adminEmployeeDeleteCallback} />
                         </div>
 
                     </div>
@@ -417,7 +518,7 @@ function App() {
 
                         <AdminNavbar2 />
                         <div className="main-container"> 
-                            <AdminEmployeeList list={adminActiveemployee} callback={adminEmployeeDeleteCallback} />
+                            <AdminEmployeeList list={adminActiveEmployee} callback={adminEmployeeDeleteCallback} />
                         </div>
 
                     </div>
@@ -445,12 +546,12 @@ function App() {
                     </div>
                 </Route>
 
-                <Route path="/admin/hotel-bookings">
+                <Route path="/admin/hotel-bookings">adminHotelBookings
                     <div className="wrapper">
 
                         <AdminNavbar2 />
                         <div className="main-container"> 
-                            
+                            <AdminHotelBookingsList list={adminHotelBookings} />
                         </div>
 
                     </div>
@@ -494,7 +595,7 @@ function App() {
 
                         <AdminNavbar2 />
                         <div className="main-container"> 
-                            
+                            <AdminCarBookingsList list={adminCarBookings} />
                         </div>
 
                     </div>
@@ -505,7 +606,7 @@ function App() {
 
                         <AdminNavbar2 />
                         <div className="main-container"> 
-                            
+                            <AdminFlightBookingsList list={adminFlightBookings} />
                         </div>
 
                     </div>
@@ -566,7 +667,7 @@ function App() {
 
                         <AdminNavbar2 />
                         <div className="main-container"> 
-                            
+                            <AdminPlaceADList list={adminPlaceAD} callbackA={adminPlaceApproveCallback} callbackD={adminPlaceDeclineCallback} />
                         </div>
 
                     </div>
@@ -577,7 +678,7 @@ function App() {
 
                         <AdminNavbar2 />
                         <div className="main-container"> 
-                            
+                            <AdminPlaceList list={adminPlace} callback={adminPlaceDeleteCallback} />
                         </div>
 
                     </div>

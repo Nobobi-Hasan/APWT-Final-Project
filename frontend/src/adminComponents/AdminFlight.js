@@ -10,7 +10,7 @@ const AdminFlight = ({id, name, phone, email, type, adminFlightDeleteCallback})=
             <td>{email}</td>
             <td>{type}</td>
             <td>
-                <button className='delete-button' onClick={()=>adminFlightDeleteCallback(id)}>Approve</button>
+                <button className='delete-button' onClick={()=>adminFlightDeleteCallback(id)}>Delete</button>
             </td>
         </tr>
 

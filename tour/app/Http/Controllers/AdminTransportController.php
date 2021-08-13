@@ -88,7 +88,8 @@ class AdminTransportController extends Controller
 
     public function carBookingList(){
         $carbooks = Carbook::all();
-        return view('admin.carBookingList')->with('carbooks', $carbooks);
+        return response()->json($carbooks);
+        // return view('admin.carBookingList')->with('carbooks', $carbooks);
     }
 
 
@@ -105,7 +106,8 @@ class AdminTransportController extends Controller
 
     public function flightBookingList(){
         $flightbooks = Airbook::all();
-        return view('admin.flightBookingList')->with('flightbooks', $flightbooks);
+        return response()->json($flightbooks);
+        // return view('admin.flightBookingList')->with('flightbooks', $flightbooks);
     }
 
 

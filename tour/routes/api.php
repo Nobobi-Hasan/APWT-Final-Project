@@ -25,9 +25,15 @@ Route::post('/admin/employee/delete', 'AdminEmployeeController@employeeDestroy')
 Route::get('/admin/active-employees', 'AdminEmployeeController@activeEmployeeList')->name('adminEmployee.activeEmployeeList');
 
 
+
+
+
 Route::post('/admin/add-admin', 'AdminController@adminAddVerify')->name('admin.adminAddVerify');
 Route::get('/admin/all-admins', 'AdminController@adminList')->name('admin.adminList');
 Route::post('/admin/admin/delete', 'AdminController@adminDestroy')->name('admin.adminDestroy');
+
+
+
 
 
 Route::get('/admin/all-users', 'AdminUserController@userList')->name('adminUser.userList');
@@ -38,13 +44,18 @@ Route::post('/admin/user/delete/', 'AdminUserController@userDestroy')->name('adm
 
 
 
+
+
+
 Route::get('/admin/hotels-pending', 'AdminHotelController@adHotel')->name('adminHotel.adHotel');
 Route::post('/admin/hotel/approve', 'AdminHotelController@hotelAdd')->name('AdminHotel.hotelAdd');
 Route::post('/admin/hotel/decline', 'AdminHotelController@hotelRemove')->name('AdminHotel.hotelRemove');
 Route::get('/admin/all-hotels', 'AdminHotelController@hotelList')->name('adminHotel.hotelList');
 Route::post('/admin/hotel/delete', 'AdminHotelController@hotelDestroy')->name('AdminHotel.hotelDelete');
 Route::get('/admin/hotel-bookings', 'AdminHotelController@hotelBookings')->name('adminHotel.hotelBookings');
-Route::get('/admin/hotel-bookings/details{id}', 'AdminHotelController@roomBookDetail')->name('adminHotel.roomBookDetail');
+
+
+
 
 
 Route::get('/admin/transports-pending', 'AdminTransportController@adTransport')->name('adminTransport.adTransport');
@@ -60,5 +71,22 @@ Route::get('/admin/all-flight', 'AdminTransportController@flightList')->name('ad
 Route::post('/admin/flight/delete', 'AdminTransportController@flightDestroy')->name('adminTransport.flightDestroy');
 Route::get('/admin/flight-bookings', 'AdminTransportController@flightBookingList')->name('adminTransport.flightBookingList');
 Route::get('/admin/flight-bookings/detail{id}', 'AdminTransportController@flightBookingDetail')->name('adminTransport.flightBookingDetail');
+
+
+
+
+
+Route::get('/admin/place-pending', 'AdminPlaceController@adPlace')->name('AdminPlace.adPlace');
+
+Route::post('/admin/place/approve', 'AdminPlaceController@placeAdd')->name('AdminPlace.placeAdd');
+
+Route::post('/admin/place/decline', 'AdminPlaceController@placeRemove')->name('AdminPlace.placeRemove');
+Route::get('/admin/all-places', 'AdminPlaceController@placeList')->name('AdminPlace.placeList');
+
+Route::post('/admin/place/delete', 'AdminPlaceController@placeDestroy')->name('AdminPlace.placeDestroy');
+
+
+
+
 
 // Admin API End

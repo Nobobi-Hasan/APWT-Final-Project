@@ -10,7 +10,7 @@ const AdminCar = ({id, name, phone, email, type, adminCarDeleteCallback})=>{
             <td>{email}</td>
             <td>{type}</td>
             <td>
-                <button className='delete-button' onClick={()=>adminCarDeleteCallback(id)}>Approve</button>
+                <button className='delete-button' onClick={()=>adminCarDeleteCallback(id)}>Delete</button>
             </td>
         </tr>
 

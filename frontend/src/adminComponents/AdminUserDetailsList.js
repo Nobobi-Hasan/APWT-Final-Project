@@ -8,13 +8,13 @@ const AdminUserDetailsList = ({list})=>{
         <div>
             <table id='table'>
 
-                <th>ID</th>
+                {/* <th>ID</th>
                 <th>Firstname</th>
                 <th>Lastname</th>
                 <th>Gender</th>
                 <th>Email</th>
                 <th>Username</th>
-                <th>Status</th>
+                <th>Status</th> */}
 
 
 

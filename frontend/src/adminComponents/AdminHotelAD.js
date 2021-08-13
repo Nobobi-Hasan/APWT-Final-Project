@@ -13,7 +13,7 @@ const AdminHotelAD = ({id, name, location, address, image, phone, email, adminHo
             <td>{phone}</td>
             <td>{email}</td>
             <td>
-                <button className='delete-button' onClick={()=>adminHotelApproveCallback(id)}>Approve</button>
+                <button className='approve-button' onClick={()=>adminHotelApproveCallback(id)}>Approve</button>
                 <button className='delete-button' onClick={()=>adminHotelDeclineCallback(id)}>Decline</button>
             </td>
         </tr>

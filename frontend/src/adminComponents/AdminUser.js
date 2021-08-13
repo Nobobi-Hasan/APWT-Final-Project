@@ -22,13 +22,13 @@ const AdminUser = ({id, firstname, lastname, gender, email, username, status, ad
             <td>{email}</td>
             <td>{username}</td>
             <td>{status}</td>
-            <td><button className='delete-button' onClick={routeChange 
+            <td><button className='details-button' onClick={routeChange 
             
             
             }>Details</button>
             
             
-            |<button className='delete-button' onClick={()=>adminUserDeletecallback(id)}>Delete</button></td>
+            <button className='delete-button' onClick={()=>adminUserDeletecallback(id)}>Delete</button></td>
             
         </tr>
         
