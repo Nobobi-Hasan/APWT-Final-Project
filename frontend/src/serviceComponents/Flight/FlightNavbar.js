@@ -31,12 +31,12 @@ const FlightNavbar = ()=>{
 
                         <li className="item" id="service">
                             <a href="#service" className="menu-btn">
-                                <i className="fa fa-cog"></i><span>Airplane<i class="fa fa-chevron-circle-down drop-down" aria-hidden="true"></i></span>
+                                <i className="fa fa-plane"></i><span>Airplane<i class="fa fa-chevron-circle-down drop-down" aria-hidden="true"></i></span>
                             </a>
 
                             <div className="sub-menu">
-                                    <Link to='/flightDashboard/addflight'><i class="fa fa-puzzle-piece"></i><span>New Airplane</span></Link>
-                                    <Link to='/flightDashboard/manageflight'><i class="fa fa-list"></i><span>Manage Airplane</span></Link>
+                                    <Link to='/flightDashboard/addflight'><i class="fa fa-plane"></i><span>New Airplane</span></Link>
+                                    <Link to='/flightDashboard/manageflight'><i class="fa fa-wrench"></i><span>Manage Airplane</span></Link>
                             </div>
 
                         </li>
@@ -53,11 +53,11 @@ const FlightNavbar = ()=>{
                         </li> 
 
                         <li className="item">
-                                    <Link className="menu-btn" to='/flightDashboard/flighttype'><i class="fa fa-comment" aria-hidden="true"></i><span>Airplane Tpye</span></Link>
+                                    <Link className="menu-btn" to='/flightDashboard/flighttype'><i class="fa fa-check" aria-hidden="true"></i><span>Airplane Tpye</span></Link>
 					    </li> 
 
                         <li className="item">
-                                    <Link className="menu-btn" to='/flightDashboard/flightavailability'><i class="fa fa-comment" aria-hidden="true"></i><span>Airplane Availability</span></Link>
+                                    <Link className="menu-btn" to='/flightDashboard/flightavailability'><i class="fa fa-pencil-square" aria-hidden="true"></i><span>Airplane Availability</span></Link>
 					    </li> 
 
                         <li className="item">

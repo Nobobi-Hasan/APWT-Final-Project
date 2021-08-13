@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { useFetch } from './serviceComponents/useFetch';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
@@ -8,7 +7,6 @@ import 'font-awesome/css/font-awesome.min.css';
 import HotelNavbar from "./serviceComponents/Hotel/HotelNavbar";
 import ServiceAddFacility from "./serviceComponents/Hotel/ServiceAddFacility";
 import ServiceAddRoom from "./serviceComponents/Hotel/ServiceAddRoom";
-import ServiceHotelSupport from "./serviceComponents/Hotel/ServiceHotelSupport";
 import ServiceFacilityList from "./serviceComponents/Hotel/ServiceFacilityList";
 import ServiceRoomList from "./serviceComponents/Hotel/ServiceRoomList";
 import ServiceBookingList from "./serviceComponents/Hotel/ServiceBookingList";
@@ -16,29 +14,33 @@ import ServicePendingBookingList from "./serviceComponents/Hotel/ServicePendingB
 import ServiceReviewList from "./serviceComponents/Hotel/ServiceReviewList";
 import ServiceTransactionList from "./serviceComponents/Hotel/ServiceTransactionList";
 import ServiceRoomUserInfoList from "./serviceComponents/Hotel/ServiceRoomUserInfoList";
-
+import ServiceHotelSupport from "./serviceComponents/Hotel/ServiceHotelSupport";
 
 // Car Import
 import CarNavbar from "./serviceComponents/Car/CarNavbar";
 import ServiceAddCar from "./serviceComponents/Car/ServiceAddCar";
-import ServiceCarType from "./serviceComponents/Car/ServiceCarType";
-import ServiceCarAvailability from "./serviceComponents/Car/ServiceCarAvailability";
-import ServiceCarSupport from "./serviceComponents/Car/ServiceCarSupport";
-import ServiceCarReviewList from "./serviceComponents/Car/ServiceCarReviewList";
-import ServiceCarTransactionList from "./serviceComponents/Car/ServiceCarTransactionList";
 import ServiceCarManageList from "./serviceComponents/Car/ServiceCarManageList";
 import ServiceCarBookingList from "./serviceComponents/Car/ServiceCarBookingList";
 import ServiceCarPendingBookingList from "./serviceComponents/Car/ServiceCarPendingBookingList";
-
-
-
+import ServiceCarType from "./serviceComponents/Car/ServiceCarType";
+import ServiceCarAvailability from "./serviceComponents/Car/ServiceCarAvailability";
+import ServiceCarReviewList from "./serviceComponents/Car/ServiceCarReviewList";
+import ServiceCarTransactionList from "./serviceComponents/Car/ServiceCarTransactionList";
+import ServiceCarSupport from "./serviceComponents/Car/ServiceCarSupport";
 
 // Flight Import
 import FlightNavbar from "./serviceComponents/Flight/FlightNavbar";
 import ServiceAddFlight from "./serviceComponents/Flight/ServiceAddFlight";
+import ServiceFlightManageList from "./serviceComponents/Flight/ServiceFlightManageList";
+import ServiceFlightBookingList from "./serviceComponents/Flight/ServiceFlightBookingList";
+import ServiceFlightPendingBookingList from "./serviceComponents/Flight/ServiceFlightPendingBookingList";
 import ServiceFlightType from "./serviceComponents/Flight/ServiceFlightType";
 import ServiceFlightAvailability from "./serviceComponents/Flight/ServiceFlightAvailability";
+import ServiceFlightReviewList from "./serviceComponents/Flight/ServiceFlightReviewList";
+import ServiceFlightTransactionList from "./serviceComponents/Flight/ServiceFlightTransactionList";
 import ServiceFlightSupport from "./serviceComponents/Flight/ServiceFlightSupport";
+
+
 
 function App() {
 
@@ -96,12 +98,6 @@ function App() {
   
   
 
-
-
-
-
-
-
                 // Add Facility by service Hotel
                 const serviceAddFacility = (newFacility) => { 
 
@@ -141,14 +137,6 @@ function App() {
                 data:newSupport,
               });
         };
-
-
-
-
-
-
-
-
 
 
 
@@ -214,201 +202,255 @@ function App() {
     };
 
 
-
-
-
-
-
-
           
   // Car API Work
 
-              // Show all review list  by service Car
-              const [servicecarreview, setServiceCarReviews] = useState([]);
-              const serviceurl21 = 'http://127.0.0.1:8000/api/carDashboard/checkcarreview';
-              useFetch(serviceurl21, setServiceCarReviews);
-
-               // Show all transaction list  by service Car
-               const [servicecartransaction, setServiceCarTransactions] = useState([]);
-               const serviceurl22 = 'http://127.0.0.1:8000/api/carDashboard/cartransactionhistory';
-               useFetch(serviceurl22, setServiceCarTransactions);
-
               // Show all car list by service Car
               const [servicecarmanage, setServiceCarManages] = useState([]);
-              const serviceurl23 = 'http://127.0.0.1:8000/api/carDashboard/managecar';
-              useFetch(serviceurl23, setServiceCarManages);
+              const serviceurl21 = 'http://127.0.0.1:8000/api/carDashboard/managecar';
+              useFetch(serviceurl21, setServiceCarManages);
 
               // Show all booking list  by service Car
               const [servicecarbooking, setServiceCarBookings] = useState([]);
-              const serviceurl24 = 'http://127.0.0.1:8000/api/carDashboard/car-booking-list';
-              useFetch(serviceurl24, setServiceCarBookings);
+              const serviceurl22 = 'http://127.0.0.1:8000/api/carDashboard/car-booking-list';
+              useFetch(serviceurl22, setServiceCarBookings);
 
               // Show all pending booking list  by service Hotel
               const [servicecarpendingbooking, setServiceCarPendingBookings] = useState([]);
-              const serviceurl25 = 'http://127.0.0.1:8000/api/carDashboard/car-pending-list';
-              useFetch(serviceurl25, setServiceCarPendingBookings);
+              const serviceurl23 = 'http://127.0.0.1:8000/api/carDashboard/car-pending-list';
+              useFetch(serviceurl23, setServiceCarPendingBookings);
+
+               // Show all review list  by service Car
+               const [servicecarreview, setServiceCarReviews] = useState([]);
+               const serviceurl24 = 'http://127.0.0.1:8000/api/carDashboard/checkcarreview';
+               useFetch(serviceurl24, setServiceCarReviews);
+ 
+                // Show all transaction list  by service Car
+                const [servicecartransaction, setServiceCarTransactions] = useState([]);
+                const serviceurl25 = 'http://127.0.0.1:8000/api/carDashboard/cartransactionhistory';
+                useFetch(serviceurl25, setServiceCarTransactions);
 
                   
-                  
+      
+                      const serviceAddCar = (newCar) => { 
+
+                        const axios = require('axios').default;
+
+                        axios({
+                            method: 'post',
+                            url: 'http://127.0.0.1:8000/api/carDashboard/addcar',
+                            
+                            data:newCar,
+                          });
+                    };
+
+                    const serviceCarType = (newType) => { 
+
+                      const axios = require('axios').default;
+
+                      axios({
+                          method: 'post',
+                          url: 'http://127.0.0.1:8000/api/carDashboard/cartype',
+                          
+                          data:newType,
+                        });
+                  };
+
+                    const serviceCarAvailability = (newAvailable) => { 
+
+                      const axios = require('axios').default;
+
+                      axios({
+                          method: 'post',
+                          url: 'http://127.0.0.1:8000/api/carDashboard/caravailability',
+                          
+                          data:newAvailable,
+                        });
+                  };
+
+                    const serviceCarSupport = (newSupport) => { 
+
+                      const axios = require('axios').default;
+
+                      axios({
+                          method: 'post',
+                          url: 'http://127.0.0.1:8000/api/carDashboard/carsupport',
+                          
+                          data:newSupport,
+                        });
+                  };
+
+
+                      // Delete an Car from manage list by Service Car
+                      const serviceCarManageDeletecallback = (id) => {
+                        const axios = require('axios').default;
+
+                        axios({
+                            method: 'post',
+                            url: 'http://127.0.0.1:8000/api/carDashboard/cardelete',
+                            data:{
+                                id:id,
+                            }
+                          });
+                        const data = servicecarmanage.filter((service) => service.id != id);
+                        setServiceCarManages(data);
+                    };
+
+                    // Delete a Car Booking by Service Car
+                    const serviceCarBookingDeletecallback = (id) => {
+                      const axios = require('axios').default;
+
+                      axios({
+                          method: 'post',
+                          url: 'http://127.0.0.1:8000/api/carDashboard/delete',
+                          data:{
+                              id:id,
+                          }
+                        });
+                      const data = servicecarbooking.filter((service) => service.id != id);
+                      setServiceCarBookings(data);
+                  };
+
+                  // Delete a Car Pending Booking by Service Car
+                  const serviceCarPendingBookingDeletecallback = (id) => {
+                    const axios = require('axios').default;
+
+                    axios({
+                        method: 'post',
+                        url: 'http://127.0.0.1:8000/api/carDashboard/decline',
+                        data:{
+                            id:id,
+                        }
+                      });
+                    const data = servicecarpendingbooking.filter((service) => service.id != id);
+                    setServiceCarPendingBookings(data);
+                };
 
 
 
+// Flight API Work
+
+              // Show all car list by service Car
+              const [serviceflightmanage, setServiceFlightManages] = useState([]);
+              const serviceurl31 = 'http://127.0.0.1:8000/api/flightDashboard/manageflight';
+              useFetch(serviceurl31, setServiceFlightManages);
+
+              // Show all booking list  by service Flight
+              const [serviceflightbooking, setServiceFlightBookings] = useState([]);
+              const serviceurl32 = 'http://127.0.0.1:8000/api/flightDashboard/flight-booking-list';
+              useFetch(serviceurl32, setServiceFlightBookings);
+
+              // Show all pending booking list  by service Flight
+              const [serviceflightpendingbooking, setServiceFlightPendingBookings] = useState([]);
+              const serviceurl33 = 'http://127.0.0.1:8000/api/flightDashboard/flight-pending-list';
+              useFetch(serviceurl33, setServiceFlightPendingBookings);
+
+              // Show all review list  by service Flight
+              const [serviceflightreview, setServiceFlightReviews] = useState([]);
+              const serviceurl34 = 'http://127.0.0.1:8000/api/flightDashboard/checkflightreview';
+              useFetch(serviceurl34, setServiceFlightReviews);
+
+              // Show all transaction list  by service Flight
+              const [serviceflighttransaction, setServiceFlightTransactions] = useState([]);
+              const serviceurl35 = 'http://127.0.0.1:8000/api/flightDashboard/flighttransactionhistory';
+              useFetch(serviceurl35, setServiceFlightTransactions);
 
 
 
+                  const serviceAddFlight = (newFlight) => { 
+
+                    const axios = require('axios').default;
+
+                    axios({
+                        method: 'post',
+                        url: 'http://127.0.0.1:8000/api/flightDashboard/addflight',
+                        
+                        data:newFlight,
+                      });
+                };
+
+                  const serviceFlightType = (newType) => { 
+
+                    const axios = require('axios').default;
+
+                    axios({
+                        method: 'post',
+                        url: 'http://127.0.0.1:8000/api/flightDashboard/flighttype',
+                        
+                        data:newType,
+                      });
+                };
+
+                  const serviceFlightAvailability = (newAvailable) => { 
+
+                    const axios = require('axios').default;
+
+                    axios({
+                        method: 'post',
+                        url: 'http://127.0.0.1:8000/api/flightDashboard/flightavailability',
+                        
+                        data:newAvailable,
+                      });
+                };
+
+                const serviceFlightSupport = (newSupport) => { 
+
+                  const axios = require('axios').default;
+
+                  axios({
+                      method: 'post',
+                      url: 'http://127.0.0.1:8000/api/flightDashboard/flightsupport',
+                      
+                      data:newSupport,
+                    });
+              };
 
 
 
-              const serviceAddCar = (newCar) => { 
+                  // Delete an Flight from manage list by Service Flight
+                  const serviceFlightManageDeletecallback = (id) => {
+                    const axios = require('axios').default;
 
+                    axios({
+                        method: 'post',
+                        url: 'http://127.0.0.1:8000/api/flightDashboard/flightdelete',
+                        data:{
+                            id:id,
+                        }
+                      });
+                    const data = serviceflightmanage.filter((service) => service.id != id);
+                    setServiceFlightManages(data);
+                };
+
+                  // Delete a Flight Booking by Service Flight
+                const serviceFlightBookingDeletecallback = (id) => {
+                  const axios = require('axios').default;
+
+                  axios({
+                      method: 'post',
+                      url: 'http://127.0.0.1:8000/api/flightDashboard/delete',
+                      data:{
+                          id:id,
+                      }
+                    });
+                  const data = serviceflightbooking.filter((service) => service.id != id);
+                  setServiceFlightBookings(data);
+              };
+
+              // Delete a Flight Pending Booking by Service Flight
+              const serviceFlightPendingBookingDeletecallback = (id) => {
                 const axios = require('axios').default;
 
                 axios({
                     method: 'post',
-                    url: 'http://127.0.0.1:8000/api/carDashboard/addcar',
-                    
-                    data:newCar,
+                    url: 'http://127.0.0.1:8000/api/flightDashboard/decline',
+                    data:{
+                        id:id,
+                    }
                   });
+                const data = serviceflightpendingbooking.filter((service) => service.id != id);
+                setServiceFlightPendingBookings(data);
             };
-
-            const serviceCarType = (newType) => { 
-
-              const axios = require('axios').default;
-
-              axios({
-                  method: 'post',
-                  url: 'http://127.0.0.1:8000/api/carDashboard/cartype',
-                  
-                  data:newType,
-                });
-          };
-
-          const serviceCarAvailability = (newAvailable) => { 
-
-            const axios = require('axios').default;
-
-            axios({
-                method: 'post',
-                url: 'http://127.0.0.1:8000/api/carDashboard/caravailability',
-                
-                data:newAvailable,
-              });
-        };
-
-        const serviceCarSupport = (newSupport) => { 
-
-          const axios = require('axios').default;
-
-          axios({
-              method: 'post',
-              url: 'http://127.0.0.1:8000/api/carDashboard/carsupport',
-              
-              data:newSupport,
-            });
-      };
-
-       // Delete an Car from manage list by Service Car
-       const serviceCarManageDeletecallback = (id) => {
-        const axios = require('axios').default;
-
-        axios({
-            method: 'post',
-            url: 'http://127.0.0.1:8000/api/carDashboard/cardelete',
-            data:{
-                id:id,
-            }
-          });
-        const data = servicecarmanage.filter((service) => service.id != id);
-        setServiceCarManages(data);
-    };
-
-     // Delete a Car Booking by Service Car
-     const serviceCarBookingDeletecallback = (id) => {
-      const axios = require('axios').default;
-
-      axios({
-          method: 'post',
-          url: 'http://127.0.0.1:8000/api/carDashboard/delete',
-          data:{
-              id:id,
-          }
-        });
-      const data = servicecarbooking.filter((service) => service.id != id);
-      setServiceCarBookings(data);
-  };
-
-  // Delete a Car Pending Booking by Service Car
-  const serviceCarPendingBookingDeletecallback = (id) => {
-    const axios = require('axios').default;
-
-    axios({
-        method: 'post',
-        url: 'http://127.0.0.1:8000/api/carDashboard/decline',
-        data:{
-            id:id,
-        }
-      });
-    const data = servicecarpendingbooking.filter((service) => service.id != id);
-    setServiceCarPendingBookings(data);
-};
-
-
-
-
-
-
-
-
-
-
-  // Flight API Work
-              const serviceAddFlight = (newFlight) => { 
-
-                const axios = require('axios').default;
-
-                axios({
-                    method: 'post',
-                    url: 'http://127.0.0.1:8000/api/flightDashboard/addflight',
-                    
-                    data:newFlight,
-                  });
-            };
-
-            const serviceFlightType = (newType) => { 
-
-              const axios = require('axios').default;
-
-              axios({
-                  method: 'post',
-                  url: 'http://127.0.0.1:8000/api/flightDashboard/flighttype',
-                  
-                  data:newType,
-                });
-          };
-
-          const serviceFlightAvailability = (newAvailable) => { 
-
-            const axios = require('axios').default;
-
-            axios({
-                method: 'post',
-                url: 'http://127.0.0.1:8000/api/flightDashboard/flightavailability',
-                
-                data:newAvailable,
-              });
-        };
-
-        const serviceFlightSupport = (newSupport) => { 
-
-          const axios = require('axios').default;
-
-          axios({
-              method: 'post',
-              url: 'http://127.0.0.1:8000/api/flightDashboard/flightsupport',
-              
-              data:newSupport,
-            });
-      };
 
 
       
@@ -516,8 +558,6 @@ function App() {
             </Route>
 
 
-
-
             {/* Car Route */}
             <Route exact path="/carDashboard">
                   <div className="wrapper">
@@ -611,8 +651,6 @@ function App() {
 
 
 
-
-
             {/* Flight Route */}
 
             <Route exact path="/flightDashboard">
@@ -628,6 +666,33 @@ function App() {
                           <FlightNavbar />
                       <div className="main-container"> 
                         <ServiceAddFlight status="Flight" callback={serviceAddFlight} />
+                      </div>
+                  </div>
+            </Route>
+
+            <Route path="/flightDashboard/manageflight">
+                  <div className="wrapper"> 
+                          <FlightNavbar />
+                        <div className="main-container"> 
+                        <ServiceFlightManageList list={serviceflightmanage} callback={serviceFlightManageDeletecallback} />
+                        </div>
+                  </div>  
+                </Route>
+
+            <Route path="/flightDashboard/flight-booking-list">
+                <div className="wrapper">
+                        <FlightNavbar />
+                      <div className="main-container"> 
+                        <ServiceFlightBookingList list={serviceflightbooking} detail={detail} callback={serviceFlightBookingDeletecallback} />
+                      </div>
+                </div>
+            </Route>
+
+            <Route path="/flightDashboard/flight-pending-list">
+                  <div className="wrapper">
+                          <FlightNavbar />
+                      <div className="main-container"> 
+                        <ServiceFlightPendingBookingList list={serviceflightpendingbooking} callback={serviceFlightPendingBookingDeletecallback} />
                       </div>
                   </div>
             </Route>
@@ -651,6 +716,25 @@ function App() {
                 </div>
             </Route>
 
+            <Route path="/flightDashboard/checkflightreview">
+                    <div className="wrapper">
+                          <FlightNavbar />
+                        <div className="main-container">
+                            <ServiceFlightReviewList list={serviceflightreview} />
+                        </div>
+                    </div> 
+            </Route>
+
+            <Route path="/flightDashboard/flighttransactionhistory">
+                  <div className="wrapper">
+                          <FlightNavbar />
+                      <div className="main-container">
+                        <ServiceFlightTransactionList list={serviceflighttransaction} />
+                      </div>
+                  </div>
+            </Route>
+
+
             <Route path="/flightDashboard/flightsupport">
                   <div className="wrapper">
                         <FlightNavbar />
@@ -659,12 +743,6 @@ function App() {
                     </div>
                   </div>  
             </Route>
-
-
-
-
-
-
 
         </Switch>
     </Router>

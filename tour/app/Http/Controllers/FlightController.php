@@ -73,7 +73,8 @@ class FlightController extends Controller
     //manage flight
     public function manageflight(){
         $air = Air::all();
-        return view('flightDashboard.manageflight')->with('air', $air);;
+        return response()->json($air);
+        // return view('flightDashboard.manageflight')->with('air', $air);;
     }
 
 
@@ -102,9 +103,9 @@ class FlightController extends Controller
 }
 
     //flight delete
-    public function flightdestroy($id){
-        Air::destroy($id);
-        return redirect()->route('flight.manageflight');
+    public function flightdestroy(Request $req){
+        Air::destroy($req->id);
+        // return redirect()->route('flight.manageflight');
     }
 
     //flight type
@@ -148,7 +149,8 @@ class FlightController extends Controller
     public function ADflightBookList(){
 
         $flightbook = Airbook::where('req', 'Pending')->get();
-        return view('flightDashboard.ADflightBookList')->with('ADflightBookList', $flightbook);
+        return response()->json($flightbook);
+        // return view('flightDashboard.ADflightBookList')->with('ADflightBookList', $flightbook);
     }
 
     //flight booking pending approve list
@@ -172,11 +174,11 @@ class FlightController extends Controller
     }
 
      //flight booking remove request
-    public function bookingremove($id){
-        $flightbook = Airbook::find($id);
+    public function bookingremove(Request $req){
+        $flightbook = Airbook::find($req->id);
         $flightbook->req = 'Declined';
         $flightbook->save();
-        return redirect()->route('flight.ADflightBookList');
+        // return redirect()->route('flight.ADflightBookList');
     }
 
     //flight booking delete from main list
@@ -186,17 +188,18 @@ class FlightController extends Controller
     }
  
     //flight booking delete request from main list
-     public function bookingdestroy($id){
-        $flightbook = Airbook::find($id);
+     public function bookingdestroy(Request $req){
+        $flightbook = Airbook::find($req->id);
         $flightbook->req = 'Canceled';
         $flightbook->save();
-        return redirect()->route('flight.showflightallbooking');
+        // return redirect()->route('flight.showflightallbooking');
     }
 
     //flight booking list
     public function showflightallbooking(){
         $flightbook = Airbook::where('req', 'Approved')->get();
-        return view('flightDashboard.showflightallbooking')->with('showflightallbooking', $flightbook);
+        return response()->json($flightbook);
+        // return view('flightDashboard.showflightallbooking')->with('showflightallbooking', $flightbook);
     }
 
     //flight booking user-air information
@@ -211,17 +214,24 @@ class FlightController extends Controller
     }
 
     public function checkflightreview(){
-        $reviews = Review::where('service_id', session()->get('id'))
-        ->where('service_type', session()->get('type'))->get();
 
-        return view('flightDashboard.checkflightreview')->with('reviews', $reviews);
+        $reviews = Review::all();
+        return response()->json($reviews);
+
+        // $reviews = Review::where('service_id', session()->get('id'))
+        // ->where('service_type', session()->get('type'))->get();
+
+        // return view('flightDashboard.checkflightreview')->with('reviews', $reviews);
     }
 
     public function flighttransactionhistory(){
-        $transactions = Transaction::where('receiver_id', session()->get('id'))
-        ->where('receiver', session()->get('type'))->get();
+        $transactions = Transaction::all();
+        return response()->json($transactions);
 
-        return view('flightDashboard.flighttransactionhistory')->with('transactions', $transactions);;
+        // $transactions = Transaction::where('receiver_id', session()->get('id'))
+        // ->where('receiver', session()->get('type'))->get();
+
+        // return view('flightDashboard.flighttransactionhistory')->with('transactions', $transactions);;
     }
 
     public function profile(Request $req){

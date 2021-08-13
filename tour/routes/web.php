@@ -392,9 +392,9 @@ Route::group(['middleware'=>['employeeCheck']] , function(){
 		Route::get('/flightDashboard/approve{id}','FlightController@bookingapprove')->name('flight.bookingapprove');
 		Route::post('/flightDashboard/approve{id}','FlightController@bookingadd')->name('flight.bookingadd');
 		Route::get('/flightDashboard/decline{id}','FlightController@bookingdecline')->name('flight.bookingdecline');
-		Route::post('/flightDashboard/decline{id}','FlightController@bookingremove')->name('flight.bookingremove');
+		Route::post('/flightDashboard/decline','FlightController@bookingremove')->name('flight.bookingremove');
 		Route::get('/flightDashboard/delete{id}','FlightController@bookingdelete')->name('flight.bookingdelete');
-		Route::post('/flightDashboard/delete{id}','FlightController@bookingdestroy')->name('flight.bookingdestroy');
+		Route::post('/flightDashboard/delete','FlightController@bookingdestroy')->name('flight.bookingdestroy');
 		Route::get('/flightDashboard/flight-booking-list','FlightController@showflightallbooking')->name('flight.showflightallbooking');
 		Route::get('/flightDashboard/information{id}','FlightController@showuserflightinfo')->name('flight.showuserflightinfo');
 

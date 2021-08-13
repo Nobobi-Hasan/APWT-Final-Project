@@ -18,6 +18,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 //HOTEL
+
 //Hotel Facility Add/Show/delete
 Route::post('/hotelDashboard/addhotelfacility','HotelController@addhotelfacilityVerify')->name('hotel.addhotelfacilityVerify');
 Route::get('/hotelDashboard/managehotelfacility','HotelController@managehotelfacility')->name('hotel.managehotelfacility');
@@ -45,10 +46,8 @@ Route::get('/hotelDashboard/hoteltransactionhistory','HotelController@hoteltrans
 //Hotel Booking User-Room Information
 Route::post('/hotelDashboard/information','HotelController@showcustomerroominfo')->name('hotel.showcustomerroominfo');
 
-
 //Hotel Support
 Route::post('/hotelDashboard/hotelsupport','HotelController@hotelsupportconfirm')->name('hotel.hotelsupportconfirm');
-
 
 
 
@@ -78,11 +77,27 @@ Route::get('/carDashboard/cartransactionhistory','CarController@cartransactionhi
 
 
 
-
-
-
-
-
 //Flight
+
+//Flight Add-Manage-Delete
+Route::post('/flightDashboard/addflight','FlightController@addflightVerify')->name('flight.addflightVerify');
+Route::get('/flightDashboard/manageflight','FlightController@manageflight')->name('flight.manageflight');
+Route::post('/flightDashboard/flightdelete','FlightController@flightdestroy')->name('flight.flightdestroy');
+
+
+//Flight Booking Show And Delete
+Route::get('/flightDashboard/flight-booking-list','FlightController@showflightallbooking')->name('flight.showflightallbooking');
+Route::post('/flightDashboard/delete','FlightController@bookingdestroy')->name('flight.bookingdestroy');
+
+//Flight Pending Booking
+Route::get('/flightDashboard/flight-pending-list','FlightController@ADflightBookList')->name('flight.ADflightBookList');
+Route::post('/flightDashboard/decline','FlightController@bookingremove')->name('flight.bookingremove');
+
+//Flight Review
+Route::get('/flightDashboard/checkflightreview','FlightController@checkflightreview')->name('flight.checkflightreview');
+
+//Flight Transaction
+Route::get('/flightDashboard/flighttransactionhistory','FlightController@flighttransactionhistory')->name('flight.flighttransactionhistory');
+
 //Flight Support
 Route::post('/flightDashboard/flightsupport','FlightController@flightsupportconfirm')->name('flight.flightsupportconfirm');
