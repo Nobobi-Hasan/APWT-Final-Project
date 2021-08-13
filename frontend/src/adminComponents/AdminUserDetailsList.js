@@ -1,8 +1,8 @@
-import Employee from './AdminEmployee';
+import AdminUserDetails from './AdminUserDetails';
 import './Admin.css';
 
-const AdminEmployeeList = ({list, callback})=>{
-    console.log(list);
+const AdminUserDetailsList = ({list})=>{
+    // console.log(list);
 
     return(
         <div>
@@ -15,13 +15,14 @@ const AdminEmployeeList = ({list, callback})=>{
                 <th>Email</th>
                 <th>Username</th>
                 <th>Status</th>
-                <th>Action</th>
+
+
 
                 {
-                    list.map((employee)=>{
+                    list.map((user)=>{
 
                         
-                            return <Employee {...employee} adminEmployeeDeletecallback={callback} />
+                            return <AdminUserDetails {...user}/>
                     
                     })
                 }
@@ -32,4 +33,4 @@ const AdminEmployeeList = ({list, callback})=>{
     )
 }
 
-export default AdminEmployeeList;
+export default AdminUserDetailsList;

@@ -1,7 +1,7 @@
 // import {Link} from 'react-router-dom';
 // import './Employee.css';
 
-const AdminEmployee = ({id, firstname, lastname, gender, email, username, adminEmployeeDeletecallback})=>{
+const AdminEmployee = ({id, firstname, lastname, gender, email, username, status, adminEmployeeDeletecallback})=>{
     return(
         <>
         
@@ -24,6 +24,7 @@ const AdminEmployee = ({id, firstname, lastname, gender, email, username, adminE
             <td>{gender}</td>
             <td>{email}</td>
             <td>{username}</td>
+            <td>{status}</td>
             <td><button className='delete-button' onClick={()=>adminEmployeeDeletecallback(id)}>Delete</button></td>
         </tr>
         

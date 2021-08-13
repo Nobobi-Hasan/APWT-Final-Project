@@ -65,8 +65,9 @@ class AdminEmployeeController extends Controller
     }
 
     public function activeEmployeeList(){
-        $employees = Employee::where('status', 'Active')->get();;
-        return view('admin.activeEmpList')->with('activeEmployeeList', $employees);
+        $employees = Employee::where('status', 'Active')->get();
+        return response()->json($employees);
+        // return view('admin.activeEmpList')->with('activeEmployeeList', $employees);
     }
 
     public function employeeDetails($id){

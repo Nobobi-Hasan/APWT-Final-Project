@@ -5,6 +5,8 @@ import { useFetch } from './adminComponents/useFetch';
 
 import AdminAddEmployee from "./adminComponents/AdminAddEmployee";
 import AdminEmployeeList from "./adminComponents/AdminEmployeeList";
+import AdminUserList from "./adminComponents/AdminUserList";
+import AdminUserDetailsList from "./adminComponents/AdminUserDetailsList";
 
 import AdminHotelADList from "./adminComponents/AdminHotelADList";
 import AdminHotelList from "./adminComponents/AdminHotelList";
@@ -27,6 +29,32 @@ function App() {
     const [adminemployee, setAdminEmployees] = useState([]);
     const url = 'http://127.0.0.1:8000/api/admin/all-employees';
     useFetch(url, setAdminEmployees);
+
+
+// Show all Active employees by admin
+    const [adminActiveemployee, setAdminActiveEmployees] = useState([]);
+    const urlA = 'http://127.0.0.1:8000/api/admin/active-employees';
+    useFetch(urlA, setAdminActiveEmployees);
+
+
+// Show all users by admin
+    const [adminUser, setAdminUser] = useState([]);
+    const urlU1 = 'http://127.0.0.1:8000/api/admin/all-users';
+    useFetch(urlU1, setAdminUser);
+
+
+// Show all Active users by admin
+    const [adminActiveUser, setAdminActiveUser] = useState([]);
+    const urlUA = 'http://127.0.0.1:8000/api/admin/active-users';
+    useFetch(urlUA, setAdminActiveUser);
+
+
+// Show user details by admin
+    const [adminUserDetails, setAdminUserDetails] = useState([]);
+    const urlUD = 'http://127.0.0.1:8000/api/admin/all-users';
+    useFetch(urlUD, setAdminUserDetails);
+
+
 
 // Show all Admins by admin
     const [adminadmin, setAdminAdmins] = useState([]);
@@ -92,6 +120,38 @@ function App() {
 
         const data = adminemployee.filter((employee) => employee.id != id);
         setAdminEmployees(data);
+
+        const dataA = adminActiveemployee.filter((employee) => employee.id != id);
+        setAdminActiveEmployees(dataA);
+    };
+
+    // Delete an User by admin
+    const adminUserDeleteCallback = (id) => {
+        const axios = require('axios').default;
+
+        axios({
+            method: 'post',
+            url: 'http://127.0.0.1:8000/api/admin/user/delete',
+            data:{
+                id:id,
+            }
+          });
+
+        const data = adminUser.filter((user) => user.id != id);
+        setAdminUser(data);
+
+        const dataA = adminActiveUser.filter((user) => user.id != id);
+        setAdminActiveUser(dataA);
+    };
+
+    
+
+    // Show an User Details by admin
+    const adminUserDetailsCallback = (id) => {
+
+        const data = adminUser.filter((user) => user.id == id);
+        setAdminUserDetails(data);
+        console.log(data);
     };
 
 
@@ -297,7 +357,7 @@ function App() {
 
                         <AdminNavbar2 />
                         <div className="main-container"> 
-                            
+                            <AdminUserList list={adminUser}  callbackD={adminUserDetailsCallback} callback={adminUserDeleteCallback} />
                         </div>
 
                     </div>
@@ -308,7 +368,18 @@ function App() {
 
                         <AdminNavbar2 />
                         <div className="main-container"> 
-                            
+                            <AdminUserList list={adminActiveUser} callbackD={adminUserDetailsCallback} callback={adminUserDeleteCallback} />
+                        </div>
+
+                    </div>
+                </Route>
+
+
+                <Route exact path="/admin/user/details/:id">
+                    <div className="wrapper">
+                        <AdminNavbar2 />
+                        <div className="main-container"> 
+                            <AdminUserDetailsList list={adminUserDetails}/>
                         </div>
 
                     </div>
@@ -346,7 +417,7 @@ function App() {
 
                         <AdminNavbar2 />
                         <div className="main-container"> 
-                            
+                            <AdminEmployeeList list={adminActiveemployee} callback={adminEmployeeDeleteCallback} />
                         </div>
 
                     </div>

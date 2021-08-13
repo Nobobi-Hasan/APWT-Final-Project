@@ -22,11 +22,20 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::post('/admin/add-employee', 'AdminEmployeeController@employeeAddVerify')->name('adminEmployee.employeeAddVerify');
 Route::get('/admin/all-employees', 'AdminEmployeeController@employeeList')->name('adminEmployee.employeeList');
 Route::post('/admin/employee/delete', 'AdminEmployeeController@employeeDestroy')->name('adminEmployee.employeeDestroy');
+Route::get('/admin/active-employees', 'AdminEmployeeController@activeEmployeeList')->name('adminEmployee.activeEmployeeList');
 
 
 Route::post('/admin/add-admin', 'AdminController@adminAddVerify')->name('admin.adminAddVerify');
 Route::get('/admin/all-admins', 'AdminController@adminList')->name('admin.adminList');
 Route::post('/admin/admin/delete', 'AdminController@adminDestroy')->name('admin.adminDestroy');
+
+
+Route::get('/admin/all-users', 'AdminUserController@userList')->name('adminUser.userList');
+Route::get('/admin/active-users', 'AdminUserController@activeUserList')->name('adminUser.activeUserList');
+Route::get('/admin/user/details/{id}', 'AdminUserController@userDetails')->name('adminUser.userDetails');
+// Route::get('/admin/user/delete/{id}', 'AdminUserController@userDelete')->name('adminUser.userDelete');
+Route::post('/admin/user/delete/', 'AdminUserController@userDestroy')->name('adminUser.userDestroy');
+
 
 
 Route::get('/admin/hotels-pending', 'AdminHotelController@adHotel')->name('adminHotel.adHotel');

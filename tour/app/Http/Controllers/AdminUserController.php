@@ -9,17 +9,20 @@ class AdminUserController extends Controller
 {
     public function userList(){
         $users = User::all();
-        return view('admin.userList')->with('allUserList', $users);
+        return response()->json($users);
+        // return view('admin.userList')->with('allUserList', $users);
     }
 
     public function activeUserList(){
-        $users = User::where('status', 'Active')->get();;
-        return view('admin.activeUserList')->with('activeUserList', $users);
+        $users = User::where('status', 'Active')->get();
+        return response()->json($users);
+        // return view('admin.activeUserList')->with('activeUserList', $users);
     }
 
     public function userDetails($id){
         $user = User::find($id);
-        return view('admin.userDetails')->with('user', $user);
+        return response()->json($user);
+        // return view('admin.userDetails')->with('user', $user);
     }
 
     public function userDelete($id){
@@ -28,9 +31,12 @@ class AdminUserController extends Controller
 
     }
 
-    public function userDestroy($id){
-        User::destroy($id);
-        return redirect()->route('adminUser.userList');
+    public function userDestroy(Request $req){
+        // User::destroy($id);
+        // return redirect()->route('adminUser.userList');
+
+        $user = User::find($req->id);
+        $user->delete();
     }
 
 }
