@@ -20,6 +20,8 @@ import EmployeeAdvertisementList from "./employeeComponents/EmployeeAdvertisemen
 import EmployeeGalleryList from "./employeeComponents/EmployeeGalleryList";
 import EmployeePromoList from "./employeeComponents/EmployeePromoList";
 import EmployeeSupportList from "./employeeComponents/EmployeeSupportList";
+import EmployeeUserList from "./employeeComponents/EmployeeUserList";
+import EmployeeUserDetailsList from "./employeeComponents/EmployeeUserDetailsList";
 
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
@@ -290,6 +292,24 @@ const employeeSupportDeletecallback = (id) => {
  setEmployeeSupport(data);
 };
 
+
+// Show all users by employee
+const [employeeUser, setEmployeeUser] = useState([]);
+const emp10 = 'http://127.0.0.1:8000/api/employee/userlist';
+useFetch(emp10, setEmployeeUser);
+
+// Show user details by employee
+const [employeeUserDetails, setEmployeeUserDetails] = useState([]);
+const emp11 = 'http://127.0.0.1:8000/api/employee/userlist';
+useFetch(emp11, setEmployeeUserDetails);
+
+ // Show an User Details by employee
+ const employeeUserDetailscallback = (id) => {
+  const data = employeeUser.filter((user) => user.id === id);
+  setEmployeeUserDetails(data);
+  console.log(data);
+};
+
   return (
     <Router>
         {/* <EmployeeNavbar /> */}
@@ -308,11 +328,22 @@ const employeeSupportDeletecallback = (id) => {
         <Route exact path="/employee/userList">
         <div className="wrapper">
             <EmployeeNavbar />
-              <div className="main-container">      
+              <div className="main-container">  
+              <EmployeeUserList list={employeeUser}  callback={employeeUserDetailscallback} />    
               </div>
 
           </div>
         </Route>
+
+        <Route exact path="/employee/user/details/:id">
+                    <div className="wrapper">
+                        <EmployeeNavbar />
+                        <div className="main-container"> 
+                            <EmployeeUserDetailsList list={employeeUserDetails}/>
+                        </div>
+
+                    </div>
+                </Route>
 
         <Route exact path="/employee/packageAdd">
         <div className="wrapper">
