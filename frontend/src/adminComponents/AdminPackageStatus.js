@@ -11,11 +11,7 @@ const AdminPackageStatus = ({list, callback})=>{
     const onSubmit = (e) => {
         e.preventDefault();
        
-        callback({place, status});
-        const p="dd";
-        const s="ss";
-        console.log(p);
-        console.log(s);
+        callback({place: place, status: status});
 
         console.log(place);
         console.log(status);
@@ -25,21 +21,21 @@ const AdminPackageStatus = ({list, callback})=>{
     return(
         <>
 
-            <div id="form">
+            <div id="registration-form">
                 <div className='fieldset'>
                     <legend>Package Status</legend>
                     <form className='form' onSubmit={onSubmit}>
 
                         <label for="title">Select Status:</label>
 
-                            <select name="place" id="place">
+                            <select name="place" id="place" onChange={(e) => setPlace(e.target.value)}>
 
 
                             {
                                 list.map((packageS)=>(
 
                                     
-                                    <option key={packageS.place} value={packageS.place} onChange={(e) => setPlace(e.target.value)}>{packageS.place}</option>
+                                    <option value={packageS.place}>{packageS.place}</option>
                                 
                                 ))
                             }
@@ -49,10 +45,10 @@ const AdminPackageStatus = ({list, callback})=>{
                             <br/>
 
                             <label for="status">Status:</label>
-                            <select name="status" id="status">
+                            <select name="status" id="status" onChange={(e) => setStatus(e.target.value)}>
 
-                                <option value="Upcoming" onChange={(e) => setStatus(e.target.value)}>Upcoming</option>
-                                <option value="Completed" onChange={(e) => setStatus(e.target.value)}>Completed</option>
+                                <option value="Upcoming">Upcoming</option>
+                                <option value="Completed">Completed</option>
                                 
                             </select>
                             <br/>

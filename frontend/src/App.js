@@ -493,14 +493,17 @@ useFetch(urlPkS, setAdminPackageAll);
     };
 
 // Delete Package Status change by admin
-    const adminPackageStatusCallback = (id) => {
+    const adminPackageStatusCallback = ({place, status}) => {
         const axios = require('axios').default;
+
+        console.log(place);
 
         axios({
             method: 'post',
-            url: 'http://127.0.0.1:8000/api/admin/package-statusU',
+            url: 'http://127.0.0.1:8000/api/admin/package-status',
             data:{
-                id:id,
+                place: place,
+                status: status,
             }
             });
 

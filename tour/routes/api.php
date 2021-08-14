@@ -102,7 +102,7 @@ Route::post('/admin/package/delete', 'AdminPackageController@packageDestroy')->n
 Route::get('/admin/package-bookings', 'AdminPackageController@packageBookingList')->name('AdminPackage.packageBookingList');
 
 Route::get('/admin/package-status', 'AdminPackageController@packageStatus')->name('AdminPackage.packageStatus');
-Route::post('/admin/package-statusU', 'AdminPackageController@packageStatusUpdate')->name('AdminPackage.packageStatusUpdate');
+Route::post('/admin/package-status', 'AdminPackageController@packageStatusUpdate')->name('AdminPackage.packageStatusUpdate');
 
 
 
