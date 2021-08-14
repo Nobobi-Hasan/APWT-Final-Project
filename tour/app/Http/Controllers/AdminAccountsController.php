@@ -11,12 +11,14 @@ class AdminAccountsController extends Controller
 {
     public function income(){
         $incomes = Income::all();
-        return view('admin.incomeList')->with('incomes', $incomes);
+        return response()->json($incomes);
+        // return view('admin.incomeList')->with('incomes', $incomes);
     }
 
     public function transaction(){
         $transactions = Transaction::all();
-        return view('admin.transactionList')->with('transactions', $transactions);
+        return response()->json($transactions);
+        // return view('admin.transactionList')->with('transactions', $transactions);
     }
 
     public function salary(){

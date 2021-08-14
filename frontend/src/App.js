@@ -27,12 +27,17 @@ import AdminPackageBookingsList from "./adminComponents/AdminPackageBookingsList
 import AdminPackageStatus from "./adminComponents/AdminPackageStatus";
 
 
+
+import AdminIncomeStatementList from "./adminComponents/AdminIncomeStatementList";
+
+
 import 'font-awesome/css/font-awesome.min.css';
 
 
 import AdminAdminList from "./adminComponents/AdminAdminList";
 
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import AdminIncomeStatement from "./adminComponents/AdminIncomeStatement";
 
 
 function App() {
@@ -134,26 +139,33 @@ function App() {
 
 
 // Show Pending Packages by admin
-const [adminPackageAD, setAdminPackageAD] = useState([]);
-const urlPkAD = 'http://127.0.0.1:8000/api/admin/package-pending';
-useFetch(urlPkAD, setAdminPackageAD);
+    const [adminPackageAD, setAdminPackageAD] = useState([]);
+    const urlPkAD = 'http://127.0.0.1:8000/api/admin/package-pending';
+    useFetch(urlPkAD, setAdminPackageAD);
 
 
 // Show all Packages by admin
-const [adminPackage, setAdminPackage] = useState([]);
-const urlPk = 'http://127.0.0.1:8000/api/admin/all-packages';
-useFetch(urlPk, setAdminPackage);
+    const [adminPackage, setAdminPackage] = useState([]);
+    const urlPk = 'http://127.0.0.1:8000/api/admin/all-packages';
+    useFetch(urlPk, setAdminPackage);
 
 // Show all Package Bookings by admin
-const [adminPackageBookings, setAdminPackageBookings] = useState([]);
-const urlPkB = 'http://127.0.0.1:8000/api/admin/package-bookings';
-useFetch(urlPkB, setAdminPackageBookings);
+    const [adminPackageBookings, setAdminPackageBookings] = useState([]);
+    const urlPkB = 'http://127.0.0.1:8000/api/admin/package-bookings';
+    useFetch(urlPkB, setAdminPackageBookings);
 
 
 // Package Status change by admin
-const [adminPackageAll, setAdminPackageAll] = useState([]);
-const urlPkS = 'http://127.0.0.1:8000/api/admin/package-status';
-useFetch(urlPkS, setAdminPackageAll);
+    const [adminPackageAll, setAdminPackageAll] = useState([]);
+    const urlPkS = 'http://127.0.0.1:8000/api/admin/package-status';
+    useFetch(urlPkS, setAdminPackageAll);
+
+
+// Income Statement by admin
+const [adminIncomeStatement, setadminIncomeStatement] = useState([]);
+const urlIS = 'http://127.0.0.1:8000/api/admin/income-statement';
+useFetch(urlIS, setadminIncomeStatement);
+
 
 
 
@@ -511,9 +523,6 @@ useFetch(urlPkS, setAdminPackageAll);
         // setAdminPackage(data);
     };
 
-        
-
-
 
 
   return (
@@ -795,7 +804,7 @@ useFetch(urlPkS, setAdminPackageAll);
 
                         <AdminNavbar2 />
                         <div className="main-container"> 
-                            
+                            <AdminIncomeStatementList list={adminIncomeStatement}/>
                         </div>
 
                     </div>

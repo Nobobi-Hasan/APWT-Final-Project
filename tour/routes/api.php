@@ -105,6 +105,14 @@ Route::get('/admin/package-status', 'AdminPackageController@packageStatus')->nam
 Route::post('/admin/package-status', 'AdminPackageController@packageStatusUpdate')->name('AdminPackage.packageStatusUpdate');
 
 
+Route::get('/admin/income-statement', 'AdminAccountsController@income')->name('AdminAccounts.income');
+Route::get('/admin/transaction-history', 'AdminAccountsController@transaction')->name('AdminAccounts.transaction');
+Route::get('/admin/pending-salary', 'AdminAccountsController@salary')->name('AdminAccounts.salary');
+Route::get('/admin/salary/approve{id}', 'AdminAccountsController@salaryApprove')->name('AdminAccounts.salaryApprove');
+Route::post('/admin/salary/approve{id}', 'AdminAccountsController@salaryAdd')->name('AdminAccounts.salaryAdd');
+Route::get('/admin/salary/decline{id}', 'AdminAccountsController@salaryDecline')->name('AdminAccounts.salaryDecline');
+Route::post('/admin/salary/decline{id}', 'AdminAccountsController@salaryRemove')->name('AdminAccounts.salaryRemove');
+
 
 
 // Admin API End
