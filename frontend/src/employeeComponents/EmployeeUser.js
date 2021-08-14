@@ -2,7 +2,7 @@
 import { useHistory } from 'react-router-dom';
 
 
-const EmployeeUser = ({id, firstname, lastname, gender, email, username, employeeUserDetailscallback})=>{
+const EmployeeUser = ({id, email, username, employeeUserDetailscallback})=>{
     const history = useHistory();
 
     const routeChange = () =>{ 
