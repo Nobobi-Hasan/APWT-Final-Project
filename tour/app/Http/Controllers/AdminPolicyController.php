@@ -10,7 +10,8 @@ class AdminPolicyController extends Controller
 {
     public function index(){
         $policy = Policy::where('id', 1)->first();
-        return view('admin.policy')->with('policy', $policy);
+        return response()->json($policy);
+        // return view('admin.policy')->with('policy', $policy);
     }
 
     public function form($id){

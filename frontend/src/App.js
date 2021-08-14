@@ -35,6 +35,9 @@ import AdminSalaryADList from "./adminComponents/AdminSalaryADList";
 import AdminSupportList from "./adminComponents/AdminSupportList";
 
 
+import AdminPrivacy from "./adminComponents/AdminPrivacy";
+
+
 import 'font-awesome/css/font-awesome.min.css';
 
 
@@ -186,6 +189,13 @@ function App() {
     const [adminSupport, setAdminSupport] = useState([]);
     const urlS = 'http://127.0.0.1:8000/api/admin/support';
     useFetch(urlS, setAdminSupport);
+
+
+
+//Show Privacy Policy bt Admin
+    const [adminPrivacy, setAdminPrivacy] = useState([]);
+    const urlPP = 'http://127.0.0.1:8000/api/admin/policy';
+    useFetch(urlPP, setAdminPrivacy);
 
 
 
@@ -924,7 +934,7 @@ function App() {
 
                         <AdminNavbar2 />
                         <div className="main-container"> 
-                            
+                            <AdminPrivacy list={adminPrivacy} />
                         </div>
 
                     </div>
