@@ -23,7 +23,8 @@ class AdminAccountsController extends Controller
 
     public function salary(){
         $salaries = Salary::where('req', 'Pending')->get();
-        return view('admin.ADSalary')->with('salaries', $salaries);
+        return response()->json($salaries);
+        // return view('admin.ADSalary')->with('salaries', $salaries);
     }
 
     public function salaryApprove($id){
@@ -31,12 +32,12 @@ class AdminAccountsController extends Controller
         return view('admin.salaryApprove')->with('salary', $salary);
     }
 
-    public function salaryAdd($id){
-        $salary = Salary::find($id);
+    public function salaryAdd(Request $req){
+        $salary = Salary::find($req -> id);
         $salary->req = 'Approved';
         $salary->save();
 
-        return redirect()->route('AdminAccounts.salary');
+        // return redirect()->route('AdminAccounts.salary');
     }
 
     public function salaryDecline($id){
@@ -44,11 +45,11 @@ class AdminAccountsController extends Controller
         return view('admin.salaryDecline')->with('salary', $salary);
     }
 
-    public function salaryRemove($id){
-        $salary = Salary::find($id);
+    public function salaryRemove(Request $req){
+        $salary = Salary::find($req -> id);
         $salary->req = 'Declined';
         $salary->save();
 
-        return redirect()->route('AdminAccounts.salary');
+        // return redirect()->route('AdminAccounts.salary');
     }
 }

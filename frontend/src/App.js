@@ -29,6 +29,8 @@ import AdminPackageStatus from "./adminComponents/AdminPackageStatus";
 
 
 import AdminIncomeStatementList from "./adminComponents/AdminIncomeStatementList";
+import AdminTransactionList from "./adminComponents/AdminTransactionList";
+import AdminSalaryADList from "./adminComponents/AdminSalaryADList";
 
 
 import 'font-awesome/css/font-awesome.min.css';
@@ -37,7 +39,6 @@ import 'font-awesome/css/font-awesome.min.css';
 import AdminAdminList from "./adminComponents/AdminAdminList";
 
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import AdminIncomeStatement from "./adminComponents/AdminIncomeStatement";
 
 
 function App() {
@@ -162,9 +163,20 @@ function App() {
 
 
 // Income Statement by admin
-const [adminIncomeStatement, setadminIncomeStatement] = useState([]);
-const urlIS = 'http://127.0.0.1:8000/api/admin/income-statement';
-useFetch(urlIS, setadminIncomeStatement);
+    const [adminIncomeStatement, setadminIncomeStatement] = useState([]);
+    const urlIS = 'http://127.0.0.1:8000/api/admin/income-statement';
+    useFetch(urlIS, setadminIncomeStatement);
+
+// Transaction History by admin
+    const [adminTransaction, setAdminTransaction] = useState([]);
+    const urlTH = 'http://127.0.0.1:8000/api/admin/transaction-history';
+    useFetch(urlTH, setAdminTransaction);
+
+
+// Show Pending Salary by admin
+    const [adminSalaryAD, setAdminSalaryAD] = useState([]);
+    const urlPS = 'http://127.0.0.1:8000/api/admin/pending-salary';
+    useFetch(urlPS, setAdminSalaryAD);
 
 
 
@@ -504,7 +516,7 @@ useFetch(urlIS, setadminIncomeStatement);
         setAdminPackage(data);
     };
 
-// Delete Package Status change by admin
+// Package Status change by admin
     const adminPackageStatusCallback = ({place, status}) => {
         const axios = require('axios').default;
 
@@ -522,6 +534,43 @@ useFetch(urlIS, setadminIncomeStatement);
         // const data = adminPackage.filter((packageD) => packageD.id != id);
         // setAdminPackage(data);
     };
+
+
+
+
+    // Approve Salary by admin
+    const adminSalaryApproveCallback = (id) => {
+        const axios = require('axios').default;
+
+        axios({
+            method: 'post',
+            url: 'http://127.0.0.1:8000/api/admin/salary/approve',
+            data:{
+                id:id,
+            }
+          });
+
+        const data = adminSalaryAD.filter((salaryAD) => salaryAD.id != id);
+        setAdminSalaryAD(data);
+    };
+
+
+    // Decline Salary by admin
+    const adminSalaryDeclineCallback = (id) => {
+        const axios = require('axios').default;
+
+        axios({
+            method: 'post',
+            url: 'http://127.0.0.1:8000/api/admin/salary/decline',
+            data:{
+                id:id,
+            }
+          });
+
+          const data = adminSalaryAD.filter((salaryAD) => salaryAD.id != id);
+          setAdminSalaryAD(data);
+    };
+
 
 
 
@@ -815,7 +864,7 @@ useFetch(urlIS, setadminIncomeStatement);
 
                         <AdminNavbar2 />
                         <div className="main-container"> 
-                            
+                            <AdminTransactionList list={adminTransaction}/>
                         </div>
 
                     </div>
@@ -826,7 +875,7 @@ useFetch(urlIS, setadminIncomeStatement);
 
                         <AdminNavbar2 />
                         <div className="main-container"> 
-                            
+                            <AdminSalaryADList list={adminSalaryAD} callbackA={adminSalaryApproveCallback} callbackD={adminSalaryDeclineCallback} />
                         </div>
 
                     </div>
