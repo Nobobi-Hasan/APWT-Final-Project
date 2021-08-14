@@ -18,9 +18,14 @@ import AdminFlightList from "./adminComponents/AdminFlightList";
 import AdminCarBookingsList from "./adminComponents/AdminCarBookingsList";
 import AdminFlightBookingsList from "./adminComponents/AdminFlightBookingsList";
 
-
 import AdminPlaceADList from "./adminComponents/AdminPlaceADList";
 import AdminPlaceList from "./adminComponents/AdminPlaceList";
+
+import AdminPackageADList from "./adminComponents/AdminPackageADList";
+import AdminPackageList from "./adminComponents/AdminPackageList";
+import AdminPackageBookingsList from "./adminComponents/AdminPackageBookingsList";
+import AdminPackageStatus from "./adminComponents/AdminPackageStatus";
+
 
 import 'font-awesome/css/font-awesome.min.css';
 
@@ -116,16 +121,39 @@ function App() {
 
 
 // Show Pending Places by admin
-const [adminPlaceAD, setAdminPlaceAD] = useState([]);
-const urlPAD = 'http://127.0.0.1:8000/api/admin/place-pending';
-useFetch(urlPAD, setAdminPlaceAD);
+    const [adminPlaceAD, setAdminPlaceAD] = useState([]);
+    const urlPAD = 'http://127.0.0.1:8000/api/admin/place-pending';
+    useFetch(urlPAD, setAdminPlaceAD);
 
 
 // Show all Places by admin
-const [adminPlace, setAdminPlace] = useState([]);
-const urlP = 'http://127.0.0.1:8000/api/admin/all-places';
-useFetch(urlP, setAdminPlace);
+    const [adminPlace, setAdminPlace] = useState([]);
+    const urlP = 'http://127.0.0.1:8000/api/admin/all-places';
+    useFetch(urlP, setAdminPlace);
 
+
+
+// Show Pending Packages by admin
+const [adminPackageAD, setAdminPackageAD] = useState([]);
+const urlPkAD = 'http://127.0.0.1:8000/api/admin/package-pending';
+useFetch(urlPkAD, setAdminPackageAD);
+
+
+// Show all Packages by admin
+const [adminPackage, setAdminPackage] = useState([]);
+const urlPk = 'http://127.0.0.1:8000/api/admin/all-packages';
+useFetch(urlPk, setAdminPackage);
+
+// Show all Package Bookings by admin
+const [adminPackageBookings, setAdminPackageBookings] = useState([]);
+const urlPkB = 'http://127.0.0.1:8000/api/admin/package-bookings';
+useFetch(urlPkB, setAdminPackageBookings);
+
+
+// Package Status change by admin
+const [adminPackageAll, setAdminPackageAll] = useState([]);
+const urlPkS = 'http://127.0.0.1:8000/api/admin/package-status';
+useFetch(urlPkS, setAdminPackageAll);
 
 
 
@@ -411,6 +439,80 @@ useFetch(urlP, setAdminPlace);
 
 
 
+    // Approve Package by admin
+    const adminPackageApproveCallback = (id) => {
+        const axios = require('axios').default;
+
+        axios({
+            method: 'post',
+            url: 'http://127.0.0.1:8000/api/admin/package/approve',
+            data:{
+                id:id,
+            }
+            });
+
+        const data = adminPackageAD.filter((packageAD) => packageAD.id != id);
+        const data2 = adminPackageAD.filter((packageAD) => packageAD.id == id);
+
+        setAdminPackageAD(data);
+        setAdminPackage([...adminPackage, ...data2]);
+    };
+
+
+// Decline Package by admin
+    const adminPackageDeclineCallback = (id) => {
+        const axios = require('axios').default;
+
+        axios({
+            method: 'post',
+            url: 'http://127.0.0.1:8000/api/admin/package/decline',
+            data:{
+                id:id,
+            }
+            });
+
+        const data = adminPackageAD.filter((packageAD) => packageAD.id != id);
+        setAdminPackageAD(data);
+    };
+
+
+// Delete Package by admin
+    const adminPackageDeleteCallback = (id) => {
+        const axios = require('axios').default;
+
+        axios({
+            method: 'post',
+            url: 'http://127.0.0.1:8000/api/admin/package/delete',
+            data:{
+                id:id,
+            }
+            });
+
+        const data = adminPackage.filter((packageD) => packageD.id != id);
+        setAdminPackage(data);
+    };
+
+// Delete Package Status change by admin
+    const adminPackageStatusCallback = (id) => {
+        const axios = require('axios').default;
+
+        axios({
+            method: 'post',
+            url: 'http://127.0.0.1:8000/api/admin/package-statusU',
+            data:{
+                id:id,
+            }
+            });
+
+        // const data = adminPackage.filter((packageD) => packageD.id != id);
+        // setAdminPackage(data);
+    };
+
+        
+
+
+
+
   return (
     <Router>
             {/* <Navbar /> */}
@@ -620,7 +722,7 @@ useFetch(urlP, setAdminPlace);
 
                         <AdminNavbar2 />
                         <div className="main-container"> 
-                            
+                            <AdminPackageADList list={adminPackageAD} callbackA={adminPackageApproveCallback} callbackD={adminPackageDeclineCallback} />
                         </div>
 
                     </div>
@@ -631,7 +733,7 @@ useFetch(urlP, setAdminPlace);
 
                         <AdminNavbar2 />
                         <div className="main-container"> 
-                            
+                            <AdminPackageList list={adminPackage} callback={adminPackageDeleteCallback} />
                         </div>
 
                     </div>
@@ -642,7 +744,7 @@ useFetch(urlP, setAdminPlace);
 
                         <AdminNavbar2 />
                         <div className="main-container"> 
-                            
+                            <AdminPackageBookingsList list={adminPackageBookings} />
                         </div>
 
                     </div>
@@ -653,7 +755,7 @@ useFetch(urlP, setAdminPlace);
 
                         <AdminNavbar2 />
                         <div className="main-container"> 
-                            
+                            <AdminPackageStatus list={adminPackageAll} callback={adminPackageStatusCallback} /> 
                         </div>
 
                     </div>

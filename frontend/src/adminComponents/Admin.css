@@ -393,7 +393,7 @@ fieldset{
   }
 
   .approve-button{
-    background-color: #1ae23b;
+    background-color: green;
     color: white;
     height: 25px;
     width: 60px;
@@ -402,7 +402,7 @@ fieldset{
 
   .approve-button:hover{
     background-color:white;
-    color: #1ae23b;
+    color: green;
     height: 25px;
     width: 60px;
     border-radius: 25px;

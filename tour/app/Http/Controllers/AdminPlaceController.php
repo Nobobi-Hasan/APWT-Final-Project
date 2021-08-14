@@ -41,7 +41,8 @@ class AdminPlaceController extends Controller
 
     public function placeList(){
         $places = Place::where('req', 'Approved')->get();
-        return view('admin.placeList')->with('placeList', $places);
+        return response()->json($places);
+        // return view('admin.placeList')->with('placeList', $places);
     }
 
     public function placeDelete($id){

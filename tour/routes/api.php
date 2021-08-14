@@ -89,4 +89,22 @@ Route::post('/admin/place/delete', 'AdminPlaceController@placeDestroy')->name('A
 
 
 
+Route::get('/admin/package-pending', 'AdminPackageController@adPackage')->name('AdminPackage.adPackage');
+
+Route::post('/admin/package/approve', 'AdminPackageController@packageAdd')->name('AdminPackage.packageAdd');
+
+Route::post('/admin/package/decline', 'AdminPackageController@packageRemove')->name('AdminPackage.packageRemove');
+
+Route::get('/admin/all-packages', 'AdminPackageController@packageList')->name('AdminPackage.packageList');
+
+Route::post('/admin/package/delete', 'AdminPackageController@packageDestroy')->name('AdminPackage.packageDestroy');
+
+Route::get('/admin/package-bookings', 'AdminPackageController@packageBookingList')->name('AdminPackage.packageBookingList');
+
+Route::get('/admin/package-status', 'AdminPackageController@packageStatus')->name('AdminPackage.packageStatus');
+Route::post('/admin/package-statusU', 'AdminPackageController@packageStatusUpdate')->name('AdminPackage.packageStatusUpdate');
+
+
+
+
 // Admin API End

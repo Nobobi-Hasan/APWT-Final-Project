@@ -10,12 +10,14 @@ class AdminPackageController extends Controller
 {
     public function adPackage(){
         $packages = Package::where('req', 'Pending')->get();
-        return view('admin.ADPackage')->with('ADPackageList', $packages);
+        return response()->json($packages);
+        // return view('admin.ADPackage')->with('ADPackageList', $packages);
     }
 
     public function packageList(){
         $packages = Package::where('req', 'Approved')->get();
-        return view('admin.packageList')->with('packageList', $packages);
+        return response()->json($packages);
+        // return view('admin.packageList')->with('packageList', $packages);
     }
 
     public function packageApprove($id){
@@ -23,12 +25,12 @@ class AdminPackageController extends Controller
         return view('admin.packageApprove')->with('package', $package);
     }
 
-    public function packageAdd($id){
-        $package = Package::find($id);
+    public function packageAdd(Request $req){
+        $package = Package::find($req->id);
         $package->req = 'Approved';
         $package->save();
 
-        return redirect()->route('AdminPackage.adPackage');
+        // return redirect()->route('AdminPackage.adPackage');
     }
 
     public function packageDecline($id){
@@ -36,9 +38,13 @@ class AdminPackageController extends Controller
         return view('admin.packageDecline')->with('package', $package);
     }
 
-    public function packageRemove($id){
-        Package::destroy($id);
-        return redirect()->route('AdminPackage.adPackage');
+    public function packageRemove(Request $req){
+        $package = Package::find($req->id);
+        $package->req = 'Declined';
+        $package->save();
+
+        // Package::destroy($id);
+        // return redirect()->route('AdminPackage.adPackage');
     }
 
     public function packageDelete($id){
@@ -46,15 +52,16 @@ class AdminPackageController extends Controller
         return view('admin.packageDelete')->with('package', $package);
     }
 
-    public function packageDestroy($id){
-        Package::destroy($id);
-        return redirect()->route('AdminPackage.packageList');
+    public function packageDestroy(equest $req){
+        Package::destroy($req->id);
+        // return redirect()->route('AdminPackage.packageList');
     }
 
 
     public function packageBookingList(){
         $packageBooks= Packagebook::all();
-        return view('admin.packageBookingList')->with('packageBooks', $packageBooks);
+        return response()->json($packageBooks);
+        // return view('admin.packageBookingList')->with('packageBooks', $packageBooks);
     }
 
 
@@ -62,7 +69,8 @@ class AdminPackageController extends Controller
     public function packageStatus(){
         
         $packages = Package:: all();
-        return view('admin.packageStatus')->with('packages', $packages);
+        return response()->json($packages);
+        // return view('admin.packageStatus')->with('packages', $packages);
     }
 
 
@@ -71,7 +79,7 @@ class AdminPackageController extends Controller
         $package = Package::where('place', $req->place)->first();
         $package->status = $req->status;
         $package->save();
-        return redirect()->route('AdminPackage.packageList');
+        // return redirect()->route('AdminPackage.packageList');
 
     }
 

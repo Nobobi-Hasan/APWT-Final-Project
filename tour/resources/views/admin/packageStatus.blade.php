@@ -29,29 +29,29 @@
 						<form action="#" method="post" data-validate="parsley">
 						@csrf
 
-					 <label for="title">Select Status:</label>
+							<label for="title">Select Status:</label>
 
-						<select name="place" id="place">
-						@foreach($packages as $package)
-						<option value="{{$package->place}}">{{$package->place}}</option>
-						@endforeach
-						</select> <br><br>
+								<select name="place" id="place">
+								@foreach($packages as $package)
+								<option value="{{$package->place}}">{{$package->place}}</option>
+								@endforeach
+								</select> <br><br>
 
-                        <label for="status">Status:</label>
-						<select name="status" id="status">
+								<label for="status">Status:</label>
+								<select name="status" id="status">
 
-							<option value="Upcoming">Upcoming</option>
-							<option value="Completed">Completed</option>
-							
-						</select> <br><br>
+									<option value="Upcoming">Upcoming</option>
+									<option value="Completed">Completed</option>
+									
+								</select> <br><br>
 
-					 <input type="submit" value="Submit">
-					 <br>
+							<input type="submit" value="Submit">
+							<br>
 
-				</form> 
+						</form> 
+					</div>
+				</div>
 			</div>
-        </div>
-
 			<!--main-section end-->
 			<!--main container end-->
 		</div>
