@@ -27,10 +27,12 @@ import AdminPackageBookingsList from "./adminComponents/AdminPackageBookingsList
 import AdminPackageStatus from "./adminComponents/AdminPackageStatus";
 
 
-
 import AdminIncomeStatementList from "./adminComponents/AdminIncomeStatementList";
 import AdminTransactionList from "./adminComponents/AdminTransactionList";
 import AdminSalaryADList from "./adminComponents/AdminSalaryADList";
+
+
+import AdminSupportList from "./adminComponents/AdminSupportList";
 
 
 import 'font-awesome/css/font-awesome.min.css';
@@ -177,6 +179,13 @@ function App() {
     const [adminSalaryAD, setAdminSalaryAD] = useState([]);
     const urlPS = 'http://127.0.0.1:8000/api/admin/pending-salary';
     useFetch(urlPS, setAdminSalaryAD);
+
+
+
+// Show Support Messages by admin
+    const [adminSupport, setAdminSupport] = useState([]);
+    const urlS = 'http://127.0.0.1:8000/api/admin/support';
+    useFetch(urlS, setAdminSupport);
 
 
 
@@ -573,6 +582,24 @@ function App() {
 
 
 
+    // Delete Support by admin
+    const adminSupportDeleteCallback = (id) => {
+        const axios = require('axios').default;
+
+        axios({
+            method: 'post',
+            url: 'http://127.0.0.1:8000/api/admin/support/delete',
+            data:{
+                id:id,
+            }
+          });
+
+        const data = adminSupport.filter((support) => support.id != id);
+        setAdminSupport(data);
+    };
+
+
+
 
   return (
     <Router>
@@ -886,7 +913,7 @@ function App() {
 
                         <AdminNavbar2 />
                         <div className="main-container"> 
-                            
+                            <AdminSupportList list={adminSupport} callback={adminSupportDeleteCallback} />
                         </div>
 
                     </div>

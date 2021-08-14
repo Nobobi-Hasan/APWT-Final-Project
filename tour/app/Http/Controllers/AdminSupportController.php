@@ -9,7 +9,8 @@ class AdminSupportController extends Controller
 {
     public function index(){
         $supports = Support::all();
-        return view('admin.supportList')->with('supports', $supports);
+        return response()->json($supports);
+        // return view('admin.supportList')->with('supports', $supports);
     }
 
     public function supportDelete($id){
@@ -18,8 +19,8 @@ class AdminSupportController extends Controller
         return view('admin.supportDelete')->with('supports', $supports);
     }
 
-    public function supportDestroy($id){
-        Support::destroy($id);
-        return redirect()->route('AdminSupport.index');
+    public function supportDestroy(Request $req){
+        Support::destroy($req -> id);
+        // return redirect()->route('AdminSupport.index');
     }
 }

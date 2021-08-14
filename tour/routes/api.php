@@ -115,4 +115,9 @@ Route::post('/admin/salary/decline', 'AdminAccountsController@salaryRemove')->na
 
 
 
+
+Route::get('/admin/support', 'AdminSupportController@index')->name('AdminSupport.index');
+Route::post('/admin/support/delete', 'AdminSupportController@supportDestroy')->name('AdminSupport.supportDestroy');
+
+
 // Admin API End
