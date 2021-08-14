@@ -10,7 +10,7 @@ const ServicePendingBooking = ({id, user_id, room_id, fromdate, todate, serviceP
             <td>{fromdate}</td>
             <td>{todate}</td>
             <td> 
-            <button className='delete-button' onClick={()=>servicePendingBookingApprovecallback(id)}>Approve</button>
+            <button className='approve-button' onClick={()=>servicePendingBookingApprovecallback(id)}>Approve</button>
             <button className='delete-button' onClick={()=>servicePendingBookingDeclinecallback(id)}>Decline</button>
             </td>
 

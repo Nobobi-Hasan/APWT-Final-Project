@@ -19,14 +19,11 @@ const ServiceFlightSupport = ({ status, callback }) => {
         history.push('/flightDashboard');
     };
     return (
-        <div>
-            <h2>
-                {/* This is {status} Hotel Facility page id: {eid} */}
-                <center>This is {status} page</center>
-            </h2>
-            <form className='form' onSubmit={onSubmit}>
-            <fieldset>
-
+        <div id="registration-form">
+        <div className='fieldset'>
+            <legend>Airplane Support</legend>
+                <form className='form' onSubmit={onSubmit}>
+        
                 <label>
                     Company Name :
                     <input type="text" name="username" value={username} onChange={(e) => setUsername(e.target.value)} />
@@ -50,13 +47,13 @@ const ServiceFlightSupport = ({ status, callback }) => {
 
                 <label>
                    Message:
-                   <textarea value={message} onChange={(e) => setMessage(e.target.value)} rows="5" cols="40"/>
+                   <textarea value={message} onChange={(e) => setMessage(e.target.value)} rows="5" cols="80"/>
                 </label>
-                </fieldset>
                 <br/>
                 <input id='submit' type="submit" value="Add" />
             </form>
         </div>
+    </div>    
     );
 };
 

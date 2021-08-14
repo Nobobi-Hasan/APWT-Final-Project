@@ -20,13 +20,10 @@ const ServiceAddFlight = ({ status, callback }) => {
         history.push('/flightDashboard');
     };
     return (
-        <div>
-            <h2>
-
-               <center>This is Add {status} page</center> 
-            </h2>
-            <form className='form' onSubmit={onSubmit}>
-            <fieldset>
+        <div id="registration-form">
+                <div className='fieldset'>
+                    <legend>Add Airplane</legend>
+                        <form className='form' onSubmit={onSubmit}>
 
                 <label>
                     Airplane Name :
@@ -64,11 +61,11 @@ const ServiceAddFlight = ({ status, callback }) => {
                     <input type="file" name="image" value={image} onChange={(e) => setImage(e.target.value)}
                     />
                 </label>
-                </fieldset>
                 <br />
                 <input id='submit' type="submit" value="Add" />
             </form>
         </div>
+    </div> 
     );
 };
 

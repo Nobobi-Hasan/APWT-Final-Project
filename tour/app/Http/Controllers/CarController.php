@@ -111,18 +111,19 @@ class CarController extends Controller
     public function cartype(){
 
         $cars = Car:: all();
-        return view('carDashboard.cartype')->with('cars', $cars);
+        return response()->json($cars);
+        // return view('carDashboard.cartype')->with('cars', $cars);
     }
 
     //car type confirmation
-    public function cartypeconfirm(CarTypeRequest $req ){
+    public function cartypeconfirm(Request $req){
         
         $car = Car::where('title', $req->title)->first();
         $car->title = $req->title;
-        $car->type = $req->type;
         $car->fare = $req->fare;
+        $car->type = $req->type;
         $car->save();
-        return redirect()->route('car.cartype');
+        // return redirect()->route('car.cartype');
 
     }
 
@@ -130,18 +131,19 @@ class CarController extends Controller
     public function caravailability(){
         
         $cars = Car:: all();
-        return view('carDashboard.caravailability')->with('cars', $cars);;
+        return response()->json($cars);
+        // return view('carDashboard.caravailability')->with('cars', $cars);
     }
 
 
     //car availability confirm
-    public function caravailabilityconfirm(Request $req ){
+    public function caravailabilityconfirm(Request $req){
         
         $car = Car::where('title', $req->title)->first();
         $car->title = $req->title;
         $car->availability = $req->availability;
         $car->save();
-        return redirect()->route('car.caravailability');
+        // return redirect()->route('car.caravailability');
 
     }
 

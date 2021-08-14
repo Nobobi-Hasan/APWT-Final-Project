@@ -250,6 +250,18 @@ function App() {
                 const serviceurl25 = 'http://127.0.0.1:8000/api/carDashboard/cartransactionhistory';
                 useFetch(serviceurl25, setServiceCarTransactions);
 
+                // Show car availability by Car
+                const [serviceCarAvailability, setServiceCarAvailability] = useState([]);
+                const url26 = 'http://127.0.0.1:8000/api/carDashboard/caravailability';
+                useFetch(url26, setServiceCarAvailability);
+
+                // Show car type by Car
+                const [serviceCarType, setServiceCarType] = useState([]);
+                const url27 = 'http://127.0.0.1:8000/api/carDashboard/cartype';
+                useFetch(url27, setServiceCarType);
+
+
+
                   
       
                       const serviceAddCar = (newCar) => { 
@@ -264,30 +276,7 @@ function App() {
                           });
                     };
 
-                    const serviceCarType = (newType) => { 
-
-                      const axios = require('axios').default;
-
-                      axios({
-                          method: 'post',
-                          url: 'http://127.0.0.1:8000/api/carDashboard/cartype',
-                          
-                          data:newType,
-                        });
-                  };
-
-                    const serviceCarAvailability = (newAvailable) => { 
-
-                      const axios = require('axios').default;
-
-                      axios({
-                          method: 'post',
-                          url: 'http://127.0.0.1:8000/api/carDashboard/caravailability',
-                          
-                          data:newAvailable,
-                        });
-                  };
-
+                    
                     const serviceCarSupport = (newSupport) => { 
 
                       const axios = require('axios').default;
@@ -319,6 +308,39 @@ function App() {
                     setServiceCarPendingBookings(data);
                     setServiceCarBookings([...servicecarbooking, ...data2]);
                 };
+
+                // Car Availability Change Post
+                const carAvailabilityCallback = ({title, availability}) => {
+                  const axios = require('axios').default;
+          
+                  console.log(title);
+          
+                  axios({
+                      method: 'post',
+                      url: 'http://127.0.0.1:8000/api/carDashboard/caravailability',
+                      data:{
+                        title: title,
+                        availability: availability,
+                      }
+                      });
+              };
+
+               // Car Type Change Post
+               const carTypeCallback = ({title, type, fare}) => {
+                const axios = require('axios').default;
+        
+                console.log(title);
+        
+                axios({
+                    method: 'post',
+                    url: 'http://127.0.0.1:8000/api/carDashboard/cartype',
+                    data:{
+                      title: title,
+                      fare:fare,
+                      type: type,
+                    }
+                    });
+            };
 
 
                       // Delete an Car from manage list by Service Car
@@ -667,7 +689,7 @@ function App() {
                   <div className="wrapper">
                             <CarNavbar />
                       <div className="main-container">
-                        <ServiceCarType status="Type" callback={serviceCarType} />
+                        <ServiceCarType list={serviceCarType} callback={carTypeCallback} /> 
                       </div>
                   </div>
             </Route>
@@ -676,10 +698,9 @@ function App() {
                    <div className="wrapper">
                               <CarNavbar />
                         <div className="main-container">
-                            <ServiceCarAvailability status="Availability" callback={serviceCarAvailability} />
+                            <ServiceCarAvailability list={serviceCarAvailability} callback={carAvailabilityCallback} /> 
                         </div>
                   </div>
-
             </Route>
 
             <Route path="/carDashboard/carsupport">

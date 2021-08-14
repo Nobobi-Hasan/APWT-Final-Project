@@ -19,13 +19,10 @@ const ServiceHotelSupport = ({ status, callback }) => {
         history.push('/hotelDashboard');
     };
     return (
-        <div>
-            <h2>
-                {/* This is {status} Hotel Facility page id: {eid} */}
-                <center>This is {status} page </center>
-            </h2>
-            <form className='form' onSubmit={onSubmit}>
-            <fieldset>
+        <div id="registration-form">
+            <div className='fieldset'>
+                <legend>Hotel Support</legend>
+                    <form className='form' onSubmit={onSubmit}>
 
                 <label>
                     Hotel Name :
@@ -50,12 +47,12 @@ const ServiceHotelSupport = ({ status, callback }) => {
 
                 <label>
                    Message:
-                   <textarea value={message} onChange={(e) => setMessage(e.target.value)} rows="5" cols="40"/>
+                   <textarea value={message} onChange={(e) => setMessage(e.target.value)} rows="5" cols="80"/>
                 </label>
-                </fieldset>
                 <br />
                 <input id='submit' type="submit" value="Add" />
-            </form>
+                </form>
+            </div>
         </div>
     );
 };

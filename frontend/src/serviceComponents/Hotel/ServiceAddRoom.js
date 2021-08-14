@@ -19,13 +19,10 @@ const ServiceAddRoom = ({ status, callback }) => {
         history.push('/hotelDashboard');
     };
     return (
-        <div>
-            <h2>
-                {/* This is {status} Hotel Facility page id: {eid} */}
-                <center>This is Add {status} page </center>
-            </h2>
-            <form className='form' onSubmit={onSubmit}>
-            <fieldset>
+        <div id="registration-form">
+         <div className='fieldset'>
+            <legend>Add Room</legend>
+                <form className='form' onSubmit={onSubmit}>
 
                 <label>
                     Room Name :
@@ -53,11 +50,12 @@ const ServiceAddRoom = ({ status, callback }) => {
                     <input type="file" name="image" value={image} onChange={(e) => setImage(e.target.value)}
                     />
                 </label>
-                </fieldset>
+                
                 <br />
                 <input id='submit' type="submit" value="Add" />
             </form>
         </div>
+    </div>   
     );
 };
 

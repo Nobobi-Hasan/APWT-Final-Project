@@ -12,7 +12,7 @@ const ServiceFlightPendingBooking = ({id, user_id, air_id,fromloc, toloc, fromda
             <td>{fromdate}</td>
             <td>{todate}</td>
             <td> 
-            <button className='delete-button' onClick={()=>serviceFlightPendingBookingApprovecallback(id)}>Approve</button>
+            <button className='approve-button' onClick={()=>serviceFlightPendingBookingApprovecallback(id)}>Approve</button>
             <button className='delete-button' onClick={()=>serviceFlightPendingBookingDeclinecallback(id)}>Decline</button>
             </td>
 

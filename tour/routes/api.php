@@ -69,6 +69,14 @@ Route::get('/carDashboard/car-pending-list','CarController@ADcarBookList')->name
 Route::post('/carDashboard/approve','CarController@bookingadd')->name('car.bookingadd');
 Route::post('/carDashboard/decline','CarController@bookingremove')->name('car.bookingremove');
 
+//Car Type
+Route::get('/carDashboard/cartype','CarController@cartype')->name('car.cartype');
+Route::post('/carDashboard/cartype','CarController@cartypeconfirm')->name('car.cartypeconfirm');
+
+//Car Availability
+Route::get('/carDashboard/caravailability','CarController@caravailability')->name('car.caravailability');
+Route::post('/carDashboard/caravailability','CarController@caravailabilityconfirm')->name('car.caravailabilityconfirm');
+
 //Car Support
 Route::post('/carDashboard/carsupport','CarController@carsupportconfirm')->name('car.carsupportconfirm');
 

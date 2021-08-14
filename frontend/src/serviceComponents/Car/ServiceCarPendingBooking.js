@@ -12,7 +12,7 @@ const ServiceCarPendingBooking = ({id, user_id, car_id,fromloc, toloc, fromdate,
             <td>{fromdate}</td>
             <td>{todate}</td>
             <td> 
-            <button className='delete-button' onClick={()=>serviceCarPendingBookingApprovecallback(id)}>Approve</button>
+            <button className='approve-button' onClick={()=>serviceCarPendingBookingApprovecallback(id)}>Approve</button>
             <button className='delete-button' onClick={()=>serviceCarPendingBookingDeclinecallback(id)}>Decline</button>
             </td>
 

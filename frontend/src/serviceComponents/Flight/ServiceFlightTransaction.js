@@ -1,12 +1,12 @@
 import {Link} from 'react-router-dom';
-const ServiceFlightTransaction = ({id, date, receiver_type, receiver, username, description, amount})=>{
+const ServiceFlightTransaction = ({id, date, receiver_id, receiver, username, description, amount})=>{
     return(
         <>
 
         <tr>
             <td>{id}</td>
             <td>{date}</td>
-            <td>{receiver_type}</td>
+            <td>{receiver_id}</td>
             <td>{receiver}</td>
             <td>{username}</td>
             <td>{description}</td>
