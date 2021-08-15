@@ -22,7 +22,7 @@ const EmployeeNavbar = ()=>{
 			<div className="sidebar">
 				<div className="sidebar-menu">
 					<center className="profile">
-                        <img src="{{asset('upload/emp.png')}}" height="50px" width="50px" alt= ""/>
+                        <img src="./images/emp.png" height="50px" width="50px" alt= ""/>
                         {/* <p>{{session('uname')}}</p> */}
 						
 						
