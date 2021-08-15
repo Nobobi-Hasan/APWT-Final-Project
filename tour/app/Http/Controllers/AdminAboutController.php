@@ -10,7 +10,8 @@ class AdminAboutController extends Controller
 {
     public function index(){
         $about = About::where('id', 1)->first();
-        return view('admin.about')->with('about', $about);
+        return response()->json($about);
+        // return view('admin.about')->with('about', $about);
     }
 
     public function form($id){
@@ -19,11 +20,11 @@ class AdminAboutController extends Controller
         return view('admin.aboutForm')->with('about', $about);
     }
 
-    public function edit(aRequest $req, $id){
+    public function edit(Request $req){
 
-        $about = About::find($id);
-        $about-> about = $req->aboutForm;
+        $about = About::find($req->id);
+        $about-> about = $req->about;
         $about->save();
-        return view('admin.about')->with('about', $about);
+        // return view('admin.about')->with('about', $about);
     }
 }

@@ -1,12 +1,15 @@
+import {Link} from 'react-router-dom';
 import './AdminPP.css';
 
-const AdminPrivacy = ({list})=>{
+const AdminPolicy = ({list})=>{
 
     return(
-        <>   
+        <>
+
 
             <ul>
-				<li><a href="#"><i class="fa fa-pencil-square-o"></i></a></li>
+                <li><Link to={`/admin/policy/edit`}><i class="fa fa-pencil-square-o"></i></Link></li>
+                
 			</ul>
 
 			<br/>
@@ -20,5 +23,5 @@ const AdminPrivacy = ({list})=>{
     );
 }
 
-export default AdminPrivacy;
+export default AdminPolicy;
 

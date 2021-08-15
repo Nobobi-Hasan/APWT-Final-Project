@@ -35,8 +35,15 @@ import AdminSalaryADList from "./adminComponents/AdminSalaryADList";
 import AdminSupportList from "./adminComponents/AdminSupportList";
 
 
-import AdminPrivacy from "./adminComponents/AdminPrivacy";
+import AdminPolicy from "./adminComponents/AdminPolicy";
+import AdminPolicyForm from "./adminComponents/AdminPolicyForm";
 
+
+import AdminGuidelines from "./adminComponents/AdminGuidelines";
+import AdminGuidelinesForm from "./adminComponents/AdminGuidelinesForm";
+
+import AdminAbout from "./adminComponents/AdminAbout";
+import AdminAboutForm from "./adminComponents/AdminAboutForm";
 
 import 'font-awesome/css/font-awesome.min.css';
 
@@ -192,10 +199,22 @@ function App() {
 
 
 
-//Show Privacy Policy bt Admin
-    const [adminPrivacy, setAdminPrivacy] = useState([]);
+//Show Policy Policy bt Admin
+    const [adminPolicy, setAdminPolicy] = useState([]);
     const urlPP = 'http://127.0.0.1:8000/api/admin/policy';
-    useFetch(urlPP, setAdminPrivacy);
+    useFetch(urlPP, setAdminPolicy);
+
+
+//Show Guidelines bt Admin
+const [adminGuidelines, setAdminGuidelines] = useState([]);
+const urlGL = 'http://127.0.0.1:8000/api/admin/guidelines';
+useFetch(urlGL, setAdminGuidelines);
+
+
+//Show About Policy bt Admin
+const [adminAbout, setAdminAbout] = useState([]);
+const urlAA = 'http://127.0.0.1:8000/api/admin/about';
+useFetch(urlAA, setAdminAbout);
 
 
 
@@ -553,6 +572,7 @@ function App() {
         // const data = adminPackage.filter((packageD) => packageD.id != id);
         // setAdminPackage(data);
     };
+    
 
 
 
@@ -608,6 +628,54 @@ function App() {
         setAdminSupport(data);
     };
 
+
+
+    // Edit Policy by admin
+    const adminPolicyEditCallback = (policy) => {
+        const axios = require('axios').default;
+
+        axios({
+            method: 'post',
+            url: 'http://127.0.0.1:8000/api/admin/edit-policy',
+            data: policy
+          });
+
+        setAdminPolicy(policy);
+
+        console.log(policy);
+    };
+
+
+       // Edit Guidelines by admin
+       const adminGuidelinesEditCallback = (guidelines) => {
+        const axios = require('axios').default;
+
+        axios({
+            method: 'post',
+            url: 'http://127.0.0.1:8000/api/admin/edit-guidelines',
+            data: guidelines
+          });
+
+        setAdminGuidelines(guidelines);
+
+        console.log(guidelines);
+    };
+
+
+       // Edit About Us by admin
+       const adminAboutEditCallback = (about) => {
+        const axios = require('axios').default;
+
+        axios({
+            method: 'post',
+            url: 'http://127.0.0.1:8000/api/admin/edit-about',
+            data: about
+          });
+
+        setAdminAbout(about);
+
+        console.log(about);
+    };
 
 
 
@@ -929,38 +997,75 @@ function App() {
                     </div>
                 </Route>
 
-                <Route path="/admin/policy">
+                <Route exact path="/admin/policy">
                     <div className="wrapper">
 
                         <AdminNavbar2 />
                         <div className="main-container"> 
-                            <AdminPrivacy list={adminPrivacy} />
+                            <AdminPolicy list={adminPolicy} />
                         </div>
 
                     </div>
                 </Route>
 
-                <Route path="/admin/guidelines">
+                <Route path="/admin/policy/edit">
                     <div className="wrapper">
 
                         <AdminNavbar2 />
                         <div className="main-container"> 
-                            
+                            <AdminPolicyForm callback={adminPolicyEditCallback} />
                         </div>
 
                     </div>
                 </Route>
 
-                <Route path="/admin/about">
+
+                <Route exact path="/admin/guidelines">
+                    <div className="wrapper">
+                        <AdminNavbar2 />
+                        <div className="main-container"> 
+                            <AdminGuidelines list={adminGuidelines} />
+                        </div>
+                    </div>
+                </Route>
+
+
+                <Route path="/admin/guidelines/edit">
                     <div className="wrapper">
 
                         <AdminNavbar2 />
                         <div className="main-container"> 
-                            
+                            <AdminGuidelinesForm callback={adminGuidelinesEditCallback} />
                         </div>
 
                     </div>
                 </Route>
+
+
+
+                <Route exact path="/admin/about">
+                    <div className="wrapper">
+
+                        <AdminNavbar2 />
+                        <div className="main-container"> 
+                            <AdminAbout list={adminAbout} />
+                        </div>
+
+                    </div>
+                </Route>
+
+
+                <Route path="/admin/about/edit">
+                    <div className="wrapper">
+
+                        <AdminNavbar2 />
+                        <div className="main-container"> 
+                            <AdminAboutForm callback={adminAboutEditCallback} />
+                        </div>
+
+                    </div>
+                </Route>
+
 
 
                 <Route path="/admin/profile">

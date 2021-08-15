@@ -11,7 +11,8 @@ class AdminGuidelinesController extends Controller
     public function index(){
 
         $guideline = Guideline::where('id', 1)->first();
-        return view('admin.guideline')->with('guideline', $guideline);
+        return response()->json($guideline);
+        // return view('admin.guideline')->with('guideline', $guideline);
     }
 
     public function form($id){
@@ -20,11 +21,11 @@ class AdminGuidelinesController extends Controller
         return view('admin.guidelineForm')->with('guideline', $guideline);
     }
 
-    public function edit(gRequest $req, $id){
+    public function edit(Request $req){
 
-        $guideline = Guideline::find($id);
-        $guideline-> guideline = $req->guidelineForm;
+        $guideline = Guideline::find($req->id);
+        $guideline-> guideline = $req->guideline;
         $guideline->save();
-        return view('admin.guideline')->with('guideline', $guideline);
+        // return view('admin.guideline')->with('guideline', $guideline);
     }
 }

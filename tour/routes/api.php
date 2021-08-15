@@ -121,7 +121,17 @@ Route::post('/admin/support/delete', 'AdminSupportController@supportDestroy')->n
 
 
 Route::get('/admin/policy', 'AdminPolicyController@index')->name('adminPolicy.index');
-Route::get('/admin/edit-policy', 'AdminPolicyController@form')->name('adminPolicy.form');
 Route::post('/admin/edit-policy', 'AdminPolicyController@edit')->name('adminPolicy.edit');
+
+
+
+Route::get('/admin/guidelines', 'AdminGuidelinesController@index')->name('adminGuidelines.index');
+Route::post('/admin/edit-guidelines', 'AdminGuidelinesController@edit')->name('adminGuidelines.edit');
+
+Route::get('/admin/about', 'AdminAboutController@index')->name('adminAbout.index');
+Route::post('/admin/edit-about', 'AdminAboutController@edit')->name('adminAbout.edit');
+
+
+
 
 // Admin API End
