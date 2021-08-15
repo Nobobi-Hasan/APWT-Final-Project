@@ -77,6 +77,7 @@ function App() {
               const serviceurl16 = 'http://127.0.0.1:8000/api/hotelDashboard/hoteltransactionhistory';
               useFetch(serviceurl16, setServiceTransactions);
 
+              
               //Show all room-user info list  by service Hotel
               const [serviceroomuserinfo, setServiceRoomUserInfos] = useState([]);
               
@@ -417,6 +418,16 @@ function App() {
               const serviceurl35 = 'http://127.0.0.1:8000/api/flightDashboard/flighttransactionhistory';
               useFetch(serviceurl35, setServiceFlightTransactions);
 
+               // Show Flight availability by Flight
+               const [serviceFlightAvailability, setServiceFlightAvailability] = useState([]);
+               const url36 = 'http://127.0.0.1:8000/api/flightDashboard/flightavailability';
+               useFetch(url36, setServiceFlightAvailability);
+
+               // Show Flight type by Flight
+               const [serviceFlightType, setServiceFlightType] = useState([]);
+               const url37 = 'http://127.0.0.1:8000/api/flightDashboard/flighttype';
+               useFetch(url37, setServiceFlightType);
+
 
 
                   const serviceAddFlight = (newFlight) => { 
@@ -431,30 +442,6 @@ function App() {
                       });
                 };
 
-                  const serviceFlightType = (newType) => { 
-
-                    const axios = require('axios').default;
-
-                    axios({
-                        method: 'post',
-                        url: 'http://127.0.0.1:8000/api/flightDashboard/flighttype',
-                        
-                        data:newType,
-                      });
-                };
-
-                  const serviceFlightAvailability = (newAvailable) => { 
-
-                    const axios = require('axios').default;
-
-                    axios({
-                        method: 'post',
-                        url: 'http://127.0.0.1:8000/api/flightDashboard/flightavailability',
-                        
-                        data:newAvailable,
-                      });
-                };
-
                 const serviceFlightSupport = (newSupport) => { 
 
                   const axios = require('axios').default;
@@ -466,6 +453,39 @@ function App() {
                       data:newSupport,
                     });
               };
+
+              // Flight Availability Change Post
+              const flightAvailabilityCallback = ({title, availability}) => {
+                const axios = require('axios').default;
+        
+                console.log(title);
+        
+                axios({
+                    method: 'post',
+                    url: 'http://127.0.0.1:8000/api/flightDashboard/flightavailability',
+                    data:{
+                      title: title,
+                      availability: availability,
+                    }
+                    });
+            };
+
+             // Flight Type Change Post
+             const flightTypeCallback = ({title, type, fare}) => {
+              const axios = require('axios').default;
+      
+              console.log(title);
+      
+              axios({
+                  method: 'post',
+                  url: 'http://127.0.0.1:8000/api/flightDashboard/flighttype',
+                  data:{
+                    title: title,
+                    fare:fare,
+                    type: type,
+                  }
+                  });
+          };
 
               // Approve Pending Bookign List Flight
               const serviceFlightPendingBookingApprovecallback = (id) => {
@@ -780,22 +800,21 @@ function App() {
             </Route>
 
             <Route path="/flightDashboard/flighttype">
-                <div className="wrapper">
-                      <FlightNavbar />
-                    <div className="main-container"> 
-                        <ServiceFlightType status="Type" callback={serviceFlightType} />
-                    </div>
-                </div> 
+                  <div className="wrapper">
+                            <FlightNavbar />
+                      <div className="main-container">
+                        <ServiceFlightType list={serviceFlightType} callback={flightTypeCallback} /> 
+                      </div>
+                  </div>
             </Route>
 
-
             <Route path="/flightDashboard/flightavailability">
-                <div className="wrapper">
-                          <FlightNavbar />
-                    <div className="main-container"> 
-                        <ServiceFlightAvailability status="Availability" callback={serviceFlightAvailability} />
-                    </div>
-                </div>
+                   <div className="wrapper">
+                              <FlightNavbar />
+                        <div className="main-container">
+                            <ServiceFlightAvailability list={serviceFlightAvailability} callback={flightAvailabilityCallback} /> 
+                        </div>
+                  </div>
             </Route>
 
             <Route path="/flightDashboard/checkflightreview">

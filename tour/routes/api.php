@@ -105,6 +105,17 @@ Route::get('/flightDashboard/flight-pending-list','FlightController@ADflightBook
 Route::post('/flightDashboard/approve','FlightController@bookingadd')->name('flight.bookingadd');
 Route::post('/flightDashboard/decline','FlightController@bookingremove')->name('flight.bookingremove');
 
+//Flight Type
+Route::get('/flightDashboard/flighttype','FlightController@flighttype')->name('flight.flighttype');
+Route::post('/flightDashboard/flighttype','FlightController@flighttypeconfirm')->name('flight.flighttypeconfirm');
+
+
+//Flight Availability
+Route::get('/flightDashboard/flightavailability','FlightController@flightavailability')->name('flight.flightavailability');
+Route::post('/flightDashboard/flightavailability','FlightController@flightavailabilityconfirm')->name('flight.flightavailabilityconfirm');
+
+
+
 //Flight Review
 Route::get('/flightDashboard/checkflightreview','FlightController@checkflightreview')->name('flight.checkflightreview');
 

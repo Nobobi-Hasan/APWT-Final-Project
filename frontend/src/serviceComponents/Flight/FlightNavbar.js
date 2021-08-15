@@ -53,7 +53,7 @@ const FlightNavbar = ()=>{
                         </li> 
 
                         <li className="item">
-                                    <Link className="menu-btn" to='/flightDashboard/flighttype'><i class="fa fa-check" aria-hidden="true"></i><span>Airplane Tpye</span></Link>
+                                    <Link className="menu-btn" to='/flightDashboard/flighttype'><i class="fa fa-check" aria-hidden="true"></i><span>Airplane Type</span></Link>
 					    </li> 
 
                         <li className="item">

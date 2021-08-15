@@ -1,59 +1,61 @@
 import { useState } from "react";
-import { useParams } from "react-router-dom";
-import { useHistory } from 'react-router-dom';
+import '../Service.css';
 
-const ServiceFlightType = ({ status, callback }) => {
+const ServiceFlightType = ({ list, callback }) => {
     
     const [title, setTitle] = useState("");
     const [fare, setFare] = useState("");
     const [type, setType] = useState("");
 
-    const history = useHistory();
-
     const onSubmit = (e) => {
         e.preventDefault();
+
+        console.log(title);
+        console.log(fare);
+        console.log(type);
        
         callback({ title: title, fare:fare, type:type});
-        history.push('/flightDashboard');
+
     };
     return (
-        <div>
-            <h2>
-                <center>This is Flight {status} page</center>
-            </h2>
-            <form className='form' onSubmit={onSubmit}>
-            <fieldset>
-                
-                <label>
-                    Select Airplane:
-                    <select value={title} onChange={(e) => setTitle(e.target.value)}>
-                        <option value="Singapore Airlines">Singapore Airlines</option>
-                        <option value="Emirates">Emirates</option>
-                    </select>
-                </label>
-                <br />
-                <br />
+        <div id="registration-form">
+            <div className='fieldset'>
+                <legend>Type Status</legend>
+                    <form  className='form' onSubmit={onSubmit}>
+            
+            <label for="title">Select Airplane:</label>
+                <select name="title" id="title" onChange={(e) => setTitle(e.target.value)}>
+                    <option value=""></option>  
+                    
+                     {
+                        list.map((flight)=>(
 
-                <label>
-                    Type of a Airplane:
-                    <select value={type} onChange={(e) => setType(e.target.value)}>
+                        <option value={flight.title}>{flight.title}</option>  
+
+                        ))
+                    }
+                </select>
+
+            <label for="type">Type:</label>
+                <select name="type" id="type" onChange={(e) => setType(e.target.value)}>
+                        <option value=""></option>
                         <option value="Airbus">Airbus</option>
-                        <option value="Jett">Jett</option>
-                    </select>
-                </label>
-                <br />
-                <br />
+                        <option value="Jett">Jett</option>  
+                </select>
+                <br/>
+                <br/>
 
-                <label>
-                    Per Day Fare:
-                    <input  type="text" name="fare" value={fare} onChange={(e) => setFare(e.target.value)} />
-                </label>
+            <label>
+                Per Day Fare:
+                <input  type="text" name="fare" value={fare} onChange={(e) => setFare(e.target.value)} />
+            </label>
 
-                </fieldset>
-                <br />
-                <input id='submit' type="submit" value="Submit" />
-            </form>
-        </div>
+            <input type="submit" value="Submit"/>
+            <br/>
+
+        </form>
+    </div>
+</div>  
     );
 };
 

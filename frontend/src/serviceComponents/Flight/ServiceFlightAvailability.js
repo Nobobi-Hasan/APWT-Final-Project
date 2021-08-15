@@ -1,51 +1,57 @@
 import { useState } from "react";
-import { useParams } from "react-router-dom";
-import { useHistory } from 'react-router-dom';
+import '../Service.css';
 
-const ServiceFlightAvailability = ({ status, callback }) => {
+const ServiceFlightAvailability = ({ list, callback }) => {
     
     const [title, setTitle] = useState("");
     const [availability, setAvailability] = useState("");
 
-
-    const history = useHistory();
-
     const onSubmit = (e) => {
         e.preventDefault();
+        console.log(title);
+        console.log(availability);
        
         callback({ title: title, availability:availability});
-        history.push('/flightDashboard');
+
     };
+    
     return (
-        <div>
-            <h2>
-                <center> This is Flight {status} page </center>
-            </h2>
-            <form className='form' onSubmit={onSubmit}>
-            <fieldset>
-                
-                <label>
-                    Select Airplane:
-                    <select value={title} onChange={(e) => setTitle(e.target.value)}>
-                        <option value="Emirates">Emirates</option>
-                        <option value="Singapore">Singapore</option>
-                    </select>
-                </label>
-                <br />
-                <br />
+        <div id="registration-form">
+            <div className='fieldset'>
+                <legend>Availability Status</legend>
+                    <form  className='form' onSubmit={onSubmit}>
+            
+                <label for="title">Select Airplane:</label>
+                <select name="title" id="title" onChange={(e) => setTitle(e.target.value)}>
+                 <option value=""></option>
+                    {
+                        list.map((flight)=>(
 
-                <label>
-                    Airplane Availability:
-                    <select value={availability} onChange={(e) => setAvailability(e.target.value)}>
+                        <option value={flight.title}>{flight.title}</option>
+                                                
+                        ))
+                    }
+
+                    </select>
+                    <br/>
+                    <br/>
+
+                    <label for="avilability">Avilability:</label>
+                    <select name="avilability" id="avilability" onChange={(e) => setAvailability(e.target.value)}>
+
+                        <option value=""></option>
                         <option value="Available">Available</option>
-                        <option value="Not Available">Not Available</option>
+                        <option value="Not Available">Not Available</option>  
+                    
                     </select>
-                </label>
+                    <br/>
+                    <br/>
 
-                </fieldset>
-                <br />
-                <input id='submit' type="submit" value="Submit" />
-            </form>
+                    <input type="submit" value="Submit"/>
+                    <br/>
+
+                </form>
+            </div>
         </div>
     );
 };

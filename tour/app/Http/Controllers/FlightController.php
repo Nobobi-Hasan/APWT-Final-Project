@@ -112,18 +112,19 @@ class FlightController extends Controller
     public function flighttype(){
 
         $air = Air:: all();
-        return view('flightDashboard.flighttype')->with('air', $air);
+        return response()->json($air);
+        // return view('flightDashboard.flighttype')->with('air', $air);
     }
 
     //flight type confirmation
-    public function flighttypeconfirm(FlightTypeRequest $req ){
+    public function flighttypeconfirm(Request $req){
         
         $air = Air::where('title', $req->title)->first();
         $air->title = $req->title;
         $air->type = $req->type;
         $air->fare = $req->fare;
         $air->save();
-        return redirect()->route('flight.flighttype');
+        // return redirect()->route('flight.flighttype');
 
     }
 
@@ -131,17 +132,18 @@ class FlightController extends Controller
      public function flightavailability(){
         
         $air = Air:: all();
-        return view('flightDashboard.flightavailability')->with('air', $air);;
+        return response()->json($air);
+        // return view('flightDashboard.flightavailability')->with('air', $air);
     }
 
     //flight availability confirm
-    public function flightavailabilityconfirm(Request $req ){
+    public function flightavailabilityconfirm(Request $req){
         
         $air = Air::where('title', $req->title)->first();
         $air->title = $req->title;
         $air->availability = $req->availability;
         $air->save();
-        return redirect()->route('flight.flightavailability');
+        // return redirect()->route('flight.flightavailability');
 
     }
 
