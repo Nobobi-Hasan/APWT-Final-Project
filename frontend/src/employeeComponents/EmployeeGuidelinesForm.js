@@ -19,7 +19,7 @@ const EmployeeGuidelinesForm = ({callback})=>{
        
         callback(employeeGuidelines);
 
-        history.push('/employee');
+        history.push('/employee/guidelines');
     };
 
     return(

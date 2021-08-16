@@ -540,7 +540,7 @@ const employeeGuidelinesEditCallback = (guidelines) => {
         </div>
         </Route>
 
-        <Route exact path="/employee/guideline">
+        <Route exact path="/employee/guidelines">
         <div className="wrapper">
             <EmployeeNavbar />
               <div className="main-container">   

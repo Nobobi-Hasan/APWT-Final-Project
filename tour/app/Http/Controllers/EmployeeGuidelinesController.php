@@ -20,7 +20,7 @@ class EmployeeGuidelinesController extends Controller
         return view('employee.guidelineForm')->with('guideline', $guideline);
     }
 
-    public function edit(Request $req, $id){
+    public function edit(Request $req){
 
         $guideline = Guideline::find($id);
         $guideline-> guideline = $req->guideline;

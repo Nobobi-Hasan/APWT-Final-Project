@@ -118,7 +118,7 @@ const EmployeeNavbar = ()=>{
 					</li>
 
 					<li className="item">
-                        <Link className="menu-btn" to='/employee/guideline'><i className="fa fa-book"></i><span>Guidelines</span></Link>
+                        <Link className="menu-btn" to='/employee/guidelines'><i className="fa fa-book"></i><span>Guidelines</span></Link>
 					</li>
                     <li className="item" id="faq">
 						<a href="#faq" className="menu-btn">
