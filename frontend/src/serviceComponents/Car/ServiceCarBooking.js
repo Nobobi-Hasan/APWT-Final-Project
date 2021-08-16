@@ -1,4 +1,4 @@
-import {Link} from 'react-router-dom';
+
 const ServiceCarBooking = ({id, user_id, car_id,fromloc,toloc, fromdate, todate,detail, serviceCarBookingDeletecallback})=>{
     return(
         <>

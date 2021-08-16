@@ -324,7 +324,7 @@ Route::group(['middleware'=>['employeeCheck']] , function(){
 
 		//Car Edit
 		Route::get('/carDashboard/caredit{id}','CarController@caredit')->name('car.caredit');
-		Route::post('/carDashboard/caredit{id}','CarController@careditconfirm')->name('car.careditconfirm');
+		Route::post('/carDashboard/caredit','CarController@careditconfirm')->name('car.careditconfirm');
 
 		//Car delete
 		Route::get('/carDashboard/cardelete{id}','CarController@cardelete')->name('car.cardelete');
@@ -422,7 +422,7 @@ Route::group(['middleware'=>['employeeCheck']] , function(){
 
 		//Hotel facility edit 
 		Route::get('/hotelDashboard/facilityedit{id}','HotelController@facilityedit')->name('hotel.facilityedit');
-		Route::post('/hotelDashboard/facilityedit{id}','HotelController@facilityeditconfirm')->name('hotel.facilityeditconfirm');
+		Route::post('/hotelDashboard/facilityedit','HotelController@facilityeditconfirm')->name('hotel.facilityeditconfirm');
 
 		//Hotel facility delete 
 		Route::get('/hotelDashboard/facilitydelete{id}','HotelController@facilitydelete')->name('hotel.facilitydelete');
@@ -431,7 +431,7 @@ Route::group(['middleware'=>['employeeCheck']] , function(){
 
 		//Hotel room edit 
 		Route::get('/hotelDashboard/roomedit{id}','HotelController@roomedit')->name('hotel.roomedit');
-		Route::post('/hotelDashboard/roomedit{id}','HotelController@roomeditconfirm')->name('hotel.roomeditconfirm');
+		Route::post('/hotelDashboard/roomedit','HotelController@roomeditconfirm')->name('hotel.roomeditconfirm');
 
 		//Hotel room delete
 		Route::get('/hotelDashboard/roomdelete{id}','HotelController@roomdelete')->name('hotel.roomdelete');

@@ -1,4 +1,4 @@
-import {Link} from 'react-router-dom';
+
 const ServiceRoomUserInfo = ({ uid, fname, lname, gender, email, phone, rid, rname, rprice })=>{
     return(
         <>

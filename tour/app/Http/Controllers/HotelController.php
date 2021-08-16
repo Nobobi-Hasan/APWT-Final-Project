@@ -85,14 +85,14 @@ class HotelController extends Controller
 
 
     //hotel facility edit confirm
-    public function facilityeditconfirm($id, HotelEditFacilityRequest $req){
+    public function facilityeditconfirm(Request $req){
         
-        $facility = Facility::find($id);
+        $facility = Facility::find($req->id);
         $facility->title = $req->title;
         $facility->description = $req->description;
         $facility->save();
 
-        return redirect()->route('hotel.managehotelfacility');
+        // return redirect()->route('hotel.managehotelfacility');
     }
 
     //hotel facility delete 
@@ -157,16 +157,16 @@ class HotelController extends Controller
 
 
     //hotel room edit confirm
-    public function roomeditconfirm($id, HotelEditRoomRequest $req){
+    public function roomeditconfirm(Request $req){
         
-        $room = Room::find($id);
+        $room = Room::find($req->id);
         $room->name = $req->name;
         $room->description = $req->description;
         $room->price = $req->price;
         $room->availability = $req->availability;
         $room->save();
 
-        return redirect()->route('hotel.managehotelroom');
+        // return redirect()->route('hotel.managehotelroom');
     }
 
      //hotel room delete 

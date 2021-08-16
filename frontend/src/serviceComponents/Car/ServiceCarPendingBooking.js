@@ -1,4 +1,4 @@
-import {Link} from 'react-router-dom';
+
 const ServiceCarPendingBooking = ({id, user_id, car_id,fromloc, toloc, fromdate, todate,serviceCarPendingBookingApprovecallback, serviceCarPendingBookingDeclinecallback})=>{
     return(
         <>

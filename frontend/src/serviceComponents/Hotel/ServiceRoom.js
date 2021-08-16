@@ -10,16 +10,16 @@ const ServiceRoom = ({id, name, description, image,price, created,availability, 
             {/* <td>{image}</td> */}
             <td><img className="userimg" src={process.env.PUBLIC_URL + "/images/" + image}/></td>
             <td>{price}</td>
-            <td>{created}</td>
             <td>{availability}</td>
+            <td>{created}</td>
+            
             <td> 
-            <Link to='/hotelDashboard'className='edit-button'>Edit</Link> |
+            <Link to={`/hotelDashboard/roomedit/${id}`} className='edit-button'>Edit</Link>
             <button className='delete-button' onClick={()=>serviceRoomDeletecallback(id)}>Delete</button>
             </td>
 
         </tr>
-
-        </>
+    </>
     );
 }
 

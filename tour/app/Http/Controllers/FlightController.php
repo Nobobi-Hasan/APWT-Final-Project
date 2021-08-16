@@ -86,14 +86,14 @@ class FlightController extends Controller
 
    
    //flight edit confirm
-   public function flighteditconfirm($id, FlightEditRequest $req){
+   public function flighteditconfirm(Request $req){
        
-       $air = Air::find($id);
+       $air = Air::find($req->id);
        $air->title = $req->title;
        $air->model = $req->model;
        $air->save();
 
-       return redirect()->route('flight.manageflight');
+    //    return redirect()->route('flight.manageflight');
    }
 
    //flight delete confirmation

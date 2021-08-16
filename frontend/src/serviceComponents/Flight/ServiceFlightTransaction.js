@@ -1,4 +1,4 @@
-import {Link} from 'react-router-dom';
+
 const ServiceFlightTransaction = ({id, date, receiver_id, receiver, username, description, amount})=>{
     return(
         <>

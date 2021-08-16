@@ -6,7 +6,9 @@ import 'font-awesome/css/font-awesome.min.css';
 // Hotel Import
 import HotelNavbar from "./serviceComponents/Hotel/HotelNavbar";
 import ServiceAddFacility from "./serviceComponents/Hotel/ServiceAddFacility";
+import ServiceEditFacility from "./serviceComponents/Hotel/ServiceEditFacility";
 import ServiceAddRoom from "./serviceComponents/Hotel/ServiceAddRoom";
+import ServiceEditRoom from "./serviceComponents/Hotel/ServiceEditRoom";
 import ServiceFacilityList from "./serviceComponents/Hotel/ServiceFacilityList";
 import ServiceRoomList from "./serviceComponents/Hotel/ServiceRoomList";
 import ServiceBookingList from "./serviceComponents/Hotel/ServiceBookingList";
@@ -19,6 +21,7 @@ import ServiceHotelSupport from "./serviceComponents/Hotel/ServiceHotelSupport";
 // Car Import
 import CarNavbar from "./serviceComponents/Car/CarNavbar";
 import ServiceAddCar from "./serviceComponents/Car/ServiceAddCar";
+import ServiceEditCar from "./serviceComponents/Car/ServiceEditCar";
 import ServiceCarManageList from "./serviceComponents/Car/ServiceCarManageList";
 import ServiceCarBookingList from "./serviceComponents/Car/ServiceCarBookingList";
 import ServiceCarPendingBookingList from "./serviceComponents/Car/ServiceCarPendingBookingList";
@@ -31,6 +34,7 @@ import ServiceCarSupport from "./serviceComponents/Car/ServiceCarSupport";
 // Flight Import
 import FlightNavbar from "./serviceComponents/Flight/FlightNavbar";
 import ServiceAddFlight from "./serviceComponents/Flight/ServiceAddFlight";
+import ServiceEditFlight from "./serviceComponents/Flight/ServiceEditFlight";
 import ServiceFlightManageList from "./serviceComponents/Flight/ServiceFlightManageList";
 import ServiceFlightBookingList from "./serviceComponents/Flight/ServiceFlightBookingList";
 import ServiceFlightPendingBookingList from "./serviceComponents/Flight/ServiceFlightPendingBookingList";
@@ -111,6 +115,32 @@ function App() {
                       data:newFacility,
                     });
               };
+              // Edit Facility by service Hotel
+              const serviceEditFacility = (editFacility) => { 
+
+                const axios = require('axios').default;
+  
+                axios({
+                    method: 'post',
+                    url: 'http://127.0.0.1:8000/api/hotelDashboard/facilityedit',
+                    data:editFacility,
+                  });
+                  const data = servicefacility.filter((facility) => facility.id != editFacility.id);
+                  const data2 = servicefacility.filter((facility) => facility.id == editFacility.id);
+                  const data3 = servicefacility.filter((facility) => facility.id == editFacility.id);
+  
+                  data3.id = editFacility.id;
+                  data3.title = editFacility.title;
+                  data3.description = editFacility.description;
+  
+                  data3.created = data2[0].created;
+                  data3.image = data2[0].image;
+                  
+                  console.log(data2[0]);
+                  console.log(data2.created);
+  
+                  setServiceFacilitys([...data, data3]);
+              };
 
             // Add Room by service Hotel
               const serviceAddRoom = (newRoom) => { 
@@ -123,6 +153,36 @@ function App() {
                     
                     data:newRoom,
                   });
+            };
+
+            //Edit Room by Service Hotel
+            const serviceEditRoom = (editRoom) => { 
+
+              const axios = require('axios').default;
+
+              axios({
+                  method: 'post',
+                  url: 'http://127.0.0.1:8000/api/hotelDashboard/roomedit',
+                  data:editRoom,
+                });
+                const data = serviceroom.filter((room) => room.id != editRoom.id);
+                const data2 = serviceroom.filter((room) => room.id == editRoom.id);
+                const data3 = serviceroom.filter((room) => room.id == editRoom.id);
+
+                data3.id = editRoom.id;
+                data3.name = editRoom.name;
+                data3.description = editRoom.description;
+                data3.price = editRoom.price;
+                data3.availability = editRoom.availability;
+
+                
+                data3.created = data2[0].created;
+                data3.image = data2[0].image;
+                
+                console.log(data2[0]);
+                console.log(data2.created);
+
+                setServiceRooms([...data, data3]);
             };
 
             
@@ -245,7 +305,7 @@ function App() {
                const [servicecarreview, setServiceCarReviews] = useState([]);
                const serviceurl24 = 'http://127.0.0.1:8000/api/carDashboard/checkcarreview';
                useFetch(serviceurl24, setServiceCarReviews);
- 
+
                 // Show all transaction list  by service Car
                 const [servicecartransaction, setServiceCarTransactions] = useState([]);
                 const serviceurl25 = 'http://127.0.0.1:8000/api/carDashboard/cartransactionhistory';
@@ -264,7 +324,7 @@ function App() {
 
 
                   
-      
+                    //Add CAR
                       const serviceAddCar = (newCar) => { 
 
                         const axios = require('axios').default;
@@ -272,12 +332,45 @@ function App() {
                         axios({
                             method: 'post',
                             url: 'http://127.0.0.1:8000/api/carDashboard/addcar',
-                            
                             data:newCar,
-                          });
+                            });
+                      };
+
+
+                    //Edit CAR
+                    const serviceEditCar = (editCar) => { 
+
+                      const axios = require('axios').default;
+
+                      axios({
+                          method: 'post',
+                          url: 'http://127.0.0.1:8000/api/carDashboard/caredit',
+                          data:editCar,
+                        });
+                        const data = servicecarmanage.filter((car) => car.id != editCar.id);
+                        const data2 = servicecarmanage.filter((car) => car.id == editCar.id);
+                        const data3 = servicecarmanage.filter((car) => car.id == editCar.id);
+    
+                        data3.id = editCar.id;
+                        data3.title = editCar.title;
+                        data3.model = editCar.model;
+                        data3.driver = editCar.driver;
+
+                        
+                        data3.type = data2[0].type;
+                        data3.fare = data2[0].fare;
+                        data3.availability = data2[0].availability;
+                        data3.image = data2[0].image;
+                        
+                        console.log(data2[0]);
+                        console.log(data2.type);
+                        console.log(data2.fare);
+                        console.log(data2.availability);
+    
+                        setServiceCarManages([...data, data3]);
                     };
 
-                    
+                    //ADD CAR Support
                     const serviceCarSupport = (newSupport) => { 
 
                       const axios = require('axios').default;
@@ -429,7 +522,7 @@ function App() {
                useFetch(url37, setServiceFlightType);
 
 
-
+                  //Add Flight
                   const serviceAddFlight = (newFlight) => { 
 
                     const axios = require('axios').default;
@@ -442,6 +535,7 @@ function App() {
                       });
                 };
 
+                //Add Flight Support
                 const serviceFlightSupport = (newSupport) => { 
 
                   const axios = require('axios').default;
@@ -453,6 +547,40 @@ function App() {
                       data:newSupport,
                     });
               };
+
+              const serviceEditFlight = (editFlight) => { 
+
+                const axios = require('axios').default;
+
+                axios({
+                    method: 'post',
+                    url: 'http://127.0.0.1:8000/api/flightDashboard/flightedit',
+                    data:editFlight,
+                  });
+                    console.log(editFlight);
+
+                    const data = serviceflightmanage.filter((flight) => flight.id != editFlight.id);
+                    const data2 = serviceflightmanage.filter((flight) => flight.id == editFlight.id);
+                    const data3 = serviceflightmanage.filter((flight) => flight.id == editFlight.id);
+
+                    data3.id = editFlight.id;
+                    data3.title = editFlight.title;
+                    data3.model = editFlight.model;
+
+                    data3.type = data2[0].type;
+                    data3.fare = data2[0].fare;
+                    data3.availability = data2[0].availability;
+                    data3.image = data2[0].image;
+                    
+                    console.log(data2[0]);
+                    console.log(data2.type);
+                    console.log(data2.fare);
+                    console.log(data2.availability);
+
+                    setServiceFlightManages([...data, data3]);
+
+                 };
+
 
               // Flight Availability Change Post
               const flightAvailabilityCallback = ({title, availability}) => {
@@ -606,6 +734,15 @@ function App() {
                   </div>  
                 </Route>
 
+                <Route path="/hotelDashboard/facilityedit/:id">
+                  <div className="wrapper">
+                          <HotelNavbar />
+                        <div className="main-container">
+                        <ServiceEditFacility callback={serviceEditFacility} />
+                        </div>
+                    </div>  
+            </Route>
+
             <Route path="/hotelDashboard/managehotelroom">
                   <div className="wrapper">
                         <HotelNavbar />
@@ -613,6 +750,15 @@ function App() {
                         <ServiceRoomList list={serviceroom} callback={serviceRoomDeletecallback} />
                       </div>
                   </div>    
+            </Route>
+
+            <Route path="/hotelDashboard/roomedit/:id">
+                  <div className="wrapper">
+                          <HotelNavbar />
+                        <div className="main-container">
+                        <ServiceEditRoom callback={serviceEditRoom} />
+                        </div>
+                    </div>  
             </Route>
 
             <Route path="/hotelDashboard/showhotelallboking">
@@ -673,7 +819,16 @@ function App() {
                   <div className="wrapper">
                           <CarNavbar />
                         <div className="main-container">
-                           <ServiceAddCar status="Car" callback={serviceAddCar} />
+                           <ServiceAddCar callback={serviceAddCar} />
+                        </div>
+                    </div>  
+            </Route>
+
+            <Route path="/carDashboard/caredit/:id">
+                  <div className="wrapper">
+                          <CarNavbar />
+                        <div className="main-container">
+                        <ServiceEditCar callback={serviceEditCar} />
                         </div>
                     </div>  
             </Route>
@@ -770,6 +925,15 @@ function App() {
                         <ServiceAddFlight status="Flight" callback={serviceAddFlight} />
                       </div>
                   </div>
+            </Route>
+
+            <Route path="/flightDashboard/flightedit/:id">
+                  <div className="wrapper">
+                          <FlightNavbar />
+                        <div className="main-container">
+                        <ServiceEditFlight callback={serviceEditFlight} />
+                        </div>
+                    </div>  
             </Route>
 
             <Route path="/flightDashboard/manageflight">

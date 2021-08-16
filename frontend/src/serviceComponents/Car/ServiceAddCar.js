@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom';
 import '../Service.css';
 
 
-const ServiceAddCar = ({ status, callback }) => {
+const ServiceAddCar = ({ callback }) => {
     
     const [title, setTitle] = useState("");
     const [model, setModel] = useState("");

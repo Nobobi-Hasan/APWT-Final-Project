@@ -1,4 +1,4 @@
-import {Link} from 'react-router-dom';
+
 const ServiceReview = ({id, service_id, service_type, company, user_id,rating,msg})=>{
     return(
         <>

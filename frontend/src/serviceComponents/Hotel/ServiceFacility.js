@@ -10,8 +10,9 @@ const ServiceFacility = ({id, title, description, image, created, serviceFacilit
             {/* <td>{image}</td> */}
             <td><img className="userimg" src={process.env.PUBLIC_URL + "/images/" + image}/></td>
             <td>{created}</td>
+            
             <td> 
-            <Link to='/hotelDashboard'className='edit-button'>Edit</Link> |
+            <Link to={`/hotelDashboard/facilityedit/${id}`} className='edit-button'>Edit</Link>
             <button className='delete-button' onClick={()=>serviceFacilityDeletecallback(id)}>Delete</button>
             </td>
 

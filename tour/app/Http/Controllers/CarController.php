@@ -82,15 +82,18 @@ class CarController extends Controller
 
     
     //car edit confirm
-    public function careditconfirm($id, CarEditRequest $req){
+    public function careditconfirm(Request $req){
         
-        $car = Car::find($id);
+        $car = Car::find($req->id);
         $car->title = $req->title;
         $car->model = $req->model;
         $car->driver = $req->driver;
         $car->save();
 
-        return redirect()->route('car.managecar');
+        // $car =  Car::all();
+
+        // return response()->json($req);
+        // return redirect()->route('car.managecar');
     }
 
     //car delete confirmation

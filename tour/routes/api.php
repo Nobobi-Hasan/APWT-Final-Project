@@ -24,10 +24,16 @@ Route::post('/hotelDashboard/addhotelfacility','HotelController@addhotelfacility
 Route::get('/hotelDashboard/managehotelfacility','HotelController@managehotelfacility')->name('hotel.managehotelfacility');
 Route::post('/hotelDashboard/facilitydelete','HotelController@facilitydestroy')->name('hotel.facilitydestroy');
 
+//Hotel Facility Edit
+Route::post('/hotelDashboard/facilityedit','HotelController@facilityeditconfirm')->name('hotel.facilityeditconfirm');
+
 //Hotel Room Add-Manage-Delete
 Route::post('/hotelDashboard/addhotelroom','HotelController@addhotelroomVerify')->name('hotel.addhotelroomVerify');
 Route::get('/hotelDashboard/managehotelroom','HotelController@managehotelroom')->name('hotel.managehotelroom');
 Route::post('/hotelDashboard/roomdelete','HotelController@roomdestroy')->name('hotel.roomdestroy');
+
+//Hotel Room Edit
+Route::post('/hotelDashboard/roomedit','HotelController@roomeditconfirm')->name('hotel.roomeditconfirm');
 
 //Hotel Booking Show And Delete
 Route::get('/hotelDashboard/showhotelallboking','HotelController@showhotelallboking')->name('hotel.showhotelallboking');
@@ -58,6 +64,10 @@ Route::post('/hotelDashboard/hotelsupport','HotelController@hotelsupportconfirm'
 Route::post('/carDashboard/addcar','CarController@addcarVerify')->name('car.addcarVerify');
 Route::get('/carDashboard/managecar','CarController@managecar')->name('car.managecar');
 Route::post('/carDashboard/cardelete','CarController@cardestroy')->name('car.cardestroy');
+
+//Car Edit
+Route::post('/carDashboard/caredit','CarController@careditconfirm')->name('car.careditconfirm');
+
 
 //Car Booking Show And Delete
 Route::get('/carDashboard/car-booking-list','CarController@showcarallbooking')->name('car.showcarallbooking');
@@ -95,6 +105,8 @@ Route::post('/flightDashboard/addflight','FlightController@addflightVerify')->na
 Route::get('/flightDashboard/manageflight','FlightController@manageflight')->name('flight.manageflight');
 Route::post('/flightDashboard/flightdelete','FlightController@flightdestroy')->name('flight.flightdestroy');
 
+//Flight Edit
+Route::post('/flightDashboard/flightedit','FlightController@flighteditconfirm')->name('flight.flighteditconfirm');
 
 //Flight Booking Show And Delete
 Route::get('/flightDashboard/flight-booking-list','FlightController@showflightallbooking')->name('flight.showflightallbooking');

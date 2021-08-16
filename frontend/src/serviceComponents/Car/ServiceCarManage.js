@@ -8,12 +8,12 @@ const ServiceCarManage = ({id, title, model,driver,type,fare,availability, image
             <td>{title}</td>
             <td>{model}</td>
             <td>{driver}</td>
-            <td>{type}</td>
             <td>{fare}</td>
+            <td>{type}</td>
             <td>{availability}</td>
             <td><img className="userimg" src={process.env.PUBLIC_URL + "/images/" + image}/></td>
             <td> 
-            <Link to='/carDashboard'className='edit-button'>Edit</Link> |
+            <Link to={`/carDashboard/caredit/${id}`} className='edit-button'>Edit</Link>
             <button className='delete-button' onClick={()=>serviceCarManageDeletecallback(id)}>Delete</button>
             </td>
 
