@@ -7,7 +7,7 @@ use App\User;
 class EmployeeUserController extends Controller
 {
     public function userList(){
-        $users = User::all();
+        $users = User::where('status', 'Active')->get();
         return response()->json($users);
     }
     public function userDetails($id){

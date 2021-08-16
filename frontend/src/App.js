@@ -2,6 +2,7 @@ import { useState } from "react";
 import EmployeeNavbar from "./employeeComponents/EmployeeNavbar";
 import { useFetch } from './employeeComponents/useFetch';
 import 'font-awesome/css/font-awesome.min.css';
+import EmployeeHome from "./employeeComponents/EmployeeHome";
 import EmployeeAddSalary from "./employeeComponents/EmployeeAddSalary";
 import EmployeeAddStatement from "./employeeComponents/EmployeeAddStatement";
 import EmployeeAddTransaction from "./employeeComponents/EmployeeAddTransaction";
@@ -340,7 +341,8 @@ const employeeGuidelinesEditCallback = (guidelines) => {
         <Route exact path="/employee">
           <div className="wrapper">
             <EmployeeNavbar />
-              <div className="main-container">      
+              <div className="main-container">   
+              <EmployeeHome/>   
               </div>
 
           </div>

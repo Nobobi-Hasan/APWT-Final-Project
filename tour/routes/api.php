@@ -16,7 +16,11 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+//emp home
+Route::get('/employee', 'EmployeeController@index') ->name('employee.index');
 
+Route::get('/employee/profile', 'EmployeeController@profile') ->name('employee.profile');
+Route::post('/employee/profile', 'EmployeeController@profileUD')->name('employee.profileUD');
 //emp user
 Route::get('/employee/userlist', 'EmployeeUserController@userList') ->name('employee.userList');
 Route::get('/employee/userdetails{id}', 'EmployeeUserController@userDetails') ->name('employee.userDetails');
@@ -57,3 +61,7 @@ Route::post('/employee/faq/delete', 'EmployeeFaqController@faqDestroy')->name('e
 //emp guidelines
 Route::get('/employee/guidelines', 'EmployeeGuidelinesController@index') ->name('employeeGuidelines.index');
 Route::post('/employee/guidelines/edit', 'EmployeeGuidelinesController@edit') ->name('employeeGuidelines.edit');
+//emp transport
+Route::get('/employee/transportList', 'EmployeeTransportController@transport')->name('employee.transport');
+//emp hotel
+Route::get('/employee/hotelList', 'EmployeeHotelController@hotel')->name('employee.hotel');
