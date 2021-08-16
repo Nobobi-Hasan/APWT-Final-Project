@@ -16,6 +16,8 @@ import EmployeeSalaryList from "./employeeComponents/EmployeeSalaryList";
 import EmployeeStatementList from "./employeeComponents/EmployeeStatementList";
 import EmployeeTransactionList from "./employeeComponents/EmployeeTransactionList";
 import EmployeeReviewList from "./employeeComponents/EmployeeReviewList";
+import EmployeeTransportList from "./employeeComponents/EmployeeTransportList";
+import EmployeeHotelList from "./employeeComponents/EmployeeHotelList";
 import EmployeeFaqList from "./employeeComponents/EmployeeFaqList";
 import EmployeeAdvertisementList from "./employeeComponents/EmployeeAdvertisementList";
 import EmployeeGalleryList from "./employeeComponents/EmployeeGalleryList";
@@ -188,10 +190,20 @@ const employeeAddStatement = (newEmployeeStatement) => {
     const emp4 = 'http://127.0.0.1:8000/api/employee/review';
     useFetch(emp4, setEmployeeReview);
 
+    //show transport to employee
+    const [employeetransport, setEmployeeTransport] = useState([]);
+    const emp5 = 'http://127.0.0.1:8000/api/employee/transportList';
+    useFetch(emp5, setEmployeeTransport);
+
+    //show hotel to employee
+    const [employeehotel, setEmployeeHotel] = useState([]);
+    const emp6 = 'http://127.0.0.1:8000/api/employee/hotelList';
+    useFetch(emp6, setEmployeeHotel);
+
      //show faq to employee
      const [employeefaq, setEmployeeFaq] = useState([]);
-     const emp5 = 'http://127.0.0.1:8000/api/employee/faq/list';
-     useFetch(emp5, setEmployeeFaq);
+     const emp7 = 'http://127.0.0.1:8000/api/employee/faq/list';
+     useFetch(emp7, setEmployeeFaq);
 
    // Delete faq by employee
     const employeeFaqDeletecallback = (id) => {
@@ -212,8 +224,8 @@ const employeeAddStatement = (newEmployeeStatement) => {
   
   //show advertisement list to employee
   const [employeeadvertisement, setEmployeeAdvertisement] = useState([]);
-  const emp6 = 'http://127.0.0.1:8000/api/employee/advertisement/list';
-  useFetch(emp6, setEmployeeAdvertisement);
+  const emp8 = 'http://127.0.0.1:8000/api/employee/advertisement/list';
+  useFetch(emp8, setEmployeeAdvertisement);
 
   // Delete advertisement by employee
  const employeeAdvertisementDeletecallback = (id) => {
@@ -234,8 +246,8 @@ const employeeAddStatement = (newEmployeeStatement) => {
 
   //show promo list to employee
   const [employeepromo, setEmployeePromo] = useState([]);
-  const emp7 = 'http://127.0.0.1:8000/api/employee/promo/list';
-  useFetch(emp7, setEmployeePromo);
+  const emp9 = 'http://127.0.0.1:8000/api/employee/promo/list';
+  useFetch(emp9, setEmployeePromo);
 
   // Delete promo by employee
  const employeePromoDeletecallback = (id) => {
@@ -255,8 +267,8 @@ const employeeAddStatement = (newEmployeeStatement) => {
 
 //show gallery to employee
 const [employeegallery, setEmployeeGallery] = useState([]);
-const emp8 = 'http://127.0.0.1:8000/api/employee/gallery/manage';
-useFetch(emp8, setEmployeeGallery);
+const emp10 = 'http://127.0.0.1:8000/api/employee/gallery/manage';
+useFetch(emp10, setEmployeeGallery);
 
 // Delete image from gallery by employee
 const employeeGalleryDeletecallback = (id) => {
@@ -276,8 +288,8 @@ const employeeGalleryDeletecallback = (id) => {
 
 //show support to employee
 const [employeesupport, setEmployeeSupport] = useState([]);
-const emp9 = 'http://127.0.0.1:8000/api/employee/support';
-useFetch(emp9, setEmployeeSupport);
+const emp11 = 'http://127.0.0.1:8000/api/employee/support';
+useFetch(emp11, setEmployeeSupport);
 
 // Delete support by employee
 const employeeSupportDeletecallback = (id) => {
@@ -298,13 +310,13 @@ const employeeSupportDeletecallback = (id) => {
 
 // Show all users by employee
 const [employeeUser, setEmployeeUser] = useState([]);
-const emp10 = 'http://127.0.0.1:8000/api/employee/userlist';
-useFetch(emp10, setEmployeeUser);
+const emp12 = 'http://127.0.0.1:8000/api/employee/userlist';
+useFetch(emp12, setEmployeeUser);
 
 // Show user details by employee
 const [employeeUserDetails, setEmployeeUserDetails] = useState([]);
-const emp11 = 'http://127.0.0.1:8000/api/employee/userlist';
-useFetch(emp11, setEmployeeUserDetails);
+const emp13 = 'http://127.0.0.1:8000/api/employee/userlist';
+useFetch(emp13, setEmployeeUserDetails);
 
  // Show an User Details by employee
  const employeeUserDetailscallback = (id) => {
@@ -315,8 +327,8 @@ useFetch(emp11, setEmployeeUserDetails);
 
 //Show Guidelines by employee
 const [employeeGuidelines, setEmployeeGuidelines] = useState([]);
-const emp12 = 'http://127.0.0.1:8000/api/employee/guidelines';
-useFetch(emp12, setEmployeeGuidelines);
+const emp14 = 'http://127.0.0.1:8000/api/employee/guidelines';
+useFetch(emp14, setEmployeeGuidelines);
 
 // Edit Guidelines by employee
 const employeeGuidelinesEditCallback = (guidelines) => {
@@ -580,6 +592,25 @@ const employeeGuidelinesEditCallback = (guidelines) => {
                     </div>
         </div>            
         </Route>
+
+        <Route exact path="/employee/transportList">
+        <div className="wrapper">
+            <EmployeeNavbar />
+              <div className="main-container">   
+                      <EmployeeTransportList list={employeetransport} />
+                    </div>
+        </div>            
+        </Route>
+
+        <Route exact path="/employee/hotelList">
+        <div className="wrapper">
+            <EmployeeNavbar />
+              <div className="main-container">   
+                      <EmployeeHotelList list={employeehotel} />
+                    </div>
+        </div>            
+        </Route>
+
         </Switch>
     </Router>    
   );
