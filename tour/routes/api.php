@@ -54,3 +54,6 @@ Route::post('/employee/support/delete', 'EmployeeSupportController@supportDestro
 Route::post('/employee/faq', 'EmployeeFaqController@faqAdd') ->name('employeeFaq.faqAdd');
 Route::get('/employee/faq/list', 'EmployeeFaqController@faq') ->name('employeeFaq.faq');
 Route::post('/employee/faq/delete', 'EmployeeFaqController@faqDestroy')->name('employeeFaq.faqDestroy');
+//emp guidelines
+Route::get('/employee/guideline', 'EmployeeGuidelinesController@index') ->name('employeeGuidelines.index');
+Route::post('/employee/guideline/edit', 'EmployeeGuidelinesController@edit') ->name('employeeGuidelines.edit');

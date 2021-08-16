@@ -22,6 +22,8 @@ import EmployeePromoList from "./employeeComponents/EmployeePromoList";
 import EmployeeSupportList from "./employeeComponents/EmployeeSupportList";
 import EmployeeUserList from "./employeeComponents/EmployeeUserList";
 import EmployeeUserDetailsList from "./employeeComponents/EmployeeUserDetailsList";
+import EmployeeGuidelines from "./employeeComponents/EmployeeGuidelines";
+import EmployeeGuidelinesForm from "./employeeComponents/EmployeeGuidelinesForm";
 
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
@@ -308,6 +310,26 @@ useFetch(emp11, setEmployeeUserDetails);
   const data = employeeUser.filter((user) => user.id === id);
   setEmployeeUserDetails(data);
   console.log(data);
+  };
+
+//Show Guidelines by employee
+const [employeeGuidelines, setEmployeeGuidelines] = useState([]);
+const emp12 = 'http://127.0.0.1:8000/api/employee/guidelines';
+useFetch(emp12, setEmployeeGuidelines);
+
+// Edit Guidelines by employee
+const employeeGuidelinesEditCallback = (guidelines) => {
+  const axios = require('axios').default;
+
+  axios({
+      method: 'post',
+      url: 'http://127.0.0.1:8000/api/employee/guidelines/edit',
+      data: guidelines
+    });
+
+  setEmployeeGuidelines(guidelines);
+
+  console.log(guidelines);
 };
 
   return (
@@ -521,11 +543,23 @@ useFetch(emp11, setEmployeeUserDetails);
         <Route exact path="/employee/guideline">
         <div className="wrapper">
             <EmployeeNavbar />
-              <div className="main-container">      
+              <div className="main-container">   
+              <EmployeeGuidelines list={employeeGuidelines} />   
               </div>
 
         </div>
         </Route>
+
+        <Route path="/employee/guidelines/edit">
+                    <div className="wrapper">
+
+                        <EmployeeNavbar />
+                        <div className="main-container"> 
+                            <EmployeeGuidelinesForm callback={employeeGuidelinesEditCallback} />
+                        </div>
+
+                    </div>
+                </Route>
 
         <Route exact path="/employee/faq">
         <div className="wrapper">

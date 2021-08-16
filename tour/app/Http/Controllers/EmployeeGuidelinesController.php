@@ -10,7 +10,8 @@ class EmployeeGuidelinesController extends Controller
     public function index(){
 
         $guideline = Guideline::where('id', 1)->first();
-        return view('employee.guideline')->with('guideline', $guideline);
+        return response()->json($guideline);
+       // return view('employee.guideline')->with('guideline', $guideline);
     }
 
     public function form($id){
@@ -19,12 +20,12 @@ class EmployeeGuidelinesController extends Controller
         return view('employee.guidelineForm')->with('guideline', $guideline);
     }
 
-    public function edit(EmpGuidelineRequest $req, $id){
+    public function edit(Request $req, $id){
 
         $guideline = Guideline::find($id);
-        $guideline-> guideline = $req->guidelineForm;
+        $guideline-> guideline = $req->guideline;
         $guideline->save();
-        return view('employee.guideline')->with('guideline', $guideline);
+       // return view('employee.guideline')->with('guideline', $guideline);
     }
 
 }
