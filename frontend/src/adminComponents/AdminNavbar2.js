@@ -30,7 +30,7 @@ const AdminNavbar = ()=>{
 					<br></br>
 
 					<li className="item">
-                        <Link className="menu-btn" to='/admin'><i class="fa fa-home" aria-hidden="true"></i><span>Dashboard</span></Link>
+                        <Link className="menu-btn" to='/admin/home'><i class="fa fa-home" aria-hidden="true"></i><span>Dashboard</span></Link>
 					</li>
 
 					<li className="item" id="admin">

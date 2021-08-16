@@ -3,6 +3,9 @@ import AdminNavbar from "./adminComponents/AdminNavbar";
 import AdminNavbar2 from "./adminComponents/AdminNavbar2";
 import { useFetch } from './adminComponents/useFetch';
 
+
+import AdminHome from "./adminComponents/AdminHome";
+
 import AdminAddEmployee from "./adminComponents/AdminAddEmployee";
 import AdminEmployeeList from "./adminComponents/AdminEmployeeList";
 import AdminUserList from "./adminComponents/AdminUserList";
@@ -54,6 +57,9 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 
 function App() {
+
+
+
 
 // Show all employees by admin
     const [adminEmployee, setAdminEmployees] = useState([]);
@@ -215,6 +221,8 @@ useFetch(urlGL, setAdminGuidelines);
 const [adminAbout, setAdminAbout] = useState([]);
 const urlAA = 'http://127.0.0.1:8000/api/admin/about';
 useFetch(urlAA, setAdminAbout);
+
+
 
 
 
@@ -684,12 +692,12 @@ useFetch(urlAA, setAdminAbout);
             {/* <Navbar /> */}
             <Switch>
           
-                <Route exact path="/admin">
+                <Route exact path="/admin/home">
                     <div className="wrapper">
 
                         <AdminNavbar2 />
                         <div className="main-container"> 
-                            
+                            <AdminHome/>
                         </div>
 
                     </div>
@@ -697,7 +705,7 @@ useFetch(urlAA, setAdminAbout);
                 </Route>
 
                 
-                <Route path="/admin/add-admin">
+                <Route exact path="/admin/add-admin">
                     <div className="wrapper">
 
                         <AdminNavbar2 />
@@ -708,7 +716,7 @@ useFetch(urlAA, setAdminAbout);
                     </div>
                 </Route>
 
-                <Route path="/admin/all-admins">
+                <Route exact path="/admin/all-admins">
 
                     <div className="wrapper">
 
@@ -721,7 +729,7 @@ useFetch(urlAA, setAdminAbout);
 
                 </Route>
 
-                <Route path="/admin/all-users">
+                <Route exact path="/admin/all-users">
                     <div className="wrapper">
 
                         <AdminNavbar2 />
@@ -732,7 +740,7 @@ useFetch(urlAA, setAdminAbout);
                     </div>
                 </Route>
 
-                <Route path="/admin/active-users">
+                <Route exact path="/admin/active-users">
                     <div className="wrapper">
 
                         <AdminNavbar2 />
@@ -754,7 +762,7 @@ useFetch(urlAA, setAdminAbout);
                     </div>
                 </Route>
 
-                <Route path="/admin/add-employee">
+                <Route exact path="/admin/add-employee">
 
 
                     <div className="wrapper">
@@ -768,7 +776,7 @@ useFetch(urlAA, setAdminAbout);
                    
                 </Route>
 
-                <Route path="/admin/all-employees">
+                <Route exact path="/admin/all-employees">
 
                     <div className="wrapper">
 
@@ -781,7 +789,7 @@ useFetch(urlAA, setAdminAbout);
                     
                 </Route>
 
-                <Route path="/admin/active-employees">
+                <Route exact path="/admin/active-employees">
                     <div className="wrapper">
 
                         <AdminNavbar2 />
@@ -792,7 +800,7 @@ useFetch(urlAA, setAdminAbout);
                     </div>
                 </Route>
 
-                <Route path="/admin/hotels-pending">
+                <Route exact path="/admin/hotels-pending">
                     <div className="wrapper">
 
                         <AdminNavbar2 />
@@ -803,7 +811,7 @@ useFetch(urlAA, setAdminAbout);
                     </div>
                 </Route>
 
-                <Route path="/admin/all-hotels">
+                <Route exact path="/admin/all-hotels">
                     <div className="wrapper">
 
                         <AdminNavbar2 />
@@ -814,7 +822,7 @@ useFetch(urlAA, setAdminAbout);
                     </div>
                 </Route>
 
-                <Route path="/admin/hotel-bookings">adminHotelBookings
+                <Route exact path="/admin/hotel-bookings">adminHotelBookings
                     <div className="wrapper">
 
                         <AdminNavbar2 />
@@ -825,7 +833,7 @@ useFetch(urlAA, setAdminAbout);
                     </div>
                 </Route>
 
-                <Route path="/admin/transports-pending">
+                <Route exact path="/admin/transports-pending">
                     <div className="wrapper">
 
                         <AdminNavbar2 />
@@ -836,7 +844,7 @@ useFetch(urlAA, setAdminAbout);
                     </div>
                 </Route>
 
-                <Route path="/admin/all-cars">
+                <Route exact path="/admin/all-cars">
                     <div className="wrapper">
 
                         <AdminNavbar2 />
@@ -847,7 +855,7 @@ useFetch(urlAA, setAdminAbout);
                     </div>
                 </Route>
 
-                <Route path="/admin/all-flight">
+                <Route exact path="/admin/all-flight">
                     <div className="wrapper">
 
                         <AdminNavbar2 />
@@ -858,7 +866,7 @@ useFetch(urlAA, setAdminAbout);
                     </div>
                 </Route>
 
-                <Route path="/admin/car-bookings">
+                <Route exact path="/admin/car-bookings">
                     <div className="wrapper">
 
                         <AdminNavbar2 />
@@ -869,7 +877,7 @@ useFetch(urlAA, setAdminAbout);
                     </div>
                 </Route>
 
-                <Route path="/admin/flight-bookings">
+                <Route exact path="/admin/flight-bookings">
                     <div className="wrapper">
 
                         <AdminNavbar2 />
@@ -883,7 +891,7 @@ useFetch(urlAA, setAdminAbout);
 
 
 
-                <Route path="/admin/package-pending">
+                <Route exact path="/admin/package-pending">
                     <div className="wrapper">
 
                         <AdminNavbar2 />
@@ -894,7 +902,7 @@ useFetch(urlAA, setAdminAbout);
                     </div>
                 </Route>
 
-                <Route path="/admin/all-packages">
+                <Route exact path="/admin/all-packages">
                     <div className="wrapper">
 
                         <AdminNavbar2 />
@@ -905,7 +913,7 @@ useFetch(urlAA, setAdminAbout);
                     </div>
                 </Route>
 
-                <Route path="/admin/package-bookings">
+                <Route exact path="/admin/package-bookings">
                     <div className="wrapper">
 
                         <AdminNavbar2 />
@@ -916,7 +924,7 @@ useFetch(urlAA, setAdminAbout);
                     </div>
                 </Route>
 
-                <Route path="/admin/package-status">
+                <Route exact path="/admin/package-status">
                     <div className="wrapper">
 
                         <AdminNavbar2 />
@@ -930,7 +938,7 @@ useFetch(urlAA, setAdminAbout);
 
 
 
-                <Route path="/admin/place-pending">
+                <Route exact path="/admin/place-pending">
                     <div className="wrapper">
 
                         <AdminNavbar2 />
@@ -941,7 +949,7 @@ useFetch(urlAA, setAdminAbout);
                     </div>
                 </Route>
 
-                <Route path="/admin/all-places">
+                <Route exact path="/admin/all-places">
                     <div className="wrapper">
 
                         <AdminNavbar2 />
@@ -953,7 +961,7 @@ useFetch(urlAA, setAdminAbout);
                 </Route>
 
                 
-                <Route path="/admin/income-statement">
+                <Route exact path="/admin/income-statement">
                     <div className="wrapper">
 
                         <AdminNavbar2 />
@@ -964,7 +972,7 @@ useFetch(urlAA, setAdminAbout);
                     </div>
                 </Route>
 
-                <Route path="/admin/transaction-history">
+                <Route exact path="/admin/transaction-history">
                     <div className="wrapper">
 
                         <AdminNavbar2 />
@@ -975,7 +983,7 @@ useFetch(urlAA, setAdminAbout);
                     </div>
                 </Route>
 
-                <Route path="/admin/pending-salary">
+                <Route exact path="/admin/pending-salary">
                     <div className="wrapper">
 
                         <AdminNavbar2 />
@@ -986,7 +994,7 @@ useFetch(urlAA, setAdminAbout);
                     </div>
                 </Route>
 
-                <Route path="/admin/support">
+                <Route exact path="/admin/support">
                     <div className="wrapper">
 
                         <AdminNavbar2 />
@@ -997,7 +1005,7 @@ useFetch(urlAA, setAdminAbout);
                     </div>
                 </Route>
 
-                <Route exact path="/admin/policy">
+                <Route exact exact path="/admin/policy">
                     <div className="wrapper">
 
                         <AdminNavbar2 />
@@ -1008,7 +1016,7 @@ useFetch(urlAA, setAdminAbout);
                     </div>
                 </Route>
 
-                <Route path="/admin/policy/edit">
+                <Route exact path="/admin/policy/edit">
                     <div className="wrapper">
 
                         <AdminNavbar2 />
@@ -1020,7 +1028,7 @@ useFetch(urlAA, setAdminAbout);
                 </Route>
 
 
-                <Route exact path="/admin/guidelines">
+                <Route exact exact path="/admin/guidelines">
                     <div className="wrapper">
                         <AdminNavbar2 />
                         <div className="main-container"> 
@@ -1030,7 +1038,7 @@ useFetch(urlAA, setAdminAbout);
                 </Route>
 
 
-                <Route path="/admin/guidelines/edit">
+                <Route exact path="/admin/guidelines/edit">
                     <div className="wrapper">
 
                         <AdminNavbar2 />
@@ -1055,7 +1063,7 @@ useFetch(urlAA, setAdminAbout);
                 </Route>
 
 
-                <Route path="/admin/about/edit">
+                <Route exact path="/admin/about/edit">
                     <div className="wrapper">
 
                         <AdminNavbar2 />
@@ -1068,7 +1076,7 @@ useFetch(urlAA, setAdminAbout);
 
 
 
-                <Route path="/admin/profile">
+                <Route exact path="/admin/profile">
                     <div className="wrapper">
 
                         <AdminNavbar2 />
@@ -1080,7 +1088,7 @@ useFetch(urlAA, setAdminAbout);
                 </Route>
 
 
-                <Route path="/login">
+                <Route exact path="/login">
                     <div className="wrapper">
 
                         <AdminNavbar2 />

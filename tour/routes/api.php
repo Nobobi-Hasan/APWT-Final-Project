@@ -120,8 +120,11 @@ Route::get('/admin/support', 'AdminSupportController@index')->name('AdminSupport
 Route::post('/admin/support/delete', 'AdminSupportController@supportDestroy')->name('AdminSupport.supportDestroy');
 
 
+
+
 Route::get('/admin/policy', 'AdminPolicyController@index')->name('adminPolicy.index');
 Route::post('/admin/edit-policy', 'AdminPolicyController@edit')->name('adminPolicy.edit');
+
 
 
 
@@ -132,6 +135,11 @@ Route::get('/admin/about', 'AdminAboutController@index')->name('adminAbout.index
 Route::post('/admin/edit-about', 'AdminAboutController@edit')->name('adminAbout.edit');
 
 
+
+
+Route::get('/admin/home', 'AdminController@index')->name('admin.index');
+Route::get('/admin/profile', 'AdminController@profile')->name('admin.profile');
+Route::post('/admin/profile', 'AdminController@profileUD')->name('admin.profileUD');
 
 
 // Admin API End

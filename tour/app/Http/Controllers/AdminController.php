@@ -27,15 +27,16 @@ class AdminController extends Controller
         $carBookCount = Carbook::all()->count();
         $flightBookCount = Airbook::all()->count();
         $packageCount = Package::where('req', 'Approved')->count();
-
-        return view('admin.home')->with('employeeCount', $employeeCount)
-                                ->with('userCount', $userCount)
-                                ->with('supportCount', $supportCount)
-                                ->with('hotelBookCount', $hotelBookCount)
-                                ->with('carBookCount', $carBookCount)
-                                ->with('flightBookCount', $flightBookCount)
-                                ->with('packageCount', $packageCount);
-
+        
+        return [
+            'employeeCount' => $employeeCount,
+            'userCount' => $userCount,
+            'supportCount' => $supportCount,
+            'hotelBookCount' => $hotelBookCount,
+            'carBookCount' => $carBookCount,
+            'flightBookCount' => $flightBookCount,
+            'packageCount' => $packageCount,
+        ];
         
     }
 
