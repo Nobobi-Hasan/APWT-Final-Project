@@ -12,6 +12,8 @@ import EmployeeAddGallery from "./employeeComponents/EmployeeAddGallery";
 import EmployeeAddFaq from "./employeeComponents/EmployeeAddFaq";
 import EmployeeAddPackage from "./employeeComponents/EmployeeAddPackage";
 import EmployeeAddPlace from "./employeeComponents/EmployeeAddPlace";
+import EmployeeEditPlace from "./employeeComponents/EmployeeEditPlace";
+import EmployeePlaceList from "./employeeComponents/EmployeePlaceList";
 import EmployeeSalaryList from "./employeeComponents/EmployeeSalaryList";
 import EmployeeStatementList from "./employeeComponents/EmployeeStatementList";
 import EmployeeTransactionList from "./employeeComponents/EmployeeTransactionList";
@@ -345,6 +347,47 @@ const employeeGuidelinesEditCallback = (guidelines) => {
   console.log(guidelines);
 };
 
+//Show place by employee
+const [employeePlace, setEmployeePlace] = useState([]);
+const emp15 = 'http://127.0.0.1:8000/api/employee/place';
+useFetch(emp15, setEmployeePlace);
+
+ // Edit Place by employee
+ const employeeEditPlace = (editPlace) => { 
+
+  const axios = require('axios').default;
+
+  axios({
+      method: 'post',
+      url: 'http://127.0.0.1:8000/api/employee/placeEdit',
+      data:editPlace,
+    });
+    const data = employeePlace.filter((place) => place.id !== editPlace.id);
+    const data2 = employeePlace.filter((place) => place.id === editPlace.id);
+
+    data2.id = editPlace.id;
+    data2.place = editPlace.place;
+    data2.district = editPlace.district;
+    data2.image = editPlace.image;
+    setEmployeePlace([...data, data2]);
+};
+
+// Delete place by employee
+const employeePlaceDeletecallback = (id) => {
+  const axios = require('axios').default;
+
+  axios({
+      method: 'post',
+      url: 'http://127.0.0.1:8000/api/employee/placedelete',
+      data:{
+          id:id,
+      }
+    });
+  const data = employeePlace.filter((place) => place.id !== id);
+  setEmployeePlace(data);
+};
+
+
   return (
     <Router>
         {/* <EmployeeNavbar /> */}
@@ -413,11 +456,23 @@ const employeeGuidelinesEditCallback = (guidelines) => {
         <Route exact path="/employee/place">
         <div className="wrapper">
             <EmployeeNavbar />
-              <div className="main-container">      
+              <div className="main-container">    
+              <EmployeePlaceList list={employeePlace} callback={employeePlaceDeletecallback} />  
               </div>
 
           </div>
         </Route>
+
+        <Route path="/employee/placeEdit/:id">
+                  <div className="wrapper">
+                          <EmployeeNavbar />
+                        <div className="main-container">
+                        <EmployeeEditPlace callback={employeeEditPlace} />
+                        </div>
+                    </div>  
+            </Route>
+
+
 
         <Route exact path="/employee/gallery">
         <div className="wrapper">

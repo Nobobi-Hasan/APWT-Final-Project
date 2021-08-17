@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/alt-text */
 const EmployeeGallery = ({id, place, image, employeeGalleryDeletecallback})=>{
     return(
         
@@ -5,7 +6,7 @@ const EmployeeGallery = ({id, place, image, employeeGalleryDeletecallback})=>{
         <tr>
             <td>{id}</td>
             <td>{place}</td>
-            <td>{image}</td>
+            <td><img className="userimg" src={process.env.PUBLIC_URL + "/images/" + image}/></td>
             <td><button className='delete-button' onClick={()=>employeeGalleryDeletecallback(id)}>Delete</button></td>
         </tr>
 

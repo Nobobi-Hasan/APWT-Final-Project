@@ -395,7 +395,7 @@ h1{
     }
   
     .edit-button{
-      background-color: #3955d3;
+      background-color: #639ddf;
       color: white;
       height: 25px;
       width: 60px;
@@ -404,7 +404,7 @@ h1{
   
     .edit-button:hover{
       background-color:white;
-      color: #3955d3;
+      color: #639ddf;
       height: 25px;
       width: 60px;
       border-radius: 25px;

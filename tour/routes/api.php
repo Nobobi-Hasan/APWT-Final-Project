@@ -28,6 +28,9 @@ Route::get('/employee/userdetails{id}', 'EmployeeUserController@userDetails') ->
 Route::post('/employee/packageAdd', 'EmployeePackageController@PackageAdded') ->name('employeePackage.packageAdded');
 //emp place
 Route::post('/employee/placeAdd', 'EmployeePlaceController@PlaceAdded') ->name('employeePlace.placeAdded');
+Route::get('/employee/place', 'EmployeePlaceController@place') ->name('employeePlace.place');
+Route::post('/employee/placeEdit', 'EmployeePlaceController@placeEdited') ->name('employeePlace.placeEdited');
+Route::post('/employee/placedelete', 'EmployeePlaceController@placeDestroy') ->name('employeePlace.placeDestroy');
 //emp gallery
 Route::post('/employee/gallery', 'EmployeeGalleryController@upload')->name('employeeGallery.upload');
 Route::get('/employee/gallery/manage', 'EmployeeGalleryController@manage')->name('employeeGallery.manage');

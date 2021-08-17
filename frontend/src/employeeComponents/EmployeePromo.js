@@ -3,7 +3,7 @@ const EmployeePromo = ({id, image, message, employeePromoDeletecallback})=>{
         
 
         <tr>
-            <td>{image}</td>
+            <td><img className="userimg" src={process.env.PUBLIC_URL + "/images/" + image}/></td>
             <td>{message}</td>
             <td><button className='delete-button' onClick={()=>employeePromoDeletecallback(id)}>Delete</button></td>
         </tr>

@@ -8,7 +8,7 @@ use App\Place;
 class EmployeePlaceController extends Controller
 {
     public function place(){
-        $places = Place::all();
+        $places = Place::where('req', 'Approved')->get();
         return response()->json($places);
     }
 
@@ -52,27 +52,25 @@ class EmployeePlaceController extends Controller
         return view('employee.placeEdit')->with('places',  $place);
     }
 
-    public function placeEdited($id, EmpPlaceRequest $req){
+    public function placeEdited(Request $req){
 
-        if ($req->hasFile('image')) {
-            $file = $req->file('image');
+        // if ($req->hasFile('image')) {
+        //     $file = $req->file('image');
 
-            if($file->move('upload', 'employeePlace'.$req->place.'.'.$file->getClientOriginalExtension())){
-                echo "success";
-            }else{
-                echo "error";
-            }
-        }
-        $img='employeePlace'.$req->place.'.'.$file->getClientOriginalExtension();
+        //     if($file->move('upload', 'employeePlace'.$req->place.'.'.$file->getClientOriginalExtension())){
+        //         echo "success";
+        //     }else{
+        //         echo "error";
+        //     }
+        // }
+        // $img='employeePlace'.$req->place.'.'.$file->getClientOriginalExtension();
 
-                $place = Place::where('id', $id)->first();
+                $place = Place::find($req->id);;
                 $place -> place = $req->place;
                 $place-> district = $req->district;
-                $place -> image = $img;
+                $place -> image = $req ->image;
                 $place -> req= 'Approved';
                 $place -> save();
-                $req->session()->flash('placeUDMsg', 'Place Updated');
-                return redirect()->route('employeePlace.place');
     }
 
     public function placeDelete($id){
@@ -81,6 +79,10 @@ class EmployeePlaceController extends Controller
         return redirect()->route('employeePlace.place');
     }
 
-    
+   
+    public function placeDestroy(Request $req){
+        $place=Place::find($req->id);
+        $place->delete();
+    }
 
 }
