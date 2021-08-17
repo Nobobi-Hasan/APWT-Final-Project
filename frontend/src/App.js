@@ -363,13 +363,10 @@ useFetch(emp15, setEmployeePlace);
       data:editPlace,
     });
     const data = employeePlace.filter((place) => place.id !== editPlace.id);
-    const data2 = employeePlace.filter((place) => place.id === editPlace.id);
-
-    data2.id = editPlace.id;
-    data2.place = editPlace.place;
-    data2.district = editPlace.district;
-    data2.image = editPlace.image;
-    setEmployeePlace([...data, data2]);
+  
+    setEmployeePlace(data);
+    setEmployeePlace([...data, editPlace]);
+    
 };
 
 // Delete place by employee
