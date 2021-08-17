@@ -6,12 +6,14 @@
   list-style: none;
   text-decoration: none;
   box-sizing: border-box;
-  font-family: "Roboto", sans-serif;
 }
 
 body{
+  padding: 0px 0;
+  font-family: "Roboto", sans-serif;
   background: rgb(187, 185, 185);
 }
+
 .wrapper .header{
   z-index: 1;
   background: #22242A;

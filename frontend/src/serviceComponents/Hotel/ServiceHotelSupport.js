@@ -15,7 +15,7 @@ const ServiceHotelSupport = ({ status, callback }) => {
         e.preventDefault();
        
         callback({ username: username, phone: phone, email:email, message: message});
-        history.push('/hotelDashboard');
+        history.push('/hotelDashboard/hotelsupport');
     };
     return (
         <div id="registration-form">

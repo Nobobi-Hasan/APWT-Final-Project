@@ -17,7 +17,14 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-//HOTEL
+//Registration
+//Hotel
+Route::post('/hotelreg','RegistrationController@hotelregVerify')->name('registration.hotelregVerify');
+
+//Car-Flight
+Route::post('/transportreg','RegistrationController@transportregVerify')->name('registration.transportregVerify');
+
+//HOTEL Service
 
 //Hotel Facility Add/Show/delete
 Route::post('/hotelDashboard/addhotelfacility','HotelController@addhotelfacilityVerify')->name('hotel.addhotelfacilityVerify');
@@ -58,7 +65,7 @@ Route::post('/hotelDashboard/hotelsupport','HotelController@hotelsupportconfirm'
 
 
 
-//CAR
+//CAR Service
 
 //Car Add-Manage-Delete
 Route::post('/carDashboard/addcar','CarController@addcarVerify')->name('car.addcarVerify');
@@ -98,7 +105,7 @@ Route::get('/carDashboard/cartransactionhistory','CarController@cartransactionhi
 
 
 
-//Flight
+//Flight Service
 
 //Flight Add-Manage-Delete
 Route::post('/flightDashboard/addflight','FlightController@addflightVerify')->name('flight.addflightVerify');

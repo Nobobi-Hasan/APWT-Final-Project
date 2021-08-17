@@ -15,7 +15,7 @@ const ServiceAddRoom = ({ status, callback }) => {
         e.preventDefault();
        
         callback({ name: name, price: price,description:description, image: image});
-        history.push('/hotelDashboard');
+        history.push('/hotelDashboard/addhotelroom');
     };
     return (
         <div id="registration-form">

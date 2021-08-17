@@ -16,7 +16,7 @@ const ServiceAddFlight = ({ status, callback }) => {
         e.preventDefault();
        
         callback({ title: title, model: model, fare:fare, type:type, image: image});
-        history.push('/flightDashboard');
+        history.push('/flightDashboard/addflight');
     };
     return (
         <div id="registration-form">

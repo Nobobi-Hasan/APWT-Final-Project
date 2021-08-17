@@ -1,7 +1,11 @@
 import { useState } from "react";
 import { useFetch } from './serviceComponents/useFetch';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import 'font-awesome/css/font-awesome.min.css';
+
+//Registration
+import Register from "./Registration/Register";
+import HotelRegistration from "./Registration/HotelRegistration";
+import TransportRegistration from "./Registration/TransportRegistration";
 
 // Hotel Import
 import HotelNavbar from "./serviceComponents/Hotel/HotelNavbar";
@@ -47,6 +51,34 @@ import ServiceFlightSupport from "./serviceComponents/Flight/ServiceFlightSuppor
 
 
 function App() {
+
+  //Registration Api Work
+          
+          // Add Hotel in Registration Page
+          const hotelRegistration = (newHotel) => { 
+
+            const axios = require('axios').default;
+
+            axios({
+                method: 'post',
+                url: 'http://127.0.0.1:8000/api/hotelreg',
+                data:newHotel,
+              });
+        };
+
+        // Add Hotel in Registration Page
+        const transportRegistration = (newTransport) => { 
+
+          const axios = require('axios').default;
+
+          axios({
+              method: 'post',
+              url: 'http://127.0.0.1:8000/api/transportreg',
+              data:newTransport,
+            });
+      };
+
+
 
   // Hotel API Work
 
@@ -1008,6 +1040,25 @@ function App() {
                     </div>
                   </div>  
             </Route>
+            
+            {/* Registration */}
+
+            <Route path="/register">
+              <Register />
+            </Route>
+
+            <Route path="/hotelreg">
+
+                <HotelRegistration  callback={hotelRegistration} />
+
+            </Route>
+
+            <Route path="/transportreg">
+
+                <TransportRegistration  callback={transportRegistration} />
+
+            </Route>
+
 
         </Switch>
     </Router>

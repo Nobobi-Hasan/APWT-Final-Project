@@ -19,7 +19,7 @@ const ServiceAddCar = ({ callback }) => {
         e.preventDefault();
        
         callback({ title: title, model: model, driver:driver, fare:fare, type:type, image: image});
-        history.push('/carDashboard');
+        history.push('/carDashboard/addcar');
     };
     return (
             <div id="registration-form">

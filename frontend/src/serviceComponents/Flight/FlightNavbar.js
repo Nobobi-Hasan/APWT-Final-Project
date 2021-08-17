@@ -1,5 +1,5 @@
 import {Link} from 'react-router-dom';
-
+import 'font-awesome/css/font-awesome.min.css';
 const FlightNavbar = ()=>{
     return(
 

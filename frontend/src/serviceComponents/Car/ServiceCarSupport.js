@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useHistory } from 'react-router-dom';
 
-const ServiceCarSupport = ({ status, callback }) => {
+const ServiceCarSupport = ({  callback }) => {
     
     const [username, setUsername] = useState("");
     const [phone, setPhone] = useState("");
@@ -15,7 +15,7 @@ const ServiceCarSupport = ({ status, callback }) => {
         e.preventDefault();
        
         callback({ username: username, phone: phone, email:email, message: message});
-        history.push('/carDashboard');
+        history.push('/carDashboard/carsupport');
     };
     return (
         <div id="registration-form">

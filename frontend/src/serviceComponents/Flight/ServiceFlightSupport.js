@@ -15,7 +15,7 @@ const ServiceFlightSupport = ({ status, callback }) => {
         e.preventDefault();
        
         callback({ username: username, phone: phone, email:email, message: message});
-        history.push('/flightDashboard');
+        history.push('/flightDashboard/flightsupport');
     };
     return (
         <div id="registration-form">

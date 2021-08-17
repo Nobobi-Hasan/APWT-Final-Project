@@ -29,7 +29,7 @@ const ServiceRoomList = ({list, callback})=>{
             </table>
         </div>
         
-    )
-}
+    );
+};
 
 export default ServiceRoomList;
