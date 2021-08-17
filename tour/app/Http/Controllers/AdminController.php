@@ -40,18 +40,31 @@ class AdminController extends Controller
         
     }
 
-    public function profile(Request $req){
+    public function profile(){
         $id = session()->get('id');
-        $profile = Admin::find($id);
-        return view('admin.profile')->with('profile', $profile);
+        // $profile = Admin::find($id);
+
+        return [
+            'id' => session()->get('id'),
+            // 'firstname' => $profile->firstname,
+            // 'lastname' => $profile->lastname,
+            // 'gender' => $profile->gender,
+            // 'email' => $profile->email,
+            // 'username' => $profile->username,
+        ];
+
+        return session()->get('id');
+
+        // return response()->json($id);
+        // return view('admin.profile')->with('profile', $profile);
     }
 
     
 
     public function profileUD(ProfileRequest $req){
 
-        switch ($req->input('submit')) {
-            case 'Update':
+        // switch ($req->input('submit')) {
+            // case 'Update':
                 
                 $admin = Admin::where('username', $req->username)->first();
                 $admin -> firstname = $req->firstname;
@@ -60,21 +73,21 @@ class AdminController extends Controller
                 $admin -> email = $req->email;
                 $admin -> password = $req->password;
                 $admin -> save();
-                $req->session()->flash('adminUDMsg', 'Account Updated');
-                return redirect()->route('admin.profile');
+        //         $req->session()->flash('adminUDMsg', 'Account Updated');
+        //         return redirect()->route('admin.profile');
         
-                break;
+        //         break;
                 
     
-            case 'Delete':
+        //     case 'Delete':
 
-                $admin = Admin::where('username', $req->username)->first();
-                $admin->delete();
-                return redirect()->route('login.index');
+        //         $admin = Admin::where('username', $req->username)->first();
+        //         $admin->delete();
+        //         return redirect()->route('login.index');
                 
-                break;
+        //         break;
 
-        }
+        // }
     
     }
 

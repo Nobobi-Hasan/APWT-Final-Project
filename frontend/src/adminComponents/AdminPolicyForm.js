@@ -27,7 +27,7 @@ const AdminPolicyForm = ({callback})=>{
 
                 <h1>Edit Privacy Policy</h1>
 
-                <form className='form' onSubmit={onSubmit}>
+                <form className='big-form' onSubmit={onSubmit}>
                     <fieldset>
 
                         <legend> </legend>

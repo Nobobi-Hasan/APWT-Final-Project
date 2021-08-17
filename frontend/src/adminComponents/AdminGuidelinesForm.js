@@ -27,7 +27,7 @@ const AdminGuidelinesForm = ({callback})=>{
 
                 <h1>Edit Guidelines</h1>
 
-                <form className='form' onSubmit={onSubmit}>
+                <form className='big-form' onSubmit={onSubmit}>
                     <fieldset>
 
                         <legend> </legend>

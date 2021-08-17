@@ -1,17 +1,36 @@
 import { useState } from "react";
-import { useParams } from "react-router-dom";
 import { useHistory } from 'react-router-dom';
+import { useFetch } from '../adminComponents/useFetch';
+
 import './Admin.css';
 
-const AdminAddEmployee = ({ status, callback }) => {
+const AdminProfile = ({ idl, firstnamel, lastnamel, genderl, emaill, usernamel, callback }) => {
 
-    console.log("asdbiu")
-    //const { id: eid } = useParams();
-    const [firstname, setFirstname] = useState("");
-    const [lastname, setLastname] = useState("");
-    const [gender, setGender] = useState("");
-    const [email, setEmail] = useState("");
-    const [username, setUsername] = useState("");
+    console.log(idl);
+    console.log(firstnamel);
+    console.log(lastnamel);
+    console.log(genderl);
+    console.log(emaill);
+    console.log(usernamel);
+    
+// //Show Admin Profile by Admin
+//     const [adminProfile, setAdminProfile] = useState([]);
+//     const urlAP = 'http://127.0.0.1:8000/api/admin/profile';
+//     useFetch(urlAP, setAdminProfile);
+
+//     console.log(adminProfile);
+
+
+    const [firstname, setFirstname] = useState(firstnamel);
+    // setFirstname(firstnamel);
+    const [lastname, setLastname] = useState(lastnamel);
+    // setLastname(lastnamel);
+    const [gender, setGender] = useState(genderl);
+    // setGender(genderl);
+    const [email, setEmail] = useState(emaill);
+    // setEmail(emaill);
+    const [username, setUsername] = useState(usernamel);
+    // setUsername(usernamel);
     const [password, setPassword] = useState("");
     const [conPassword, setConPassword] = useState("");
 
@@ -23,13 +42,10 @@ const AdminAddEmployee = ({ status, callback }) => {
         e.preventDefault();
        
         callback({ firstname: firstname, lastname: lastname, gender: gender, email: email, username: username, password: password, conPassword: conPassword });
-        history.push('/admin/all-employees');
+        // history.push('/admin/all-employees');
     };
     return (
         <div>
-            <h2>
-                This is {status} Add page
-            </h2>
             <form className='form' onSubmit={onSubmit}>
             <fieldset>
             <legend>Basic Information: </legend>
@@ -68,14 +84,14 @@ const AdminAddEmployee = ({ status, callback }) => {
                 <br />
                 <label>
                     Password:
-                    <input type="text" name="password" value={password} onChange={(e) => setPassword(e.target.value)}
+                    <input type="text" name="password" value= {password} onChange={(e) => setPassword(e.target.value)}
                     />
                 </label>
                 <br />
 
                 <label>
                     Confirm Password:
-                    <input type="text" name="conPassword" value={conPassword} onChange={(e) => setConPassword(e.target.value)}
+                    <input type="text" name="conPassword" value= {conPassword}  onChange={(e) => setConPassword(e.target.value)}
                     />
                 </label>
                 <br />
@@ -87,4 +103,4 @@ const AdminAddEmployee = ({ status, callback }) => {
     );
 };
 
-export default AdminAddEmployee;
+export default AdminProfile;

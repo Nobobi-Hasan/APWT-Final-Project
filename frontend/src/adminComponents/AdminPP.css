@@ -7,7 +7,7 @@ h1{
     text-align: center;
 }
 
-.wrapper .main-container .form {
+.wrapper .main-container .big-form {
   width:90%;
   margin:  auto;
   padding:30px;
@@ -18,12 +18,12 @@ h1{
   margin-top: 5vh;
 }
 
-.wrapper .main-container .form  label {
+.wrapper .main-container .big-form  label {
   display:block;
   font-weight: bold;
 }
 
-.wrapper .main-container .form  input {
+.wrapper .main-container .big-form  input {
   display:block;
   width: 100%;
   border: 1px solid #000;
@@ -31,7 +31,7 @@ h1{
   box-sizing: border-box;
 }
 
-.wrapper .main-container .form  textarea {
+.wrapper .main-container .big-form  textarea {
   display:block;
   width: 100%;
   border: 1px solid #000;

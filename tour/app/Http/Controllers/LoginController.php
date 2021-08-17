@@ -18,43 +18,70 @@ class LoginController extends Controller
         return view('login.login');
     }
 
-    public function verify(LoginRequest $req){
+
+    public function verify(Request $req){
       
+        // $admin = new Admin;
+        // $admin -> firstname = "aa";
+        // $admin -> lastname = "ll";
+        // $admin -> image = "img.jpg";
+        // $admin -> gender = "gg";
+        // $admin -> email = "dsa@gmail.com";
+        // $admin -> username = $req->username;
+        // $admin -> password = $req->password;
+        // $admin ->save();
+ 
         
-        $admin = Admin::where('username', $req->uname)
+
+
+        $admin = Admin::where('username', $req->username)
                     ->where('password', $req->password)
                     ->first();
 
-        $employee = Employee::where('username', $req->uname)
+        $employee = Employee::where('username', $req->username)
                             ->where('password', $req->password)
                             ->first();
 
-        $user = User::where('username', $req->uname)
+        $user = User::where('username', $req->username)
                     ->where('password', $req->password)
                     ->first();
 
-        $transport = Transport::where('name', $req->uname)
+        $transport = Transport::where('name', $req->username)
                                 ->where('password', $req->password)
                                 ->first();
 
-        $hotel = Hotel::where('name', $req->uname)
+        $hotel = Hotel::where('name', $req->username)
                     ->where('password', $req->password)
                     ->first();
 
         if(count((array)$admin) > 0){
-            $req->session()->put('uname', $admin->username);
-            $req->session()->put('id', $admin->id);
-            $req->session()->put('type', $admin->type);
-            $req->session()->put('image', $admin->image);
+            // $req->session()->put('uname', $admin->username);
+            // $req->session()->put('id', $admin->id);
+            // $req->session()->put('type', $admin->type);
+            // $req->session()->put('image', $admin->image);
 
-            return redirect()->route('admin.index');
+            // return "admin";
+
+
+            return [
+                'type' => "admin",
+                'id' => $admin->id,
+                'firstname' => $admin->firstname,
+                'lastname' => $admin->lastname,
+                'gender' => $admin->gender,
+                'email' => $admin->email,
+                'username' => $admin->username,
+            ];
+            
+            // return redirect()->route('admin.index');
         }
         elseif(count((array)$employee) > 0){
-            $req->session()->put('uname', $employee->username);
-            $req->session()->put('id', $employee->id);
-            $req->session()->put('type', $employee->type);
+            // $req->session()->put('uname', $employee->username);
+            // $req->session()->put('id', $employee->id);
+            // $req->session()->put('type', $employee->type);
             
-            return redirect()->route('employee.index');
+            return "emp";
+            // return redirect()->route('employee.index');
         }
 
         elseif(count((array)$user) > 0){
@@ -62,7 +89,8 @@ class LoginController extends Controller
             $req->session()->put('id', $user->id);
             $req->session()->put('type', $user->type);
             
-            return redirect()->route('user.home');
+            return "user";
+            // return redirect()->route('user.home');
         }
 
         elseif(count((array)$transport) > 0){
@@ -72,11 +100,13 @@ class LoginController extends Controller
             
             if($transport->type == 'Car')
             {
-                return redirect()->route('car.index');
+                return "car";
+                // return redirect()->route('car.index');
             }
             elseif($transport->type == 'Flight')
             {
-                return redirect()->route('flight.index');
+                return "flight";
+                // return redirect()->route('flight.index');
             }
             
         }
@@ -87,12 +117,15 @@ class LoginController extends Controller
             $req->session()->put('image', $hotel->image);
             $req->session()->put('type', $hotel->type);
             
+            return "hotel";
             return redirect()->route('hotel.index');
         }
 
         else{
             $req->session()->flash('msg', 'invaild username or password');
-            return redirect()->route('login.index');
+
+            return "invalid";
+            // return redirect()->route('login.index');
         }
         
     }

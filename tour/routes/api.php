@@ -19,6 +19,14 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 // Admin API Start
 
+Route::post('/project-login', 'LoginController@verify')->name('login.verify');
+
+
+Route::get('/admin/profile', 'AdminController@profile')->name('admin.profile');
+Route::post('/admin/profile', 'AdminController@profileUD')->name('admin.profileUD');
+
+
+
 Route::post('/admin/add-employee', 'AdminEmployeeController@employeeAddVerify')->name('adminEmployee.employeeAddVerify');
 Route::get('/admin/all-employees', 'AdminEmployeeController@employeeList')->name('adminEmployee.employeeList');
 Route::post('/admin/employee/delete', 'AdminEmployeeController@employeeDestroy')->name('adminEmployee.employeeDestroy');

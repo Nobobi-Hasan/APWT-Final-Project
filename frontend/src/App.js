@@ -6,6 +6,12 @@ import { useFetch } from './adminComponents/useFetch';
 
 import AdminHome from "./adminComponents/AdminHome";
 
+import Login from "./loginComponents/Login";
+
+import AdminProfile from "./adminComponents/AdminProfile";
+
+import AdminAdminList from "./adminComponents/AdminAdminList";
+
 import AdminAddEmployee from "./adminComponents/AdminAddEmployee";
 import AdminEmployeeList from "./adminComponents/AdminEmployeeList";
 import AdminUserList from "./adminComponents/AdminUserList";
@@ -51,14 +57,12 @@ import AdminAboutForm from "./adminComponents/AdminAboutForm";
 import 'font-awesome/css/font-awesome.min.css';
 
 
-import AdminAdminList from "./adminComponents/AdminAdminList";
+
 
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 
 function App() {
-
-
 
 
 // Show all employees by admin
@@ -205,25 +209,70 @@ function App() {
 
 
 
-//Show Policy Policy bt Admin
+//Show Policy Policy by Admin
     const [adminPolicy, setAdminPolicy] = useState([]);
     const urlPP = 'http://127.0.0.1:8000/api/admin/policy';
     useFetch(urlPP, setAdminPolicy);
 
 
-//Show Guidelines bt Admin
+//Show Guidelines by Admin
 const [adminGuidelines, setAdminGuidelines] = useState([]);
 const urlGL = 'http://127.0.0.1:8000/api/admin/guidelines';
 useFetch(urlGL, setAdminGuidelines);
 
 
-//Show About Policy bt Admin
+//Show About Policy by Admin
 const [adminAbout, setAdminAbout] = useState([]);
 const urlAA = 'http://127.0.0.1:8000/api/admin/about';
 useFetch(urlAA, setAdminAbout);
 
 
+//store login data by Admin
+const [loginId, setLoginId] = useState([]);
+const [loginFirstname, setLoginFirstname] = useState([]);
+const [loginLastname, setLoginLastname] = useState([]);
+const [loginGender, setLoginGender] = useState([]);
+const [loginEmail, setLoginEmail] = useState([]);
+const [loginUsername, setLoginUsername] = useState([]);
 
+//store login data by Admin
+const loginIdf = ({id}) => { 
+    
+    setLoginId(id.id);
+    setLoginFirstname(id.firstname);
+    setLoginLastname(id.lastname);
+    setLoginGender(id.gender);
+    setLoginEmail(id.email);
+    setLoginUsername(id.username);
+    console.log(loginId);
+    console.log(loginFirstname);
+    console.log(loginLastname);
+    console.log(loginGender);
+    console.log(loginEmail);
+    console.log(loginUsername);
+};
+
+
+// Profile update by admin
+const adminProfileUpdate = (newProfile) => { 
+
+    const axios = require('axios').default;
+
+    axios({
+        method: 'post',
+        url: 'http://127.0.0.1:8000/api/admin/profile',
+        //data: JSON.stringify(newUser)
+        data:newProfile,
+      });
+
+      setLoginFirstname(newProfile.firstname);
+      setLoginLastname(newProfile.lastname);
+      setLoginGender(newProfile.gender);
+      setLoginEmail(newProfile.email);
+      setLoginUsername(newProfile.username);
+
+      console.log(newProfile);
+};
 
 
 
@@ -691,6 +740,17 @@ useFetch(urlAA, setAdminAbout);
     <Router>
             {/* <Navbar /> */}
             <Switch>
+
+
+                <Route exact path="/login">
+                    <div className="login-wrapper">
+
+                        <Login callback={loginIdf}/>
+
+                    </div>
+                    
+                </Route>
+
           
                 <Route exact path="/admin/home">
                     <div className="wrapper">
@@ -1081,7 +1141,13 @@ useFetch(urlAA, setAdminAbout);
 
                         <AdminNavbar2 />
                         <div className="main-container"> 
-                            
+                            <AdminProfile idl = {loginId} 
+                            firstnamel = {loginFirstname}
+                            lastnamel = {loginLastname}
+                            genderl = {loginGender}
+                            emaill = {loginEmail}
+                            usernamel = {loginUsername} 
+                            callback={adminProfileUpdate} />
                         </div>
 
                     </div>

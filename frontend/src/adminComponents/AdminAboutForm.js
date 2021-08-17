@@ -27,13 +27,13 @@ const AdminAboutForm = ({callback})=>{
 
                 <h1>Edit About Us</h1>
 
-                <form className='form' onSubmit={onSubmit}>
+                <form className='big-form' onSubmit={onSubmit}>
                     <fieldset>
 
                         <legend> </legend>
                         <br/>
 
-                        <label for="aboutForm">Write About Us Page content here:</label>
+                        <label for="aboutForm">Write About Us Page content here:</label> 
 
                         <textarea name="aboutForm" id="aboutForm"  rows="30" cols="40" value={adminAbout.about} onChange={(e) => setAdminAbout({id:adminAbout.id, about: e.target.value})} />
                            
