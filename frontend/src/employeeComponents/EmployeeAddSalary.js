@@ -18,9 +18,7 @@ const EmployeeAddSalary = ({ status, callback }) => {
     };
     return (
         <div>
-            <h2>
-                This is {status} Add page
-            </h2>
+            
             <form className='form' onSubmit={onSubmit}>
             <fieldset>
             <legend>Add Salary and Festival Bonus</legend>

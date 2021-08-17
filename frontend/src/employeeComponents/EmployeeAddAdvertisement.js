@@ -17,9 +17,7 @@ const EmployeeAddAdvertisement = ({ status, callback }) => {
     };
     return (
         <div>
-            <h2>
-                This is {status} Send page
-            </h2>
+            
             <form className='form' onSubmit={onSubmit}>
             <fieldset>
             <legend>Send Advertisement</legend>

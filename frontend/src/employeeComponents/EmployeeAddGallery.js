@@ -16,9 +16,7 @@ const EmployeeAddGallery = ({ status, callback }) => {
     };
     return (
         <div>
-            <h2>
-                This is {status} Add page
-            </h2>
+            
             <form className='form' onSubmit={onSubmit}>
             <fieldset>
             <legend>Add in Gallery</legend>
