@@ -10,6 +10,7 @@ class UserHotelsController extends Controller
 {
     public function showHotel(){
         $Hotels = Hotel::where('req', 'Approved')->get();
+        return response()->json($Hotels);
         return view('user.hotels')->with('showHotelList', $Hotels);
     }
 

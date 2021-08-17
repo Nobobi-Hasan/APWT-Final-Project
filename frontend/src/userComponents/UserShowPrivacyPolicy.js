@@ -6,7 +6,7 @@ console.log(list);
     return(
         <div>
             
-            <UserPrivacyPolicy {...list} />
+            <div dangerouslySetInnerHTML={{ __html: list.policy }} />;
             
         </div>
     )

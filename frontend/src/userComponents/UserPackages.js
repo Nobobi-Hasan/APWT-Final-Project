@@ -1,4 +1,5 @@
-const UserPackages = ({id, place, location, image, description, duration, transport, hotel, cost})=>{
+import {Link} from 'react-router-dom';
+const UserPackages = ({id, place, location, image, description, duration, transport, hotel, cost, userBookPackageCallback})=>{
     return(
         <>
 
@@ -12,6 +13,7 @@ const UserPackages = ({id, place, location, image, description, duration, transp
             <td>{transport}</td>
             <td>{hotel}</td>
             <td>{cost}</td>
+            <button className='approve-button' onClick={()=>userBookPackageCallback({id: id, place: place, location: location, image: image, description: description, duration: duration, transport: transport, hotel: hotel, cost: cost})}>Book</button>
 
                 
         </tr>

@@ -9,6 +9,7 @@ class UserFlightListController extends Controller
 {
     public function showFlightList(){
         $flights = Air::all();
-        return view('user.flight_list')->with('ADFlightList', $flights);
+        return response()->json($flights);
+        //return view('user.flight_list')->with('ADFlightList', $flights);
     }
 }

@@ -6,7 +6,7 @@ console.log(list);
     return(
         <div>
             
-            <UserTravelGuideline {...list} />
+            <div dangerouslySetInnerHTML={{ __html: list.guideline }} />;
             
         </div>
     )

@@ -22,61 +22,56 @@ const UserConfirmFlight = ({ status, callback }) => {
         history.push('/user');
     };
     return (
+        <>
         <div>
-            <h2>
-                {/* This is {status} employee page id: {eid} */}
-                Flight Booking
-            </h2>
-            <form onSubmit={onSubmit}>
-            <fieldset>
+            
+            <form className='form' onSubmit={onSubmit} >
+            
             <legend> Book Your Flight  </legend>
             <br />
+
                 <label>
-                    User ID:
+                User ID:
                     <input type="text" name="user_id" value={user_id} onChange={(e) => setUser_id(e.target.value)} />
                 </label>
                 <br />
-                <br />
+
                 <label>
-                    Flight ID:
+                Flight ID:
                     <input type="text" name="air_id" value={air_id} onChange={(e) => setAir_id(e.target.value)} />
                 </label>
                 <br />
-                <br />
+
                 <label>
-                    From:
-                    <input type="text" name="fromloc" value={fromloc} onChange={(e) => setFromloc(e.target.value)}
-                    />
-                </label>
-                <br />
-                <br />
-                <label>
-                    To:
-                    <input type="text" name="toloc" value={toloc} onChange={(e) => setToloc(e.target.value)}
-                    />
-                </label>
-                <br />
-                <br />
-                <label>
-                    Check-in:
-                    <input type="date" name="fromdate" value={fromdate} onChange={(e) => setFromdate(e.target.value)}
-                    />
-                </label>
-                <br />
-                <br />
-                <label>
-                    Check-out:
-                    <input type="date" name="todate" value={todate} onChange={(e) => setTodate(e.target.value)}
-                    />
+                From:
+                    <input type="text" name="fromloc" value={fromloc} onChange={(e) => setFromloc(e.target.value)} />
                 </label>
                 <br />
 
-                </fieldset>
+                <label>
+                To:
+                    <input type="text" name="toloc" value={toloc} onChange={(e) => setToloc(e.target.value)} />
+                </label>
                 <br />
+
+                <label>
+                Check-in:
+                    <input type="date" name="fromdate" value={fromdate} onChange={(e) => setFromdate(e.target.value)} />
+                </label>
+                <br />
+
+                <label>
+                Check-out:
+                    <input type="date" name="todate" value={todate} onChange={(e) => setTodate(e.target.value)} />
+                </label>
+                <br />
+
+                <input type="submit" value="Confirm" id="button-blue" />
                 
-                <input type="submit" value="Confirm" />
             </form>
+            
         </div>
+        </>
     );
 };
 

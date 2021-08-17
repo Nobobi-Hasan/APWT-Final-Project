@@ -9,6 +9,7 @@ class UserCarListController extends Controller
 {
     public function showCarList(){
         $cars = Car::all();
-        return view('user.car_list')->with('showCarList', $cars);
+        return response()->json($cars);
+        //return view('user.car_list')->with('showCarList', $cars);
     }
 }

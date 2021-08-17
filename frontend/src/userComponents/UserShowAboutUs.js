@@ -4,11 +4,15 @@ const UserShowAboutUs = ({list})=>{
 console.log(list);
 
     return(
+        
+
         <div>
             
-            <UserAboutUs {...list} />
+            <div dangerouslySetInnerHTML={{ __html: list.about }} />;
             
-        </div>
+        </div> 
+
+       
     )
 }
 

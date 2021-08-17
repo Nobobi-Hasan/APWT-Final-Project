@@ -20,47 +20,46 @@ const UserConfirmHotel = ({ status, callback }) => {
         history.push('/user');
     };
     return (
-        <div>
-            <h2>
-                {/* This is {status} employee page id: {eid} */}
-                Hotel Booking
-            </h2>
-            <form onSubmit={onSubmit}>
-            <fieldset>
+        <>
+        <div id="form-main">
+            <div id="form-div">
+
+            <form onSubmit={onSubmit} class="form" id="form1">
+
             <legend> Book Your Hotel  </legend>
             <br />
-                <label>
-                    User ID:
-                    <input type="text" name="user_id" value={user_id} onChange={(e) => setUser_id(e.target.value)} />
-                </label>
-                <br />
-                <br />
-                <label>
-                    Room ID:
-                    <input type="text" name="room_id" value={room_id} onChange={(e) => setRoom_id(e.target.value)} />
-                </label>
-                <br />
-                <br />
-                <label>
-                    Check-in:
-                    <input type="date" name="fromdate" value={fromdate} onChange={(e) => setFromdate(e.target.value)}
-                    />
-                </label>
-                <br />
-                <br />
-                <label>
-                    Check-out:
-                    <input type="date" name="todate" value={todate} onChange={(e) => setTodate(e.target.value)}
-                    />
-                </label>
+
+                <p class="username" >
+                        <input type="text" name="user_id" class="validate[required,custom[onlyLetter],length[0,100]] feedback-input" placeholder="User ID"  value={user_id} onChange={(e) => setUser_id(e.target.value)} />
+                </p>
                 <br />
 
-                </fieldset>
+                <p class="username" >
+                        <input type="text" name="room_id" class="feedback-input" placeholder="Room ID"  value={room_id} onChange={(e) => setRoom_id(e.target.value)} />
+                </p>
                 <br />
+
+                <p class="username" >
+                <b>Check-In</b>:
+                        <input type="date" name="fromdate" class="feedback-input" placeholder="Check-in"  value={fromdate} onChange={(e) => setFromdate(e.target.value)} />
+                </p>
+                <br />
+
+                <p class="username" >
+                <b>Check-Out</b>:
+                        <input type="date" name="todate" class="feedback-input" placeholder="Check-out"  value={todate} onChange={(e) => setTodate(e.target.value)} />
+                </p>
+                <br />
+
+                <div class="submit">
+                <input type="submit" value="Confirm" id="button-blue" />
+                <div class="ease"></div>
+                </div>
                 
-                <input type="submit" value="Confirm" />
             </form>
+            </div>
         </div>
+        </>
     );
 };
 

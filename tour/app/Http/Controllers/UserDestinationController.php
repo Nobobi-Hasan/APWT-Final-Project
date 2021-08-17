@@ -9,7 +9,8 @@ class UserDestinationController extends Controller
 {
     public function showdestination(){
         $Places = Place::all();
-        return view('user.destination')->with('showDestinationList', $Places);
+        return response()->json($Places);
+        //return view('user.destination')->with('showDestinationList', $Places);
     }
 
     public function details($id){

@@ -1,7 +1,7 @@
 import UserPackages from './UserPackages';
 import './User.css';
 
-const UserPackageList = ({list})=>{
+const UserPackageList = ({list, callback})=>{
     console.log(list);
 
     return(
@@ -25,7 +25,7 @@ const UserPackageList = ({list})=>{
                     list.map((packagelist)=>{
 
 
-                            return <UserPackages {...packagelist} />
+                            return <UserPackages {...packagelist} userBookPackageCallback={callback} />
 
                     })
                 }

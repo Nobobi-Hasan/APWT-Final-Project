@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { useHistory } from 'react-router-dom';
 
 const UserReview = ({ status, callback }) => {
-    //const { id: eid } = useParams();
+   
     const [service_id, setService_id] = useState("");
     const [service_type, setService_type] = useState("");
     const [company, setCompany] = useState("");
@@ -11,7 +11,7 @@ const UserReview = ({ status, callback }) => {
     const [rating, setRating] = useState("");
     const [msg, setMsg] = useState("");
 
-    //const [user, setUser] = useState({id:'',name: '', dept: ''});
+    
 
     const history = useHistory();
 
@@ -22,22 +22,24 @@ const UserReview = ({ status, callback }) => {
         history.push('/user');
     };
     return (
+        <>
         <div>
-            <h2>
-                {/* This is {status} employee page id: {eid} */}
-                {status} Give Review
-            </h2>
-            <form onSubmit={onSubmit}>
-            <fieldset>
-            <br></br>
+
+            <form className='form' onSubmit={onSubmit} >
+
+            <legend> Give Review </legend>
+            <br />
+
+
                 <label>
                     Service ID:
                     <input type="text" name="service_id" value={service_id} onChange={(e) => setService_id(e.target.value)} />
                 </label>
                 <br />
-                <br />
+
+
                 <label>
-                    Service Type:
+                Service Type: 
                     <select value={service_type} onChange={(e) => setService_type(e.target.value)}>
                         <option value="hotel">Hotel</option>
                         <option value="car">Car</option>
@@ -45,23 +47,22 @@ const UserReview = ({ status, callback }) => {
                     </select>
                 </label>
                 <br />
-                <br />
+
                 <label>
-                    Company Name:
-                    <input type="text" name="company" value={company} onChange={(e) => setCompany(e.target.value)}
-                    />
+                Company Name :
+                    <input type="text" name="company" value={company} onChange={(e) => setCompany(e.target.value)} />
                 </label>
                 <br />
-                <br />
+
                 <label>
-                    User ID:
-                    <input type="text" name="user_id" value={user_id} onChange={(e) => setUser_id(e.target.value)}
-                    />
+                User ID :
+                    <input type="text" name="user_id" value={user_id} onChange={(e) => setUser_id(e.target.value)} />
                 </label>
                 <br />
-                <br />
+
+
                 <label>
-                    Rating:
+                Rating: 
                     <select value={rating} onChange={(e) => setRating(e.target.value)}>
                         <option value="*****">*****</option>
                         <option value="****">****</option>
@@ -71,17 +72,19 @@ const UserReview = ({ status, callback }) => {
                     </select>
                 </label>
                 <br />
-                <br />
+                
                 <label>
-                    Message:
-                    <textarea value={msg} onChange={(e) => setMsg(e.target.value)} rows="5" cols="40"/>
+                   Message:
+                   <textarea value={msg} onChange={(e) => setMsg(e.target.value)} rows="5" cols="80"/>
                 </label>
-                </fieldset>
-                <br />
+
 
                 <input type="submit" value="Give Review" />
+                
             </form>
-        </div>
+            </div>
+        
+        </>
     );
 };
 
