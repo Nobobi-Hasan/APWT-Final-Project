@@ -33,6 +33,7 @@ const AdminProfile = ({ idl, firstnamel, lastnamel, genderl, emaill, usernamel, 
     const buttonU = () => { 
 
         setSubmitButton("Update");
+        alert("Profile Updated successfully");
     
         //   console.log("update");
     };
@@ -105,14 +106,14 @@ const AdminProfile = ({ idl, firstnamel, lastnamel, genderl, emaill, usernamel, 
                 <br />
                 <label>
                     Password:
-                    <input type="text" name="password" value= {password} onChange={(e) => setPassword(e.target.value)}
+                    <input type="password" name="password" value= {password} onChange={(e) => setPassword(e.target.value)}
                     />
                 </label>
                 <br />
 
                 <label>
                     Confirm Password:
-                    <input type="text" name="conPassword" value= {conPassword}  onChange={(e) => setConPassword(e.target.value)}
+                    <input type="password" name="conPassword" value= {conPassword}  onChange={(e) => setConPassword(e.target.value)}
                     />
                 </label>
                 <br />
@@ -125,5 +126,6 @@ const AdminProfile = ({ idl, firstnamel, lastnamel, genderl, emaill, usernamel, 
         </div>
     );
 };
+
 
 export default AdminProfile;

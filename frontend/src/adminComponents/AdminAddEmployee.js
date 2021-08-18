@@ -21,6 +21,7 @@ const AdminAddEmployee = ({ status, callback }) => {
 
     const onSubmit = (e) => {
         e.preventDefault();
+        alert("Employee Added successfully");
        
         callback({ firstname: firstname, lastname: lastname, gender: gender, email: email, username: username, password: password, conPassword: conPassword });
         history.push('/admin/all-employees');

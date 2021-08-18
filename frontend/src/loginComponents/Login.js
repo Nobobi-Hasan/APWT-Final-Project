@@ -1,9 +1,13 @@
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 import { useHistory } from 'react-router-dom';
+
+import { GoogleLogin, GoogleLogout } from 'react-google-login';
+
+
 import '../adminComponents/Admin.css';
 
-const Login = ({callback}) => {
+const Login = ({callback, callbackGoogle}) => {
 
     //const { id: eid } = useParams();
     const [username, setUsername] = useState("");
@@ -45,22 +49,49 @@ const Login = ({callback}) => {
 
         if(check.type=='admin')
             history.push('/admin/home');
-        else if(check=='emp')
+        else if(check.type=='emp')
             history.push('/employee');
-        else if(check=='user')
+        else if(check.type=='user')
             history.push('/user');
-        else if(check=='car')
+        else if(check.type=='car')
             history.push('/car');
-        else if(check=='flight')
+        else if(check.type=='flight')
             history.push('/flight');
-        else if(check=='hotel')
+        else if(check.type=='hotel')
             history.push('/hotel');
        
     };
 
+
+    const clientId = "472078400144-265drsrih4lt007dbusnq94fcou597oe.apps.googleusercontent.com";
+
+    const [showloginButton, setShowloginButton] = useState(true);
+    const [showlogoutButton, setShowlogoutButton] = useState(false);
+
+    const onLoginSuccess = (res) => {
+        console.log('Login Success:', res.profileObj);
+        setShowloginButton(false);
+        setShowlogoutButton(true);
+        history.push('/admin/home');
+        callbackGoogle(true)
+    };
+
+    const onLoginFailure = (res) => {
+        console.log('Login Failed:', res);
+    };
+
+    const onSignoutSuccess = () => {
+        alert("You have been logged out successfully");
+        console.clear();
+        setShowloginButton(true);
+        setShowlogoutButton(false);
+    };
+
+
     
     return (
 
+        <>
         <div className ="login-form">
 
             <h1>Login</h1>
@@ -89,9 +120,34 @@ const Login = ({callback}) => {
 
                 <a href="#" title="" class="anchor">Not yet registered?</a>
 
+
+                <div className = "g-signin">
+                    { showloginButton ?
+                        <GoogleLogin
+                            clientId={clientId}
+                            buttonText="Sign In"
+                            onSuccess={onLoginSuccess}
+                            onFailure={onLoginFailure}
+                            cookiePolicy={'single_host_origin'}
+                            isSignedIn={true}
+                        /> : null}
+
+                    { showlogoutButton ?
+                        <GoogleLogout
+                            clientId={clientId}
+                            buttonText="Sign Out"
+                            onLogoutSuccess={onSignoutSuccess}
+                        >
+                        </GoogleLogout> : null
+                    }
+                </div>
+                
+
             </form>
             
         </div>
+        
+        </>
     );
 };
 

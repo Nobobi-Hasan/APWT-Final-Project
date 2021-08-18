@@ -13,6 +13,12 @@
 body{
   background: #fff;
 }
+
+h2{
+  text-align: center;
+}
+
+
 .wrapper .header{
   z-index: 1;
   background: #22242A;
@@ -582,7 +588,7 @@ fieldset{
 
 .login-form {
 width:400px;
-height:300px;
+height:320px;
 padding:30px;
 border-radius: 30px;
 box-shadow: 0px 0px 200px black;
@@ -626,7 +632,7 @@ font-weight: bold;
   box-shadow: 0px 0px 10px black;
   border-radius: 5px;
   cursor: pointer;
-  margin-bottom: 5px;
+  margin-bottom: 0px;
 }
 
 .login-form a{
@@ -647,7 +653,7 @@ color: dodgerblue;
 }
 
 #googleBtn{
-width: 100%;
+  width: 100%;
   padding: 5px 5px;
   background-color: #ff3300cb;
   width: fit-content;
@@ -661,7 +667,14 @@ width: 100%;
 }
 
 
+.g-signin{
+
+  width: 100%;
+  width: fit-content;
+  float:right;
+  box-shadow: 0px 0px 10px black;
+  cursor: pointer;
+
+}
 
 /*login end*/
-  
-  

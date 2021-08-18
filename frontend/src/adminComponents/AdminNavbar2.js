@@ -1,6 +1,29 @@
 import {Link} from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
-const AdminNavbar = ()=>{
+import { useState } from "react";
+import { GoogleLogin, GoogleLogout} from 'react-google-login';
+
+const AdminNavbar = ({callbackGoogle, googletf})=>{
+
+	console.log("Google status from Navbar: "+ googletf);
+	const history = useHistory();
+
+	const clientId = "472078400144-265drsrih4lt007dbusnq94fcou597oe.apps.googleusercontent.com";
+
+	const [showloginButton, setShowloginButton] = useState(false);
+	const [showlogoutButton, setShowlogoutButton] = useState(googletf);
+
+
+	const onSignoutSuccess = () => {
+        alert("You have been logged out successfully");
+        console.clear();
+        setShowloginButton(true);
+        setShowlogoutButton(false);
+		callbackGoogle(false)
+		history.push('/login');
+    };
+
     return(
         <>
             {/* <!--header menu start--> */}
@@ -13,6 +36,16 @@ const AdminNavbar = ()=>{
 						{/* <li>{{date("l jS \of F")}}</li> */}
 						<li><Link to='/admin/profile'><i class="fa fa-user-circle"></i></Link></li>
 						<li><Link to='/login'><i class="fa fa-sign-out" aria-hidden="true"></i></Link></li>
+						<li>
+						{ showlogoutButton ?
+							<GoogleLogout
+								clientId={clientId}
+								buttonText="Sign Out"
+								onLogoutSuccess={onSignoutSuccess}
+							>
+							</GoogleLogout> : null
+						}
+						</li>
 					</ul>
 				</div>
 			</div>

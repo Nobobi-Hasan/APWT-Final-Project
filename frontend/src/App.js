@@ -227,6 +227,19 @@ const urlAA = 'http://127.0.0.1:8000/api/admin/about';
 useFetch(urlAA, setAdminAbout);
 
 
+
+//Google login data by Admin
+const [google, setGoogle] = useState(false);
+
+const googlef = (tf) => { 
+
+    setGoogle(tf);
+    console.log("Google login Status: "+google);
+
+};
+
+
+
 //store login data by Admin
 const [loginId, setLoginId] = useState([]);
 const [loginFirstname, setLoginFirstname] = useState([]);
@@ -237,19 +250,17 @@ const [loginUsername, setLoginUsername] = useState([]);
 
 //store login data by Admin
 const loginIdf = ({id}) => { 
-    
-    setLoginId(id.id);
-    setLoginFirstname(id.firstname);
-    setLoginLastname(id.lastname);
-    setLoginGender(id.gender);
-    setLoginEmail(id.email);
-    setLoginUsername(id.username);
-    // console.log(loginId);
-    // console.log(loginFirstname);
-    // console.log(loginLastname);
-    // console.log(loginGender);
-    // console.log(loginEmail);
-    // console.log(loginUsername);
+
+    if(id.type=="admin")
+    {
+        setLoginId(id.id);
+        setLoginFirstname(id.firstname);
+        setLoginLastname(id.lastname);
+        setLoginGender(id.gender);
+        setLoginEmail(id.email);
+        setLoginUsername(id.username);
+    }
+
 };
 
 
@@ -636,18 +647,31 @@ const adminProfileUpdate = (newProfile) => {
 
     // Approve Salary by admin
     const adminSalaryApproveCallback = (id) => {
-        const axios = require('axios').default;
 
-        axios({
-            method: 'post',
-            url: 'http://127.0.0.1:8000/api/admin/salary/approve',
-            data:{
-                id:id,
-            }
-          });
+        var answer = window.confirm("Are you sure to approve?");
+        if (answer) {
 
-        const data = adminSalaryAD.filter((salaryAD) => salaryAD.id != id);
-        setAdminSalaryAD(data);
+            const axios = require('axios').default;
+            axios({
+                method: 'post',
+                url: 'http://127.0.0.1:8000/api/admin/salary/approve',
+                data:{
+                    id:id,
+                }
+            });
+
+            const data = adminSalaryAD.filter((salaryAD) => salaryAD.id != id);
+            setAdminSalaryAD(data);
+
+            alert("Salary Approved successfully");
+
+        }
+        else {
+            //some code
+        }
+
+        
+
     };
 
 
@@ -665,6 +689,7 @@ const adminProfileUpdate = (newProfile) => {
 
           const data = adminSalaryAD.filter((salaryAD) => salaryAD.id != id);
           setAdminSalaryAD(data);
+          
     };
 
 
@@ -745,7 +770,7 @@ const adminProfileUpdate = (newProfile) => {
                 <Route exact path="/login">
                     <div className="login-wrapper">
 
-                        <Login callback={loginIdf}/>
+                        <Login callback={loginIdf} callbackGoogle = {googlef}/>
 
                     </div>
                     
@@ -755,7 +780,7 @@ const adminProfileUpdate = (newProfile) => {
                 <Route exact path="/admin/home">
                     <div className="wrapper">
 
-                        <AdminNavbar2 />
+                        <AdminNavbar2 callbackGoogle ={googlef} googletf = {google}/>
                         <div className="main-container"> 
                             <AdminHome/>
                         </div>
@@ -1154,7 +1179,7 @@ const adminProfileUpdate = (newProfile) => {
                 </Route>
 
 
-                <Route exact path="/login">
+                {/* <Route exact path="/login">
                     <div className="wrapper">
 
                         <AdminNavbar2 />
@@ -1163,7 +1188,7 @@ const adminProfileUpdate = (newProfile) => {
                         </div>
 
                     </div>
-                </Route>
+                </Route> */}
 
                 
 

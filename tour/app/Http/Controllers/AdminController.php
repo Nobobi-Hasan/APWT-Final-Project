@@ -61,7 +61,7 @@ class AdminController extends Controller
 
     
 
-    public function profileUD(ProfileRequest $req){
+    public function profileUD(Request $req){
 
         switch ($req->input('submit')) {
             case 'Update':
