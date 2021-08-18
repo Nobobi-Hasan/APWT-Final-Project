@@ -11,6 +11,8 @@ import EmployeeAddPromo from "./employeeComponents/EmployeeAddPromo";
 import EmployeeAddGallery from "./employeeComponents/EmployeeAddGallery";
 import EmployeeAddFaq from "./employeeComponents/EmployeeAddFaq";
 import EmployeeAddPackage from "./employeeComponents/EmployeeAddPackage";
+import EmployeeEditPackage from "./employeeComponents/EmployeeEditPackage";
+import EmployeePackageList from "./employeeComponents/EmployeePackageList";
 import EmployeeAddPlace from "./employeeComponents/EmployeeAddPlace";
 import EmployeeEditPlace from "./employeeComponents/EmployeeEditPlace";
 import EmployeePlaceList from "./employeeComponents/EmployeePlaceList";
@@ -384,6 +386,43 @@ const employeePlaceDeletecallback = (id) => {
   setEmployeePlace(data);
 };
 
+//Show package by employee
+const [employeePackage, setEmployeePackage] = useState([]);
+const emp16 = 'http://127.0.0.1:8000/api/employee/package';
+useFetch(emp16, setEmployeePackage);
+
+ // Edit Package by employee
+ const employeeEditPackage = (editPackage) => { 
+
+  const axios = require('axios').default;
+
+  axios({
+      method: 'post',
+      url: 'http://127.0.0.1:8000/api/employee/packageEdit',
+      data:editPackage,
+    });
+    const data = employeePackage.filter((packages) => packages.id !== editPackage.id);
+  
+    setEmployeePackage(data);
+    setEmployeePackage([...data, editPackage]);
+    
+};
+
+// Delete package by employee
+const employeePackageDeletecallback = (id) => {
+  const axios = require('axios').default;
+
+  axios({
+      method: 'post',
+      url: 'http://127.0.0.1:8000/api/employee/packagedelete',
+      data:{
+          id:id,
+      }
+    });
+  const data = employeePackage.filter((packages) => packages.id !== id);
+  setEmployeePackage(data);
+};
+
 
   return (
     <Router>
@@ -434,11 +473,23 @@ const employeePlaceDeletecallback = (id) => {
         <Route exact path="/employee/package">
         <div className="wrapper">
             <EmployeeNavbar />
-              <div className="main-container">      
+              <div className="main-container"> 
+              <EmployeePackageList list={employeePackage} callback={employeePackageDeletecallback} />       
               </div>
 
           </div>
         </Route>
+
+
+        <Route path="/employee/packageEdit/:id">
+                  <div className="wrapper">
+                          <EmployeeNavbar />
+                        <div className="main-container">
+                        <EmployeeEditPackage callback={employeeEditPackage} />
+                        </div>
+                    </div>  
+            </Route>
+
 
         <Route exact path="/employee/placeAdd">
           <div className="wrapper">
@@ -468,8 +519,6 @@ const employeePlaceDeletecallback = (id) => {
                         </div>
                     </div>  
             </Route>
-
-
 
         <Route exact path="/employee/gallery">
         <div className="wrapper">

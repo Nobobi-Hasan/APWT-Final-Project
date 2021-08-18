@@ -26,6 +26,9 @@ Route::get('/employee/userlist', 'EmployeeUserController@userList') ->name('empl
 Route::get('/employee/userdetails{id}', 'EmployeeUserController@userDetails') ->name('employee.userDetails');
 //emp package
 Route::post('/employee/packageAdd', 'EmployeePackageController@PackageAdded') ->name('employeePackage.packageAdded');
+Route::get('/employee/package', 'EmployeePackageController@package') ->name('employeePackage.package');
+Route::post('/employee/packageEdit', 'EmployeePackageController@packageEdited') ->name('employeePackage.packageEdited');
+Route::post('/employee/packagedelete', 'EmployeePackageController@packageDestroy') ->name('employeePackage.packageDestroy');
 //emp place
 Route::post('/employee/placeAdd', 'EmployeePlaceController@PlaceAdded') ->name('employeePlace.placeAdded');
 Route::get('/employee/place', 'EmployeePlaceController@place') ->name('employeePlace.place');

@@ -65,7 +65,7 @@ class EmployeePlaceController extends Controller
         // }
         // $img='employeePlace'.$req->place.'.'.$file->getClientOriginalExtension();
 
-                $place = Place::find($req->id);;
+                $place = Place::find($req->id);
                 $place -> place = $req->place;
                 $place-> district = $req->district;
                 $place -> image = $req ->image;

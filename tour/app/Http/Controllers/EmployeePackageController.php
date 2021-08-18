@@ -39,7 +39,8 @@ class EmployeePackageController extends Controller
         $package -> transport = $req->transport;
         $package -> hotel = $req->hotel;
         $package -> cost = $req->cost;
-        $package -> status = 'Upcoming';
+        //$package -> status = 'Upcoming';
+        $package -> status = $req->status;
         $package -> req = 'Pending';
         $package -> save();
        
@@ -52,23 +53,24 @@ class EmployeePackageController extends Controller
 
     }
 
-    public function packageEdited($id, EmpPackageRequest $req){
+    public function packageEdited(Request $req){
 
 
-                if ($req->hasFile('image')) {
-                    $file = $req->file('image');
-                    if($file->move('upload', 'employeePackage'.$req->id.'.'.$file->getClientOriginalExtension())){
-                        echo "success";
-                    }else{
-                        echo "error";
-                    }
-                }
-                $img='employeePackage'.$req->id.'.'.$file->getClientOriginalExtension();
+                // if ($req->hasFile('image')) {
+                //     $file = $req->file('image');
+                //     if($file->move('upload', 'employeePackage'.$req->id.'.'.$file->getClientOriginalExtension())){
+                //         echo "success";
+                //     }else{
+                //         echo "error";
+                //     }
+                // }
+                // $img='employeePackage'.$req->id.'.'.$file->getClientOriginalExtension();
 
-                $package = Package::where('id', $id)->first();
+                $package = Package::find($req->id);
                 $package -> place = $req->place;
                 $package -> location = $req->location;
-                $package -> image = $img;
+                //$package -> image = $img;
+                $package -> image = $req->image;
                 $package -> description = $req->description;
                 $package -> duration = $req->duration;
                 $package -> transport = $req->transport;
@@ -77,14 +79,18 @@ class EmployeePackageController extends Controller
                 $package -> status = $req->status;
                 $package -> req = 'Approved';
                 $package -> save();
-                $req->session()->flash('packageUDMsg', 'Package Updated');
-                return redirect()->route('employeePackage.package');
+               
     }
 
     public function packageDelete($id){
         $package = Package::find($id);
         $package ->delete();
         return redirect()->route('employeePackage.package');
+    }
+
+    public function packageDestroy(Request $req){
+        $package=Package::find($req->id);
+        $package->delete();
     }
 
 
