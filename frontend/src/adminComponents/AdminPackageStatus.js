@@ -29,6 +29,7 @@ const AdminPackageStatus = ({list, callback})=>{
                         <label for="title">Select Status:</label>
 
                             <select name="place" id="place" onChange={(e) => setPlace(e.target.value)}>
+                                <option value=""></option>
 
 
                             {
@@ -46,7 +47,8 @@ const AdminPackageStatus = ({list, callback})=>{
 
                             <label for="status">Status:</label>
                             <select name="status" id="status" onChange={(e) => setStatus(e.target.value)}>
-
+                                
+                                <option value=""></option>
                                 <option value="Upcoming">Upcoming</option>
                                 <option value="Completed">Completed</option>
                                 

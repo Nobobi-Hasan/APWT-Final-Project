@@ -55,6 +55,8 @@ body{
 }
 
 .PDFDownload{
+  background: none;
+  border: none;
   color: #fff;
   float: right;
   margin-right: 240px;
