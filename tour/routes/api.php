@@ -24,7 +24,12 @@ Route::post('/hotelreg','RegistrationController@hotelregVerify')->name('registra
 //Car-Flight
 Route::post('/transportreg','RegistrationController@transportregVerify')->name('registration.transportregVerify');
 
+
+
+
 //HOTEL Service
+//HOTEL Dashboard
+Route::get('/hotelDashboard/index','HotelController@index')->name('hotel.index');
 
 //Hotel Facility Add/Show/delete
 Route::post('/hotelDashboard/addhotelfacility','HotelController@addhotelfacilityVerify')->name('hotel.addhotelfacilityVerify');
@@ -65,7 +70,12 @@ Route::post('/hotelDashboard/hotelsupport','HotelController@hotelsupportconfirm'
 
 
 
+
+
 //CAR Service
+
+//Car Dashboard
+Route::get('/carDashboard/index','CarController@index')->name('car.index');
 
 //Car Add-Manage-Delete
 Route::post('/carDashboard/addcar','CarController@addcarVerify')->name('car.addcarVerify');
@@ -75,10 +85,8 @@ Route::post('/carDashboard/cardelete','CarController@cardestroy')->name('car.car
 //Car Edit
 Route::post('/carDashboard/caredit','CarController@careditconfirm')->name('car.careditconfirm');
 
-
 //Car Booking Show And Delete
 Route::get('/carDashboard/car-booking-list','CarController@showcarallbooking')->name('car.showcarallbooking');
-
 Route::post('/carDashboard/delete','CarController@bookingdestroy')->name('car.bookingdestroy');
 
 //Car Pending Booking
@@ -105,7 +113,12 @@ Route::get('/carDashboard/cartransactionhistory','CarController@cartransactionhi
 
 
 
+
+
 //Flight Service
+
+//Flight Dashboard
+Route::get('/flightDashboard/index','FlightController@index')->name('flight.index');
 
 //Flight Add-Manage-Delete
 Route::post('/flightDashboard/addflight','FlightController@addflightVerify')->name('flight.addflightVerify');
@@ -128,12 +141,9 @@ Route::post('/flightDashboard/decline','FlightController@bookingremove')->name('
 Route::get('/flightDashboard/flighttype','FlightController@flighttype')->name('flight.flighttype');
 Route::post('/flightDashboard/flighttype','FlightController@flighttypeconfirm')->name('flight.flighttypeconfirm');
 
-
 //Flight Availability
 Route::get('/flightDashboard/flightavailability','FlightController@flightavailability')->name('flight.flightavailability');
 Route::post('/flightDashboard/flightavailability','FlightController@flightavailabilityconfirm')->name('flight.flightavailabilityconfirm');
-
-
 
 //Flight Review
 Route::get('/flightDashboard/checkflightreview','FlightController@checkflightreview')->name('flight.checkflightreview');

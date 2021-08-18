@@ -22,14 +22,27 @@ class FlightController extends Controller
 {
     public function index(Request $req){
         
-
-        $airCount = Air::all()->count();
-        $airBookCount = Airbook::all()->count();
-        $reviewCount = Review::where('service_type', 'Flight')->count();
-
-        return view('flightDashboard.home')->with('airCount', $airCount)
-                                       ->with('airBookCount', $airBookCount)
-                                       ->with('reviewCount', $reviewCount);
+            $airCount = Air::all()->count();
+            $airBookCount =  Airbook::where('req','Approved')->count();
+            $airPendingCount = Airbook::where('req','Pending')->count();
+            $airAvailable = Air::where('availability','Available')->count();
+            $airAirbus = Air::where('type','Airbus')->count();
+            $airJett = Air::where('type','Jett')->count();
+            $reviewCount = Review::where('service_type', 'Flight')->count();
+    
+            return [
+                'airCount' => $airCount,
+                'airBookCount' => $airBookCount,
+                'airAvailable'=> $airAvailable,
+                'airAirbus'=> $airAirbus,
+                'airJett'=> $airJett,
+                'reviewCount' => $reviewCount,
+                'airPendingCount' => $airPendingCount,
+            ];
+        
+        // return view('flightDashboard.home')->with('airCount', $airCount)
+        //                                ->with('airBookCount', $airBookCount)
+        //                                ->with('reviewCount', $reviewCount);
                                 
 
         
@@ -215,9 +228,9 @@ class FlightController extends Controller
                                       ->with('user', $user);                                            
     }
 
-    public function checkflightreview(){
+    public function checkflightreview(Request $req){
 
-        $reviews = Review::all();
+        $reviews = Review::where('service_type', 'Flight')->get();
         return response()->json($reviews);
 
         // $reviews = Review::where('service_id', session()->get('id'))
@@ -226,8 +239,9 @@ class FlightController extends Controller
         // return view('flightDashboard.checkflightreview')->with('reviews', $reviews);
     }
 
-    public function flighttransactionhistory(){
-        $transactions = Transaction::all();
+    public function flighttransactionhistory(Request $req){
+        
+        $transactions = Transaction::where('receiver','Flight')->get();
         return response()->json($transactions);
 
         // $transactions = Transaction::where('receiver_id', session()->get('id'))

@@ -8,6 +8,7 @@ import HotelRegistration from "./Registration/HotelRegistration";
 import TransportRegistration from "./Registration/TransportRegistration";
 
 // Hotel Import
+import HotelHome from "./serviceComponents/Hotel/HotelHome";
 import HotelNavbar from "./serviceComponents/Hotel/HotelNavbar";
 import ServiceAddFacility from "./serviceComponents/Hotel/ServiceAddFacility";
 import ServiceEditFacility from "./serviceComponents/Hotel/ServiceEditFacility";
@@ -23,6 +24,7 @@ import ServiceRoomUserInfoList from "./serviceComponents/Hotel/ServiceRoomUserIn
 import ServiceHotelSupport from "./serviceComponents/Hotel/ServiceHotelSupport";
 
 // Car Import
+import CarHome from "./serviceComponents/Car/CarHome";
 import CarNavbar from "./serviceComponents/Car/CarNavbar";
 import ServiceAddCar from "./serviceComponents/Car/ServiceAddCar";
 import ServiceEditCar from "./serviceComponents/Car/ServiceEditCar";
@@ -36,6 +38,7 @@ import ServiceCarTransactionList from "./serviceComponents/Car/ServiceCarTransac
 import ServiceCarSupport from "./serviceComponents/Car/ServiceCarSupport";
 
 // Flight Import
+import FlightHome from "./serviceComponents/Flight/FlightHome";
 import FlightNavbar from "./serviceComponents/Flight/FlightNavbar";
 import ServiceAddFlight from "./serviceComponents/Flight/ServiceAddFlight";
 import ServiceEditFlight from "./serviceComponents/Flight/ServiceEditFlight";
@@ -723,11 +726,13 @@ function App() {
 
            {/* Hotel Route */}
 
-            <Route exact path="/hotelDashboard">
-                <div className="wrapper">
-                       <HotelNavbar/>
-                       <div className="main-container"> </div>
-                </div> 
+           <Route exact path="/hotelDashboard/index">
+                    <div className="wrapper">
+                        <HotelNavbar />
+                        <div className="main-container"> 
+                            <HotelHome/>
+                        </div>
+                    </div>      
             </Route>
 
             <Route path="/hotelDashboard/addhotelfacility">
@@ -840,11 +845,13 @@ function App() {
 
 
             {/* Car Route */}
-            <Route exact path="/carDashboard">
-                  <div className="wrapper">
-                        <CarNavbar/>
-                      <div className="main-container"></div>
-                  </div>
+            <Route exact path="/carDashboard/index">
+                    <div className="wrapper">
+                        <CarNavbar />
+                        <div className="main-container"> 
+                            <CarHome/>
+                        </div>
+                    </div>      
             </Route>
 
             <Route path="/carDashboard/addcar">
@@ -942,12 +949,13 @@ function App() {
 
             {/* Flight Route */}
 
-            <Route exact path="/flightDashboard">
-                <div className="wrapper">
-                         <FlightNavbar/>
-                    <div className="main-container"> 
-                    </div>
-                </div>
+            <Route exact path="/flightDashboard/index">
+                    <div className="wrapper">
+                        <FlightNavbar />
+                        <div className="main-container"> 
+                            <FlightHome/>
+                        </div>
+                    </div>      
             </Route>
 
             <Route path="/flightDashboard/addflight">
@@ -1048,15 +1056,11 @@ function App() {
             </Route>
 
             <Route path="/hotelreg">
-
                 <HotelRegistration  callback={hotelRegistration} />
-
             </Route>
 
             <Route path="/transportreg">
-
                 <TransportRegistration  callback={transportRegistration} />
-
             </Route>
 
 

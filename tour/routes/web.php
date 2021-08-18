@@ -356,7 +356,7 @@ Route::group(['middleware'=>['employeeCheck']] , function(){
 		//Flight Route
 	Route::group(['middleware'=>['flightCheck']] , function(){
 
-		Route::get('/flightDashboard','FlightController@index')->name('flight.index');
+		Route::get('/flightDashboard/index','FlightController@index')->name('flight.index');
 		Route::get('/flightDashboard/profile', 'FlightController@profile')->name('flight.profile');
 		Route::post('/flightDashboard/profile', 'FlightController@profileUD')->name('flight.profileUD');
 		Route::get('/flightDashboard/addflight','FlightController@addflight')->name('flight.addflight');
@@ -409,7 +409,7 @@ Route::group(['middleware'=>['employeeCheck']] , function(){
 		//HOTEL Route
 	Route::group(['middleware'=>['hotelCheck']] , function(){
 
-		Route::get('/hotelDashboard','HotelController@index')->name('hotel.index');
+		Route::get('/hotelDashboard/index','HotelController@index')->name('hotel.index');
 		Route::get('/hotelDashboard/profile', 'HotelController@profile')->name('hotel.profile');
 		Route::post('/hotelDashboard/profile', 'HotelController@profileUD')->name('hotel.profileUD');
 		Route::get('/hotelDashboard/checkhotelreview','HotelController@checkhotelreview')->name('hotel.checkhotelreview');

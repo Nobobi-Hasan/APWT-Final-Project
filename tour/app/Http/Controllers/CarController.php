@@ -23,12 +23,26 @@ class CarController extends Controller
     public function index(Request $req){
         
         $carCount = Car::all()->count();
-        $carBookCount = Carbook::all()->count();
+        $carBookCount = Carbook::where('req','Approved')->count();
+        $carPendingCount = Carbook::where('req','Pending')->count();
+        $carAvailable = Car::where('availability','Available')->count();
+        $carLuxury = Car::where('type','Luxury')->count();
+        $carStandard = Car::where('type','Standard')->count();
         $reviewCount = Review::where('service_type', 'Car')->count();
 
-        return view('carDashboard.home')->with('carCount', $carCount)
-                                       ->with('carBookCount', $carBookCount)
-                                       ->with('reviewCount', $reviewCount);
+        return [
+            'carCount' => $carCount,
+            'carBookCount' => $carBookCount,
+            'carAvailable'=> $carAvailable,
+            'carLuxury'=> $carLuxury,
+            'carStandard'=> $carStandard,
+            'reviewCount' => $reviewCount,
+            'carPendingCount' => $carPendingCount,
+        ];
+
+        // return view('carDashboard.home')->with('carCount', $carCount)
+        //                                ->with('carBookCount', $carBookCount)
+        //                                ->with('reviewCount', $reviewCount);
                             
     }
 
@@ -223,7 +237,7 @@ class CarController extends Controller
 
     public function checkcarreview(Request $req){
 
-        $reviews = Review::all();
+        $reviews = Review::where('service_type', 'Car')->get();
         return response()->json($reviews);
 
 
@@ -235,7 +249,7 @@ class CarController extends Controller
 
     public function cartransactionhistory(Request $req){
 
-        $transactions = Transaction::all();
+        $transactions = Transaction::where('receiver','Car')->get();
         return response()->json($transactions);
 
         // $transactions = Transaction::where('receiver_id', session()->get('id'))

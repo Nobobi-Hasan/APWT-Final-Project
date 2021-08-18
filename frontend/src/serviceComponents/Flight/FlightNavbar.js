@@ -26,7 +26,7 @@ const FlightNavbar = ()=>{
                         </br>
 
                         <li className="item">
-                                <Link className="menu-btn" to='/flightDashboard'><i class="fa fa-home" aria-hidden="true"></i><span>Dashboard</span></Link>
+                                <Link className="menu-btn" to='/flightDashboard/index'><i class="fa fa-home" aria-hidden="true"></i><span>Dashboard</span></Link>
                         </li>
 
                         <li className="item" id="service">

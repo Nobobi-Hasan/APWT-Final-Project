@@ -24,6 +24,22 @@ use App\Transaction;
 class HotelController extends Controller
 {
     public function index(Request $req){
+
+        $roomCount = Room::all()->count();
+        $roomBookCount = Roombook::where('req','Approved')->count();
+        $roomPendingCount = Roombook::where('req','Pending')->count();
+        $facilityCount = Facility::all()->count();
+        $roomAvailable = Room::where('availability','Available')->count();
+        $reviewCount = Review::where('service_type', 'Hotel')->count();
+
+        return [
+            'roomCount' => $roomCount,
+            'roomBookCount' => $roomBookCount,
+            'facilityCount'=> $facilityCount,
+            'roomPendingCount'=> $roomPendingCount,
+            'roomAvailable'=> $roomAvailable,
+            'reviewCount' => $reviewCount,
+        ];
         
 
         $roomCount = Room::all()->count();
@@ -286,7 +302,7 @@ class HotelController extends Controller
         // $reviews = Review::where('service_id', session()->get('id'))
         //                ->where('service_type', session()->get('type'))->get();
 
-        $reviews = Review::all();
+        $reviews = Review::where('service_type', 'Hotel')->get();
         return response()->json($reviews);
 
         //return view('hotelDashboard.checkhotelreview')->with('reviews', $reviews);
@@ -294,7 +310,8 @@ class HotelController extends Controller
     }
 
     public function hoteltransactionhistory(Request $req){
-        $transactions = Transaction::all();
+
+        $transactions = Transaction::where('receiver','Hotel')->get();
         return response()->json($transactions);
 
         // $transactions = Transaction::where('receiver_id', session()->get('id'))
