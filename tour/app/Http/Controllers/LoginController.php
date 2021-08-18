@@ -31,8 +31,6 @@ class LoginController extends Controller
         // $admin -> password = $req->password;
         // $admin ->save();
  
-        
-
 
         $admin = Admin::where('username', $req->username)
                     ->where('password', $req->password)

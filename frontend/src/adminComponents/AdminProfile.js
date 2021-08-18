@@ -6,12 +6,12 @@ import './Admin.css';
 
 const AdminProfile = ({ idl, firstnamel, lastnamel, genderl, emaill, usernamel, callback }) => {
 
-    console.log(idl);
-    console.log(firstnamel);
-    console.log(lastnamel);
-    console.log(genderl);
-    console.log(emaill);
-    console.log(usernamel);
+    // console.log(idl);
+    // console.log(firstnamel);
+    // console.log(lastnamel);
+    // console.log(genderl);
+    // console.log(emaill);
+    // console.log(usernamel);
 
 
     const [firstname, setFirstname] = useState(firstnamel);
@@ -34,14 +34,14 @@ const AdminProfile = ({ idl, firstnamel, lastnamel, genderl, emaill, usernamel, 
 
         setSubmitButton("Update");
     
-          console.log("update");
+        //   console.log("update");
     };
 
     const buttonD = () => { 
 
         setSubmitButton("Delete");
     
-          console.log("Delete");
+        //   console.log("Delete");
     };
 
 

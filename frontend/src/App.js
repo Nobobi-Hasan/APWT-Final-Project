@@ -244,12 +244,12 @@ const loginIdf = ({id}) => {
     setLoginGender(id.gender);
     setLoginEmail(id.email);
     setLoginUsername(id.username);
-    console.log(loginId);
-    console.log(loginFirstname);
-    console.log(loginLastname);
-    console.log(loginGender);
-    console.log(loginEmail);
-    console.log(loginUsername);
+    // console.log(loginId);
+    // console.log(loginFirstname);
+    // console.log(loginLastname);
+    // console.log(loginGender);
+    // console.log(loginEmail);
+    // console.log(loginUsername);
 };
 
 
