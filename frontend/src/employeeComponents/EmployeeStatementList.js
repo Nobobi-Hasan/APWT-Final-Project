@@ -1,10 +1,22 @@
 import EmployeeStatement from './EmployeeStatement';
+import { PDFExport } from "@progress/kendo-react-pdf";
+import {useRef} from 'react';
 import './Employee.css';
 
-const EmployeeStatementList = ({list})=>{
+    const EmployeeStatementList = ({list})=>{
     console.log(list);
 
-    return(
+    const pdfExportComponent = useRef(null);
+
+    const handleExportWithComponent = (event =>{
+        pdfExportComponent.current.save();
+        console.log("clicked");
+    })
+
+    return( <>
+    <button className = "PDFDownload" onClick={handleExportWithComponent}><i class="fa fa-download" aria-hidden="true"></i></button>
+
+        <PDFExport ref = {pdfExportComponent} paperSize = "A2">
         <div>
             <table id='table'>
 
@@ -24,7 +36,10 @@ const EmployeeStatementList = ({list})=>{
                 }
             </table>
         </div>
+        </PDFExport>
         
+
+        </>
     )
 }
 

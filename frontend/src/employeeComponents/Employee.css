@@ -442,6 +442,20 @@ h1{
       border-radius: 25px;
     }
   
+
+    .PDFDownload{
+      background: none;
+      border: none;
+      color: #fff;
+      float: right;
+      margin-right: 280px;
+      font-size: 22px;
+      font-weight: 900;
+      cursor: pointer;
+      transition: 0.3s;
+      transition-property: color;
+    }
+    
   
     /* Button End */
    
