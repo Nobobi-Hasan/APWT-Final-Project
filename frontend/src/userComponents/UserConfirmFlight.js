@@ -2,16 +2,16 @@ import { useState } from "react";
 import { useParams } from "react-router-dom";
 import { useHistory } from 'react-router-dom';
 
-const UserConfirmFlight = ({ status, callback }) => {
-    //const { id: eid } = useParams();
+const UserConfirmFlight = ({callback }) => {
+    const {id: air_id} = useParams();
+    //setAir_id(fid);
     const [user_id, setUser_id] = useState("");
-    const [air_id, setAir_id] = useState("");
+    //const [air_id, setAir_id] = useState("");
     const [fromloc, setFromloc] = useState("");
     const [toloc, setToloc] = useState("");
     const [fromdate, setFromdate] = useState("");
     const [todate, setTodate] = useState("");
 
-    //const [user, setUser] = useState({id:'',name: '', dept: ''});
 
     const history = useHistory();
 
@@ -38,7 +38,7 @@ const UserConfirmFlight = ({ status, callback }) => {
 
                 <label>
                 Flight ID:
-                    <input type="text" name="air_id" value={air_id} onChange={(e) => setAir_id(e.target.value)} />
+                    <input type="text" name="air_id" value={air_id} readOnly/>
                 </label>
                 <br />
 
@@ -66,7 +66,7 @@ const UserConfirmFlight = ({ status, callback }) => {
                 </label>
                 <br />
 
-                <input type="submit" value="Confirm" id="button-blue" />
+                <input type="submit" value="Confirm" />
                 
             </form>
             

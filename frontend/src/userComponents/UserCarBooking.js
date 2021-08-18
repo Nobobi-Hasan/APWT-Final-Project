@@ -4,6 +4,7 @@ const UserCarBooking = ({id, title, model, driver, type, fare, image})=>{
         <>
 
         <tr>
+
             <td>{id}</td>
             <td>{title}</td>
             <td>{model}</td>
@@ -11,9 +12,8 @@ const UserCarBooking = ({id, title, model, driver, type, fare, image})=>{
             <td>{type}</td>
             <td>{fare}</td>
             <td><img className="userimg" src={process.env.PUBLIC_URL + "/images/" + image}/></td>
-            <td><Link to='/user/car/book'className='edit-button'>Book</Link></td>
+            <td><Link to={`/user/car/book/${id}`}className='edit-button'>Book</Link></td>
 
-                
         </tr>
 
         </>

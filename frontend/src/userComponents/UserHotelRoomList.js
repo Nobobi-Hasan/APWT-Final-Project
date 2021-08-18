@@ -1,7 +1,7 @@
 import UserHotelRoom from './UserHotelRoom';
 import './User.css';
 
-const UserHotelRoomList = ({list, callback})=>{
+const UserHotelRoomList = ({list})=>{
     console.log(list);
 
     return(

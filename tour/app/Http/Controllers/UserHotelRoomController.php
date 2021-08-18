@@ -14,8 +14,8 @@ class UserHotelRoomController extends Controller
         $hotel = Hotel::find($id);
         $HotelRooms = Room::where('availability', 'Available')
                             ->where('hotel_id', $hotel-> id)->get();
-        //return response()->json($HotelRooms);
-        return view('user.hotel-room')->with('showHotelRoom', $HotelRooms);
+        return response()->json($HotelRooms);
+        //return view('user.hotel-room')->with('showHotelRoom', $HotelRooms);
     }
 
     public function facility(){

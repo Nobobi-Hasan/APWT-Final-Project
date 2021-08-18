@@ -4,15 +4,13 @@ import { useHistory } from 'react-router-dom';
 import './UserForm.css';
 
 const UserConfirmFlight = ({ status, callback }) => {
-    //const { id: eid } = useParams();
+    const {id: car_id} = useParams();
     const [user_id, setUser_id] = useState("");
-    const [car_id, setCar_id] = useState("");
+    //const [car_id, setCar_id] = useState("");
     const [fromloc, setFromloc] = useState("");
     const [toloc, setToloc] = useState("");
     const [fromdate, setFromdate] = useState("");
     const [todate, setTodate] = useState("");
-
-    //const [user, setUser] = useState({id:'',name: '', dept: ''});
 
     const history = useHistory();
 
@@ -39,7 +37,7 @@ const UserConfirmFlight = ({ status, callback }) => {
 
                 <label>
                 Car ID:
-                    <input type="text" name="car_id" value={car_id} onChange={(e) => setCar_id(e.target.value)} />
+                    <input type="text" name="car_id" value={car_id} readOnly />
                 </label>
                 <br />
 
@@ -57,13 +55,13 @@ const UserConfirmFlight = ({ status, callback }) => {
 
                 <label>
                 Check-In:
-                    <input type="text" name="fromdate" value={fromdate} onChange={(e) => setFromdate(e.target.value)} />
+                    <input type="date" name="fromdate" value={fromdate} onChange={(e) => setFromdate(e.target.value)} />
                 </label>
                 <br />
 
                 <label>
                 Check-Out:
-                    <input type="text" name="fromdate" value={fromdate} onChange={(e) => setFromdate(e.target.value)} />
+                    <input type="date" name="fromdate" value={todate} onChange={(e) => setTodate(e.target.value)} />
                 </label>
                 <br />
                

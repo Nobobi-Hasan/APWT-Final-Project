@@ -39,10 +39,7 @@ import UserShowFAQ from "./userComponents/UserShowFAQ";
 import UserPackageList from "./userComponents/UserPackageList";
 
 import UserDestinationList from "./userComponents/UserDestinationList";
-
-
-
-//import UserShowDestinationDetails from "./userComponents/UserShowDestinationDetails";
+import UserShowDestinationDetails from "./userComponents/UserShowDestinstionDetails";
 
 import { useFetch } from './userComponents/useFetch';
 
@@ -67,7 +64,7 @@ function App() {
 
     //User Support/ Contact Us
     const userContactUs = (newContact) => { 
-
+        
         const axios = require('axios').default;
 
         axios({
@@ -122,6 +119,7 @@ function App() {
     //Confirm User FLight
     const userConfirmFlight = (newConfirmFLight) => { 
 
+        console.log(newConfirmFLight);
         const axios = require('axios').default;
 
         axios({
@@ -129,8 +127,6 @@ function App() {
             url: 'http://127.0.0.1:8000/api/user/flight/book',
             data:newConfirmFLight,
           });
-        //   setEmployees([...myuser, newEmployee]);
-        //   console.log(newEmployee);
     };
 
 
@@ -149,12 +145,9 @@ function App() {
 
         axios({
             method: 'post',
-            url: 'http://127.0.0.1:8000/api/user/car/book{id}',
-            //data: JSON.stringify(newUser)
+            url: 'http://127.0.0.1:8000/api/user/car/book',
             data:newConfirmCar,
           });
-        //   setEmployees([...myuser, newEmployee]);
-        //   console.log(newEmployee);
     };
 
 
@@ -217,16 +210,17 @@ function App() {
     const userurl13 = 'http://127.0.0.1:8000/api/user/destination';
     useFetch(userurl13, setDestinationList);
 
-    //  // Show User Destination Details by employee
-    // const userDestinationDetailscallback = (id) => {
-    // const data = userdestinationlist.filter((destination) => destination.id === id);
-    // setDestinationList(data);
-    // console.log(data);
+    //Show User Destination Details List 
+    const [userdestinationdetails, setDestinationDetails] = useState([]);
+    const userurl17 = 'http://127.0.0.1:8000/api/user/destination';
+    useFetch(userurl17, setDestinationDetails);
 
-    // //Show User Destination List 
-    // const [userdestinationdetails, setDestinationDetails] = useState([]);
-    // const userurl14 = 'http://127.0.0.1:8000/api/user/destination';
-    // useFetch(userurl14, setDestinationDetails);
+    // Show User Destination Details by user
+    const userDestinationDetailscallback = (id) => {
+    const data = userdestinationlist.filter((destination) => destination.id === id);
+    setDestinationDetails(data);
+    console.log(data);
+    };
 
 
     //User Registraion
@@ -278,16 +272,16 @@ function App() {
               <Route exact path="/user/destination">
                   <UserNavbar />
                   <h2>Destination</h2>
-                  <UserDestinationList list={userdestinationlist} />
+                  <UserDestinationList list={userdestinationlist} callback={userDestinationDetailscallback} />
                   <UserFooter />
               </Route>
 
-              {/* <Route exact path="/user/destination_details/: id">
+              <Route exact path="/user/destination_details/:id">
                   <UserNavbar />
                   <h2>Destination Details</h2>
                   <UserShowDestinationDetails list={userdestinationdetails} />
                   <UserFooter />
-              </Route> */}
+              </Route>
 
               <Route exact path="/user/package">
                   <UserNavbar />
@@ -331,9 +325,9 @@ function App() {
                   <UserFooter />
               </Route>
 
-              <Route exact path="/user/flight/book">
+              <Route path="/user/flight/book/:id">
                   <UserNavbar />
-                  <UserConfirmFlight status="User" callback={userConfirmFlight} />
+                  <UserConfirmFlight callback={userConfirmFlight} />
                   <UserFooter />
               </Route>
 
@@ -344,7 +338,7 @@ function App() {
                   <UserFooter />
               </Route>
 
-              <Route exact path="/user/car/book">
+              <Route exact path="/user/car/book/:id">
                   <UserNavbar />
                   <UserConfirmCar status="User" callback={userConfirmCar} />
                   <UserFooter />
@@ -377,9 +371,9 @@ function App() {
                   <UserFooter />
               </Route>
 
-              <Route exact path="/user/contact">
+              <Route path="/user/contact">
                   <UserNavbar />
-                  <UserContactUs status="User" callback={userContactUs} />
+                  <UserContactUs callback={userContactUs} />
                   <UserFooter />
               </Route>
 
@@ -397,7 +391,7 @@ function App() {
                   <UserFooter />
               </Route>
 
-              <Route exact path="/user/give_review">
+              <Route path="/user/give_review">
                   <UserNavbar />
                   <UserReview callback={userReview} />
                   <UserFooter />
@@ -425,8 +419,9 @@ function App() {
       </Router>
     );
 
-    //USER API END***********
 }
 
 
 export default App;
+
+//USER API END***********

@@ -26,17 +26,17 @@ Route::post('/user/contact', 'UserContactController@verify')->name('userContact.
 
 Route::get('/user/car', 'UserCarController@index')->name('userCar.index');
 Route::get('/user/Car_list', 'UserCarListController@showCarList')->name('userCarList.showCarList');
-Route::post('/user/car/book{id}', 'UserConCarController@Addcarbook')->name('userConCar.Addcarbook');
+Route::post('/user/car/book', 'UserConCarController@Addcarbook')->name('userConCar.Addcarbook');
 
 Route::get('/user/hotel', 'UserHotelController@index')->name('userHotel.index');
 Route::get('/user/show_hotels', 'UserHotelsController@showHotel')->name('userHotels.showHotel');
-Route::get('/user/hotel_rooms{id}', 'UserHotelRoomController@showHotelRoom')->name('userHotelRoom.showHotelRoom');
-Route::post('/user/confirm_hotel{id}', 'UserConHotelController@confirmHotel')->name('userConHotel.confirmHotel');
+Route::get('/user/hotel_rooms', 'UserHotelRoomController@showHotelRoom')->name('userHotelRoom.showHotelRoom');
+Route::post('/user/confirm_hotel', 'UserConHotelController@confirmHotel')->name('userConHotel.confirmHotel');
 Route::get('/user/hotel_facility', 'UserHotelRoomController@facility')->name('userHotelRoom.facility');
 
 Route::get('/user/flight', 'UserFlightController@index')->name('userFlight.index');
 Route::get('/user/flight_list', 'UserFlightListController@showFlightList')->name('userFlightList.showFlightList');
-Route::post('/user/flight/book{id}', 'UserConFlightController@AddflightBook')->name('userConFlight.AddflightBook');
+Route::post('/user/flight/book', 'UserConFlightController@AddflightBook')->name('userConFlight.AddflightBook');
 
 Route::get('/user/travel_history', 'UserTravelHistoryController@index')->name('userTravelHistory.index');
 
@@ -54,5 +54,6 @@ Route::get('/user/package', 'UserPackageController@showPackage')->name('userPack
 Route::post('/user/package/book', 'UserPackageController@confirmpackageBook')->name('userPackage.confirmpackageBook');
 
 Route::get('/user/destination', 'UserDestinationController@showdestination')->name('userDestination.showdestination');
+Route::get('/user/destination_details{id}', 'UserDestinationController@details')->name('userDestination.details');
 
 //USER API END********************

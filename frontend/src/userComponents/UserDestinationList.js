@@ -1,7 +1,7 @@
 import UserShowDestination from './UserShowDestination';
 import './User.css';
 
-const UserDestinationList = ({list})=>{
+const UserDestinationList = ({list, callback})=>{
     console.log(list);
 
     return(
@@ -18,7 +18,7 @@ const UserDestinationList = ({list})=>{
                     list.map((showdestination)=>{
 
                         
-                            return <UserShowDestination {...showdestination}  />
+                            return <UserShowDestination {...showdestination} userDestinationDetailscallback={callback} />
                     
                     })
                 }

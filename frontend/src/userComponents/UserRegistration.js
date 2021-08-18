@@ -20,18 +20,16 @@ const UserRegistration = ({callback}) => {
     const onSubmit = (e) => {
         e.preventDefault();
        
-        callback({ firstname: firstname, lastname: lastname, gender: gender, email: email, phone: phone, username: username, password: password });
+        callback({ firstname: firstname, lastname: lastname, gender: gender, email: email, phone: phone, username: username, password: password, rpassword: rpassword });
         history.push('/user');
     };
 
     return (
         <>
-
-
-     <div id="form-main">
-            <div id="form-div">
-
-            <form onSubmit={onSubmit} class="form" id="form1">
+        
+        <div>
+            
+            <form className='form' onSubmit={onSubmit} >
 
             <legend> User Registration </legend>
             <br />
@@ -51,6 +49,7 @@ const UserRegistration = ({callback}) => {
                 <label>
                 Gender: 
                     <select value={gender} onChange={(e) => setGender(e.target.value)}>
+                        <option value=" "> </option>
                         <option value="Male">Male</option>
                         <option value="Female">Female</option>
                         <option value="Others">Others</option>
@@ -93,7 +92,7 @@ const UserRegistration = ({callback}) => {
                 
                 </form>
             </div>
-        </div>
+
         </>
     );
 };
