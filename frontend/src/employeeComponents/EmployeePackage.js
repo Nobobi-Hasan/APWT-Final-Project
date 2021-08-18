@@ -1,5 +1,5 @@
 import {Link} from 'react-router-dom';
-const EmployeePackage = ({id, place, location, image, description, duration, transport, hotel, cost, status, employeePackageDeletecallback})=>{
+const EmployeePackage = ({id, place, location, description, duration, transport, hotel, cost, status, employeePackageDeletecallback})=>{
     return(
         <>
 
@@ -7,7 +7,6 @@ const EmployeePackage = ({id, place, location, image, description, duration, tra
             <td>{id}</td>
             <td>{place}</td>
             <td>{location}</td>
-            <td><img className="userimg" src={process.env.PUBLIC_URL + "/images/" + image}/></td>
             <td>{description}</td>
             <td>{duration}</td>
             <td>{transport}</td>

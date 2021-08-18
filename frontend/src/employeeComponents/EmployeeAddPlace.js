@@ -5,14 +5,13 @@ import './Employee.css';
 const EmployeeAddPlace = ({ status, callback }) => {
     const [place, setPlace] = useState("");
     const [district, setDistrict] = useState("");
-    const [image, setImage] = useState("");
 
     const history = useHistory();
 
     const onSubmit = (e) => {
         e.preventDefault();
        
-        callback({ place : place, district: district, image: image});
+        callback({ place : place, district: district});
         history.push('/employee');
     };
     return (
@@ -31,12 +30,7 @@ const EmployeeAddPlace = ({ status, callback }) => {
                     <input  type="text" name="district" value={district} onChange={(e) => setDistrict(e.target.value)} />
                 </label>
                 <br />
-                <label>
-                    Image:
-                    <input type="text" name="image" value={image} onChange={(e) => setImage(e.target.value)}
-                    />
-                </label>
-                <br />
+                
                 </fieldset>
 
 

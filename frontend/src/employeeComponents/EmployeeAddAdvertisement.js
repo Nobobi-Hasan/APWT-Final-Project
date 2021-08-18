@@ -4,7 +4,7 @@ import './Employee.css';
 
 const EmployeeAddAdvertisement = ({ status, callback }) => {
 
-    const [image, setImage] = useState("");
+    const [message, setMessage] = useState("");
   
     
     const history = useHistory();
@@ -12,7 +12,7 @@ const EmployeeAddAdvertisement = ({ status, callback }) => {
     const onSubmit = (e) => {
         e.preventDefault();
        
-        callback({ image : image});
+        callback({ message : message});
         history.push('/employee');
     };
     return (
@@ -22,8 +22,8 @@ const EmployeeAddAdvertisement = ({ status, callback }) => {
             <fieldset>
             <legend>Send Advertisement</legend>
                 <label>
-                    Image:
-                    <input type="text" name="image" value={image} onChange={(e) => setImage(e.target.value)} />
+                    Advertisement:
+                    <input type="text" name="message" value={message} onChange={(e) => setMessage(e.target.value)} />
                 </label>
                 <br />
                 </fieldset>

@@ -3,7 +3,6 @@ import { useHistory } from 'react-router-dom';
 import './Employee.css';
 
 const EmployeeAddPromo = ({ status, callback }) => {
-    const [image, setImage] = useState("");
     const [message, setMessage] = useState("");
     
     const history = useHistory();
@@ -11,7 +10,7 @@ const EmployeeAddPromo = ({ status, callback }) => {
     const onSubmit = (e) => {
         e.preventDefault();
        
-        callback({ image : image, message: message});
+        callback({  message: message});
         history.push('/employee');
     };
     return (
@@ -20,11 +19,7 @@ const EmployeeAddPromo = ({ status, callback }) => {
             <form className='form' onSubmit={onSubmit}>
             <fieldset>
             <legend>Send Promo</legend>
-                <label>
-                    Image:
-                    <input type="text" name="image" value={image} onChange={(e) => setImage(e.target.value)} />
-                </label>
-                <br />
+                
                 <label>
                     Message:
                     <input  type="text" name="message" value={message} onChange={(e) => setMessage(e.target.value)} />

@@ -17,20 +17,9 @@ class EmployeeAdvertisementController extends Controller
 
     public function advertisementAdd(Request $req){
 
-        // if ($req->hasFile('image')) {
-        //     $file = $req->file('image');
-
-        //     if($file->move('upload','employeeAds'.$file->getClientOriginalName().'.'.$file->getClientOriginalExtension())){
-        //         echo "success";
-        //     }else{
-        //         echo "error";
-        //     }
-        // }
-        // $img= 'employeeAds'. $file->getClientOriginalName().'.'.$file->getClientOriginalExtension();
-
+        
         $ads = new Ad;
-        //$ads -> image = $img;
-        $ads -> image = $req->image;
+        $ads -> message = $req->message;
         $ads -> save();
         
     }
@@ -57,20 +46,9 @@ class EmployeeAdvertisementController extends Controller
     public function promoAdd(Request $req){
 
 
-        // if ($req->hasFile('image')) {
-        //     $file = $req->file('image');
-        //     if($file->move('upload', 'employeePromos'.$req->id.'.'.$file->getClientOriginalExtension())){
-        //         echo "success";
-        //     }else{
-        //         echo "error";
-        //     }
-        // }
-        // $img='employeePromos'.$req->id.'.'.$file->getClientOriginalExtension();
-
+        
 
         $promos = new Promo;
-        //$promos -> image = $img;
-        $promos -> image = $req->image;
         $promos -> message = $req->message;
         $promos -> save();
         

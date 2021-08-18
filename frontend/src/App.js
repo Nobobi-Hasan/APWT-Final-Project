@@ -8,7 +8,6 @@ import EmployeeAddStatement from "./employeeComponents/EmployeeAddStatement";
 import EmployeeAddTransaction from "./employeeComponents/EmployeeAddTransaction";
 import EmployeeAddAdvertisement from "./employeeComponents/EmployeeAddAdvertisement";
 import EmployeeAddPromo from "./employeeComponents/EmployeeAddPromo";
-import EmployeeAddGallery from "./employeeComponents/EmployeeAddGallery";
 import EmployeeAddFaq from "./employeeComponents/EmployeeAddFaq";
 import EmployeeAddPackage from "./employeeComponents/EmployeeAddPackage";
 import EmployeeEditPackage from "./employeeComponents/EmployeeEditPackage";
@@ -24,7 +23,6 @@ import EmployeeTransportList from "./employeeComponents/EmployeeTransportList";
 import EmployeeHotelList from "./employeeComponents/EmployeeHotelList";
 import EmployeeFaqList from "./employeeComponents/EmployeeFaqList";
 import EmployeeAdvertisementList from "./employeeComponents/EmployeeAdvertisementList";
-import EmployeeGalleryList from "./employeeComponents/EmployeeGalleryList";
 import EmployeePromoList from "./employeeComponents/EmployeePromoList";
 import EmployeeSupportList from "./employeeComponents/EmployeeSupportList";
 import EmployeeUserList from "./employeeComponents/EmployeeUserList";
@@ -80,21 +78,6 @@ function App() {
           console.log(newEmployeeSalary);
 
           
-};
-
-
-//add image in gallery by employee
-const employeeAddGallery = (newEmployeeGallery) => { 
-
-  const axios = require('axios').default;
-
-  axios({
-      method: 'post',
-      url: 'http://127.0.0.1:8000/api/employee/gallery',
-      data:newEmployeeGallery,
-    });
-    setEmployeeGallery([...employeegallery, newEmployeeGallery]);
-    console.log(newEmployeeGallery);
 };
 
 //add statement by employee
@@ -269,26 +252,6 @@ const employeeAddStatement = (newEmployeeStatement) => {
    setEmployeePromo(data);
 };
 
-//show gallery to employee
-const [employeegallery, setEmployeeGallery] = useState([]);
-const emp10 = 'http://127.0.0.1:8000/api/employee/gallery/manage';
-useFetch(emp10, setEmployeeGallery);
-
-// Delete image from gallery by employee
-const employeeGalleryDeletecallback = (id) => {
- const axios = require('axios').default;
-
- axios({
-     method: 'post',
-     url: 'http://127.0.0.1:8000/api/employee/gallery/delete',
-     data:{
-         id:id,
-     }
-   });
-
- const data = employeegallery.filter((employee) => employee.id !== id);
- setEmployeeGallery(data);
-};
 
 //show support to employee
 const [employeesupport, setEmployeeSupport] = useState([]);
@@ -519,26 +482,6 @@ const employeePackageDeletecallback = (id) => {
                         </div>
                     </div>  
             </Route>
-
-        <Route exact path="/employee/gallery">
-        <div className="wrapper">
-            <EmployeeNavbar />
-              <div className="main-container">  
-              <EmployeeAddGallery status="Gallery" callback={employeeAddGallery} />     
-              </div>
-
-          </div>
-        </Route>
-
-        <Route exact path="/employee/gallery/manage">
-        <div className="wrapper">
-            <EmployeeNavbar />
-              <div className="main-container">   
-              <EmployeeGalleryList list={employeegallery} callback={employeeGalleryDeletecallback} />      
-              </div>
-
-          </div>
-        </Route>
 
         <Route exact path="/employee/salary">
         <div className="wrapper">

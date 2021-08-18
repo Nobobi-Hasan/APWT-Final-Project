@@ -1,9 +1,9 @@
-const EmployeeAdvertisement = ({id, image, employeeAdvertisementDeletecallback})=>{
+const EmployeeAdvertisement = ({id, message, employeeAdvertisementDeletecallback})=>{
     return(
         
 
         <tr>
-            <td><img className="userimg" src={process.env.PUBLIC_URL + "/images/" + image}/></td>
+            <td>{message}</td>
             <td><button className='delete-button' onClick={()=>employeeAdvertisementDeletecallback(id)}>Delete</button></td>
         </tr>
 

@@ -11,7 +11,6 @@ const EmployeePlaceList = ({list, callback})=>{
                 <th>ID</th>
                 <th>Place</th>
                 <th>District</th>
-                <th>Image</th>
                 <th>Action</th>
 
                 {

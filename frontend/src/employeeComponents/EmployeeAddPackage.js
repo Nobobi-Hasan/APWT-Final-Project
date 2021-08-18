@@ -5,7 +5,6 @@ import './Employee.css';
 const EmployeeAddPackage = ({ callback }) => {
     const [place, setPlace] = useState("");
     const [location, setLocation] = useState("");
-    const [image, setImage] = useState("");
     const [description, setDescription] = useState("");
     const [duration, setDuration] = useState("");
     const [transport, setTransport] = useState("");
@@ -19,7 +18,7 @@ const EmployeeAddPackage = ({ callback }) => {
     const onSubmit = (e) => {
         e.preventDefault();
        
-        callback({ place : place, location: location, image: image, description: description, duration: duration, transport: transport, hotel: hotel, cost: cost, status: status});
+        callback({ place : place, location: location, description: description, duration: duration, transport: transport, hotel: hotel, cost: cost, status: status});
         history.push('/employee');
     };
     return (
@@ -37,12 +36,7 @@ const EmployeeAddPackage = ({ callback }) => {
                     Location:
                     <input  type="text" name="location" value={location} onChange={(e) => setLocation(e.target.value)} />
                 </label>
-                <br />
-                <label>
-                    Image:
-                    <input type="text" name="image" value={image} onChange={(e) => setImage(e.target.value)}
-                    />
-                </label>
+        
                 <br />
                 <label>
                     Description:
@@ -56,17 +50,23 @@ const EmployeeAddPackage = ({ callback }) => {
                     />
                 </label>
                 <br />
-                <label>
-                    Transport:
-                    <input type="text" name="transport" value={transport} onChange={(e) => setTransport(e.target.value)}
-                    />
-                </label>
+                <label for="transport">Transport:</label>
+                            <select name="transport" id="transport" onChange={(e) => setTransport(e.target.value)}>
+
+                                <option value=""></option>
+                                <option value="Yes">Yes</option>
+                                <option value="No">No</option>
+                                
+                </select>
                 <br />
-                <label>
-                    Hotel:
-                    <input type="text" name="hotel" value={hotel} onChange={(e) => setHotel(e.target.value)}
-                    />
-                </label>
+                <label for="hotel">Hotel:</label>
+                            <select name="hotel" id="hotel" onChange={(e) => setHotel(e.target.value)}>
+                                
+                                <option value=""></option>
+                                <option value="Yes">Yes</option>
+                                <option value="No">No</option>
+                                
+                </select>
                 <br />
                 <label>
                     Cost:

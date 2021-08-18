@@ -57,16 +57,6 @@ const EmployeeNavbar = ()=>{
 						</div>
 					</li>
 
-                    <li className="item" id="gallery">
-						<a href="#gallery" className="menu-btn">
-							<i className="fa fa-camera"></i><span>Gallery<i className="fa fa-chevron-down drop-down"></i></span>
-						</a>
-						<div className="sub-menu">
-                            <Link to='/employee/gallery'><i className="fa fa-plus"></i><span>Add Image</span></Link>
-							<Link to='/employee/gallery/manage'><i className="fa fa-image"></i><span>Manage Gallery</span></Link>
-						</div>
-					</li>
-
                     <li className="item" id="salary">
 						<a href="#salary" className="menu-btn">
 							<i className="fa fa-bank"></i><span>Salary<i className="fa fa-chevron-down drop-down"></i></span>
@@ -77,25 +67,33 @@ const EmployeeNavbar = ()=>{
 						</div>
 					</li>
 
-                    <li className="item" id="account">
-						<a href="#account" className="menu-btn">
-							<i className="fa fa-credit-card"></i><span>Account<i className="fa fa-chevron-down drop-down"></i></span>
+                    <li className="item" id="statement">
+						<a href="#statement" className="menu-btn">
+							<i className="fa fa-dollar"></i><span>Income Statement<i className="fa fa-chevron-down drop-down"></i></span>
 						</a>
 						<div className="sub-menu">
                             <Link to='/employee/statementAdd'><i className="fa fa-plus"></i><span>Add Income Statement</span></Link>
 							<Link to='/employee/statement'><i className="fa fa-usd"></i><span>Income Statement</span></Link>
+						</div>
+					</li>
+					<li className="item" id="transaction">
+						<a href="#transaction" className="menu-btn">
+							<i className="fa fa-credit-card"></i><span>Transaction History<i className="fa fa-chevron-down drop-down"></i></span>
+						</a>
+						<div className="sub-menu">
+                            
                             <Link to='/employee/transactionAdd'><i className="fa fa-plus"></i><span>Add Transaction</span></Link>
                             <Link to='/employee/transaction'><i className="fa fa-money"></i><span>Transaction History</span></Link>
 						</div>
 					</li>
 
-                    <li className="item" id="ads">
-						<a href="#ads" className="menu-btn">
+                    <li className="item" id="advertisement">
+						<a href="#advertisement" className="menu-btn">
 							<i className="fa fa-tv"></i><span>Advertisement<i className="fa fa-chevron-down drop-down"></i></span>
 						</a>
 						<div className="sub-menu">
-                            <Link to='/employee/advertisement'><i className="fa fa-paper-plane"></i><span>Send Ads</span></Link>
-							<Link to='/employee/advertisement/list'><i className="fa fa-list"></i><span>Manage Ads</span></Link>
+                            <Link to='/employee/advertisement'><i className="fa fa-paper-plane"></i><span>Send Advertisement</span></Link>
+							<Link to='/employee/advertisement/list'><i className="fa fa-list"></i><span>Manage Advertisement</span></Link>
 						</div>
 					</li>
 

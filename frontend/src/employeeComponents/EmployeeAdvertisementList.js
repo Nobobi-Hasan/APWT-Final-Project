@@ -8,7 +8,7 @@ const EmployeeAdvertisementList = ({list, callback})=>{
         <div>
             <table id='table'>
 
-                <th>Image</th>
+                <th>Message</th>
                 <th>Action</th>
                
                 {

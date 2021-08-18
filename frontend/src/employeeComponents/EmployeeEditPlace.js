@@ -9,7 +9,6 @@ const EmployeeEditPlace = ({ callback }) => {
     const { id: eid } = useParams();
     const [place, setPlace] = useState("");
     const [district, setDistrict] = useState("");
-    const [image, setImage] = useState("");
     
 
 
@@ -18,9 +17,9 @@ const EmployeeEditPlace = ({ callback }) => {
     const onSubmit = (e) => {
         e.preventDefault();
 
-       console.log({ id: eid,  place: place, district: district, image: image });
+       console.log({ id: eid,  place: place, district: district });
         
-        callback({ id: eid,  place: place, district: district, image: image  });
+        callback({ id: eid,  place: place, district: district });
         history.push('/employee/place');
     };
     return (
@@ -37,11 +36,6 @@ const EmployeeEditPlace = ({ callback }) => {
             <label>
                 District:
                 <input  type="text" name="district" value={district} onChange={(e) => setDistrict(e.target.value)} />
-            </label>
-            <br />
-            <label>
-                Image:
-                <input  type="text" name="image" value={image} onChange={(e) => setImage(e.target.value)} />
             </label>
             <br />
 

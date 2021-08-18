@@ -11,7 +11,6 @@ const EmployeePackageList = ({list, callback})=>{
                 <th>ID</th>
                 <th>Place</th>
                 <th>Location</th>
-                <th>Image</th>
                 <th>Description</th>
                 <th>Duration</th>
                 <th>Transport</th>
