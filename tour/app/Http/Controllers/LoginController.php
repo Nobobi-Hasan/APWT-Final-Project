@@ -85,9 +85,9 @@ class LoginController extends Controller
         }
 
         elseif(count((array)$user) > 0){
-            $req->session()->put('uname', $user->username);
-            $req->session()->put('id', $user->id);
-            $req->session()->put('type', $user->type);
+            // $req->session()->put('uname', $user->username);
+            // $req->session()->put('id', $user->id);
+            // $req->session()->put('type', $user->type);
             
             return "user";
             // return redirect()->route('user.home');

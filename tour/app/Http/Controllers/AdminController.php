@@ -63,8 +63,8 @@ class AdminController extends Controller
 
     public function profileUD(ProfileRequest $req){
 
-        // switch ($req->input('submit')) {
-            // case 'Update':
+        switch ($req->input('submit')) {
+            case 'Update':
                 
                 $admin = Admin::where('username', $req->username)->first();
                 $admin -> firstname = $req->firstname;
@@ -76,18 +76,18 @@ class AdminController extends Controller
         //         $req->session()->flash('adminUDMsg', 'Account Updated');
         //         return redirect()->route('admin.profile');
         
-        //         break;
+                break;
                 
     
-        //     case 'Delete':
+            case 'Delete':
 
-        //         $admin = Admin::where('username', $req->username)->first();
-        //         $admin->delete();
-        //         return redirect()->route('login.index');
+                $admin = Admin::where('username', $req->username)->first();
+                $admin->delete();
+                // return redirect()->route('login.index');
                 
-        //         break;
+                break;
 
-        // }
+        }
     
     }
 

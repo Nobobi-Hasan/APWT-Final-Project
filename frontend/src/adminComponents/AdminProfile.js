@@ -12,13 +12,6 @@ const AdminProfile = ({ idl, firstnamel, lastnamel, genderl, emaill, usernamel, 
     console.log(genderl);
     console.log(emaill);
     console.log(usernamel);
-    
-// //Show Admin Profile by Admin
-//     const [adminProfile, setAdminProfile] = useState([]);
-//     const urlAP = 'http://127.0.0.1:8000/api/admin/profile';
-//     useFetch(urlAP, setAdminProfile);
-
-//     console.log(adminProfile);
 
 
     const [firstname, setFirstname] = useState(firstnamel);
@@ -34,15 +27,43 @@ const AdminProfile = ({ idl, firstnamel, lastnamel, genderl, emaill, usernamel, 
     const [password, setPassword] = useState("");
     const [conPassword, setConPassword] = useState("");
 
-    //const [user, setUser] = useState({id:'',name: '', dept: ''});
+    const [submitButton, setSubmitButton] = useState("");
+
+
+    const buttonU = () => { 
+
+        setSubmitButton("Update");
+    
+          console.log("update");
+    };
+
+    const buttonD = () => { 
+
+        setSubmitButton("Delete");
+    
+          console.log("Delete");
+    };
+
+
+
 
     const history = useHistory();
 
     const onSubmit = (e) => {
         e.preventDefault();
+
+        // if(submitButton == "Update")
+        //     console.log("update from submit");
+        // else if(submitButton == "Delete")
+        //     console.log("Delete from submit");
+
+
+        console.log(submitButton);
        
-        callback({ firstname: firstname, lastname: lastname, gender: gender, email: email, username: username, password: password, conPassword: conPassword });
-        // history.push('/admin/all-employees');
+        callback({ firstname: firstname, lastname: lastname, gender: gender, email: email, username: username, password: password, conPassword: conPassword, submit:  submitButton});
+
+        if(submitButton == "Delete")
+            history.push('/login');
     };
     return (
         <div>
@@ -97,7 +118,9 @@ const AdminProfile = ({ idl, firstnamel, lastnamel, genderl, emaill, usernamel, 
                 <br />
                 </fieldset>
 
-                <input id='submit' type="submit" value="Submit" />
+
+                <input type="submit" name="submit" value="Update" id="updateBtn" onClick={buttonU}/>
+                <input type="submit" name="submit" value="Delete" id="deleteBtn" onClick={buttonD}/>
             </form>
         </div>
     );
