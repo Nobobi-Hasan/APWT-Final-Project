@@ -204,7 +204,7 @@ const employeeAddStatement = (newEmployeeStatement) => {
           }
         });
 
-      const data = employeefaq.filter((employee) => employee.id !== id);
+      const data = employeefaq.filter((employee) => employee.id != id);
       setEmployeeFaq(data);
   };
 
@@ -226,7 +226,7 @@ const employeeAddStatement = (newEmployeeStatement) => {
        }
      });
 
-   const data = employeeadvertisement.filter((employee) => employee.id !== id);
+   const data = employeeadvertisement.filter((employee) => employee.id != id);
    setEmployeeAdvertisement(data);
 };
  
@@ -248,7 +248,7 @@ const employeeAddStatement = (newEmployeeStatement) => {
        }
      });
 
-   const data = employeepromo.filter((employee) => employee.id !== id);
+   const data = employeepromo.filter((employee) => employee.id != id);
    setEmployeePromo(data);
 };
 
@@ -270,7 +270,7 @@ const employeeSupportDeletecallback = (id) => {
      }
    });
 
- const data = employeesupport.filter((employee) => employee.id !== id);
+ const data = employeesupport.filter((employee) => employee.id != id);
  setEmployeeSupport(data);
 };
 
@@ -287,7 +287,7 @@ useFetch(emp13, setEmployeeUserDetails);
 
  // Show an User Details by employee
  const employeeUserDetailscallback = (id) => {
-  const data = employeeUser.filter((user) => user.id === id);
+  const data = employeeUser.filter((user) => user.id == id);
   setEmployeeUserDetails(data);
   console.log(data);
   };
@@ -319,7 +319,6 @@ useFetch(emp15, setEmployeePlace);
 
  // Edit Place by employee
  const employeeEditPlace = (editPlace) => { 
-
   const axios = require('axios').default;
 
   axios({
@@ -327,8 +326,8 @@ useFetch(emp15, setEmployeePlace);
       url: 'http://127.0.0.1:8000/api/employee/placeEdit',
       data:editPlace,
     });
-    const data = employeePlace.filter((place) => place.id !== editPlace.id);
-  
+    const data = employeePlace.filter((place) => place.id != editPlace.id);
+  console.log(data);
     setEmployeePlace(data);
     setEmployeePlace([...data, editPlace]);
     
@@ -345,7 +344,7 @@ const employeePlaceDeletecallback = (id) => {
           id:id,
       }
     });
-  const data = employeePlace.filter((place) => place.id !== id);
+  const data = employeePlace.filter((place) => place.id != id);
   setEmployeePlace(data);
 };
 
@@ -364,7 +363,7 @@ useFetch(emp16, setEmployeePackage);
       url: 'http://127.0.0.1:8000/api/employee/packageEdit',
       data:editPackage,
     });
-    const data = employeePackage.filter((packages) => packages.id !== editPackage.id);
+    const data = employeePackage.filter((packages) => packages.id != editPackage.id);
   
     setEmployeePackage(data);
     setEmployeePackage([...data, editPackage]);
@@ -382,7 +381,7 @@ const employeePackageDeletecallback = (id) => {
           id:id,
       }
     });
-  const data = employeePackage.filter((packages) => packages.id !== id);
+  const data = employeePackage.filter((packages) => packages.id != id);
   setEmployeePackage(data);
 };
 
