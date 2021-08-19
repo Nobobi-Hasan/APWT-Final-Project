@@ -6,7 +6,7 @@ import { GoogleLogin, GoogleLogout} from 'react-google-login';
 
 const AdminNavbar = ({callbackGoogle, googletf})=>{
 
-	console.log("Google status from Navbar: "+ googletf);
+	// console.log("Google status from Navbar: "+ googletf);
 	const history = useHistory();
 
 	const clientId = "472078400144-265drsrih4lt007dbusnq94fcou597oe.apps.googleusercontent.com";
@@ -55,7 +55,8 @@ const AdminNavbar = ({callbackGoogle, googletf})=>{
 			<div className="sidebar">
 				<div className="sidebar-menu">
 					<center className="profile">
-                        <img src="{{asset('upload')}}/{{session('image')}}" height="50px" width="50px" />
+                        {/* <img src="{{asset('upload')}}/{{session('image')}}" height="50px" width="50px" /> */}
+						<img className="userimg" src={process.env.PUBLIC_URL + "/images/admin.jpg" }  height="50px" width="50px" />
                         {/* <p>{{session('uname')}}</p> */}
 						
 						

@@ -96,20 +96,20 @@ class AdminController extends Controller
     }
 
     public function adminAddVerify(AddRequest $req){
-        if($req->hasFile('image')){
+        // if($req->hasFile('image')){
         
-            $file = $req->file('image');
-            echo "File Name: ".$file->getClientOriginalName()."<br>";
-            echo "File Extension: ".$file->getClientOriginalExtension()."<br>";
-            echo "File Mime Type: ".$file->getMimeType()."<br>";
-            echo "File Size: ".$file->getSize()."<br>";
+        //     $file = $req->file('image');
+        //     echo "File Name: ".$file->getClientOriginalName()."<br>";
+        //     echo "File Extension: ".$file->getClientOriginalExtension()."<br>";
+        //     echo "File Mime Type: ".$file->getMimeType()."<br>";
+        //     echo "File Size: ".$file->getSize()."<br>";
 
-            if($file->move('upload', $req->username.'.'.$file->getClientOriginalExtension())){
-                echo "success";
-            }else{
-                echo "error";
-            }
-        }
+        //     if($file->move('upload', $req->username.'.'.$file->getClientOriginalExtension())){
+        //         echo "success";
+        //     }else{
+        //         echo "error";
+        //     }
+        // }
 
         $admins = Admin::all();
         foreach ($admins as $a)
@@ -121,7 +121,7 @@ class AdminController extends Controller
             }
         }
 
-        $img=$req->username.'.'.$file->getClientOriginalExtension();
+        // $img=$req->username.'.'.$file->getClientOriginalExtension();
         
         
         $admin = new Admin;
@@ -129,7 +129,7 @@ class AdminController extends Controller
         $admin -> lastname = $req->lastname;
         $admin -> gender = $req->gender;
         $admin -> email = $req->email;
-        $admin -> image = $img;
+        $admin -> image = "admin.jpg";
         $admin -> username = $req->username;
         $admin -> password = $req->password;
 

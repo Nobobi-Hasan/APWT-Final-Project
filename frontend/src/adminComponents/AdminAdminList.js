@@ -2,7 +2,7 @@ import Admin from './AdminAdmin';
 import './Admin.css';
 
 const AdminAdminList = ({list, callback})=>{
-    console.log(list);
+    // console.log(list);
 
     return(
         <div>

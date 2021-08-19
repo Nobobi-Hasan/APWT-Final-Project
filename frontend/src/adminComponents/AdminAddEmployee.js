@@ -21,10 +21,13 @@ const AdminAddEmployee = ({ status, callback }) => {
 
     const onSubmit = (e) => {
         e.preventDefault();
-        alert("Employee Added successfully");
        
         callback({ firstname: firstname, lastname: lastname, gender: gender, email: email, username: username, password: password, conPassword: conPassword });
-        history.push('/admin/all-employees');
+
+        if (status == "Employee")
+            history.push('/admin/all-employees');
+        else
+            history.push('/admin/all-admins');
     };
     return (
         <div>
@@ -85,6 +88,7 @@ const AdminAddEmployee = ({ status, callback }) => {
                 <input id='submit' type="submit" value="Submit" />
             </form>
         </div>
+        
     );
 };
 

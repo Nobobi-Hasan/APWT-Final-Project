@@ -265,80 +265,98 @@ const loginIdf = ({id}) => {
 
 
 // Profile update by admin
-const adminProfileUpdate = (newProfile) => { 
+const adminProfileUpdate =async (newProfile) => { 
 
     const axios = require('axios').default;
 
-    axios({
+    const status = await axios({
         method: 'post',
         url: 'http://127.0.0.1:8000/api/admin/profile',
         //data: JSON.stringify(newUser)
         data:newProfile,
       });
 
-      setLoginFirstname(newProfile.firstname);
-      setLoginLastname(newProfile.lastname);
-      setLoginGender(newProfile.gender);
-      setLoginEmail(newProfile.email);
-      setLoginUsername(newProfile.username);
+      if (status)
+      {
+        alert("Profile Updated successfully");
+        
+        setLoginFirstname(newProfile.firstname);
+        setLoginLastname(newProfile.lastname);
+        setLoginGender(newProfile.gender);
+        setLoginEmail(newProfile.email);
+        setLoginUsername(newProfile.username);
 
-      console.log(newProfile);
+        console.log(newProfile);
+      }
+
+
 };
 
 
 
 // Add Employee by admin
     const adminAddEmployee = (newEmployee) => { 
+        var answer = window.confirm("Add this Employee?");
+        if (answer) {
 
-        const axios = require('axios').default;
+            const axios = require('axios').default;
 
-        axios({
-            method: 'post',
-            url: 'http://127.0.0.1:8000/api/admin/add-employee',
-            //data: JSON.stringify(newUser)
-            data:newEmployee,
-          });
-          setAdminEmployees([...adminEmployee, newEmployee]);
-          console.log(newEmployee);
+            axios({
+                method: 'post',
+                url: 'http://127.0.0.1:8000/api/admin/add-employee',
+                //data: JSON.stringify(newUser)
+                data:newEmployee,
+            });
+            setAdminEmployees([...adminEmployee, newEmployee]);
+            console.log(newEmployee);
+        }
     };
 
 
 // Delete an Employee by admin
     const adminEmployeeDeleteCallback = (id) => {
-        const axios = require('axios').default;
+        var answer = window.confirm("Are you sure to Delete?");
+        if (answer) {
+                
+            const axios = require('axios').default;
 
-        axios({
-            method: 'post',
-            url: 'http://127.0.0.1:8000/api/admin/employee/delete',
-            data:{
-                id:id,
-            }
-          });
+            axios({
+                method: 'post',
+                url: 'http://127.0.0.1:8000/api/admin/employee/delete',
+                data:{
+                    id:id,
+                }
+            });
 
-        const data = adminEmployee.filter((employee) => employee.id != id);
-        setAdminEmployees(data);
+            const data = adminEmployee.filter((employee) => employee.id != id);
+            setAdminEmployees(data);
 
-        const dataA = adminActiveEmployee.filter((employee) => employee.id != id);
-        setAdminActiveEmployees(dataA);
+            const dataA = adminActiveEmployee.filter((employee) => employee.id != id);
+            setAdminActiveEmployees(dataA);
+        }
     };
 
     // Delete an User by admin
     const adminUserDeleteCallback = (id) => {
-        const axios = require('axios').default;
+        var answer = window.confirm("Are you sure to Delete?");
+        if (answer) {
+                    
+            const axios = require('axios').default;
 
-        axios({
-            method: 'post',
-            url: 'http://127.0.0.1:8000/api/admin/user/delete',
-            data:{
-                id:id,
-            }
-          });
+            axios({
+                method: 'post',
+                url: 'http://127.0.0.1:8000/api/admin/user/delete',
+                data:{
+                    id:id,
+                }
+            });
 
-        const data = adminUser.filter((user) => user.id != id);
-        setAdminUser(data);
+            const data = adminUser.filter((user) => user.id != id);
+            setAdminUser(data);
 
-        const dataA = adminActiveUser.filter((user) => user.id != id);
-        setAdminActiveUser(dataA);
+            const dataA = adminActiveUser.filter((user) => user.id != id);
+            setAdminActiveUser(dataA);
+        }
     };
 
     
@@ -358,212 +376,283 @@ const adminProfileUpdate = (newProfile) => {
     };
 
 
+
+    // Add Admin by admin
+    const adminAddAdmin = (newAdmin) => { 
+        var answer = window.confirm("Add this Admin?");
+        if (answer) {
+
+            const axios = require('axios').default;
+
+            axios({
+                method: 'post',
+                url: 'http://127.0.0.1:8000/api/admin/add-admin',
+                //data: JSON.stringify(newUser)
+                data:newAdmin,
+            });
+            setAdminAdmins([...adminadmin, newAdmin]);
+            console.log(newAdmin);
+        }
+    };
+
+
 // Delete an Admin by admin
     const adminAdminDeleteCallback = (id) => {
-        const axios = require('axios').default;
 
-        axios({
-            method: 'post',
-            url: 'http://127.0.0.1:8000/api/admin/admin/delete',
-            data:{
-                id:id,
-            }
-          });
+        var answer = window.confirm("Are you sure to Delete?");
+        if (answer) {
+                    
+            const axios = require('axios').default;
 
-        const data = adminadmin.filter((admin) => admin.id != id);
-        setAdminAdmins(data);
+            axios({
+                method: 'post',
+                url: 'http://127.0.0.1:8000/api/admin/admin/delete',
+                data:{
+                    id:id,
+                }
+            });
+
+            const data = adminadmin.filter((admin) => admin.id != id);
+            setAdminAdmins(data);
+        }
     };
 
 
 // Approve Hotel by admin
     const adminHotelApproveCallback = (id) => {
-        const axios = require('axios').default;
 
-        axios({
-            method: 'post',
-            url: 'http://127.0.0.1:8000/api/admin/hotel/approve',
-            data:{
-                id:id,
-            }
-          });
+        var answer = window.confirm("Are you sure to Approve?");
+        if (answer) {
+                
+            const axios = require('axios').default;
 
-        const data = adminHotelAD.filter((hotelAD) => hotelAD.id != id);
-        const data2 = adminHotelAD.filter((hotelAD) => hotelAD.id == id);
-        console.log(data);
-        console.log(data2);
-        setAdminHotelAD(data);
-        setAdminHotel([...adminHotel, ...data2]);
+            axios({
+                method: 'post',
+                url: 'http://127.0.0.1:8000/api/admin/hotel/approve',
+                data:{
+                    id:id,
+                }
+            });
+
+            const data = adminHotelAD.filter((hotelAD) => hotelAD.id != id);
+            const data2 = adminHotelAD.filter((hotelAD) => hotelAD.id == id);
+            console.log(data);
+            console.log(data2);
+            setAdminHotelAD(data);
+            setAdminHotel([...adminHotel, ...data2]);
+        }
     };
 
 
 // Decline Hotel by admin
     const adminHotelDeclineCallback = (id) => {
-        const axios = require('axios').default;
 
-        axios({
-            method: 'post',
-            url: 'http://127.0.0.1:8000/api/admin/hotel/decline',
-            data:{
-                id:id,
-            }
-          });
+        var answer = window.confirm("Are you sure to Decline?");
+        if (answer) {
+                
+            const axios = require('axios').default;
 
-        const data = adminHotelAD.filter((hotelAD) => hotelAD.id != id);
-        setAdminHotelAD(data);
+            axios({
+                method: 'post',
+                url: 'http://127.0.0.1:8000/api/admin/hotel/decline',
+                data:{
+                    id:id,
+                }
+            });
+
+            const data = adminHotelAD.filter((hotelAD) => hotelAD.id != id);
+            setAdminHotelAD(data);
+        }
     };
 
 
 // Delete Hotel by admin
     const adminHotelDeleteCallback = (id) => {
-        const axios = require('axios').default;
 
-        axios({
-            method: 'post',
-            url: 'http://127.0.0.1:8000/api/admin/hotel/delete',
-            data:{
-                id:id,
-            }
-          });
+        var answer = window.confirm("Are you sure to Delete?");
+        if (answer) {
 
-        const data = adminHotel.filter((hotel) => hotel.id != id);
-        setAdminHotel(data);
+            const axios = require('axios').default;
+
+            axios({
+                method: 'post',
+                url: 'http://127.0.0.1:8000/api/admin/hotel/delete',
+                data:{
+                    id:id,
+                }
+            });
+
+            const data = adminHotel.filter((hotel) => hotel.id != id);
+            setAdminHotel(data);
+        }
     };
 
 
     // Approve Transport by admin
     const adminTransportApproveCallback = (id) => {
-        const axios = require('axios').default;
 
-        axios({
-            method: 'post',
-            url: 'http://127.0.0.1:8000/api/admin/transport/approve',
-            data:{
-                id:id,
+        var answer = window.confirm("Are you sure to Approve?");
+        if (answer) {
+
+            const axios = require('axios').default;
+
+            axios({
+                method: 'post',
+                url: 'http://127.0.0.1:8000/api/admin/transport/approve',
+                data:{
+                    id:id,
+                }
+            });
+
+            const data = adminTransportAD.filter((transportAD) => transportAD.id != id);
+            const data2 = adminTransportAD.filter((transportAD) => transportAD.id == id);
+            const data3 = {...data2};
+            // const type = data2.type;
+            console.log(data3[0]['type']);
+            const type = data3[0]['type'];
+            setAdminTransportAD(data);
+
+            if(type == "Car"){
+                setAdminCar([...adminCar, ...data2]);
             }
-          });
-
-        const data = adminTransportAD.filter((transportAD) => transportAD.id != id);
-        const data2 = adminTransportAD.filter((transportAD) => transportAD.id == id);
-        const data3 = {...data2};
-        // const type = data2.type;
-        console.log(data3[0]['type']);
-        const type = data3[0]['type'];
-        setAdminTransportAD(data);
-
-        if(type == "Car"){
-            setAdminCar([...adminCar, ...data2]);
+            else if(type == "Flight"){
+                setAdminFlight([...adminFlight, ...data2]);
+            }
         }
-        else if(type == "Flight"){
-            setAdminFlight([...adminFlight, ...data2]);
-        }
-        
         
     };
 
 
 // Decline Transport by admin
     const adminTransportDeclineCallback = (id) => {
-        const axios = require('axios').default;
 
-        axios({
-            method: 'post',
-            url: 'http://127.0.0.1:8000/api/admin/transport/decline',
-            data:{
-                id:id,
-            }
-          });
+        var answer = window.confirm("Are you sure to Decline?");
+        if (answer) {
 
-        const data = adminTransportAD.filter((transportAD) => transportAD.id != id);
-        setAdminTransportAD(data);
+            const axios = require('axios').default;
+
+            axios({
+                method: 'post',
+                url: 'http://127.0.0.1:8000/api/admin/transport/decline',
+                data:{
+                    id:id,
+                }
+            });
+
+            const data = adminTransportAD.filter((transportAD) => transportAD.id != id);
+            setAdminTransportAD(data);
+        }
     };
 
 
 // Delete Car by admin
     const adminCarDeleteCallback = (id) => {
-        const axios = require('axios').default;
+        var answer = window.confirm("Are you sure to Delete?");
+        if (answer) {
 
-        axios({
-            method: 'post',
-            url: 'http://127.0.0.1:8000/api/admin/car/delete',
-            data:{
-                id:id,
-            }
-          });
+            const axios = require('axios').default;
 
-        const data = adminCar.filter((car) => car.id != id);
-        setAdminCar(data);
+            axios({
+                method: 'post',
+                url: 'http://127.0.0.1:8000/api/admin/car/delete',
+                data:{
+                    id:id,
+                }
+            });
+
+            const data = adminCar.filter((car) => car.id != id);
+            setAdminCar(data);
+        }
     };
 
 
 // Delete Flight by admin
     const adminFlightDeleteCallback = (id) => {
-        const axios = require('axios').default;
+        var answer = window.confirm("Are you sure to Delete?");
+        if (answer) {
 
-        axios({
-            method: 'post',
-            url: 'http://127.0.0.1:8000/api/admin/flight/delete',
-            data:{
-                id:id,
-            }
-          });
+            const axios = require('axios').default;
 
-        const data = adminFlight.filter((car) => car.id != id);
-        setAdminFlight(data);
+            axios({
+                method: 'post',
+                url: 'http://127.0.0.1:8000/api/admin/flight/delete',
+                data:{
+                    id:id,
+                }
+            });
+
+            const data = adminFlight.filter((car) => car.id != id);
+            setAdminFlight(data);
+        }
     };
 
 
 
     // Approve Place by admin
     const adminPlaceApproveCallback = (id) => {
-        const axios = require('axios').default;
+        var answer = window.confirm("Are you sure to Approve?");
+        if (answer) {
 
-        axios({
-            method: 'post',
-            url: 'http://127.0.0.1:8000/api/admin/place/approve',
-            data:{
-                id:id,
-            }
-          });
+            const axios = require('axios').default;
 
-        const data = adminPlaceAD.filter((placeAD) => placeAD.id != id);
-        const data2 = adminPlaceAD.filter((placeAD) => placeAD.id == id);
+            axios({
+                method: 'post',
+                url: 'http://127.0.0.1:8000/api/admin/place/approve',
+                data:{
+                    id:id,
+                }
+            });
 
-        setAdminPlaceAD(data);
-        setAdminPlace([...adminPlace, ...data2]);
+            const data = adminPlaceAD.filter((placeAD) => placeAD.id != id);
+            const data2 = adminPlaceAD.filter((placeAD) => placeAD.id == id);
+
+            setAdminPlaceAD(data);
+            setAdminPlace([...adminPlace, ...data2]);
+        }
     };
 
 
 // Decline Place by admin
     const adminPlaceDeclineCallback = (id) => {
-        const axios = require('axios').default;
 
-        axios({
-            method: 'post',
-            url: 'http://127.0.0.1:8000/api/admin/place/decline',
-            data:{
-                id:id,
-            }
-          });
+        var answer = window.confirm("Are you sure to Decline?");
+        if (answer) {
 
-        const data = adminPlaceAD.filter((placeAD) => placeAD.id != id);
-        setAdminPlaceAD(data);
+            const axios = require('axios').default;
+
+            axios({
+                method: 'post',
+                url: 'http://127.0.0.1:8000/api/admin/place/decline',
+                data:{
+                    id:id,
+                }
+            });
+
+            const data = adminPlaceAD.filter((placeAD) => placeAD.id != id);
+            setAdminPlaceAD(data);
+        }
     };
 
 
 // Delete Place by admin
     const adminPlaceDeleteCallback = (id) => {
-        const axios = require('axios').default;
 
-        axios({
-            method: 'post',
-            url: 'http://127.0.0.1:8000/api/admin/place/delete',
-            data:{
-                id:id,
-            }
-          });
+        var answer = window.confirm("Are you sure to Delete?");
+        if (answer) {
 
-        const data = adminPlace.filter((place) => place.id != id);
-        setAdminPlace(data);
+            const axios = require('axios').default;
+
+            axios({
+                method: 'post',
+                url: 'http://127.0.0.1:8000/api/admin/place/delete',
+                data:{
+                    id:id,
+                }
+            });
+
+            const data = adminPlace.filter((place) => place.id != id);
+            setAdminPlace(data);
+        }
     };
 
 
@@ -571,59 +660,77 @@ const adminProfileUpdate = (newProfile) => {
 
     // Approve Package by admin
     const adminPackageApproveCallback = (id) => {
-        const axios = require('axios').default;
 
-        axios({
-            method: 'post',
-            url: 'http://127.0.0.1:8000/api/admin/package/approve',
-            data:{
-                id:id,
-            }
-            });
+        var answer = window.confirm("Are you sure to Approve?");
+        if (answer) {
 
-        const data = adminPackageAD.filter((packageAD) => packageAD.id != id);
-        const data2 = adminPackageAD.filter((packageAD) => packageAD.id == id);
+            const axios = require('axios').default;
 
-        setAdminPackageAD(data);
-        setAdminPackage([...adminPackage, ...data2]);
+            axios({
+                method: 'post',
+                url: 'http://127.0.0.1:8000/api/admin/package/approve',
+                data:{
+                    id:id,
+                }
+                });
+
+            const data = adminPackageAD.filter((packageAD) => packageAD.id != id);
+            const data2 = adminPackageAD.filter((packageAD) => packageAD.id == id);
+
+            setAdminPackageAD(data);
+            setAdminPackage([...adminPackage, ...data2]);
+        }
     };
 
 
 // Decline Package by admin
     const adminPackageDeclineCallback = (id) => {
-        const axios = require('axios').default;
+        var answer = window.confirm("Are you sure to Decline?");
+        if (answer) {
 
-        axios({
-            method: 'post',
-            url: 'http://127.0.0.1:8000/api/admin/package/decline',
-            data:{
-                id:id,
-            }
-            });
+            const axios = require('axios').default;
 
-        const data = adminPackageAD.filter((packageAD) => packageAD.id != id);
-        setAdminPackageAD(data);
+            axios({
+                method: 'post',
+                url: 'http://127.0.0.1:8000/api/admin/package/decline',
+                data:{
+                    id:id,
+                }
+                });
+
+            const data = adminPackageAD.filter((packageAD) => packageAD.id != id);
+            setAdminPackageAD(data);
+        }
     };
 
 
 // Delete Package by admin
     const adminPackageDeleteCallback = (id) => {
-        const axios = require('axios').default;
 
-        axios({
-            method: 'post',
-            url: 'http://127.0.0.1:8000/api/admin/package/delete',
-            data:{
-                id:id,
-            }
-            });
+        var answer = window.confirm("Are you sure to Delete?");
+        if (answer) {
 
-        const data = adminPackage.filter((packageD) => packageD.id != id);
-        setAdminPackage(data);
+            const axios = require('axios').default;
+
+            axios({
+                method: 'post',
+                url: 'http://127.0.0.1:8000/api/admin/package/delete',
+                data:{
+                    id:id,
+                }
+                });
+
+            const data = adminPackage.filter((packageD) => packageD.id != id);
+            setAdminPackage(data);
+        }
     };
 
 // Package Status change by admin
     const adminPackageStatusCallback = ({place, status}) => {
+
+        var answer = window.confirm("Are you sure to update?");
+        if (answer) {
+
         const axios = require('axios').default;
 
         console.log(place);
@@ -636,6 +743,9 @@ const adminProfileUpdate = (newProfile) => {
                 status: status,
             }
             });
+
+            alert("Updated successfully");
+        }
 
         // const data = adminPackage.filter((packageD) => packageD.id != id);
         // setAdminPackage(data);
@@ -677,86 +787,106 @@ const adminProfileUpdate = (newProfile) => {
 
     // Decline Salary by admin
     const adminSalaryDeclineCallback = (id) => {
-        const axios = require('axios').default;
+        var answer = window.confirm("Are you sure to Decline?");
+        if (answer) {
+                
+            const axios = require('axios').default;
 
-        axios({
-            method: 'post',
-            url: 'http://127.0.0.1:8000/api/admin/salary/decline',
-            data:{
-                id:id,
-            }
-          });
+            axios({
+                method: 'post',
+                url: 'http://127.0.0.1:8000/api/admin/salary/decline',
+                data:{
+                    id:id,
+                }
+            });
 
-          const data = adminSalaryAD.filter((salaryAD) => salaryAD.id != id);
-          setAdminSalaryAD(data);
-          
+            const data = adminSalaryAD.filter((salaryAD) => salaryAD.id != id);
+            setAdminSalaryAD(data);
+        }
     };
 
 
 
     // Delete Support by admin
     const adminSupportDeleteCallback = (id) => {
-        const axios = require('axios').default;
+        var answer = window.confirm("Are you sure to Delete?");
+        if (answer) {
+                
+            const axios = require('axios').default;
 
-        axios({
-            method: 'post',
-            url: 'http://127.0.0.1:8000/api/admin/support/delete',
-            data:{
-                id:id,
-            }
-          });
+            axios({
+                method: 'post',
+                url: 'http://127.0.0.1:8000/api/admin/support/delete',
+                data:{
+                    id:id,
+                }
+            });
 
-        const data = adminSupport.filter((support) => support.id != id);
-        setAdminSupport(data);
+            const data = adminSupport.filter((support) => support.id != id);
+            setAdminSupport(data);
+        }
     };
 
 
 
     // Edit Policy by admin
     const adminPolicyEditCallback = (policy) => {
-        const axios = require('axios').default;
+        var answer = window.confirm("Are you sure?");
+        if (answer) {
+                
+            const axios = require('axios').default;
 
-        axios({
-            method: 'post',
-            url: 'http://127.0.0.1:8000/api/admin/edit-policy',
-            data: policy
-          });
+            axios({
+                method: 'post',
+                url: 'http://127.0.0.1:8000/api/admin/edit-policy',
+                data: policy
+            });
 
-        setAdminPolicy(policy);
+            setAdminPolicy(policy);
 
-        console.log(policy);
+            console.log(policy);
+        }
     };
 
 
        // Edit Guidelines by admin
        const adminGuidelinesEditCallback = (guidelines) => {
-        const axios = require('axios').default;
 
-        axios({
-            method: 'post',
-            url: 'http://127.0.0.1:8000/api/admin/edit-guidelines',
-            data: guidelines
-          });
+        var answer = window.confirm("Are you sure?");
+        if (answer) {
+                
+            const axios = require('axios').default;
 
-        setAdminGuidelines(guidelines);
+            axios({
+                method: 'post',
+                url: 'http://127.0.0.1:8000/api/admin/edit-guidelines',
+                data: guidelines
+            });
 
-        console.log(guidelines);
+            setAdminGuidelines(guidelines);
+
+            console.log(guidelines);
+        }
     };
 
 
        // Edit About Us by admin
        const adminAboutEditCallback = (about) => {
-        const axios = require('axios').default;
+        var answer = window.confirm("Are you sure?");
+        if (answer) {
 
-        axios({
-            method: 'post',
-            url: 'http://127.0.0.1:8000/api/admin/edit-about',
-            data: about
-          });
+            const axios = require('axios').default;
 
-        setAdminAbout(about);
+            axios({
+                method: 'post',
+                url: 'http://127.0.0.1:8000/api/admin/edit-about',
+                data: about
+            });
 
-        console.log(about);
+            setAdminAbout(about);
+
+            console.log(about);
+        }
     };
 
 
@@ -793,9 +923,9 @@ const adminProfileUpdate = (newProfile) => {
                 <Route exact path="/admin/add-admin">
                     <div className="wrapper">
 
-                        <AdminNavbar2 />
+                        <AdminNavbar2 callbackGoogle ={googlef} googletf = {google}/>
                         <div className="main-container"> 
-                            
+                            <AdminAddEmployee status="Admin" callback={adminAddAdmin}/>
                         </div>
 
                     </div>
@@ -805,7 +935,7 @@ const adminProfileUpdate = (newProfile) => {
 
                     <div className="wrapper">
 
-                        <AdminNavbar2 />
+                        <AdminNavbar2 callbackGoogle ={googlef} googletf = {google}/>
                         <div className="main-container"> 
                             <AdminAdminList list={adminadmin} list2={adminEmployee} callback={adminAdminDeleteCallback} />
                         </div>
@@ -817,7 +947,7 @@ const adminProfileUpdate = (newProfile) => {
                 <Route exact path="/admin/all-users">
                     <div className="wrapper">
 
-                        <AdminNavbar2 />
+                        <AdminNavbar2 callbackGoogle ={googlef} googletf = {google}/>
                         <div className="main-container"> 
                             <AdminUserList list={adminUser}  callbackD={adminUserDetailsCallback} callback={adminUserDeleteCallback} />
                         </div>
@@ -828,7 +958,7 @@ const adminProfileUpdate = (newProfile) => {
                 <Route exact path="/admin/active-users">
                     <div className="wrapper">
 
-                        <AdminNavbar2 />
+                        <AdminNavbar2 callbackGoogle ={googlef} googletf = {google}/>
                         <div className="main-container"> 
                             <AdminUserList list={adminActiveUser} callbackD={adminUserDetailsCallback} callback={adminUserDeleteCallback} />
                         </div>
@@ -839,7 +969,7 @@ const adminProfileUpdate = (newProfile) => {
 
                 <Route exact path="/admin/user/details/:id">
                     <div className="wrapper">
-                        <AdminNavbar2 />
+                        <AdminNavbar2 callbackGoogle ={googlef} googletf = {google}/>
                         <div className="main-container"> 
                             <AdminUserDetailsList list={adminUserDetails}/>
                         </div>
@@ -852,7 +982,7 @@ const adminProfileUpdate = (newProfile) => {
 
                     <div className="wrapper">
 
-                        <AdminNavbar2 />
+                        <AdminNavbar2 callbackGoogle ={googlef} googletf = {google}/>
                         <div className="main-container"> 
                             <AdminAddEmployee status="Employee" callback={adminAddEmployee} />
                         </div>
@@ -865,7 +995,7 @@ const adminProfileUpdate = (newProfile) => {
 
                     <div className="wrapper">
 
-                        <AdminNavbar2 />
+                        <AdminNavbar2 callbackGoogle ={googlef} googletf = {google}/>
                         <div className="main-container"> 
                             <AdminEmployeeList list={adminEmployee} callback={adminEmployeeDeleteCallback} />
                         </div>
@@ -877,7 +1007,7 @@ const adminProfileUpdate = (newProfile) => {
                 <Route exact path="/admin/active-employees">
                     <div className="wrapper">
 
-                        <AdminNavbar2 />
+                        <AdminNavbar2 callbackGoogle ={googlef} googletf = {google}/>
                         <div className="main-container"> 
                             <AdminEmployeeList list={adminActiveEmployee} callback={adminEmployeeDeleteCallback} />
                         </div>
@@ -888,7 +1018,7 @@ const adminProfileUpdate = (newProfile) => {
                 <Route exact path="/admin/hotels-pending">
                     <div className="wrapper">
 
-                        <AdminNavbar2 />
+                        <AdminNavbar2 callbackGoogle ={googlef} googletf = {google}/>
                         <div className="main-container"> 
                             <AdminHotelADList list={adminHotelAD} callbackA={adminHotelApproveCallback} callbackD={adminHotelDeclineCallback} />
                         </div>
@@ -899,7 +1029,7 @@ const adminProfileUpdate = (newProfile) => {
                 <Route exact path="/admin/all-hotels">
                     <div className="wrapper">
 
-                        <AdminNavbar2 />
+                        <AdminNavbar2 callbackGoogle ={googlef} googletf = {google}/>
                         <div className="main-container"> 
                             <AdminHotelList list={adminHotel} callback={adminHotelDeleteCallback} />
                         </div>
@@ -910,7 +1040,7 @@ const adminProfileUpdate = (newProfile) => {
                 <Route exact path="/admin/hotel-bookings">adminHotelBookings
                     <div className="wrapper">
 
-                        <AdminNavbar2 />
+                        <AdminNavbar2 callbackGoogle ={googlef} googletf = {google}/>
                         <div className="main-container"> 
                             <AdminHotelBookingsList list={adminHotelBookings} />
                         </div>
@@ -921,7 +1051,7 @@ const adminProfileUpdate = (newProfile) => {
                 <Route exact path="/admin/transports-pending">
                     <div className="wrapper">
 
-                        <AdminNavbar2 />
+                        <AdminNavbar2 callbackGoogle ={googlef} googletf = {google}/>
                         <div className="main-container"> 
                             <AdminTransportADList list={adminTransportAD} callbackA={adminTransportApproveCallback} callbackD={adminTransportDeclineCallback} />
                         </div>
@@ -932,7 +1062,7 @@ const adminProfileUpdate = (newProfile) => {
                 <Route exact path="/admin/all-cars">
                     <div className="wrapper">
 
-                        <AdminNavbar2 />
+                        <AdminNavbar2 callbackGoogle ={googlef} googletf = {google}/>
                         <div className="main-container"> 
                             <AdminCarList list={adminCar} callbackA={adminCarDeleteCallback} />
                         </div>
@@ -943,7 +1073,7 @@ const adminProfileUpdate = (newProfile) => {
                 <Route exact path="/admin/all-flight">
                     <div className="wrapper">
 
-                        <AdminNavbar2 />
+                        <AdminNavbar2 callbackGoogle ={googlef} googletf = {google}/>
                         <div className="main-container"> 
                             <AdminFlightList list={adminFlight} callback={adminFlightDeleteCallback} />
                         </div>
@@ -954,7 +1084,7 @@ const adminProfileUpdate = (newProfile) => {
                 <Route exact path="/admin/car-bookings">
                     <div className="wrapper">
 
-                        <AdminNavbar2 />
+                        <AdminNavbar2 callbackGoogle ={googlef} googletf = {google}/>
                         <div className="main-container"> 
                             <AdminCarBookingsList list={adminCarBookings} />
                         </div>
@@ -965,7 +1095,7 @@ const adminProfileUpdate = (newProfile) => {
                 <Route exact path="/admin/flight-bookings">
                     <div className="wrapper">
 
-                        <AdminNavbar2 />
+                        <AdminNavbar2 callbackGoogle ={googlef} googletf = {google}/>
                         <div className="main-container"> 
                             <AdminFlightBookingsList list={adminFlightBookings} />
                         </div>
@@ -979,7 +1109,7 @@ const adminProfileUpdate = (newProfile) => {
                 <Route exact path="/admin/package-pending">
                     <div className="wrapper">
 
-                        <AdminNavbar2 />
+                        <AdminNavbar2 callbackGoogle ={googlef} googletf = {google}/>
                         <div className="main-container"> 
                             <AdminPackageADList list={adminPackageAD} callbackA={adminPackageApproveCallback} callbackD={adminPackageDeclineCallback} />
                         </div>
@@ -990,7 +1120,7 @@ const adminProfileUpdate = (newProfile) => {
                 <Route exact path="/admin/all-packages">
                     <div className="wrapper">
 
-                        <AdminNavbar2 />
+                        <AdminNavbar2 callbackGoogle ={googlef} googletf = {google}/>
                         <div className="main-container"> 
                             <AdminPackageList list={adminPackage} callback={adminPackageDeleteCallback} />
                         </div>
@@ -1001,7 +1131,7 @@ const adminProfileUpdate = (newProfile) => {
                 <Route exact path="/admin/package-bookings">
                     <div className="wrapper">
 
-                        <AdminNavbar2 />
+                        <AdminNavbar2 callbackGoogle ={googlef} googletf = {google}/>
                         <div className="main-container"> 
                             <AdminPackageBookingsList list={adminPackageBookings} />
                         </div>
@@ -1012,7 +1142,7 @@ const adminProfileUpdate = (newProfile) => {
                 <Route exact path="/admin/package-status">
                     <div className="wrapper">
 
-                        <AdminNavbar2 />
+                        <AdminNavbar2 callbackGoogle ={googlef} googletf = {google}/>
                         <div className="main-container"> 
                             <AdminPackageStatus list={adminPackageAll} callback={adminPackageStatusCallback} /> 
                         </div>
@@ -1026,7 +1156,7 @@ const adminProfileUpdate = (newProfile) => {
                 <Route exact path="/admin/place-pending">
                     <div className="wrapper">
 
-                        <AdminNavbar2 />
+                        <AdminNavbar2 callbackGoogle ={googlef} googletf = {google}/>
                         <div className="main-container"> 
                             <AdminPlaceADList list={adminPlaceAD} callbackA={adminPlaceApproveCallback} callbackD={adminPlaceDeclineCallback} />
                         </div>
@@ -1037,7 +1167,7 @@ const adminProfileUpdate = (newProfile) => {
                 <Route exact path="/admin/all-places">
                     <div className="wrapper">
 
-                        <AdminNavbar2 />
+                        <AdminNavbar2 callbackGoogle ={googlef} googletf = {google}/>
                         <div className="main-container"> 
                             <AdminPlaceList list={adminPlace} callback={adminPlaceDeleteCallback} />
                         </div>
@@ -1049,7 +1179,7 @@ const adminProfileUpdate = (newProfile) => {
                 <Route exact path="/admin/income-statement">
                     <div className="wrapper">
 
-                        <AdminNavbar2 />
+                        <AdminNavbar2 callbackGoogle ={googlef} googletf = {google}/>
                         <div className="main-container"> 
                             <AdminIncomeStatementList list={adminIncomeStatement}/>
                         </div>
@@ -1060,7 +1190,7 @@ const adminProfileUpdate = (newProfile) => {
                 <Route exact path="/admin/transaction-history">
                     <div className="wrapper">
 
-                        <AdminNavbar2 />
+                        <AdminNavbar2 callbackGoogle ={googlef} googletf = {google}/>
                         <div className="main-container"> 
                             <AdminTransactionList list={adminTransaction}/>
                         </div>
@@ -1071,7 +1201,7 @@ const adminProfileUpdate = (newProfile) => {
                 <Route exact path="/admin/pending-salary">
                     <div className="wrapper">
 
-                        <AdminNavbar2 />
+                        <AdminNavbar2 callbackGoogle ={googlef} googletf = {google}/>
                         <div className="main-container"> 
                             <AdminSalaryADList list={adminSalaryAD} callbackA={adminSalaryApproveCallback} callbackD={adminSalaryDeclineCallback} />
                         </div>
@@ -1082,7 +1212,7 @@ const adminProfileUpdate = (newProfile) => {
                 <Route exact path="/admin/support">
                     <div className="wrapper">
 
-                        <AdminNavbar2 />
+                        <AdminNavbar2 callbackGoogle ={googlef} googletf = {google}/>
                         <div className="main-container"> 
                             <AdminSupportList list={adminSupport} callback={adminSupportDeleteCallback} />
                         </div>
@@ -1093,7 +1223,7 @@ const adminProfileUpdate = (newProfile) => {
                 <Route exact exact path="/admin/policy">
                     <div className="wrapper">
 
-                        <AdminNavbar2 />
+                        <AdminNavbar2 callbackGoogle ={googlef} googletf = {google}/>
                         <div className="main-container"> 
                             <AdminPolicy list={adminPolicy} />
                         </div>
@@ -1104,7 +1234,7 @@ const adminProfileUpdate = (newProfile) => {
                 <Route exact path="/admin/policy/edit">
                     <div className="wrapper">
 
-                        <AdminNavbar2 />
+                        <AdminNavbar2 callbackGoogle ={googlef} googletf = {google}/>
                         <div className="main-container"> 
                             <AdminPolicyForm callback={adminPolicyEditCallback} />
                         </div>
@@ -1115,7 +1245,7 @@ const adminProfileUpdate = (newProfile) => {
 
                 <Route exact exact path="/admin/guidelines">
                     <div className="wrapper">
-                        <AdminNavbar2 />
+                        <AdminNavbar2 callbackGoogle ={googlef} googletf = {google}/>
                         <div className="main-container"> 
                             <AdminGuidelines list={adminGuidelines} />
                         </div>
@@ -1126,7 +1256,7 @@ const adminProfileUpdate = (newProfile) => {
                 <Route exact path="/admin/guidelines/edit">
                     <div className="wrapper">
 
-                        <AdminNavbar2 />
+                        <AdminNavbar2 callbackGoogle ={googlef} googletf = {google}/>
                         <div className="main-container"> 
                             <AdminGuidelinesForm callback={adminGuidelinesEditCallback} />
                         </div>
@@ -1139,7 +1269,7 @@ const adminProfileUpdate = (newProfile) => {
                 <Route exact path="/admin/about">
                     <div className="wrapper">
 
-                        <AdminNavbar2 />
+                        <AdminNavbar2 callbackGoogle ={googlef} googletf = {google}/>
                         <div className="main-container"> 
                             <AdminAbout list={adminAbout} />
                         </div>
@@ -1151,7 +1281,7 @@ const adminProfileUpdate = (newProfile) => {
                 <Route exact path="/admin/about/edit">
                     <div className="wrapper">
 
-                        <AdminNavbar2 />
+                        <AdminNavbar2 callbackGoogle ={googlef} googletf = {google}/>
                         <div className="main-container"> 
                             <AdminAboutForm callback={adminAboutEditCallback} />
                         </div>
@@ -1164,7 +1294,7 @@ const adminProfileUpdate = (newProfile) => {
                 <Route exact path="/admin/profile">
                     <div className="wrapper">
 
-                        <AdminNavbar2 />
+                        <AdminNavbar2 callbackGoogle ={googlef} googletf = {google}/>
                         <div className="main-container"> 
                             <AdminProfile idl = {loginId} 
                             firstnamel = {loginFirstname}
@@ -1182,7 +1312,7 @@ const adminProfileUpdate = (newProfile) => {
                 {/* <Route exact path="/login">
                     <div className="wrapper">
 
-                        <AdminNavbar2 />
+                        <AdminNavbar2 callbackGoogle ={googlef} googletf = {google}/>
                         <div className="main-container"> 
                             
                         </div>
@@ -1196,7 +1326,7 @@ const adminProfileUpdate = (newProfile) => {
                 <Route path="*">
                     <div className="wrapper">
 
-                        <AdminNavbar2 />
+                        <AdminNavbar2 callbackGoogle ={googlef} googletf = {google}/>
                         <div className="main-container"> 
                             <h3>404 not found</h3>
                         </div>

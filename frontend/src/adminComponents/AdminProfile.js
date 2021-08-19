@@ -33,7 +33,7 @@ const AdminProfile = ({ idl, firstnamel, lastnamel, genderl, emaill, usernamel, 
     const buttonU = () => { 
 
         setSubmitButton("Update");
-        alert("Profile Updated successfully");
+        
     
         //   console.log("update");
     };
