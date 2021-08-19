@@ -6,6 +6,9 @@ const EmployeeReviewList = ({list})=>{
 
     return(
         <div>
+
+            <legend>Reviews</legend>
+            
             <table id='table'>
 
                 <th>ID</th>

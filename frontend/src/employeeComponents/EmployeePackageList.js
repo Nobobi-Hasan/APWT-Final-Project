@@ -6,6 +6,7 @@ const EmployeePackageList = ({list, callback})=>{
 
     return(
         <div>
+            <legend>Package List</legend>
             <table id='table'>
 
                 <th>ID</th>

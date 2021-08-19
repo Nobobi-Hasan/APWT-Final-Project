@@ -23,7 +23,7 @@ class EmployeePackageController extends Controller
         $package = new Package;
         $package -> place = $req->place;
         $package -> location = $req->location;
-        $package -> image = $req->image;
+        $package -> image = "img.png";
         $package -> description = $req->description;
         $package -> duration = $req->duration;
         $package -> transport = $req->transport;
@@ -49,6 +49,7 @@ class EmployeePackageController extends Controller
                 $package = Package::find($req->id);
                 $package -> place = $req->place;
                 $package -> location = $req->location;
+                $package -> image = "img.png";
                 $package -> description = $req->description;
                 $package -> duration = $req->duration;
                 $package -> transport = $req->transport;

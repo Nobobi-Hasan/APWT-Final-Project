@@ -15,6 +15,9 @@ import './Employee.css';
     })
 
     return( <>
+
+        <legend>Transaction History</legend>
+
         <button className = "PDFDownload" onClick={handleExportWithComponent}><i class="fa fa-download" aria-hidden="true"></i></button>
     
             <PDFExport ref = {pdfExportComponent} paperSize = "A2">

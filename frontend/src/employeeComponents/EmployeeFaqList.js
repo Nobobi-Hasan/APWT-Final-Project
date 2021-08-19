@@ -6,8 +6,9 @@ const EmployeeFaqList = ({list, callback})=>{
 
     return(
         <div>
+            <legend>FAQ</legend>
             <table id='table'>
-
+            
                 <th>Question</th>
                 <th>Answer</th>
                 <th>Action</th>

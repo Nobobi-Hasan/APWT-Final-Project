@@ -6,6 +6,8 @@ const EmployeeSupportList = ({list, callback})=>{
 
     return(
         <div>
+            <legend>Support List</legend>
+
             <table id='table'>
 
                 <th>ID</th>

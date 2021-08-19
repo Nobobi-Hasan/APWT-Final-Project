@@ -6,6 +6,7 @@ const EmployeePlaceList = ({list, callback})=>{
 
     return(
         <div>
+            <legend>Place List</legend>
             <table id='table'>
 
                 <th>ID</th>

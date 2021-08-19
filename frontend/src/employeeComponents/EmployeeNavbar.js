@@ -22,7 +22,7 @@ const EmployeeNavbar = ()=>{
 			<div className="sidebar">
 				<div className="sidebar-menu">
 					<center className="profile">
-                        <img src="./images/emp.png" height="50px" width="50px" alt= ""/>
+						<img src={process.env.PUBLIC_URL + "/images/emp.png"} height="50px" width="50px" />
                         {/* <p>{{session('uname')}}</p> */}
 						
 						

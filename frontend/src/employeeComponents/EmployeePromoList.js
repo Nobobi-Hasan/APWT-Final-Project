@@ -6,6 +6,9 @@ const EmployeePromoList = ({list, callback})=>{
 
     return(
         <div>
+
+            <legend>Promotional Message</legend>
+
             <table id='table'>
 
                

@@ -16,6 +16,10 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+//emp profile
+Route::post('/employee/profile', 'EmployeeController@profileUD')->name('employee.profileUD');
+
 //emp home
 Route::get('/employee', 'EmployeeController@index') ->name('employee.index');
 

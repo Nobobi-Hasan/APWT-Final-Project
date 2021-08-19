@@ -31,7 +31,8 @@ class EmployeeAdvertisementController extends Controller
     }
     
     public function advertisementDestroy(Request $req){
-        Ad::destroy($req -> id);
+        $ads=Ad::find($req->id);
+        $ads->delete();
     }
 
 
@@ -49,6 +50,7 @@ class EmployeeAdvertisementController extends Controller
         
 
         $promos = new Promo;
+        $promos -> image = "img.png";
         $promos -> message = $req->message;
         $promos -> save();
         
@@ -62,7 +64,8 @@ class EmployeeAdvertisementController extends Controller
     
     public function promoDestroy(Request $req){
 
-        Promo::destroy($req -> id);
+        $promos=Promo::find($req->id);
+        $promos->delete();
     }
 
     

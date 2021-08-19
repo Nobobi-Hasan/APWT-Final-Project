@@ -456,6 +456,34 @@ h1{
       transition-property: color;
     }
     
+
+    #updateBtn{
+      display: inline; 
+      padding: 10px 35px;
+      width: 49% ;
+      background-color: #eb7d4b;
+      color: #FFF;
+      text-transform: uppercase; 
+      font-weight: 900;
+      border-bottom: 5px solid #c86a40;
+      border-radius: 5px;
+      cursor: pointer;
+  }
+  
+  #deleteBtn{
+      display: inline; 
+      padding: 10px 35px;
+      float: right;
+      width: 49% ;
+      background-color: #BB2A2A;
+      color: #FFF;
+      text-transform: uppercase; 
+      font-weight: 900;
+      border-bottom: 5px solid #c86a40;
+      border-radius: 5px;
+      cursor: pointer;
+  }
+  
   
     /* Button End */
    

@@ -24,6 +24,7 @@ class EmployeePlaceController extends Controller
         $place -> id = $req->id;
         $place -> place = $req->place;
         $place-> district = $req->district;
+        $place -> image = "img.png";
         $place -> req= 'Pending';
         $place->save();
         
@@ -41,6 +42,7 @@ class EmployeePlaceController extends Controller
                 $place = Place::find($req->id);
                 $place -> place = $req->place;
                 $place-> district = $req->district;
+                $place -> image = "img.png";
                 $place -> req= 'Approved';
                 $place -> save();
     }

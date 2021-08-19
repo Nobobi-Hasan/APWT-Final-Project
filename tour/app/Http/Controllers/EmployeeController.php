@@ -32,16 +32,30 @@ class EmployeeController extends Controller
         ];
     }
 
-    public function profile(Request $req)
+    public function profile()
     {
         $id = session()->get('id');
-        $profile = Employee::find($id);
-        return view('employee.profile')->with('profile', $profile);
+        // $profile = Employee::find($id);
+
+        return [
+            'id' => session()->get('id'),
+            // 'firstname' => $profile->firstname,
+            // 'lastname' => $profile->lastname,
+            // 'gender' => $profile->gender,
+            // 'email' => $profile->email,
+            // 'username' => $profile->username,
+        ];
+
+        return session()->get('id');
+
+        // return response()->json($id);
+        // return view('employee.profile')->with('profile', $profile);
+
     }
 
     
 
-    public function profileUD(ProfileRequest $req)
+    public function profileUD(Request $req)
     {
         switch ($req->input('submit')) {
             case 'Update':
@@ -53,8 +67,8 @@ class EmployeeController extends Controller
                 $employee -> email = $req->email;
                 $employee -> password = $req->password;
                 $employee -> save();
-                $req->session()->flash('employeeUDMsg', 'Account Updated');
-                return redirect()->route('employee.profile');
+               // $req->session()->flash('employeeUDMsg', 'Account Updated');
+                //return redirect()->route('employee.profile');
         
                 break;
                 
@@ -62,8 +76,9 @@ class EmployeeController extends Controller
             case 'Delete':
 
                 $employee = Employee::where('username', $req->username)->first();
-                $employee-> status = 'Deactivate';
-                return redirect()->route('login.index');
+                $employee-> status = 'Deactive';
+                $employee-> save();
+               // return redirect()->route('login.index');
                 
                 break;
 

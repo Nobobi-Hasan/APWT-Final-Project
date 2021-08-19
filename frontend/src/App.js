@@ -2,6 +2,7 @@ import { useState } from "react";
 import EmployeeNavbar from "./employeeComponents/EmployeeNavbar";
 import { useFetch } from './employeeComponents/useFetch';
 import 'font-awesome/css/font-awesome.min.css';
+import EmployeeProfile from "./employeeComponents/EmployeeProfile";
 import EmployeeHome from "./employeeComponents/EmployeeHome";
 import EmployeeAddSalary from "./employeeComponents/EmployeeAddSalary";
 import EmployeeAddStatement from "./employeeComponents/EmployeeAddStatement";
@@ -34,7 +35,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 function App() {
 
-
+ //***************EMP start**************** */
   //Add package by employee
   const employeeAddPackage = (newEmployeePackage) => { 
 
@@ -386,11 +387,45 @@ const employeePackageDeletecallback = (id) => {
 };
 
 
+ 
+
+// Profile update by employee
+const employeeProfileUpdate =async (newProfile) => { 
+
+  const axios = require('axios').default;
+
+  const status = await axios({
+      method: 'post',
+      url: 'http://127.0.0.1:8000/api/employee/profile',
+      //data: JSON.stringify(newUser)
+      data:newProfile,
+    });
+    if (status)
+    {
+      alert("Profile Updated successfully");
+      
+      setLoginFirstname(newProfile.firstname);
+      setLoginLastname(newProfile.lastname);
+      setLoginGender(newProfile.gender);
+      setLoginEmail(newProfile.email);
+      setLoginUsername(newProfile.username);
+
+      console.log(newProfile);
+    }
+
+
+};
+
+//*****************EMP END**************** */
   return (
     <Router>
         {/* <EmployeeNavbar /> */}
         <Switch>
             
+{/* ************************************************EMP START******************************* */}
+       
+
+
         <Route exact path="/employee">
           <div className="wrapper">
             <EmployeeNavbar />
@@ -654,6 +689,35 @@ const employeePackageDeletecallback = (id) => {
         </div>            
         </Route>
 
+
+        <Route exact path="/employee/profile">
+                    <div className="wrapper">
+
+                        <EmployeeNavbar />
+                        <div className="main-container"> 
+                            <EmployeeProfile idl = {loginId} 
+                            firstnamel = {loginFirstname}
+                            lastnamel = {loginLastname}
+                            genderl = {loginGender}
+                            emaill = {loginEmail}
+                            usernamel = {loginUsername} 
+                            callback={employeeProfileUpdate} />
+                        </div>
+
+                    </div>
+                </Route>
+
+
+        <Route path="*">
+                    <div className="wrapper">
+                        <div className="main-container"> 
+                            <h3>404 not found</h3>
+                        </div>
+
+                    </div>
+                    
+                </Route>
+{/* *************************Emp End********************************************************** */}
         </Switch>
     </Router>    
   );
