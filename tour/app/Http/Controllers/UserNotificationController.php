@@ -12,8 +12,10 @@ class UserNotificationController extends Controller
     public function index(){
         $promo = Promo::all();
         $ads = Ad::all();
-        return view('user.notifications')->with('ADPromoList', $promo)
-                                         ->with('ADAdsList', $ads);
+        return response()->json($promo);
+        
+        //return view('user.notifications')->with('ADPromoList', $promo)
+                                         //->with('ADAdsList', $ads);
                                         
     }
 }

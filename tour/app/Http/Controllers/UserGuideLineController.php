@@ -7,8 +7,9 @@ use\App\Guideline;
 
 class UserGuideLineController extends Controller
 {
-    public function showGuideline(){
+    public function showGuideline(Request $req){
         $Guidelines = Guideline::where('id', 1)->first();
-        return view('user.user_guideline')->with('guideline', $Guidelines);
+        return response()->json($Guidelines);
+        //return view('user.user_guideline')->with('guideline', $Guidelines);
     }
 }

@@ -8,6 +8,6 @@ class EmployeeReviewController extends Controller
 {
     public function showReview(){
         $reviews = Review::all();
-        return view('employee.showReview')->with('reviews', $reviews);
+         return response()->json($reviews);
     }
 }

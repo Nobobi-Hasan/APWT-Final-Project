@@ -13,7 +13,7 @@ class UserReviewController extends Controller
         return view ('user.review');
     }
 
-    public function verify(UserReviewRequest $req){
+    public function verify(Request $req){
         
         $review = new Review;
         $review -> service_id = $req->service_id;
@@ -23,6 +23,6 @@ class UserReviewController extends Controller
         $review -> rating = $req->rating;
         $review -> msg = $req->msg;
         $review->save();
-        return redirect()->route('userReview.index');
+        
     }
 }

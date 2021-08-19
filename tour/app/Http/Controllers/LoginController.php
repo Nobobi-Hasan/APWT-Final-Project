@@ -78,7 +78,17 @@ class LoginController extends Controller
             // $req->session()->put('id', $employee->id);
             // $req->session()->put('type', $employee->type);
             
-            return "emp";
+
+            return [
+                'type' => "emp",
+                'id' => $employee->id,
+                'firstname' => $employee->firstname,
+                'lastname' => $employee->lastname,
+                'gender' => $employee->gender,
+                'email' => $employee->email,
+                'username' => $employee->username,
+            ];
+            // return "emp";
             // return redirect()->route('employee.index');
         }
 
@@ -87,36 +97,69 @@ class LoginController extends Controller
             // $req->session()->put('id', $user->id);
             // $req->session()->put('type', $user->type);
             
-            return "user";
+
+            return [
+                'type' => "user",
+                'id' => $user->id,
+                'firstname' => $user->firstname,
+                'lastname' => $user->lastname,
+                'gender' => $user->gender,
+                'email' => $user->email,
+                'username' => $user->username,
+            ];
+            // return "user";
             // return redirect()->route('user.home');
         }
 
         elseif(count((array)$transport) > 0){
-            $req->session()->put('uname', $transport->name);
-            $req->session()->put('id', $transport->id);
-            $req->session()->put('type', $transport->type);
+            // $req->session()->put('uname', $transport->name);
+            // $req->session()->put('id', $transport->id);
+            // $req->session()->put('type', $transport->type);
             
             if($transport->type == 'Car')
             {
-                return "car";
+                return [
+                    'type' => "car",
+                    'id' => $transport->id,
+                    'name' => $transport->name,
+                    'phone' => $transport->phone,
+                    'email' => $transport->email,
+                ];
+                // return "car";
                 // return redirect()->route('car.index');
             }
             elseif($transport->type == 'Flight')
             {
-                return "flight";
+                return [
+                    'type' => "flight",
+                    'id' => $transport->id,
+                    'name' => $transport->name,
+                    'phone' => $transport->phone,
+                    'email' => $transport->email,
+                ];
+                // return "flight";
                 // return redirect()->route('flight.index');
             }
             
         }
 
         elseif(count((array)$hotel) > 0){
-            $req->session()->put('uname', $hotel->name);
-            $req->session()->put('id', $hotel->id);
-            $req->session()->put('image', $hotel->image);
-            $req->session()->put('type', $hotel->type);
+            // $req->session()->put('uname', $hotel->name);
+            // $req->session()->put('id', $hotel->id);
+            // $req->session()->put('image', $hotel->image);
+            // $req->session()->put('type', $hotel->type);
             
-            return "hotel";
-            return redirect()->route('hotel.index');
+            return [
+                'type' => "hotel",
+                'id' => $hotel->id,
+                'name' => $hotel->name,
+                'location' => $hotel->location,
+                'address' => $hotel->address,
+                'phone' => $hotel->phone,
+                'email' => $hotel->email,
+            ];
+            // return "hotel";
+            // return redirect()->route('hotel.index');
         }
 
         else{

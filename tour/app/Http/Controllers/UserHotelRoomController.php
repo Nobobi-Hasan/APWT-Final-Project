@@ -9,18 +9,20 @@ use\App\Facility;
 
 class UserHotelRoomController extends Controller
 {
-    public function showHotelRoom($id){
+    public function showHotelRoom(){
 
-        $hotel = Hotel::find($id);
-        $HotelRooms = Room::where('availability', 'Available')
-                            ->where('hotel_id', $hotel-> id)->get();
-       
-        return view('user.hotel-room')->with('showHotelRoom', $HotelRooms);
+        // $hotel = Hotel::find($id);
+        // $HotelRooms = Room::where('availability', 'Available')
+        //                     ->where('hotel_id', $hotel-> id)->get();
+        $Room = Room::all();
+        return response()->json($Room);
+        //return view('user.hotel-room')->with('showHotelRoom', $HotelRooms);
     }
 
     public function facility(){
 
         $facalities = Facility::all();
-        return view('user.hotel_facility')->with('HotelFacilityList', $facalities);
+        return response()->json($facalities);
+        //return view('user.hotel_facility')->with('HotelFacilityList', $facalities);
     }
 }

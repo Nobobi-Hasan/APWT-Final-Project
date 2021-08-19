@@ -9,16 +9,15 @@ class EmployeeFaqController extends Controller
 {
     public function faq(){
         $faqs = Faq::all();
-        return view('employee.faq')->with('faqs',$faqs);
+        return response()->json($faqs);
+        //return view('employee.faq')->with('faqs',$faqs);
     }
 
-    public function faqAdd(EmpFaqRequest $req){
+    public function faqAdd(Request $req){
        $faq = new Faq;
        $faq -> que = $req->que;
        $faq -> ans = $req->ans;
        $faq -> save();
-       return redirect()->route('employee.faq');
-        
     }
 
     public function faqDelete($id){
@@ -27,9 +26,9 @@ class EmployeeFaqController extends Controller
          return view('employee.faqDelete')->with('faq', $faq);
     }
     
-    public function faqDestroy($id){
-        Faq::destroy($id);
-        return redirect()->route('employee.faq');
+    public function faqDestroy(Request $req){
+       Faq::destroy($req -> id);
+       
     }
     
 }

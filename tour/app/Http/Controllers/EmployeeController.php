@@ -13,40 +13,50 @@ use App\Transport;
 use App\Support;
 class EmployeeController extends Controller
 {
-    public function index(Request $req){
-        if($req->session()->has('uname'))
-        {
-            
-            $userCount = User::where('status', 'Active')->count();
-            $packageCount = Package::where('req', 'Approved')->count();
-            $placeCount = Place::where('req', 'Approved')->count();
-            $hotelCount = Hotel::where('req', 'Approved')->count();
-            $transportCount = Transport::where('req', 'Approved')->count();
-            $supportCount = Support::all()->count();
-
-
-            return view('employee.home')->with('userCount', $userCount)
-                                    ->with('packageCount', $packageCount)
-                                    ->with('placeCount', $placeCount)
-                                    ->with('hotelCount', $hotelCount)
-                                    ->with('transportCount', $transportCount)
-                                    ->with('supportCount',  $supportCount);
-        }
-        else{
-            $req->session()->flash('msg', 'Unauthorized request');
-            return redirect('/login');
-        }
-      
+    public function index(Request $req)
+    {
+        $userCount  = User::where('status', 'Active')->count();
+        $packageCount  = Package::where('req', 'Approved')->count();
+        $placeCount  = Place::where('req', 'Approved')->count();
+        $hotelCount  = Hotel::where('req', 'Approved')->count();
+        $transportCount  = Transport::where('req', 'Approved')->count();
+        $supportCount  = Support::all()->count();
+        
+        return [
+            'userCount' => $userCount,
+            'packageCount' => $packageCount,
+            'placeCount' => $placeCount,
+            'hotelCount' => $hotelCount,
+            'transportCount' => $transportCount,
+            'supportCount' => $supportCount,
+        ];
     }
 
-    public function profile(Request $req){
+    public function profile()
+    {
         $id = session()->get('id');
-        $profile = Employee::find($id);
-        return view('employee.profile')->with('profile', $profile);
+        // $profile = Employee::find($id);
+
+        return [
+            'id' => session()->get('id'),
+            // 'firstname' => $profile->firstname,
+            // 'lastname' => $profile->lastname,
+            // 'gender' => $profile->gender,
+            // 'email' => $profile->email,
+            // 'username' => $profile->username,
+        ];
+
+        return session()->get('id');
+
+        // return response()->json($id);
+        // return view('employee.profile')->with('profile', $profile);
+
     }
 
-    public function profileUD(EmpProfileRequest $req){
+    
 
+    public function profileUD(Request $req)
+    {
         switch ($req->input('submit')) {
             case 'Update':
                 
@@ -57,23 +67,21 @@ class EmployeeController extends Controller
                 $employee -> email = $req->email;
                 $employee -> password = $req->password;
                 $employee -> save();
-                $req->session()->flash('employeeUDMsg', 'Account Updated');
-                return redirect()->route('employee.profile');
+               // $req->session()->flash('employeeUDMsg', 'Account Updated');
+                //return redirect()->route('employee.profile');
         
                 break;
-
-
+                
     
             case 'Delete':
 
                 $employee = Employee::where('username', $req->username)->first();
-                $employee->delete();
-                return redirect()->route('login.index');
+                $employee-> status = 'Deactive';
+                $employee-> save();
+               // return redirect()->route('login.index');
                 
                 break;
 
         }
-    
     }
-    
 }

@@ -9,6 +9,7 @@ class UserFaqController extends Controller
 {
     public function index(){
         $Faqs = Faq::all();
-        return view('user.faq')->with('showFAQ', $Faqs);
+        return response()->json($Faqs);
+        //return view('user.faq')->with('showFAQ', $Faqs);
     }
 }

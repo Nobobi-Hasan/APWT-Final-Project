@@ -15,20 +15,20 @@ class EmployeeAccountController extends Controller
         return view('employee.StatementAdd');
     }
 
-    public function statementAdded(EmpIncomeRequest $req){
+    public function statementAdded(Request $req){
             $income = new Income;
             $income->month = $req->month;
             $income->revenue = $req->revenue;
             $income->cost = $req->cost;
-            $income->profit = $req->revenue-$req->cost;
+            $income->profit = ($req->revenue)-($req->cost);
             $income-> save();
-            return redirect()->route('employee.addStatement');
     }
 
 
     public function statement(){
         $incomes = Income::all();
-        return view('employee.StatementShow')->with('incomes', $incomes);
+        return response()->json($incomes);
+        
     }
 
 
@@ -47,7 +47,7 @@ class EmployeeAccountController extends Controller
     }
 
 
-    public function transactionAdded(EmpTransactionRequest $req){
+    public function transactionAdded(Request $req){
         $transaction = new Transaction;
         $transaction->date = Carbon::now();
         $transaction->receiver_id = $req->receiver_id;
@@ -56,15 +56,15 @@ class EmployeeAccountController extends Controller
         $transaction->description = $req->description;
         $transaction->amount = $req->amount;
         $transaction-> save();
-        return redirect()->route('employee.addTransaction');
     }
 
 
     public function transaction(){
         $transactions = Transaction::all();
-        return view('employee.TransactionShow')->with('transactions', $transactions);
+        return response()->json($transactions);
+        
     }
-
+ 
     function genTransaction()
     {
 

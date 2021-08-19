@@ -24,6 +24,22 @@ use App\Transaction;
 class HotelController extends Controller
 {
     public function index(Request $req){
+
+        $roomCount = Room::all()->count();
+        $roomBookCount = Roombook::where('req','Approved')->count();
+        $roomPendingCount = Roombook::where('req','Pending')->count();
+        $facilityCount = Facility::all()->count();
+        $roomAvailable = Room::where('availability','Available')->count();
+        $reviewCount = Review::where('service_type', 'Hotel')->count();
+
+        return [
+            'roomCount' => $roomCount,
+            'roomBookCount' => $roomBookCount,
+            'facilityCount'=> $facilityCount,
+            'roomPendingCount'=> $roomPendingCount,
+            'roomAvailable'=> $roomAvailable,
+            'reviewCount' => $reviewCount,
+        ];
         
 
         $roomCount = Room::all()->count();
@@ -40,37 +56,40 @@ class HotelController extends Controller
         return view('hotelDashboard.addhotelfacility');
     }
 
-    public function addhotelfacilityVerify(AddHotelFacilityRequest $req){
+    public function addhotelfacilityVerify(Request $req){
 
-        if($req->hasFile('image')){
+        // if($req->hasFile('image')){
 
-            $file = $req->file('image');
-            echo "File Name: ".$file->getClientOriginalName()."<br>";
-            echo "File Extension: ".$file->getClientOriginalExtension()."<br>";
-            echo "File Mime Type: ".$file->getMimeType()."<br>";
-            echo "File Size: ".$file->getSize()."<br>";
+        //     $file = $req->file('image');
+            // echo "File Name: ".$file->getClientOriginalName()."<br>";
+            // echo "File Extension: ".$file->getClientOriginalExtension()."<br>";
+            // echo "File Mime Type: ".$file->getMimeType()."<br>";
+            // echo "File Size: ".$file->getSize()."<br>";
 
-            if($file->move('upload','hotel'.$req->title.'.'.$file->getClientOriginalExtension())){
-                echo "success";
-            }else{
-                echo "error";
-            }
-        }
-           $img='hotel'.$req->title.'.'.$file->getClientOriginalExtension();
+            // if($file->move('upload','hotel'.$req->title.'.'.$file->getClientOriginalExtension())){
+            //     echo "success";
+            // }else{
+            //     echo "error";
+            // }
+        // }
+        //    $img='hotel'.$req->title.'.'.$file->getClientOriginalExtension();
+           
 
             $facility = new Facility;
             $facility -> title = $req->title;
             $facility -> description = $req->description;
-            $facility -> image = $img;
+            $facility -> image ='img';
             $facility->save();
-            return redirect()->route('hotel.addhotelfacility');
+            
+            // return redirect()->route('hotel.addhotelfacility');
     }
 
 
     public function managehotelfacility(){
 
         $facilities = Facility::all();
-        return view('hotelDashboard.managehotelfacility')->with('facilities', $facilities);
+        return response()->json($facilities);
+        // return view('hotelDashboard.managehotelfacility')->with('facilities', $facilities);
     }
 
 
@@ -82,14 +101,14 @@ class HotelController extends Controller
 
 
     //hotel facility edit confirm
-    public function facilityeditconfirm($id, HotelEditFacilityRequest $req){
+    public function facilityeditconfirm(Request $req){
         
-        $facility = Facility::find($id);
+        $facility = Facility::find($req->id);
         $facility->title = $req->title;
         $facility->description = $req->description;
         $facility->save();
 
-        return redirect()->route('hotel.managehotelfacility');
+        // return redirect()->route('hotel.managehotelfacility');
     }
 
     //hotel facility delete 
@@ -99,48 +118,50 @@ class HotelController extends Controller
     }
 
     //hotel facility delete
-    public function facilitydestroy($id){
-        Facility::destroy($id);
-        return redirect()->route('hotel.managehotelfacility');
+    public function facilitydestroy(Request $req){
+        $facility=Facility::find($req->id);
+        $facility->delete();
+        // return redirect()->route('hotel.managehotelfacility');
     }
 
     public function addhotelroom(){
         return view('hotelDashboard.addhotelroom');
     }
 
-    public function addhotelroomVerify(AddHotelRoomRequest $req){
+    public function addhotelroomVerify(Request $req){
 
-        if($req->hasFile('image')){
+        // if($req->hasFile('image')){
 
-            $file = $req->file('image');
-            echo "File Name: ".$file->getClientOriginalName()."<br>";
-            echo "File Extension: ".$file->getClientOriginalExtension()."<br>";
-            echo "File Mime Type: ".$file->getMimeType()."<br>";
-            echo "File Size: ".$file->getSize()."<br>";
+        //     $f = $req->file('image');
+            // echo "File Name: ".$file->getClientOriginalName()."<br>";
+            // echo "File Extension: ".$file->getClientOriginalExtension()."<br>";
+            // echo "File Mime Type: ".$file->getMimeType()."<br>";
+            // echo "File Size: ".$file->getSize()."<br>";
 
-            if($file->move('upload','hotel'.$req->name.'.'.$file->getClientOriginalExtension())){
-                echo "success";
-            }else{
-                echo "error";
-            }
-        }
+            // if($file->move('upload','hotel'.$req->name.'.'.$file->getClientOriginalExtension())){
+            //     echo "success";
+            // }else{
+            //     echo "error";
+            // }
+        // }
 
-            $img='hotel'.$req->name.'.'.$file->getClientOriginalExtension();
+             //$img='hotel'.$req->name.'.'.$f->getClientOriginalExtension();
 
             $room = new Room;
-            $room ->hotel_id = session()->get('id');
+            $room ->hotel_id = 7;              
             $room -> name = $req->name;
             $room -> price = $req->price;
             $room -> description = $req->description;
             $room -> availability = 'Available';
-            $room -> image =$img;
+            $room -> image = 'img';
             $room->save();
-            return redirect()->route('hotel.addhotelroom');
+            // return redirect()->route('hotel.addhotelroom');
     }
 
     public function managehotelroom(){
         $room = Room::all();
-        return view('hotelDashboard.managehotelroom')->with('room', $room);
+        return response()->json($room);
+       // return view('hotelDashboard.managehotelroom')->with('room', $room);
     }
 
 
@@ -152,28 +173,30 @@ class HotelController extends Controller
 
 
     //hotel room edit confirm
-    public function roomeditconfirm($id, HotelEditRoomRequest $req){
+    public function roomeditconfirm(Request $req){
         
-        $room = Room::find($id);
+        $room = Room::find($req->id);
         $room->name = $req->name;
         $room->description = $req->description;
         $room->price = $req->price;
         $room->availability = $req->availability;
         $room->save();
 
-        return redirect()->route('hotel.managehotelroom');
+        // return redirect()->route('hotel.managehotelroom');
     }
 
      //hotel room delete 
      public function roomdelete($id){
-        $room = Room::find($id);
+         $room = Room::find($id);
          return view('hotelDashboard.roomdelete')->with('room', $room);
     }
 
-    //hotel room delete
-    public function roomdestroy($id){
-        Room::destroy($id);
-        return redirect()->route('hotel.managehotelroom');
+    //hotel room destroy
+    public function roomdestroy(Request $req){
+
+        $room=Room::find($req->id);
+        $room->delete();
+        // return redirect()->route('hotel.managehotelroom');
     }
 
     
@@ -181,7 +204,8 @@ class HotelController extends Controller
     public function ADroomBookList(){
 
             $roombooks = Roombook::where('req', 'Pending')->get();
-            return view('hotelDashboard.ADroomBookList')->with('ADroomBookList', $roombooks);
+            return response()->json($roombooks);
+            //return view('hotelDashboard.ADroomBookList')->with('ADroomBookList', $roombooks);
     }
     //hotel booking pending approve list
     public function bookingapprove($id){
@@ -190,11 +214,11 @@ class HotelController extends Controller
     }
     
     //hotel booking confirmation request
-    public function bookingadd($id){
-            $roombook = Roombook::find($id);
+    public function bookingadd(Request $req){
+            $roombook = Roombook::find($req -> id);
             $roombook->req = 'Approved';
             $roombook->save();
-            return redirect()->route('hotel.ADroomBookList');
+            // return redirect()->route('hotel.ADroomBookList');
     }
     
     //hotel booking pending decline list
@@ -204,11 +228,11 @@ class HotelController extends Controller
     }
 
     //hotel booking remove request
-    public function bookingremove($id){
-        $roombook = Roombook::find($id);
+    public function bookingremove(Request $req){
+        $roombook = Roombook::find($req->id);
         $roombook->req = 'Declined';
         $roombook->save();
-        return redirect()->route('hotel.ADroomBookList');
+        //return redirect()->route('hotel.ADroomBookList');
     }
 
 
@@ -220,51 +244,87 @@ class HotelController extends Controller
  
 
      //hotel booking delete request from main list
-     public function bookingdestroy($id){
-        $roombook = Roombook::find($id);
+     public function bookingdestroy(Request $req){
+        $roombook = Roombook::find($req->id);
         $roombook->req = 'Canceled';
         $roombook->save();
-        return redirect()->route('hotel.showhotelallboking');
+
+        //return redirect()->route('hotel.showhotelallboking');
+    
     }
 
 
     //hotel booking list
     public function showhotelallboking(){
             $roombooks = Roombook::where('req', 'Approved')->get();
-            return view('hotelDashboard.showhotelallboking')->with('showhotelallboking', $roombooks);
+            return response()->json($roombooks);
+            //return view('hotelDashboard.showhotelallboking')->with('showhotelallboking', $roombooks);
     }
     
     //hotel booking user-car information
-    public function showcustomerroominfo($id){
-        $roombook = Roombook::find($id); 
-        $room = Room:: where('id', $roombook->room_id)->first();
-        $user = User::where('id', $roombook->user_id)->first();
+    public function showcustomerroominfo(Request $req){
+
+        $room = Room::where('id', $req->room_id)->first();
+        $room_id = $room->id ;
+        $name = $room->name ;
+        $price = $room->price ;
+
+
+        $user = User::where('id',  $req->user_id)->first();
+        $user_id = $user->id ;
+        $firstname = $user->firstname ;
+        $lastname = $user->lastname ;
+        $gender = $user->gender ;
+        $email = $user->email ;
+        $phone = $user->phone ;
+
+        return response()->json([
+                                'uid' => $user_id,
+                                'fname' => $firstname,
+                                'lname' => $lastname,
+                                'gender' => $gender,
+                                'email' => $email, 
+                                'phone' => $phone,
+                                'rid' => $room_id, 
+                                'rname' => $name, 
+                                'rprice' => $price,
+                                 
+    ]);
+
         
-        return view('hotelDashboard.showcustomerroominfo')
-        ->with('room', $room)
-        ->with('user', $user);
+        // return view('hotelDashboard.showcustomerroominfo')
+        // ->with('room', $room)
+        // ->with('user', $user);
                                                        
     }
 
-    public function checkhotelreview(){
-        $reviews = Review::where('service_id', session()->get('id'))
-                       ->where('service_type', session()->get('type'))->get();
+    public function checkhotelreview(Request $req){
+        // $reviews = Review::where('service_id', session()->get('id'))
+        //                ->where('service_type', session()->get('type'))->get();
 
-        return view('hotelDashboard.checkhotelreview')->with('reviews', $reviews);
+        $reviews = Review::where('service_type', 'Hotel')->get();
+        return response()->json($reviews);
+
+        //return view('hotelDashboard.checkhotelreview')->with('reviews', $reviews);
+
     }
 
-    public function hoteltransactionhistory(){
-        $transactions = Transaction::where('receiver_id', session()->get('id'))
-        ->where('receiver', session()->get('type'))->get();
+    public function hoteltransactionhistory(Request $req){
 
-        return view('hotelDashboard.hoteltransactionhistory')->with('transactions', $transactions);
+        $transactions = Transaction::where('receiver','Hotel')->get();
+        return response()->json($transactions);
+
+        // $transactions = Transaction::where('receiver_id', session()->get('id'))
+        // ->where('receiver', session()->get('type'))->get();
+
+        // return view('hotelDashboard.hoteltransactionhistory')->with('transactions', $transactions);
     }
 
     public function hotelsupport(){
         return view('hotelDashboard.hotelsupport');
     }
 
-    public function hotelsupportconfirm(HotelSupportRequest $req){
+    public function hotelsupportconfirm(Request $req){
 
         $support = new Support;
         $support -> username = $req->username;
@@ -272,7 +332,7 @@ class HotelController extends Controller
         $support -> email = $req->email;
         $support -> message = $req->message;
         $support->save();
-        return redirect()->route('hotel.hotelsupport');
+        // return redirect()->route('hotel.hotelsupport');
 
     }
 
@@ -282,7 +342,7 @@ class HotelController extends Controller
         return view('hotelDashboard.profile')->with('profile', $profile);
     }
 
-    public function profileUD(HotelProfileRequest $req){
+    public function profileUD(Request $req){
 
         switch ($req->input('submit')) {
             case 'Update':
@@ -295,15 +355,15 @@ class HotelController extends Controller
                 $hotel -> email = $req->email;
                 $hotel -> password = $req->password;
                 $hotel -> save();
-                $req->session()->flash('hotelUDMsg', 'Account Updated');
-                return redirect()->route('hotel.profile');
+                // $req->session()->flash('hotelUDMsg', 'Account Updated');
+                // return redirect()->route('hotel.profile');
                 break;
 
             case 'Delete':
 
-                $transport = Transport::where('name', $req->name)->first();
-                $transport->delete();
-                return redirect()->route('login.index');
+                $hotel = Hotel::where('name', $req->name)->first();
+                $hotel->delete();
+                // return redirect()->route('login.index');
                 break;
 
         }

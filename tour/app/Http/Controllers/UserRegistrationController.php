@@ -16,7 +16,7 @@ class UserRegistrationController extends Controller
         return view ('registration.userreg');
     }
 
-    public function userregverify(UserRegistrationRequest $req){
+    public function userregverify(Request $req){
 
         $user = new User;
         $user -> firstname = $req->firstname;
@@ -28,7 +28,8 @@ class UserRegistrationController extends Controller
         $user -> password = $req->password;
         $user -> status= 'Pending';
         $user->save();
-        return redirect()->route('userRegistration.register');
+
+        //return redirect()->route('userRegistration.register');
     }
 
 

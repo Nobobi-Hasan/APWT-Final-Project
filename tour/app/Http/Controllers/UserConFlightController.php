@@ -27,6 +27,6 @@ class UserConFlightController extends Controller
         $airbook -> req = 'Pending';
         $airbook -> save();
 
-        return redirect()->route('userFlightList.adFlight');
+        //return redirect()->route('userFlightList.adFlight');
     }
 }

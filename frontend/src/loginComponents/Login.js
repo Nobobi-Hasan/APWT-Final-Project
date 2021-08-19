@@ -59,11 +59,11 @@ const Login = ({callback, callbackGoogle}) => {
             else if(check.type=='user')
                 history.push('/user');
             else if(check.type=='car')
-                history.push('/car');
+                history.push('/carDashboard/index');
             else if(check.type=='flight')
-                history.push('/flight');
+                history.push('/flightDashboard/index');
             else if(check.type=='hotel')
-                history.push('/hotel');
+                history.push('/hotelDashboard/index');
         }
 
         else{
@@ -136,7 +136,7 @@ const Login = ({callback, callbackGoogle}) => {
                 <br/>
                 <p>.</p>
 
-                <a href="#" title="" class="anchor">Not yet registered?</a>
+                <a href="/register" title="" class="anchor">Not yet registered?</a>
 
 
                 <div className = "g-signin">
@@ -166,7 +166,10 @@ const Login = ({callback, callbackGoogle}) => {
         </div>
         
         </>
+        
     );
+
+    
 };
 
 export default Login;

@@ -9,6 +9,7 @@ class UserCarController extends Controller
 {
     public function index(){
         $carbookings = Carbook::where('req', 'Approved')->get();
-        return view('user.car_booking')->with('CarBookingsList', $carbookings);
+        return response()->json($carbookings);
+        //return view('user.car_booking')->with('CarBookingsList', $carbookings);
     }
 }

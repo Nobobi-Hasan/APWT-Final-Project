@@ -22,14 +22,27 @@ class FlightController extends Controller
 {
     public function index(Request $req){
         
-
-        $airCount = Air::all()->count();
-        $airBookCount = Airbook::all()->count();
-        $reviewCount = Review::where('service_type', 'Flight')->count();
-
-        return view('flightDashboard.home')->with('airCount', $airCount)
-                                       ->with('airBookCount', $airBookCount)
-                                       ->with('reviewCount', $reviewCount);
+            $airCount = Air::all()->count();
+            $airBookCount =  Airbook::where('req','Approved')->count();
+            $airPendingCount = Airbook::where('req','Pending')->count();
+            $airAvailable = Air::where('availability','Available')->count();
+            $airAirbus = Air::where('type','Airbus')->count();
+            $airJett = Air::where('type','Jett')->count();
+            $reviewCount = Review::where('service_type', 'Flight')->count();
+    
+            return [
+                'airCount' => $airCount,
+                'airBookCount' => $airBookCount,
+                'airAvailable'=> $airAvailable,
+                'airAirbus'=> $airAirbus,
+                'airJett'=> $airJett,
+                'reviewCount' => $reviewCount,
+                'airPendingCount' => $airPendingCount,
+            ];
+        
+        // return view('flightDashboard.home')->with('airCount', $airCount)
+        //                                ->with('airBookCount', $airBookCount)
+        //                                ->with('reviewCount', $reviewCount);
                                 
 
         
@@ -39,24 +52,24 @@ class FlightController extends Controller
         return view('flightDashboard.addflight');
     }
 
-    public function addflightVerify(AddFlightRequest $req){
+    public function addflightVerify(Request $req){
 
-        if($req->hasFile('image')){
+        // if($req->hasFile('image')){
 
-            $file = $req->file('image');
-            echo "File Name: ".$file->getClientOriginalName()."<br>";
-            echo "File Extension: ".$file->getClientOriginalExtension()."<br>";
-            echo "File Mime Type: ".$file->getMimeType()."<br>";
-            echo "File Size: ".$file->getSize()."<br>";
+        //     $file = $req->file('image');
+        //     echo "File Name: ".$file->getClientOriginalName()."<br>";
+        //     echo "File Extension: ".$file->getClientOriginalExtension()."<br>";
+        //     echo "File Mime Type: ".$file->getMimeType()."<br>";
+        //     echo "File Size: ".$file->getSize()."<br>";
 
-            if($file->move('upload','flight'.$req->title.'.'.$file->getClientOriginalExtension())){
-                echo "success";
-            }else{
-                echo "error";
-            }
-        }
+        //     if($file->move('upload','flight'.$req->title.'.'.$file->getClientOriginalExtension())){
+        //         echo "success";
+        //     }else{
+        //         echo "error";
+        //     }
+        // }
 
-            $img='flight'.$req->title.'.'.$file->getClientOriginalExtension();
+        //     $img='flight'.$req->title.'.'.$file->getClientOriginalExtension();
 
             $air = new Air;
             $air -> title = $req->title;
@@ -64,16 +77,17 @@ class FlightController extends Controller
             $air -> type = $req->type;
             $air -> fare = $req->fare;
             $air -> availability = 'Available';
-            $air -> image = $img;
+            $air -> image = 'img.jpg';
             $air->save();
-            return redirect()->route('flight.addflight');
+            // return redirect()->route('flight.addflight');
 
     }
 
     //manage flight
     public function manageflight(){
         $air = Air::all();
-        return view('flightDashboard.manageflight')->with('air', $air);;
+        return response()->json($air);
+        // return view('flightDashboard.manageflight')->with('air', $air);;
     }
 
 
@@ -85,14 +99,14 @@ class FlightController extends Controller
 
    
    //flight edit confirm
-   public function flighteditconfirm($id, FlightEditRequest $req){
+   public function flighteditconfirm(Request $req){
        
-       $air = Air::find($id);
+       $air = Air::find($req->id);
        $air->title = $req->title;
        $air->model = $req->model;
        $air->save();
 
-       return redirect()->route('flight.manageflight');
+    //    return redirect()->route('flight.manageflight');
    }
 
    //flight delete confirmation
@@ -102,27 +116,28 @@ class FlightController extends Controller
 }
 
     //flight delete
-    public function flightdestroy($id){
-        Air::destroy($id);
-        return redirect()->route('flight.manageflight');
+    public function flightdestroy(Request $req){
+        Air::destroy($req->id);
+        // return redirect()->route('flight.manageflight');
     }
 
     //flight type
     public function flighttype(){
 
         $air = Air:: all();
-        return view('flightDashboard.flighttype')->with('air', $air);
+        return response()->json($air);
+        // return view('flightDashboard.flighttype')->with('air', $air);
     }
 
     //flight type confirmation
-    public function flighttypeconfirm(FlightTypeRequest $req ){
+    public function flighttypeconfirm(Request $req){
         
         $air = Air::where('title', $req->title)->first();
         $air->title = $req->title;
         $air->type = $req->type;
         $air->fare = $req->fare;
         $air->save();
-        return redirect()->route('flight.flighttype');
+        // return redirect()->route('flight.flighttype');
 
     }
 
@@ -130,17 +145,18 @@ class FlightController extends Controller
      public function flightavailability(){
         
         $air = Air:: all();
-        return view('flightDashboard.flightavailability')->with('air', $air);;
+        return response()->json($air);
+        // return view('flightDashboard.flightavailability')->with('air', $air);
     }
 
     //flight availability confirm
-    public function flightavailabilityconfirm(Request $req ){
+    public function flightavailabilityconfirm(Request $req){
         
         $air = Air::where('title', $req->title)->first();
         $air->title = $req->title;
         $air->availability = $req->availability;
         $air->save();
-        return redirect()->route('flight.flightavailability');
+        // return redirect()->route('flight.flightavailability');
 
     }
 
@@ -148,7 +164,8 @@ class FlightController extends Controller
     public function ADflightBookList(){
 
         $flightbook = Airbook::where('req', 'Pending')->get();
-        return view('flightDashboard.ADflightBookList')->with('ADflightBookList', $flightbook);
+        return response()->json($flightbook);
+        // return view('flightDashboard.ADflightBookList')->with('ADflightBookList', $flightbook);
     }
 
     //flight booking pending approve list
@@ -158,11 +175,11 @@ class FlightController extends Controller
     }   
 
     //flight booking confirmation request
-    public function bookingadd($id){
-        $flightbook = Airbook::find($id);
+    public function bookingadd(Request $req){
+        $flightbook = Airbook::find($req -> id);
         $flightbook->req = 'Approved';
         $flightbook->save();
-        return redirect()->route('flight.ADflightBookList');
+        // return redirect()->route('flight.ADflightBookList');
     }
 
     //flight booking pending decline list
@@ -172,11 +189,11 @@ class FlightController extends Controller
     }
 
      //flight booking remove request
-    public function bookingremove($id){
-        $flightbook = Airbook::find($id);
+    public function bookingremove(Request $req){
+        $flightbook = Airbook::find($req->id);
         $flightbook->req = 'Declined';
         $flightbook->save();
-        return redirect()->route('flight.ADflightBookList');
+        // return redirect()->route('flight.ADflightBookList');
     }
 
     //flight booking delete from main list
@@ -186,17 +203,18 @@ class FlightController extends Controller
     }
  
     //flight booking delete request from main list
-     public function bookingdestroy($id){
-        $flightbook = Airbook::find($id);
+     public function bookingdestroy(Request $req){
+        $flightbook = Airbook::find($req->id);
         $flightbook->req = 'Canceled';
         $flightbook->save();
-        return redirect()->route('flight.showflightallbooking');
+        // return redirect()->route('flight.showflightallbooking');
     }
 
     //flight booking list
     public function showflightallbooking(){
         $flightbook = Airbook::where('req', 'Approved')->get();
-        return view('flightDashboard.showflightallbooking')->with('showflightallbooking', $flightbook);
+        return response()->json($flightbook);
+        // return view('flightDashboard.showflightallbooking')->with('showflightallbooking', $flightbook);
     }
 
     //flight booking user-air information
@@ -210,18 +228,26 @@ class FlightController extends Controller
                                       ->with('user', $user);                                            
     }
 
-    public function checkflightreview(){
-        $reviews = Review::where('service_id', session()->get('id'))
-        ->where('service_type', session()->get('type'))->get();
+    public function checkflightreview(Request $req){
 
-        return view('flightDashboard.checkflightreview')->with('reviews', $reviews);
+        $reviews = Review::where('service_type', 'Flight')->get();
+        return response()->json($reviews);
+
+        // $reviews = Review::where('service_id', session()->get('id'))
+        // ->where('service_type', session()->get('type'))->get();
+
+        // return view('flightDashboard.checkflightreview')->with('reviews', $reviews);
     }
 
-    public function flighttransactionhistory(){
-        $transactions = Transaction::where('receiver_id', session()->get('id'))
-        ->where('receiver', session()->get('type'))->get();
+    public function flighttransactionhistory(Request $req){
+        
+        $transactions = Transaction::where('receiver','Flight')->get();
+        return response()->json($transactions);
 
-        return view('flightDashboard.flighttransactionhistory')->with('transactions', $transactions);;
+        // $transactions = Transaction::where('receiver_id', session()->get('id'))
+        // ->where('receiver', session()->get('type'))->get();
+
+        // return view('flightDashboard.flighttransactionhistory')->with('transactions', $transactions);;
     }
 
     public function profile(Request $req){
@@ -230,7 +256,7 @@ class FlightController extends Controller
         return view('flightDashboard.profile')->with('profile', $profile);
     }
 
-    public function profileUD(FlightProfileRequest $req){
+    public function profileUD(Request $req){
 
         switch ($req->input('submit')) {
             case 'Update':
@@ -241,15 +267,15 @@ class FlightController extends Controller
                 $transport -> email = $req->email;
                 $transport -> password = $req->password;
                 $transport -> save();
-                $req->session()->flash('transportUDMsg', 'Account Updated');
-                return redirect()->route('flight.profile');
+                // $req->session()->flash('transportUDMsg', 'Account Updated');
+                // return redirect()->route('flight.profile');
                 break;
 
             case 'Delete':
 
                 $transport = Transport::where('name', $req->name)->first();
                 $transport->delete();
-                return redirect()->route('login.index');
+                // return redirect()->route('login.index');
                 break;
 
         }
@@ -259,7 +285,7 @@ class FlightController extends Controller
         return view('flightDashboard.flightsupport');
     }
 
-    public function flightsupportconfirm(FlightSupportRequest $req){
+    public function flightsupportconfirm(Request $req){
 
         $support = new Support;
         $support -> username = $req->username;
@@ -267,7 +293,7 @@ class FlightController extends Controller
         $support -> email = $req->email;
         $support -> message = $req->message;
         $support->save();
-        return redirect()->route('flight.flightsupport');
+        // return redirect()->route('flight.flightsupport');
 
     }
 }

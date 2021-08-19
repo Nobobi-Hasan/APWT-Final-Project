@@ -9,29 +9,19 @@ use App\Promo;
 use App\Ad;
 class EmployeeAdvertisementController extends Controller
 {
-    public function adsIndex(){
+    public function advertisement(){
 
         $ads = Ad::all();
-        return view('employee.ads')->with('ads', $ads);
+        return response()->json($ads);
     }
 
-    public function adsVerify(EmpAdsRequest $req){
+    public function advertisementAdd(Request $req){
 
-        if ($req->hasFile('image')) {
-            $file = $req->file('image');
-
-            if($file->move('upload','employeeAds'.$file->getClientOriginalName().'.'.$file->getClientOriginalExtension())){
-                echo "success";
-            }else{
-                echo "error";
-            }
-        }
-        $img= 'employeeAds'. $file->getClientOriginalName().'.'.$file->getClientOriginalExtension();
-
+        
         $ads = new Ad;
-        $ads -> image = $img;
+        $ads -> message = $req->message;
         $ads -> save();
-        return redirect()->route('employee.adsIndex');
+        
     }
 
     public function adsDelete($id){
@@ -40,39 +30,29 @@ class EmployeeAdvertisementController extends Controller
          return view('employee.adsDelete')->with('ads', $ads);
     }
     
-    public function adsDestroy($id){
-        Ad::destroy($id);
-        return redirect()->route('employee.adsIndex');
+    public function advertisementDestroy(Request $req){
+        $ads=Ad::find($req->id);
+        $ads->delete();
     }
 
 
+//promo =>
 
-
-    public function promoIndex(){
+    public function promo(){
         
         $promos = Promo::all();
-        return view('employee.SendPromo')->with('promos', $promos);
+       return response()->json($promos);
     }
 
-    public function promotions(EmpPromoRequest $req){
+    public function promoAdd(Request $req){
 
 
-        if ($req->hasFile('image')) {
-            $file = $req->file('image');
-            if($file->move('upload', 'employeePromos'.$req->id.'.'.$file->getClientOriginalExtension())){
-                echo "success";
-            }else{
-                echo "error";
-            }
-        }
-        $img='employeePromos'.$req->id.'.'.$file->getClientOriginalExtension();
-
+        
 
         $promos = new Promo;
-        $promos -> image = $img;
+        $promos -> image = "img.png";
         $promos -> message = $req->message;
         $promos -> save();
-        return redirect()->route('employee.promoIndex');
         
     }
 
@@ -82,9 +62,10 @@ class EmployeeAdvertisementController extends Controller
          return view('employee.promoDelete')->with('promos', $promos);
     }
     
-    public function promoDestroy($id){
-        Promo::destroy($id);
-        return redirect()->route('employee.promoIndex');
+    public function promoDestroy(Request $req){
+
+        $promos=Promo::find($req->id);
+        $promos->delete();
     }
 
     

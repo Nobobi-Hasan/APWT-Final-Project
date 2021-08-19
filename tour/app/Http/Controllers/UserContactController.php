@@ -12,16 +12,21 @@ class UserContactController extends Controller
         return view('user.contact');
     }
 
-    public function verify (UserContactRequest $req){
+    public function verify (Request $req){
 
-        $contact = new Support;
-        $contact -> username = $req->username;
-        $contact -> phone = $req->phone;
-        $contact -> email = $req->email;
-        $contact -> message = $req->message;
-        $contact->save();
-        return redirect()->route('userContact.index');
+        // $contact = new Support;
+        // $contact -> username = $req->username;
+        // $contact -> phone = $req->phone;
+        // $contact -> email = $req->email;
+        // $contact -> message = $req->message;
+        // $contact->save();
         
+        $support = new Support;
+        $support -> username = $req->username;
+        $support -> phone = $req->phone; 
+        $support -> email = $req->email;
+        $support -> message = $req->message;
+        $support->save();
     }
 
 
