@@ -2,7 +2,7 @@ import Employee from './AdminEmployee';
 import './Admin.css';
 
 const AdminEmployeeList = ({list, callback})=>{
-    console.log(list);
+    // console.log(list);
 
     return(
         <div>
