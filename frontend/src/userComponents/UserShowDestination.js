@@ -19,7 +19,7 @@ const UserShowDestination = ({id, place, district, image, userDestinationDetails
             <td>{id}</td>
             <td>{place}</td>
             <td>{district}</td>
-            <td><img className="userimg" src={process.env.PUBLIC_URL + "/images/" + image}/></td>
+            <td><img src={process.env.PUBLIC_URL + "/images/nilgiri.jpg"} height="60px" width="60px" /></td>
             <td><button className='details-button' onClick={routeChange}>Details</button></td>
             
         </tr>

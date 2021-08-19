@@ -2,14 +2,14 @@ import { useState } from "react";
 import { useParams } from "react-router-dom";
 import { useHistory } from 'react-router-dom';
 
-const UserConfirmHotel = ({ status, callback }) => {
-    //const { id: eid } = useParams();
+const UserConfirmHotel = ({callback }) => {
+    
     const [user_id, setUser_id] = useState("");
-    const [room_id, setRoom_id] = useState("");
+    const {id: room_id} = useParams();
+    //const [room_id, setRoom_id] = useState("");
     const [fromdate, setFromdate] = useState("");
     const [todate, setTodate] = useState("");
 
-    //const [user, setUser] = useState({id:'',name: '', dept: ''});
 
     const history = useHistory();
 
@@ -21,44 +21,43 @@ const UserConfirmHotel = ({ status, callback }) => {
     };
     return (
         <>
-        <div id="form-main">
-            <div id="form-div">
 
-            <form onSubmit={onSubmit} class="form" id="form1">
+        <div>
+
+            <form className='form' onSubmit={onSubmit} >
 
             <legend> Book Your Hotel  </legend>
             <br />
 
-                <p class="username" >
-                        <input type="text" name="user_id" class="validate[required,custom[onlyLetter],length[0,100]] feedback-input" placeholder="User ID"  value={user_id} onChange={(e) => setUser_id(e.target.value)} />
-                </p>
+                <label>
+                    User ID:
+                        <input type="text" name="user_id" value={user_id} onChange={(e) => setUser_id(e.target.value)} />
+                </label>
                 <br />
 
-                <p class="username" >
-                        <input type="text" name="room_id" class="feedback-input" placeholder="Room ID"  value={room_id} onChange={(e) => setRoom_id(e.target.value)} />
-                </p>
+
+                <label>
+                    Room ID:
+                        <input type="text" name="room_id" value={room_id} readOnly />
+                </label>
                 <br />
 
-                <p class="username" >
-                <b>Check-In</b>:
-                        <input type="date" name="fromdate" class="feedback-input" placeholder="Check-in"  value={fromdate} onChange={(e) => setFromdate(e.target.value)} />
-                </p>
+                <label>
+                    Check-In
+                        <input type="date" name="fromdate" value={fromdate} onChange={(e) => setFromdate(e.target.value)} />
+                </label>
                 <br />
 
-                <p class="username" >
-                <b>Check-Out</b>:
-                        <input type="date" name="todate" class="feedback-input" placeholder="Check-out"  value={todate} onChange={(e) => setTodate(e.target.value)} />
-                </p>
+                <label>
+                    Check-Out
+                        <input type="date" name="todate" value={todate} onChange={(e) => setTodate(e.target.value)} />
+                </label>
                 <br />
 
-                <div class="submit">
-                <input type="submit" value="Confirm" id="button-blue" />
-                <div class="ease"></div>
-                </div>
-                
+                <input type="submit" value="Confirm" />
+  
             </form>
             </div>
-        </div>
         </>
     );
 };

@@ -28,8 +28,6 @@ const UserNavbar2 = ()=>{
                                 <li><Link to='/user/show_hotels'>Hotels</Link></li>
                                 <li><Link to='/user/flight_list'>Flight</Link></li>
                                 <li><Link to='/user/Car_list'>Car</Link></li>
-                                <li><Link to='/user/confirm_hotel'>Confirm Hotel</Link></li>
-                                <li><Link to='/user/hotel_facility'>Hotel Facility</Link></li>
                         </ul>  
                         </li>
                         <li><Link to='/user/travel_history'>Travel History</Link></li>
@@ -48,7 +46,7 @@ const UserNavbar2 = ()=>{
                         </li>
                         <li><Link to='/user/give_review'>Review</Link></li> 
                         <li><Link to='/user/profile'>Profile</Link></li> 
-                        <li><Link to='/project-login'>Logout</Link></li> 
+                        <li><Link to='/login'>Logout</Link></li> 
                     </ul>  
                 </div>
             </div>

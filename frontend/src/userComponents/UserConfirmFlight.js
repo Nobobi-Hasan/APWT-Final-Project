@@ -3,9 +3,9 @@ import { useParams } from "react-router-dom";
 import { useHistory } from 'react-router-dom';
 
 const UserConfirmFlight = ({callback }) => {
-    const {id: air_id} = useParams();
-    //setAir_id(fid);
+
     const [user_id, setUser_id] = useState("");
+    const {id: air_id} = useParams();
     //const [air_id, setAir_id] = useState("");
     const [fromloc, setFromloc] = useState("");
     const [toloc, setToloc] = useState("");

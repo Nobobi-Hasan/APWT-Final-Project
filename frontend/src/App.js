@@ -4,6 +4,8 @@ import UserNavbar from "./userComponents/UserNavbar";
 import UserFooter from "./userComponents/UserFooter";
 import UserHomePage from "./userComponents/UserHomePage";
 
+import UserProfile from "./userComponents/UserProfile";
+
 import UserRegistration from "./userComponents/UserRegistration";
 
 import UserReview from "./userComponents/UserReview";
@@ -47,7 +49,30 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 function App() {
 
-    //USER API START*********
+    //******USER API START******
+
+
+        // Profile update by User
+        const userProfileUpdate = (newProfile) => { 
+
+            const axios = require('axios').default;
+
+            axios({
+                method: 'post',
+                url: 'http://127.0.0.1:8000/api/user/profile',
+                //data: JSON.stringify(newUser)
+                data:newProfile,
+            });
+
+            setLoginFirstname(newProfile.firstname);
+            setLoginLastname(newProfile.lastname);
+            setLoginGender(newProfile.gender);
+            setLoginEmail(newProfile.email);
+            setLoginUsername(newProfile.username);
+
+            console.log(newProfile);
+};
+
 
 
     //User Give Review
@@ -75,47 +100,73 @@ function App() {
     };
 
 
-    //Show User Hotel List
-    const [usershowhotel, setShowHotel] = useState([]);
-    const userurl16 = 'http://127.0.0.1:8000/api/user/show_hotels';
-    useFetch(userurl16, setShowHotel);
     //Show User Booked Hotel List
-    const [userbookedhotel, setBookedHotel] = useState([]);
+    const [userbookedhotel, setUserBookedHotel] = useState([]);
     const userurl2 = 'http://127.0.0.1:8000/api/user/hotel';
-    useFetch(userurl2, setBookedHotel);
+    useFetch(userurl2, setUserBookedHotel);
+
+
+    //Show User All Hotel List
+    const [usershowhotel, setUserShowHotel] = useState([]);
+    const userurl16 = 'http://127.0.0.1:8000/api/user/show_hotels';
+    useFetch(userurl16, setUserShowHotel);
+
+    const [usershowhotelsrc, setUserShowHotelSrc] = useState([]);
+
+
     //Show User Hotel Room List
-    const [userhotelroom, setHotelRoom] = useState([]);
+    const [userhotelroom, setUserHotelRoom] = useState([]);
     const userurl15 = 'http://127.0.0.1:8000/api/user/hotel_rooms';
-    useFetch(userurl15, setHotelRoom);
+    useFetch(userurl15, setUserHotelRoom);
+
+
+    const [userhotelroomsrc, setUserHotelRoomSrc] = useState([]);
+
+    // Show User Hotel Room Details
+    const userHotelRoomscallback = (id) => {
+    const data = userhotelroom.filter((userhotelroom) => userhotelroom.hotel_id == id);
+    setUserHotelRoomSrc(data);
+    console.log(data);
+    };
+
+    // Show Search Hotel
+    const userSrcHotel = (id) => { 
+
+        console.log(id.id);
+    const data = usershowhotel.filter((userhotel) => userhotel.location == id.id);
+    setUserShowHotelSrc(data);
+
+    };
+
     //Confirm User Hotel
     const userConfirmHotel = (newConfirmHotel) => { 
 
+        console.log(newConfirmHotel);
         const axios = require('axios').default;
 
         axios({
             method: 'post',
             url: 'http://127.0.0.1:8000/api/user/confirm_hotel',
-            //data: JSON.stringify(newUser)
             data:newConfirmHotel,
           });
-        //   setEmployees([...myuser, newEmployee]);
-        //   console.log(newEmployee);
+
     };
+
     //Show User Hotel Facility List
-    const [userhotelfacility, setHotelfacility] = useState([]);
+    const [userhotelfacility, setUserHotelfacility] = useState([]);
     const userurl14 = 'http://127.0.0.1:8000/api/user/hotel_facility';
-    useFetch(userurl14, setHotelfacility);
-
-
+    useFetch(userurl14, setUserHotelfacility);
 
     //Show Flight Booking List
-    const [userflightbooking, setFlightBooking] = useState([]);
+    const [userflightbooking, setUserFlightBooking] = useState([]);
     const userurl12 = 'http://127.0.0.1:8000/api/user/flight_list';
-    useFetch(userurl12, setFlightBooking);
+    useFetch(userurl12, setUserFlightBooking);
+    
     //Show User Booked Flight List
-    const [userbookedflight, setBookedFlight] = useState([]);
+    const [userbookedflight, setUserBookedFlight] = useState([]);
     const userurl1 = 'http://127.0.0.1:8000/api/user/flight';
-    useFetch(userurl1, setBookedFlight);
+    useFetch(userurl1, setUserBookedFlight);
+
     //Confirm User FLight
     const userConfirmFlight = (newConfirmFLight) => { 
 
@@ -131,14 +182,15 @@ function App() {
 
 
     //Show Car Booking List
-    const [usercarbooking, setCarBooking] = useState([]);
+    const [usercarbooking, setUserCarBooking] = useState([]);
     const userurl11 = 'http://127.0.0.1:8000/api/user/Car_list';
-    useFetch(userurl11, setCarBooking);
+    useFetch(userurl11, setUserCarBooking);
     //Show User Booked Car List
-    const [userbookedcar, setBookedCar] = useState([]);
+    const [userbookedcar, setUserBookedCar] = useState([]);
     const userurl3 = 'http://127.0.0.1:8000/api/user/car';
-    useFetch(userurl3, setBookedCar);
+    useFetch(userurl3, setUserBookedCar);
     //Confirm User Car
+
     const userConfirmCar = (newConfirmCar) => { 
 
         const axios = require('axios').default;
@@ -152,40 +204,40 @@ function App() {
 
 
     //Show User Travel History List
-    const [usertravelhistory, setTravelHistory] = useState([]);
+    const [usertravelhistory, setUserTravelHistory] = useState([]);
     const userurl4 = 'http://127.0.0.1:8000/api/user/travel_history';
-    useFetch(userurl4, setTravelHistory);
+    useFetch(userurl4, setUserTravelHistory);
 
 
     //Show User Notifications 
-    const [usershowpromos, setShowPormos] = useState([]);
+    const [usershowpromos, setUserShowPormos] = useState([]);
     const userurl5 = 'http://127.0.0.1:8000/api/user/notification';
-    useFetch(userurl5, setShowPormos);
+    useFetch(userurl5, setUserShowPormos);
 
     //Show User Travel Guideline 
-    const [usershowguideline, setShowGuideLine] = useState([]);
+    const [usershowguideline, setUserShowGuideLine] = useState([]);
     const userurl6 = 'http://127.0.0.1:8000/api/user/guideline';
-    useFetch(userurl6, setShowGuideLine);
+    useFetch(userurl6, setUserShowGuideLine);
 
     //Show User About Us 
-    const [usershowaboutus, setShowAboutUs] = useState([]);
+    const [usershowaboutus, setUserShowAboutUs] = useState([]);
     const userurl7 = 'http://127.0.0.1:8000/api/user/about';
-    useFetch(userurl7, setShowAboutUs);
+    useFetch(userurl7, setUserShowAboutUs);
 
     //Show User Privacy Policy 
-    const [usershowprivacypolicy, setShowPrivacyPolicy] = useState([]);
+    const [usershowprivacypolicy, setUserShowPrivacyPolicy] = useState([]);
     const userurl8 = 'http://127.0.0.1:8000/api/user/privay_policy';
-    useFetch(userurl8, setShowPrivacyPolicy);
+    useFetch(userurl8, setUserShowPrivacyPolicy);
     
     //Show User FAQ 
-    const [usershowfaq, setShowFAQ] = useState([]);
+    const [usershowfaq, setUserShowFAQ] = useState([]);
     const userurl9 = 'http://127.0.0.1:8000/api/user/faq';
-    useFetch(userurl9, setShowFAQ);
+    useFetch(userurl9, setUserShowFAQ);
 
      //Show User Package 
-     const [usershowpackage, setShowPackage] = useState([]);
+     const [usershowpackage, setUserShowPackage] = useState([]);
      const userurl10 = 'http://127.0.0.1:8000/api/user/package';
-     useFetch(userurl10, setShowPackage);
+     useFetch(userurl10, setUserShowPackage);
 
     //User Add Package
     const userBookPackageCallback = (bookPackage) => {
@@ -198,27 +250,23 @@ function App() {
               data:bookPackage,
 
             });
-
-        //  const data = usershowpackage.filter((bookPackage) => bookPackage.id == id);
-
-        //  setTravelHistory([...usertravelhistory, ...data]);
      };
     
 
     //Show User Destination List 
-    const [userdestinationlist, setDestinationList] = useState([]);
+    const [userdestinationlist, setUserDestinationList] = useState([]);
     const userurl13 = 'http://127.0.0.1:8000/api/user/destination';
-    useFetch(userurl13, setDestinationList);
+    useFetch(userurl13, setUserDestinationList);
 
     //Show User Destination Details List 
-    const [userdestinationdetails, setDestinationDetails] = useState([]);
+    const [userdestinationdetails, setUserDestinationDetails] = useState([]);
     const userurl17 = 'http://127.0.0.1:8000/api/user/destination';
-    useFetch(userurl17, setDestinationDetails);
+    useFetch(userurl17, setUserDestinationDetails);
 
     // Show User Destination Details by user
     const userDestinationDetailscallback = (id) => {
     const data = userdestinationlist.filter((destination) => destination.id === id);
-    setDestinationDetails(data);
+    setUserDestinationDetails(data);
     console.log(data);
     };
 
@@ -236,15 +284,21 @@ function App() {
     };
 
 
+    //******USER API END******
+
+
   return (
       <Router>
-          {/* <UserNavbar /> */}
+          
           <Switch>
+
+           {/* ******USER API START****** */}
+
 
               <Route exact path="/user">
                   <UserNavbar />
                   <h2>Home</h2>
-                  <UserHomePage/>
+                  <UserHomePage callback={userSrcHotel} />
                   <UserFooter />
               </Route>
 
@@ -293,21 +347,28 @@ function App() {
               <Route exact path="/user/show_hotels">
                   <UserNavbar />
                   <h2>Hotels</h2>
-                  <UserShowHotelList list={usershowhotel} />
+                  <UserShowHotelList list={usershowhotel} callback={userHotelRoomscallback} />
                   <UserFooter />
               </Route>
 
-              <Route exact path="/user/hotel_rooms">
+              <Route exact path="/user/show_hotels/:id">
+                  <UserNavbar />
+                  <h2>Hotels</h2>
+                  <UserShowHotelList list={usershowhotelsrc} callback={userHotelRoomscallback} />
+                  <UserFooter />
+              </Route>
+
+              <Route exact path="/user/hotel_rooms/:src_hotel">
                   <UserNavbar />
                   <h2>Hotel Room</h2>
-                  <UserHotelRoomList list={userhotelroom} />
+                  <UserHotelRoomList list={userhotelroomsrc} />
                   <UserFooter />
               </Route>
 
-              <Route exact path="/user/confirm_hotel">
+              <Route exact path="/user/confirm_hotel/:id">
                   <UserNavbar />
                   <h2>Confirm Hotel</h2>
-                  <UserConfirmHotel status="User" callback={userConfirmHotel} />
+                  <UserConfirmHotel callback={userConfirmHotel} />
                   <UserFooter />
               </Route>
 
@@ -403,18 +464,35 @@ function App() {
                   <UserFooter />
               </Route>
 
-              <Route exact path="/user/profile">
+              {/* <Route exact path="/user/profile">
                   <UserNavbar />
                   <h2>Profile</h2>
                   <UserFooter />
-              </Route>
+              </Route> */}
 
-              <Route exact path="/project-login">
+                 <Route exact path="/user/profile">
+                    
+                        <UserNavbar />
+                        
+                        <UserProfile idl = {loginId} 
+                            firstnamel = {loginFirstname}
+                            lastnamel = {loginLastname}
+                            genderl = {loginGender}
+                            emaill = {loginEmail}
+                            usernamel = {loginUsername} 
+                            callback={userProfileUpdate} />
+            
+                        <UserFooter />
+                </Route>
+
+              <Route exact path="/login"> 
                   <UserNavbar />
                   <h2>Logout</h2>
                   <UserFooter />
               </Route>
               
+              {/* ******USER API END****** */}
+
           </Switch>
       </Router>
     );
@@ -424,4 +502,3 @@ function App() {
 
 export default App;
 
-//USER API END***********

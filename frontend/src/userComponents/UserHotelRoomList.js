@@ -2,10 +2,12 @@ import UserHotelRoom from './UserHotelRoom';
 import './User.css';
 
 const UserHotelRoomList = ({list})=>{
-    console.log(list);
+
+    
 
     return(
         <div>
+            
             <table id='table'>
 
                 <th>Room ID</th>
