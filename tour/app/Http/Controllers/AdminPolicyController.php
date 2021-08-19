@@ -10,7 +10,8 @@ class AdminPolicyController extends Controller
 {
     public function index(){
         $policy = Policy::where('id', 1)->first();
-        return view('admin.policy')->with('policy', $policy);
+        return response()->json($policy);
+        // return view('admin.policy')->with('policy', $policy);
     }
 
     public function form($id){
@@ -19,11 +20,11 @@ class AdminPolicyController extends Controller
         return view('admin.policyForm')->with('policy', $policy);
     }
 
-    public function edit(pRequest $req, $id){
+    public function edit(Request $req){
 
-        $policy = Policy::find($id);
-        $policy-> policy = $req->policyForm;
+        $policy = Policy::find($req -> id);
+        $policy-> policy = $req->policy;
         $policy->save();
-        return view('admin.policy')->with('policy', $policy);
+        // return view('admin.policy')->with('policy', $policy);
     }
 }

@@ -13,7 +13,7 @@ class AdminEmployeeController extends Controller
         return view('admin.empAdd');
     }
 
-    public function employeeAddVerify(AddRequest $req){
+    public function employeeAddVerify(Request $req){
 
         $employees = Employee::all();
         foreach ($employees as $e)
@@ -52,12 +52,14 @@ class AdminEmployeeController extends Controller
 
     public function employeeList(){
         $employees = Employee::all();
-        return view('admin.empList')->with('allEmployeeList', $employees);
+        return response()->json($employees);
+        // return view('admin.empList')->with('allEmployeeList', $employees);
     }
 
     public function activeEmployeeList(){
-        $employees = Employee::where('status', 'Active')->get();;
-        return view('admin.activeEmpList')->with('activeEmployeeList', $employees);
+        $employees = Employee::where('status', 'Active')->get();
+        return response()->json($employees);
+        // return view('admin.activeEmpList')->with('activeEmployeeList', $employees);
     }
 
     public function employeeDetails($id){
@@ -71,9 +73,15 @@ class AdminEmployeeController extends Controller
 
     }
 
-    public function employeeDestroy($id){
-        Employee::destroy($id);
-        return redirect()->route('adminEmployee.employeeList');
+    public function employeeDestroy(Request $req){
+        // Employee::destroy($id);
+        // return redirect()->route('adminEmployee.employeeList');
+
+
+        $emp = Employee::find($req->id);
+        
+        $emp->delete();
+        
     }
 
 }

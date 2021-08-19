@@ -27,27 +27,41 @@ class AdminController extends Controller
         $carBookCount = Carbook::all()->count();
         $flightBookCount = Airbook::all()->count();
         $packageCount = Package::where('req', 'Approved')->count();
-
-        return view('admin.home')->with('employeeCount', $employeeCount)
-                                ->with('userCount', $userCount)
-                                ->with('supportCount', $supportCount)
-                                ->with('hotelBookCount', $hotelBookCount)
-                                ->with('carBookCount', $carBookCount)
-                                ->with('flightBookCount', $flightBookCount)
-                                ->with('packageCount', $packageCount);
-
+        
+        return [
+            'employeeCount' => $employeeCount,
+            'userCount' => $userCount,
+            'supportCount' => $supportCount,
+            'hotelBookCount' => $hotelBookCount,
+            'carBookCount' => $carBookCount,
+            'flightBookCount' => $flightBookCount,
+            'packageCount' => $packageCount,
+        ];
         
     }
 
-    public function profile(Request $req){
+    public function profile(){
         $id = session()->get('id');
-        $profile = Admin::find($id);
-        return view('admin.profile')->with('profile', $profile);
+        // $profile = Admin::find($id);
+
+        return [
+            'id' => session()->get('id'),
+            // 'firstname' => $profile->firstname,
+            // 'lastname' => $profile->lastname,
+            // 'gender' => $profile->gender,
+            // 'email' => $profile->email,
+            // 'username' => $profile->username,
+        ];
+
+        return session()->get('id');
+
+        // return response()->json($id);
+        // return view('admin.profile')->with('profile', $profile);
     }
 
     
 
-    public function profileUD(ProfileRequest $req){
+    public function profileUD(Request $req){
 
         switch ($req->input('submit')) {
             case 'Update':
@@ -59,8 +73,8 @@ class AdminController extends Controller
                 $admin -> email = $req->email;
                 $admin -> password = $req->password;
                 $admin -> save();
-                $req->session()->flash('adminUDMsg', 'Account Updated');
-                return redirect()->route('admin.profile');
+        //         $req->session()->flash('adminUDMsg', 'Account Updated');
+        //         return redirect()->route('admin.profile');
         
                 break;
                 
@@ -69,7 +83,7 @@ class AdminController extends Controller
 
                 $admin = Admin::where('username', $req->username)->first();
                 $admin->delete();
-                return redirect()->route('login.index');
+                // return redirect()->route('login.index');
                 
                 break;
 
@@ -82,20 +96,20 @@ class AdminController extends Controller
     }
 
     public function adminAddVerify(AddRequest $req){
-        if($req->hasFile('image')){
+        // if($req->hasFile('image')){
         
-            $file = $req->file('image');
-            echo "File Name: ".$file->getClientOriginalName()."<br>";
-            echo "File Extension: ".$file->getClientOriginalExtension()."<br>";
-            echo "File Mime Type: ".$file->getMimeType()."<br>";
-            echo "File Size: ".$file->getSize()."<br>";
+        //     $file = $req->file('image');
+        //     echo "File Name: ".$file->getClientOriginalName()."<br>";
+        //     echo "File Extension: ".$file->getClientOriginalExtension()."<br>";
+        //     echo "File Mime Type: ".$file->getMimeType()."<br>";
+        //     echo "File Size: ".$file->getSize()."<br>";
 
-            if($file->move('upload', $req->username.'.'.$file->getClientOriginalExtension())){
-                echo "success";
-            }else{
-                echo "error";
-            }
-        }
+        //     if($file->move('upload', $req->username.'.'.$file->getClientOriginalExtension())){
+        //         echo "success";
+        //     }else{
+        //         echo "error";
+        //     }
+        // }
 
         $admins = Admin::all();
         foreach ($admins as $a)
@@ -107,7 +121,7 @@ class AdminController extends Controller
             }
         }
 
-        $img=$req->username.'.'.$file->getClientOriginalExtension();
+        // $img=$req->username.'.'.$file->getClientOriginalExtension();
         
         
         $admin = new Admin;
@@ -115,7 +129,7 @@ class AdminController extends Controller
         $admin -> lastname = $req->lastname;
         $admin -> gender = $req->gender;
         $admin -> email = $req->email;
-        $admin -> image = $img;
+        $admin -> image = "admin.jpg";
         $admin -> username = $req->username;
         $admin -> password = $req->password;
 
@@ -136,7 +150,8 @@ class AdminController extends Controller
 
     public function adminList(){
         $admins = Admin::all();
-        return view('admin.adminList')->with('adminList', $admins);
+        return response()->json($admins);
+        //return view('admin.adminList')->with('adminList', $admins);
     }
 
     public function adminDelete($id){
@@ -145,9 +160,10 @@ class AdminController extends Controller
 
     }
 
-    public function adminDestroy($id){
-        Admin::destroy($id);
-        return redirect()->route('admin.adminList');
+    public function adminDestroy(Request $req){
+        $admin = Admin::find($req->id);      
+        $admin->delete();
     }
+
 
 }
