@@ -65,6 +65,9 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 function App() {
 
 
+    // *********************Admin Start***************************
+
+
 // Show all employees by admin
     const [adminEmployee, setAdminEmployees] = useState([]);
     const url = 'http://127.0.0.1:8000/api/admin/all-employees';
@@ -891,11 +894,19 @@ const adminProfileUpdate =async (newProfile) => {
     };
 
 
+    // *********************Admin END***************************
+
+
+
 
   return (
     <Router>
             {/* <Navbar /> */}
             <Switch>
+
+
+            {/* *********************Admin Start*************************** */}
+
 
 
                 <Route exact path="/login">
@@ -1335,6 +1346,10 @@ const adminProfileUpdate =async (newProfile) => {
                     </div>
                     
                 </Route>
+
+
+                {/* *********************Admin END*************************** */}
+
             </Switch>
         </Router>
   );
