@@ -13,6 +13,9 @@ const Login = ({callback, callbackGoogle}) => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
 
+    const [usernameErr, setUsernameErr] = useState("");
+    const [passwordErr, setPasswordErr] = useState("");
+
     //const [user, setUser] = useState({id:'',name: '', dept: ''});
 
     const history = useHistory();
@@ -38,27 +41,43 @@ const Login = ({callback, callbackGoogle}) => {
 
     const onSubmit = async (e) => {
         e.preventDefault();
+        if(username != "" && password != "" ) 
+        {
 
-        const check = await loginCall({ username: username, password: password });
-        // callback({ id: check.id});
-        callback({id:check});
+            const check = await loginCall({ username: username, password: password });
+            // callback({ id: check.id});
+            callback({id:check});
 
-        console.log(check);
-        console.log(check.type);
+            console.log(check);
+            console.log(check.type);
 
 
-        if(check.type=='admin')
-            history.push('/admin/home');
-        else if(check.type=='emp')
-            history.push('/employee');
-        else if(check.type=='user')
-            history.push('/user');
-        else if(check.type=='car')
-            history.push('/car');
-        else if(check.type=='flight')
-            history.push('/flight');
-        else if(check.type=='hotel')
-            history.push('/hotel');
+            if(check.type=='admin')
+                history.push('/admin/home');
+            else if(check.type=='emp')
+                history.push('/employee');
+            else if(check.type=='user')
+                history.push('/user');
+            else if(check.type=='car')
+                history.push('/car');
+            else if(check.type=='flight')
+                history.push('/flight');
+            else if(check.type=='hotel')
+                history.push('/hotel');
+        }
+
+        else{
+            
+            if(username == "")
+                setUsernameErr("Please Enter Your Username");
+            else
+                setUsernameErr("")
+
+            if(password == "")
+                setPasswordErr("Please Enter Your Password");
+            else
+                setPasswordErr("")
+        }
        
     };
 
@@ -102,15 +121,14 @@ const Login = ({callback, callbackGoogle}) => {
                 <i class="fa fa-user icon"></i>
                 <input type="text" name="username" id="username" value={username} onChange={(e) => setUsername(e.target.value)} placeholder = "Username" />
                 <br/>
-                <p> </p>
+                <p style={{color: "red"}}>{usernameErr}</p>
                 <br/>
-
                 <br/>
 
                 <i class="fa fa-unlock-alt icon"></i>
                 <input type="password" name="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder = "Password" />
                 <br/>
-                <p> </p>
+                <p style={{color: "red"}}>{passwordErr}</p>
                 <br/>
                 <br/>
                 

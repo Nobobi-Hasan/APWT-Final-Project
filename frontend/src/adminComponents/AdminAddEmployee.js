@@ -5,8 +5,6 @@ import './Admin.css';
 
 const AdminAddEmployee = ({ status, callback }) => {
 
-    console.log("asdbiu")
-    //const { id: eid } = useParams();
     const [firstname, setFirstname] = useState("");
     const [lastname, setLastname] = useState("");
     const [gender, setGender] = useState("");
@@ -31,8 +29,15 @@ const AdminAddEmployee = ({ status, callback }) => {
     const onSubmit = (e) => {
         e.preventDefault();
 
-        if(firstname != "" && lastname != "" && gender != "" && email != "" && username != "" && password != "" && conPassword != "" ) 
+        if(firstname != "" && lastname != "" && gender != "" && email != "" && username != "" && password != "" && conPassword != "" && password == conPassword)
         {
+            setFirstnameErr("")
+            setLastnameErr("")
+            setGenderErr("")
+            setEmailErr("")
+            setUsernameErr("")
+            setPasswordErr("")
+            setConPasswordErr("")
 
             callback({ firstname: firstname, lastname: lastname, gender: gender, email: email, username: username, password: password, conPassword: conPassword });
 
@@ -56,7 +61,7 @@ const AdminAddEmployee = ({ status, callback }) => {
                 setLastnameErr("")
 
             if(gender == "")
-                setGenderErr("Please fill the Gender");
+                setGenderErr("Please Select a Gender");
             else
                 setGenderErr("")
 
@@ -80,9 +85,10 @@ const AdminAddEmployee = ({ status, callback }) => {
             else
                 setConPasswordErr("")
 
-
-
-
+            if(password != conPassword)
+                setConPasswordErr("Doestn't Match");
+            else
+                setConPasswordErr("")
                 
         }
        
@@ -112,13 +118,16 @@ const AdminAddEmployee = ({ status, callback }) => {
 
 
                 <br />
-                <label>
-                    Gender:
-                    <input type="text" name="gender" value={gender} onChange={(e) => setGender(e.target.value)}
-                    />
-                </label>
+                <label for="gender">Gender:</label>
+                <select name="gender" id="gender" onChange={(e) => setGender(e.target.value)}>
+                    
+                    <option value={gender}>{gender}</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Other">Other</option>
+                    
+                </select>
                 <p style={{color: "red"}}>{genderErr}</p>
-
 
                 <br />
                 <label>
@@ -147,7 +156,7 @@ const AdminAddEmployee = ({ status, callback }) => {
                 <br />
                 <label>
                     Password:
-                    <input type="text" name="password" value={password} onChange={(e) => setPassword(e.target.value)}
+                    <input type="password" name="password" value={password} onChange={(e) => setPassword(e.target.value)}
                     />
                 </label>
                 <p style={{color: "red"}}>{passwordErr}</p>
@@ -157,7 +166,7 @@ const AdminAddEmployee = ({ status, callback }) => {
 
                 <label>
                     Confirm Password:
-                    <input type="text" name="conPassword" value={conPassword} onChange={(e) => setConPassword(e.target.value)}
+                    <input type="password" name="conPassword" value={conPassword} onChange={(e) => setConPassword(e.target.value)}
                     />
                 </label>
                 <p style={{color: "red"}}>{conPasswordErr}</p>

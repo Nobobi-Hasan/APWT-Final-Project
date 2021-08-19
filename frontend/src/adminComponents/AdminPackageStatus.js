@@ -8,14 +8,35 @@ const AdminPackageStatus = ({list, callback})=>{
     const [place, setPlace] = useState("");
     const [status, setStatus] = useState("");
 
+    const [placeErr, setPlaceErr] = useState("");
+    const [statusErr, setStatusErr] = useState("");
+
     const onSubmit = (e) => {
         e.preventDefault();
-       
-        callback({place: place, status: status});
 
-        console.log(place);
-        console.log(status);
-        // history.push('/admin/all-employees');
+        if(place != "" && status != "" ) 
+        {
+            setPlaceErr("")
+            setStatusErr("")
+       
+            callback({place: place, status: status});
+            
+
+        }
+        
+        else{
+            
+            if(place == "")
+                setPlaceErr("Please Select a place");
+            else
+                setPlaceErr("")
+
+            if(status == "")
+                setStatusErr("Please Select a status");
+            else
+                setStatusErr("")
+        }
+
     };
     
     return(
@@ -42,6 +63,9 @@ const AdminPackageStatus = ({list, callback})=>{
                             }
 
                             </select>
+                            <p style={{color: "red"}}>{placeErr}</p>
+
+
                             <br/>
                             <br/>
 
@@ -53,6 +77,9 @@ const AdminPackageStatus = ({list, callback})=>{
                                 <option value="Completed">Completed</option>
                                 
                             </select>
+                            <p style={{color: "red"}}>{statusErr}</p>
+
+
                             <br/>
                             <br/>
 

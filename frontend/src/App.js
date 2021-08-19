@@ -390,6 +390,7 @@ const adminProfileUpdate =async (newProfile) => {
                 //data: JSON.stringify(newUser)
                 data:newAdmin,
             });
+            newAdmin.image="admin.jpg";
             setAdminAdmins([...adminadmin, newAdmin]);
             console.log(newAdmin);
         }
