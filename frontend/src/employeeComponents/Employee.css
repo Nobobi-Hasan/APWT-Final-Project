@@ -8,7 +8,7 @@
   text-decoration: none;
   box-sizing: border-box;
   font-family: "Roboto", sans-serif;
-} */
+}
 
 body{
   background: #fff;
@@ -191,7 +191,6 @@ body{
   margin-top: 70px;
   margin-left: 250px;
   padding: 15px;
-  /* background: url(background.jpg)no-repeat; */
   background-size: cover;
   height: 100vh;
   transition: 0.3s;
@@ -240,13 +239,13 @@ h1{
   .wrapper .main-container.content{
     width: 80%;
     margin: auto;
-    text-align: justify;
-  }
+    text-align: justify; */
+  /* } */
 /* Menu End */
 
 /* Form Start */
 
-.form {
+/* .form {
     width:450px;
     margin:  auto;
     padding:30px;
@@ -312,13 +311,13 @@ h1{
   
   fieldset{
     padding: 10px;
-  }
+  } */
   /* Form End */
   
   
   /*table start*/
   
-    #table {
+    /* #table {
       font-family: Arial, Helvetica, sans-serif;
       border-collapse: collapse;
       width: 70%;
@@ -363,22 +362,22 @@ h1{
     
     #table tr td a:hover{
       color: red;
-    }
+    } */
     /*table end*/
   
   /* USer Image Start */
 
-  .userimg{
+  /* .userimg{
 
     height: 60px;
-  }
+  } */
 
   /* USer Image End */
   
   
     /* Button Start */
   
-    .delete-button{
+    /* .delete-button{
       background-color: #ac3939;
       color: white;
       height: 25px;
@@ -483,13 +482,13 @@ h1{
       border-radius: 5px;
       cursor: pointer;
   }
-  
+   */
   
     /* Button End */
    
     /* Start Guidelines */
 
-    body{
+    /* body{
       color: white;
       background-color:rgb(114, 155, 172);
   }
@@ -577,12 +576,12 @@ h1{
       border-radius: 50%;
       transition: 0.3s;
       transition-property: background, color;
-  }
+  } */
 
   /* End Guidelines */
 
   /* Dashboard start */
-  .card-section{
+  /* .card-section{
     width:80%;
     margin:0 auto;
     text-align: center;
@@ -661,5 +660,5 @@ h1{
     }
     .dashbord-new .detail-section{
     background-color:#E58938;
-    }
+    } */
     /* Dashboard End */

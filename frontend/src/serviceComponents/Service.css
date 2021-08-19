@@ -8,7 +8,7 @@
   box-sizing: border-box;
 } */
 
-body{
+/* body{
   padding: 0px 0;
   font-family: "Roboto", sans-serif;
   background: rgb(151, 199, 214);
@@ -64,13 +64,13 @@ body{
   cursor: pointer;
   transition: 0.3s;
   transition-property: color;
-}
+} */
 
 /* .wrapper .header .header-menu .sidebar-btn:hover{
   color: #4CCEE8;
 } */
 
-.wrapper .header .header-menu ul{
+/* .wrapper .header .header-menu ul{
   display: flex;
 }
 
@@ -192,7 +192,6 @@ body{
   margin-top: 70px;
   margin-left: 250px;
   padding: 15px;
-  /* background: url(background.jpg)no-repeat; */
   background-size: cover;
   height: 100vh;
   transition: 0.3s;
@@ -242,7 +241,7 @@ h1{
     width: 80%;
     margin: auto;
     text-align: justify;
-  }
+  } */
 /* Menu End */
 
 
@@ -252,7 +251,7 @@ h1{
 
 /* Form Start */
 
-.form {
+/* .form {
   width:450px;
   margin:  auto;
   padding:30px;
@@ -318,13 +317,13 @@ legend{
 
 fieldset{
   padding: 10px;
-}
+} */
 /* Form End */
 
 
 /*table start*/
 
-  #table {
+  /* #table {
     font-family: Arial, Helvetica, sans-serif;
     border-collapse: collapse;
     width: 70%;
@@ -369,7 +368,7 @@ fieldset{
   
   #table tr td a:hover{
     color: red;
-  }
+  } */
   /*table end*/
 
 
@@ -377,7 +376,7 @@ fieldset{
 
   /* Button Start */
 
-  .delete-button{
+  /* .delete-button{
     background-color: #ac3939;
     color: white;
     height: 25px;
@@ -454,7 +453,7 @@ fieldset{
     height: 25px;
     width: 60px;
     border-radius: 25px;
-  }
+  } */
 
 
   /* Button End */
@@ -463,10 +462,10 @@ fieldset{
 
   /* USer Image Start */
 
-  .userimg{
+  /* .userimg{
 
     height: 60px;
-  }
+  } */
 
   /* USer Image End */
 
@@ -474,7 +473,7 @@ fieldset{
 
   /* Registration Form Start */
 
-  #registration-form {
+  /* #registration-form {
     font-family:'Open Sans Condensed', sans-serif;
     width: 500px;
     min-width:250px;
@@ -631,5 +630,5 @@ fieldset{
   transition: 0.3s;
   transition-property: color;
 }
-  
+   */
   /* Registration Form End */

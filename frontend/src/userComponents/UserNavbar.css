@@ -9,7 +9,7 @@
   font-family: 'Montserrat', sans-serif;
 } */
 
-.wrapper{
+/* .wrapper{
   margin: 20px;
 }
 
@@ -47,7 +47,6 @@
 }
 
 .wrapper .navbar .main_ul li:hover  a{
-  /* background: #154f7d; */
   color: rgb(0, 153, 255);
   transition: all 0.3s linear;
 }
@@ -94,4 +93,4 @@
 
 .wrapper .navbar .main_ul  > li:hover .dropdown{
   display: block;
-}
+} */
