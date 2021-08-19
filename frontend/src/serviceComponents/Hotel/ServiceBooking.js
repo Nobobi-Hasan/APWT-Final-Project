@@ -1,5 +1,18 @@
+import { useHistory } from 'react-router-dom';
 
-const ServiceBooking = ({id, user_id, room_id, fromdate, todate,detail, serviceBookingDeletecallback})=>{
+const ServiceBooking = ({id, user_id, room_id, fromdate, todate, serviceBookingDetailscallback, serviceBookingDeletecallback})=>{
+    
+    const history = useHistory();
+
+    const routeChange = () =>{ 
+        serviceBookingDetailscallback(id);
+        let path = `/hotelDashboard/details/${id}`; 
+        history.push(path);
+        serviceBookingDetailscallback(id);
+      }
+   
+   
+   
     return(
         <>
 
@@ -10,10 +23,7 @@ const ServiceBooking = ({id, user_id, room_id, fromdate, todate,detail, serviceB
             <td>{fromdate}</td>
             <td>{todate}</td>
             <td> 
-            <button className='delete-button' onClick={()=>detail(id)}>Detail</button>
-
-            {/* <Link to={`/hotelDashboard/information/${id}`} className='edit-button'>Info</Link> | */}
-
+            <button className='detail-button' onClick={routeChange }> Details</button>
             <button className='delete-button' onClick={()=>serviceBookingDeletecallback(id)}>Delete</button>
             </td>
 

@@ -20,7 +20,7 @@ const CarNavbar = ()=>{
             <div className="sidebar">
                 <div className="sidebar-menu">
                     <center className="profile">
-                        <img src="{{asset('upload')}}/{{session('image')}}" height="50px" width="50px" />
+                    <img src={process.env.PUBLIC_URL + "/images/car.jpg"}  />
                     </center>
                     <br>
                     </br>

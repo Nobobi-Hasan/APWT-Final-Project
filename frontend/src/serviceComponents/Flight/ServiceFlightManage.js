@@ -10,9 +10,9 @@ const ServiceFlightManage = ({id, title, model,type,fare,availability, image,ser
             <td>{type}</td>
             <td>{fare}</td>
             <td>{availability}</td>
-            <td><img className="userimg" src={process.env.PUBLIC_URL + "/images/" + image}/></td>
+            {/* <td><img className="userimg" src={process.env.PUBLIC_URL + "/images/" + image}/></td> */}
             <td> 
-            <Link to={`/flightDashboard/flightedit/${id}`} className='edit-button'>Edit</Link>
+            <Link to={`/flightDashboard/flightedit/${id}`}  id="editBtn">Edit</Link>
             <button className='delete-button' onClick={()=>serviceFlightManageDeletecallback(id)}>Delete</button>
             </td>
 

@@ -324,11 +324,11 @@ Route::group(['middleware'=>['employeeCheck']] , function(){
 
 		//Car Edit
 		Route::get('/carDashboard/caredit{id}','CarController@caredit')->name('car.caredit');
-		Route::post('/carDashboard/caredit','CarController@careditconfirm')->name('car.careditconfirm');
+		Route::post('/carDashboard/caredit{id}','CarController@careditconfirm')->name('car.careditconfirm');
 
 		//Car delete
 		Route::get('/carDashboard/cardelete{id}','CarController@cardelete')->name('car.cardelete');
-		Route::post('/carDashboard/cardelete','CarController@cardestroy')->name('car.cardestroy');
+		Route::post('/carDashboard/cardelete{id}','CarController@cardestroy')->name('car.cardestroy');
 
 		//Car Support
 		Route::get('/carDashboard/carsupport','CarController@carsupport')->name('car.carsupport');
@@ -339,9 +339,9 @@ Route::group(['middleware'=>['employeeCheck']] , function(){
 		Route::get('/carDashboard/approve{id}','CarController@bookingapprove')->name('car.bookingapprove');
 		Route::post('/carDashboard/approve{id}','CarController@bookingadd')->name('car.bookingadd');
 		Route::get('/carDashboard/decline{id}','CarController@bookingdecline')->name('car.bookingdecline');
-		Route::post('/carDashboard/decline','CarController@bookingremove')->name('car.bookingremove');
+		Route::post('/carDashboard/decline{id}','CarController@bookingremove')->name('car.bookingremove');
 		Route::get('/carDashboard/delete{id}','CarController@bookingdelete')->name('car.bookingdelete');
-		Route::post('/carDashboard/delete','CarController@bookingdestroy')->name('car.bookingdestroy');
+		Route::post('/carDashboard/delete{id}','CarController@bookingdestroy')->name('car.bookingdestroy');
 		Route::get('/carDashboard/car-booking-list','CarController@showcarallbooking')->name('car.showcarallbooking');
 		Route::get('/carDashboard/information{id}','carController@showusercarinfo')->name('car.showusercarinfo');
 
@@ -356,7 +356,7 @@ Route::group(['middleware'=>['employeeCheck']] , function(){
 		//Flight Route
 	Route::group(['middleware'=>['flightCheck']] , function(){
 
-		Route::get('/flightDashboard/index','FlightController@index')->name('flight.index');
+		Route::get('/flightDashboard','FlightController@index')->name('flight.index');
 		Route::get('/flightDashboard/profile', 'FlightController@profile')->name('flight.profile');
 		Route::post('/flightDashboard/profile', 'FlightController@profileUD')->name('flight.profileUD');
 		Route::get('/flightDashboard/addflight','FlightController@addflight')->name('flight.addflight');
@@ -372,7 +372,7 @@ Route::group(['middleware'=>['employeeCheck']] , function(){
 
 		//flight delete
 		Route::get('/flightDashboard/flightdelete{id}','FlightController@flightdelete')->name('flight.flightdelete');
-		Route::post('/flightDashboard/flightdelete','FlightController@flightdestroy')->name('flight.flightdestroy');
+		Route::post('/flightDashboard/flightdelete{id}','FlightController@flightdestroy')->name('flight.flightdestroy');
 
 		//flight type
 		Route::get('/flightDashboard/flighttype','FlightController@flighttype')->name('flight.flighttype');
@@ -390,11 +390,11 @@ Route::group(['middleware'=>['employeeCheck']] , function(){
 		//Flight booking part
 		Route::get('/flightDashboard/flight-pending-list','FlightController@ADflightBookList')->name('flight.ADflightBookList');
 		Route::get('/flightDashboard/approve{id}','FlightController@bookingapprove')->name('flight.bookingapprove');
-		Route::post('/flightDashboard/approve','FlightController@bookingadd')->name('flight.bookingadd');
+		Route::post('/flightDashboard/approve{id}','FlightController@bookingadd')->name('flight.bookingadd');
 		Route::get('/flightDashboard/decline{id}','FlightController@bookingdecline')->name('flight.bookingdecline');
-		Route::post('/flightDashboard/decline','FlightController@bookingremove')->name('flight.bookingremove');
+		Route::post('/flightDashboard/decline{id}','FlightController@bookingremove')->name('flight.bookingremove');
 		Route::get('/flightDashboard/delete{id}','FlightController@bookingdelete')->name('flight.bookingdelete');
-		Route::post('/flightDashboard/delete','FlightController@bookingdestroy')->name('flight.bookingdestroy');
+		Route::post('/flightDashboard/delete{id}','FlightController@bookingdestroy')->name('flight.bookingdestroy');
 		Route::get('/flightDashboard/flight-booking-list','FlightController@showflightallbooking')->name('flight.showflightallbooking');
 		Route::get('/flightDashboard/information{id}','FlightController@showuserflightinfo')->name('flight.showuserflightinfo');
 
@@ -409,7 +409,7 @@ Route::group(['middleware'=>['employeeCheck']] , function(){
 		//HOTEL Route
 	Route::group(['middleware'=>['hotelCheck']] , function(){
 
-		Route::get('/hotelDashboard/index','HotelController@index')->name('hotel.index');
+		Route::get('/hotelDashboard','HotelController@index')->name('hotel.index');
 		Route::get('/hotelDashboard/profile', 'HotelController@profile')->name('hotel.profile');
 		Route::post('/hotelDashboard/profile', 'HotelController@profileUD')->name('hotel.profileUD');
 		Route::get('/hotelDashboard/checkhotelreview','HotelController@checkhotelreview')->name('hotel.checkhotelreview');
@@ -422,7 +422,7 @@ Route::group(['middleware'=>['employeeCheck']] , function(){
 
 		//Hotel facility edit 
 		Route::get('/hotelDashboard/facilityedit{id}','HotelController@facilityedit')->name('hotel.facilityedit');
-		Route::post('/hotelDashboard/facilityedit','HotelController@facilityeditconfirm')->name('hotel.facilityeditconfirm');
+		Route::post('/hotelDashboard/facilityedit{id}','HotelController@facilityeditconfirm')->name('hotel.facilityeditconfirm');
 
 		//Hotel facility delete 
 		Route::get('/hotelDashboard/facilitydelete{id}','HotelController@facilitydelete')->name('hotel.facilitydelete');
@@ -431,11 +431,11 @@ Route::group(['middleware'=>['employeeCheck']] , function(){
 
 		//Hotel room edit 
 		Route::get('/hotelDashboard/roomedit{id}','HotelController@roomedit')->name('hotel.roomedit');
-		Route::post('/hotelDashboard/roomedit','HotelController@roomeditconfirm')->name('hotel.roomeditconfirm');
+		Route::post('/hotelDashboard/roomedit{id}','HotelController@roomeditconfirm')->name('hotel.roomeditconfirm');
 
 		//Hotel room delete
 		Route::get('/hotelDashboard/roomdelete{id}','HotelController@roomdelete')->name('hotel.roomdelete');
-		Route::post('/hotelDashboard/roomdelete','HotelController@roomdestroy')->name('hotel.roomdestroy');
+		Route::post('/hotelDashboard/roomdelete{id}','HotelController@roomdestroy')->name('hotel.roomdestroy');
 
 		//Hotel room add
 		Route::get('/hotelDashboard/addhotelroom','HotelController@addhotelroom')->name('hotel.addhotelroom');
@@ -448,13 +448,13 @@ Route::group(['middleware'=>['employeeCheck']] , function(){
 		//Hotel booking part
 		Route::get('/hotelDashboard/room-book-pending','HotelController@ADroomBookList')->name('hotel.ADroomBookList');
 		Route::get('/hotelDashboard/bookingapprove{id}','HotelController@bookingapprove')->name('hotel.bookingapprove');
-		Route::post('/hotelDashboard/bookingapprove','HotelController@bookingadd')->name('hotel.bookingadd');
+		Route::post('/hotelDashboard/bookingapprove{id}','HotelController@bookingadd')->name('hotel.bookingadd');
 		Route::get('/hotelDashboard/bookingdecline{id}','HotelController@bookingdecline')->name('hotel.bookingdecline');
-		Route::post('/hotelDashboard/bookingdecline','HotelController@bookingremove')->name('hotel.bookingremove');
+		Route::post('/hotelDashboard/bookingdecline{id}','HotelController@bookingremove')->name('hotel.bookingremove');
 		Route::get('/hotelDashboard/bookingdelete{id}','HotelController@bookingdelete')->name('hotel.bookingdelete');
-		Route::post('/hotelDashboard/bookingdelete','HotelController@bookingdestroy')->name('hotel.bookingdestroy');
+		Route::post('/hotelDashboard/bookingdelete{id}','HotelController@bookingdestroy')->name('hotel.bookingdestroy');
 		Route::get('/hotelDashboard/showhotelallboking','HotelController@showhotelallboking')->name('hotel.showhotelallboking');
-		Route::get('/hotelDashboard/information','HotelController@showcustomerroominfo')->name('hotel.showcustomerroominfo');
+		Route::get('/hotelDashboard/information{id}','HotelController@showcustomerroominfo')->name('hotel.showcustomerroominfo');
 
 		//Hotel Manage
 		Route::get('/hotelDashboard/managehotelfacility','HotelController@managehotelfacility')->name('hotel.managehotelfacility');

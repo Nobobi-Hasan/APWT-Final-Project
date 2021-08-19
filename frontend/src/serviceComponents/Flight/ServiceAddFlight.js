@@ -1,13 +1,14 @@
 import { useState } from "react";
 import { useHistory } from 'react-router-dom';
 
-const ServiceAddFlight = ({ status, callback }) => {
+const ServiceAddFlight = ({ callback }) => {
     
     const [title, setTitle] = useState("");
     const [model, setModel] = useState("");
     const [fare, setFare] = useState("");
     const [type, setType] = useState("");
-    const [image, setImage] = useState("");
+    const [availability, setAvailability] = useState("Available");
+    // const [image, setImage] = useState("");
 
 
     const history = useHistory();
@@ -15,7 +16,7 @@ const ServiceAddFlight = ({ status, callback }) => {
     const onSubmit = (e) => {
         e.preventDefault();
        
-        callback({ title: title, model: model, fare:fare, type:type, image: image});
+        callback({ title: title, model: model, fare:fare, type:type,availability:availability });
         history.push('/flightDashboard/addflight');
     };
     return (
@@ -48,6 +49,8 @@ const ServiceAddFlight = ({ status, callback }) => {
                 <label>
                     Type of a Airplane:
                     <select value={type} onChange={(e) => setType(e.target.value)}>
+                        
+                        <option value=""></option>
                         <option value="airbus">Airbus</option>
                         <option value="jett">Jett</option>
                     </select>
@@ -55,12 +58,12 @@ const ServiceAddFlight = ({ status, callback }) => {
                 <br />
                 <br />
 
-                <label>
+                {/* <label>
                    Airplane Image:
                     <input type="file" name="image" value={image} onChange={(e) => setImage(e.target.value)}
                     />
                 </label>
-                <br />
+                <br /> */}
                 <input id='submit' type="submit" value="Add" />
             </form>
         </div>

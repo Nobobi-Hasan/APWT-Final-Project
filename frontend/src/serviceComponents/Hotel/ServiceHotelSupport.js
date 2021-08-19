@@ -49,7 +49,7 @@ const ServiceHotelSupport = ({ status, callback }) => {
                    <textarea value={message} onChange={(e) => setMessage(e.target.value)} rows="5" cols="80"/>
                 </label>
                 <br />
-                <input id='submit' type="submit" value="Add" />
+                <input id='submit' type="submit" value="Submit" />
                 </form>
             </div>
         </div>

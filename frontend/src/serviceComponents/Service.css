@@ -112,8 +112,8 @@ body{
 
 .wrapper .sidebar .sidebar-menu .profile img{
   margin: 20px 0;
-  width: 100px;
-  height: 100px;
+  width: 120px;
+  height: 120px;
   border-radius: 50%;
 }
 
@@ -387,6 +387,21 @@ fieldset{
 
   .delete-button:hover{
     background-color:white;
+    color: #3974ac;
+    height: 25px;
+    width: 60px;
+    border-radius: 25px;
+  }
+  .detail-button{
+    background-color: #0b586b;
+    color: white;
+    height: 25px;
+    width: 60px;
+    border-radius: 25px;
+  }
+
+  .detail-button:hover{
+    background-color:white;
     color: #ac3939;
     height: 25px;
     width: 60px;
@@ -569,5 +584,52 @@ fieldset{
     position:relative;
           
   }
+  #updateBtn{
+    display: inline; 
+    padding: 10px 35px;
+    width: 49% ;
+    background-color: #eb7d4b;
+    color: #FFF;
+    text-transform: uppercase; 
+    font-weight: 900;
+    border-bottom: 0px solid #c86a40;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#deleteBtn{
+    display: inline; 
+    padding: 10px 35px;
+    float: right;
+    width: 49% ;
+    background-color: #BB2A2A;
+    color: #FFF;
+    text-transform: uppercase; 
+    font-weight: 900;
+    border-bottom: 0px solid #c86a40;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+  #editBtn{
+    padding: 4px 15px;
+    background-color: #2aa0e4;
+    color: white;
+    border-radius: 15px;
+
+}
+
+.PDFDownload{
+  background: none;
+  border: none;
+  color: #2e4154;
+  float: right;
+  margin-right: 240px;
+  font-size: 22px;
+  font-weight: 900;
+  cursor: pointer;
+  transition: 0.3s;
+  transition-property: color;
+}
   
   /* Registration Form End */

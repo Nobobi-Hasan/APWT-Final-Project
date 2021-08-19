@@ -11,7 +11,7 @@ const ServiceRoomList = ({list, callback})=>{
                 <th>S.No</th>
                 <th>Room Name</th>
                 <th>Description</th>
-                <th>Image</th>
+                {/* <th>Image</th> */}
                 <th>Room Price </th>
                 <th>Room Availability</th>
                 <th>Creation Date</th>

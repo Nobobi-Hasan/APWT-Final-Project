@@ -11,7 +11,7 @@ const HotelRegistration = ({ callback }) => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [rpassword, setRpassword] = useState("");
-    const [image, setImage] = useState("");
+    
 
 
     const history = useHistory();
@@ -19,7 +19,7 @@ const HotelRegistration = ({ callback }) => {
     const onSubmit = (e) => {
         e.preventDefault();
        
-        callback({ name: name, location: location, address:address, phone:phone, email:email, password:password, rpassword:rpassword, image: image});
+        callback({ name: name, location: location, address:address, phone:phone, email:email, password:password, rpassword:rpassword});
         history.push('/register');
     };
 
@@ -81,13 +81,6 @@ const HotelRegistration = ({ callback }) => {
                                             <label for="rpassword">
                                                 Re-type Password :
                                                 <input type="password" name="rpassword" value={rpassword} onChange={(e) => setRpassword(e.target.value)} />
-                                            </label>
-                                        </div>
-
-                                        <div>
-                                            <label for="image">
-                                                 Hotel Image
-                                                <input type="file" name="image" value={image} onChange={(e) => setImage(e.target.value)} />
                                             </label>
                                         </div>
 

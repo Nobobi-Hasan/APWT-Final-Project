@@ -10,7 +10,7 @@ const ServiceAddCar = ({ callback }) => {
     const [driver, setDriver] = useState("");
     const [fare, setFare] = useState("");
     const [type, setType] = useState("");
-    const [image, setImage] = useState("");
+    // const [image, setImage] = useState("");
 
 
     const history = useHistory();
@@ -18,7 +18,7 @@ const ServiceAddCar = ({ callback }) => {
     const onSubmit = (e) => {
         e.preventDefault();
        
-        callback({ title: title, model: model, driver:driver, fare:fare, type:type, image: image});
+        callback({ title: title, model: model, driver:driver, fare:fare, type:type});
         history.push('/carDashboard/addcar');
     };
     return (
@@ -66,12 +66,12 @@ const ServiceAddCar = ({ callback }) => {
                             <br />
                             <br />
 
-                            <label>
+                            {/* <label>
                             Car Image:
                                 <input type="file" name="image" value={image} onChange={(e) => setImage(e.target.value)}
                                 />
                             </label>
-                            <br />
+                            <br /> */}
                             <input id='submit' type="submit" value="Add" />
             </form>
         </div>

@@ -19,23 +19,23 @@ class RegistrationController extends Controller
         return view('registration.hotelreg');
     }
     
-    public function hotelregVerify(HotelRegRequest $req){
+    public function hotelregVerify(Request $req){
 
-        if($req->hasFile('image')){
+        // if($req->hasFile('image')){
 
-            $file = $req->file('image');
-            echo "File Name: ".$file->getClientOriginalName()."<br>";
-            echo "File Extension: ".$file->getClientOriginalExtension()."<br>";
-            echo "File Mime Type: ".$file->getMimeType()."<br>";
-            echo "File Size: ".$file->getSize()."<br>";
+        //     $file = $req->file('image');
+        //     echo "File Name: ".$file->getClientOriginalName()."<br>";
+        //     echo "File Extension: ".$file->getClientOriginalExtension()."<br>";
+        //     echo "File Mime Type: ".$file->getMimeType()."<br>";
+        //     echo "File Size: ".$file->getSize()."<br>";
 
-            if($file->move('upload','hotelreg'.$req->name.'.'.$file->getClientOriginalExtension())){
-                echo "success";
-            }else{
-                echo "error";
-            }
-        }
-            $img='hotelreg'.$req->name.'.'.$file->getClientOriginalExtension();
+        //     if($file->move('upload','hotelreg'.$req->name.'.'.$file->getClientOriginalExtension())){
+        //         echo "success";
+        //     }else{
+        //         echo "error";
+        //     }
+        // }
+        //     $img='hotelreg'.$req->name.'.'.$file->getClientOriginalExtension();
 
             $hotel = new Hotel;
             $hotel -> name = $req->name;
@@ -44,17 +44,17 @@ class RegistrationController extends Controller
             $hotel -> phone = $req->phone;
             $hotel -> email = $req->email;
             $hotel -> password = $req->password;
-            $hotel -> image = $img;
+            $hotel -> image = 'img';
             $hotel -> req = 'Pending';
             $hotel->save();
-            return redirect()->route('registration.hotelreg');
+            // return redirect()->route('registration.hotelreg');
     }
 
     public function transportreg(){
         return view('registration.transportreg');
     }
 
-    public function transportregVerify(TransportRegRequest $req){
+    public function transportregVerify(Request $req){
         
             $transport = new Transport;
             $transport -> name = $req->name;
@@ -64,41 +64,26 @@ class RegistrationController extends Controller
             $transport -> password = $req->password;
             $transport -> req = 'Pending';
             $transport->save();
-            return redirect()->route('registration.transportreg');
+            // return redirect()->route('registration.transportreg');
     }
 
-    public function userreg(){
-        return view('registration.userreg');
-    }
+    // public function userreg(){
+    //     return view('registration.userreg');
+    // }
 
-    public function userregVerify(Request $req){
+    // public function userregVerify(Request $req){
         
-        $user = new User;
-        $user -> firstname = $req->firstname;
-        $user -> lastname = $req->lastname;
-        $user -> gender = $req->gender;
-        $user -> email = $req->email;
-        $user -> phone = $req->phone;
-        $user -> username = $req->username;
-        $user -> password = $req->password;
-        $user -> status= 'Pending';
-        $user->save();
-            return redirect()->route('registration.userreg');
-    }
-
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
+    //     $user = new User;
+    //     $user -> firstname = $req->firstname;
+    //     $user -> lastname = $req->lastname;
+    //     $user -> gender = $req->gender;
+    //     $user -> email = $req->email;
+    //     $user -> phone = $req->phone;
+    //     $user -> username = $req->username;
+    //     $user -> password = $req->password;
+    //     $user -> status= 'Pending';
+    //     $user->save();
+    //         return redirect()->route('registration.userreg');
+    // }
 
 }

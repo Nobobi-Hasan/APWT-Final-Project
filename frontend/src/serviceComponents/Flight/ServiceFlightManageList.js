@@ -14,7 +14,7 @@ const ServiceFlightManageList = ({list, callback})=>{
                 <th>Type of Airplane</th>
                 <th>Fare</th>
                 <th>Availability</th>
-                <th>Image</th>
+                {/* <th>Image</th> */}
                 <th>Action</th>
 
                 {

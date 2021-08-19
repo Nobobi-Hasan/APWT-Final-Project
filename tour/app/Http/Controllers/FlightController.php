@@ -52,24 +52,24 @@ class FlightController extends Controller
         return view('flightDashboard.addflight');
     }
 
-    public function addflightVerify(AddFlightRequest $req){
+    public function addflightVerify(Request $req){
 
-        if($req->hasFile('image')){
+        // if($req->hasFile('image')){
 
-            $file = $req->file('image');
-            echo "File Name: ".$file->getClientOriginalName()."<br>";
-            echo "File Extension: ".$file->getClientOriginalExtension()."<br>";
-            echo "File Mime Type: ".$file->getMimeType()."<br>";
-            echo "File Size: ".$file->getSize()."<br>";
+        //     $file = $req->file('image');
+        //     echo "File Name: ".$file->getClientOriginalName()."<br>";
+        //     echo "File Extension: ".$file->getClientOriginalExtension()."<br>";
+        //     echo "File Mime Type: ".$file->getMimeType()."<br>";
+        //     echo "File Size: ".$file->getSize()."<br>";
 
-            if($file->move('upload','flight'.$req->title.'.'.$file->getClientOriginalExtension())){
-                echo "success";
-            }else{
-                echo "error";
-            }
-        }
+        //     if($file->move('upload','flight'.$req->title.'.'.$file->getClientOriginalExtension())){
+        //         echo "success";
+        //     }else{
+        //         echo "error";
+        //     }
+        // }
 
-            $img='flight'.$req->title.'.'.$file->getClientOriginalExtension();
+        //     $img='flight'.$req->title.'.'.$file->getClientOriginalExtension();
 
             $air = new Air;
             $air -> title = $req->title;
@@ -77,9 +77,9 @@ class FlightController extends Controller
             $air -> type = $req->type;
             $air -> fare = $req->fare;
             $air -> availability = 'Available';
-            $air -> image = $img;
+            $air -> image = 'img.jpg';
             $air->save();
-            return redirect()->route('flight.addflight');
+            // return redirect()->route('flight.addflight');
 
     }
 
@@ -256,7 +256,7 @@ class FlightController extends Controller
         return view('flightDashboard.profile')->with('profile', $profile);
     }
 
-    public function profileUD(FlightProfileRequest $req){
+    public function profileUD(Request $req){
 
         switch ($req->input('submit')) {
             case 'Update':
@@ -267,15 +267,15 @@ class FlightController extends Controller
                 $transport -> email = $req->email;
                 $transport -> password = $req->password;
                 $transport -> save();
-                $req->session()->flash('transportUDMsg', 'Account Updated');
-                return redirect()->route('flight.profile');
+                // $req->session()->flash('transportUDMsg', 'Account Updated');
+                // return redirect()->route('flight.profile');
                 break;
 
             case 'Delete':
 
                 $transport = Transport::where('name', $req->name)->first();
                 $transport->delete();
-                return redirect()->route('login.index');
+                // return redirect()->route('login.index');
                 break;
 
         }

@@ -51,7 +51,7 @@ const ServiceCarSupport = ({  callback }) => {
                 </label>
             
                 <br/>
-                <input id='submit' type="submit" value="Add" />
+                <input id='submit' type="submit" value="Submit" />
             </form>
         </div>
     </div>

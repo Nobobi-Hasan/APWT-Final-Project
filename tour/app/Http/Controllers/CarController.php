@@ -57,23 +57,23 @@ class CarController extends Controller
         return view('carDashboard.addcar');
     }
 
-    public function addcarVerify(AddCarRequest $req){
+    public function addcarVerify(Request $req){
 
-        if($req->hasFile('image')){
+        // if($req->hasFile('image')){
 
-            $file = $req->file('image');
-            echo "File Name: ".$file->getClientOriginalName()."<br>";
-            echo "File Extension: ".$file->getClientOriginalExtension()."<br>";
-            echo "File Mime Type: ".$file->getMimeType()."<br>";
-            echo "File Size: ".$file->getSize()."<br>";
+        //     $file = $req->file('image');
+        //     echo "File Name: ".$file->getClientOriginalName()."<br>";
+        //     echo "File Extension: ".$file->getClientOriginalExtension()."<br>";
+        //     echo "File Mime Type: ".$file->getMimeType()."<br>";
+        //     echo "File Size: ".$file->getSize()."<br>";
 
-            if($file->move('upload','car'.$req->title.'.'.$file->getClientOriginalExtension())){
-                echo "success";
-            }else{
-                echo "error";
-            }
-        }
-            $img='car'.$req->title.'.'.$file->getClientOriginalExtension();
+        //     if($file->move('upload','car'.$req->title.'.'.$file->getClientOriginalExtension())){
+        //         echo "success";
+        //     }else{
+        //         echo "error";
+        //     }
+        // }
+        //     $img='car'.$req->title.'.'.$file->getClientOriginalExtension();
 
             $car = new Car;
             $car -> title = $req->title;
@@ -82,9 +82,9 @@ class CarController extends Controller
             $car -> type = $req->type;
             $car -> fare = $req->fare;
             $car -> availability = 'Available';
-            $car -> image = $img;
+            $car -> image = 'img.jpg';
             $car->save();
-            return redirect()->route('car.addcar');
+            // return redirect()->route('car.addcar');
 
     }
 
@@ -279,7 +279,7 @@ class CarController extends Controller
         return view('carDashboard.profile')->with('profile', $profile);
     }
 
-    public function profileUD(CarProfileRequest $req){
+    public function profileUD(Request $req){
 
         switch ($req->input('submit')) {
             case 'Update':
@@ -290,15 +290,15 @@ class CarController extends Controller
                 $transport -> email = $req->email;
                 $transport -> password = $req->password;
                 $transport -> save();
-                $req->session()->flash('transportUDMsg', 'Account Updated');
-                return redirect()->route('car.profile');
+                // $req->session()->flash('transportUDMsg', 'Account Updated');
+                // return redirect()->route('car.profile');
                 break;
 
             case 'Delete':
 
                 $transport = Transport::where('name', $req->name)->first();
                 $transport->delete();
-                return redirect()->route('login.index');
+                // return redirect()->route('login.index');
                 break;
 
         }

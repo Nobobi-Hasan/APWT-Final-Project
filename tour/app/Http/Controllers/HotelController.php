@@ -58,9 +58,9 @@ class HotelController extends Controller
 
     public function addhotelfacilityVerify(Request $req){
 
-        if($req->hasFile('image')){
+        // if($req->hasFile('image')){
 
-            $file = $req->file('image');
+        //     $file = $req->file('image');
             // echo "File Name: ".$file->getClientOriginalName()."<br>";
             // echo "File Extension: ".$file->getClientOriginalExtension()."<br>";
             // echo "File Mime Type: ".$file->getMimeType()."<br>";
@@ -71,14 +71,14 @@ class HotelController extends Controller
             // }else{
             //     echo "error";
             // }
-        }
-           $img='hotel'.$req->title.'.'.$file->getClientOriginalExtension();
+        // }
+        //    $img='hotel'.$req->title.'.'.$file->getClientOriginalExtension();
            
 
             $facility = new Facility;
             $facility -> title = $req->title;
-            $facility -> description = '';
-            $facility -> image =$req->image;
+            $facility -> description = $req->description;
+            $facility -> image ='img';
             $facility->save();
             
             // return redirect()->route('hotel.addhotelfacility');
@@ -130,9 +130,9 @@ class HotelController extends Controller
 
     public function addhotelroomVerify(Request $req){
 
-        if($req->hasFile('image')){
+        // if($req->hasFile('image')){
 
-            $f = $req->file('image');
+        //     $f = $req->file('image');
             // echo "File Name: ".$file->getClientOriginalName()."<br>";
             // echo "File Extension: ".$file->getClientOriginalExtension()."<br>";
             // echo "File Mime Type: ".$file->getMimeType()."<br>";
@@ -143,17 +143,17 @@ class HotelController extends Controller
             // }else{
             //     echo "error";
             // }
-        }
+        // }
 
              //$img='hotel'.$req->name.'.'.$f->getClientOriginalExtension();
 
             $room = new Room;
-            $room ->hotel_id = 7;               //session()->get('id');
+            $room ->hotel_id = 7;              
             $room -> name = $req->name;
             $room -> price = $req->price;
             $room -> description = $req->description;
             $room -> availability = 'Available';
-            $room -> image = $req->image;
+            $room -> image = 'img';
             $room->save();
             // return redirect()->route('hotel.addhotelroom');
     }
@@ -342,7 +342,7 @@ class HotelController extends Controller
         return view('hotelDashboard.profile')->with('profile', $profile);
     }
 
-    public function profileUD(HotelProfileRequest $req){
+    public function profileUD(Request $req){
 
         switch ($req->input('submit')) {
             case 'Update':
@@ -355,15 +355,15 @@ class HotelController extends Controller
                 $hotel -> email = $req->email;
                 $hotel -> password = $req->password;
                 $hotel -> save();
-                $req->session()->flash('hotelUDMsg', 'Account Updated');
-                return redirect()->route('hotel.profile');
+                // $req->session()->flash('hotelUDMsg', 'Account Updated');
+                // return redirect()->route('hotel.profile');
                 break;
 
             case 'Delete':
 
-                $transport = Transport::where('name', $req->name)->first();
-                $transport->delete();
-                return redirect()->route('login.index');
+                $hotel = Hotel::where('name', $req->name)->first();
+                $hotel->delete();
+                // return redirect()->route('login.index');
                 break;
 
         }

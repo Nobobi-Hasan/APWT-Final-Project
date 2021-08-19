@@ -11,7 +11,7 @@ const ServiceFacilityList = ({list, callback})=>{
                 <th>S.No</th>
                 <th>Facility Title</th>
                 <th>Description</th>
-                <th>Image</th>
+                {/* <th>Image</th> */}
                 <th>Creation Date</th>
                 <th>Action</th>
 

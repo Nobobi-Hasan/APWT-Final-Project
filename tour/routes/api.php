@@ -17,19 +17,23 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-//Registration
-//Hotel
+
+//------------------------- Registration ------------------------------------------- Start
+//                                        *****  Hotel ******
 Route::post('/hotelreg','RegistrationController@hotelregVerify')->name('registration.hotelregVerify');
 
-//Car-Flight
+//                                        *****  Car - Flight ******
 Route::post('/transportreg','RegistrationController@transportregVerify')->name('registration.transportregVerify');
+//------------------------- Registration ------------------------------------------- END
 
 
 
-
-//HOTEL Service
+//--------------------------------------------------HOTEL Service----------------------------- Start
 //HOTEL Dashboard
 Route::get('/hotelDashboard/index','HotelController@index')->name('hotel.index');
+
+//Hotel Profile
+Route::post('/hotelDashboard/profile', 'HotelController@profileUD')->name('hotel.profileUD');
 
 //Hotel Facility Add/Show/delete
 Route::post('/hotelDashboard/addhotelfacility','HotelController@addhotelfacilityVerify')->name('hotel.addhotelfacilityVerify');
@@ -68,14 +72,18 @@ Route::post('/hotelDashboard/information','HotelController@showcustomerroominfo'
 //Hotel Support
 Route::post('/hotelDashboard/hotelsupport','HotelController@hotelsupportconfirm')->name('hotel.hotelsupportconfirm');
 
+//--------------------------------------------------HOTEL Service----------------------------- ENd
 
 
 
+//--------------------------------------------------Car Service----------------------------- Start
 
-//CAR Service
 
 //Car Dashboard
 Route::get('/carDashboard/index','CarController@index')->name('car.index');
+
+//Car Profile
+Route::post('/carDashboard/profile', 'CarController@profileUD')->name('car.profileUD');
 
 //Car Add-Manage-Delete
 Route::post('/carDashboard/addcar','CarController@addcarVerify')->name('car.addcarVerify');
@@ -111,14 +119,18 @@ Route::get('/carDashboard/checkcarreview','CarController@checkcarreview')->name(
 //Car Transaction
 Route::get('/carDashboard/cartransactionhistory','CarController@cartransactionhistory')->name('car.cartransactionhistory');
 
+//--------------------------------------------------Car Service----------------------------- ENd
 
 
 
+//--------------------------------------------------Flight Service----------------------------- Start
 
-//Flight Service
 
 //Flight Dashboard
 Route::get('/flightDashboard/index','FlightController@index')->name('flight.index');
+
+//Flight Profile
+Route::post('/flightDashboard/profile', 'FlightController@profileUD')->name('flight.profileUD');
 
 //Flight Add-Manage-Delete
 Route::post('/flightDashboard/addflight','FlightController@addflightVerify')->name('flight.addflightVerify');
@@ -153,3 +165,5 @@ Route::get('/flightDashboard/flighttransactionhistory','FlightController@flightt
 
 //Flight Support
 Route::post('/flightDashboard/flightsupport','FlightController@flightsupportconfirm')->name('flight.flightsupportconfirm');
+
+//--------------------------------------------------Flight Service----------------------------- End

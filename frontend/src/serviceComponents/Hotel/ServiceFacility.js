@@ -1,5 +1,5 @@
 import {Link} from 'react-router-dom';
-const ServiceFacility = ({id, title, description, image, created, serviceFacilityDeletecallback})=>{
+const ServiceFacility = ({id, title, description, created, serviceFacilityDeletecallback})=>{
     return(
         <>
 
@@ -8,11 +8,11 @@ const ServiceFacility = ({id, title, description, image, created, serviceFacilit
             <td>{title}</td>
             <td>{description}</td>
             {/* <td>{image}</td> */}
-            <td><img className="userimg" src={process.env.PUBLIC_URL + "/images/" + image}/></td>
+            {/* <td><img className="userimg" src={process.env.PUBLIC_URL + "/images/" + image}/></td> */}
             <td>{created}</td>
             
             <td> 
-            <Link to={`/hotelDashboard/facilityedit/${id}`} className='edit-button'>Edit</Link>
+            <Link to={`/hotelDashboard/facilityedit/${id}`}  id="editBtn">Edit</Link>
             <button className='delete-button' onClick={()=>serviceFacilityDeletecallback(id)}>Delete</button>
             </td>
 

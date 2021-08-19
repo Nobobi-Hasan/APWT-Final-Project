@@ -15,7 +15,7 @@ const ServiceCarManageList = ({list, callback})=>{
                 <th>Per Day Fare</th>
                 <th>Type of Car</th>
                 <th>Availability</th>
-                <th>Image</th>
+                {/* <th>Image</th> */}
                 <th>Action</th>
 
                 {

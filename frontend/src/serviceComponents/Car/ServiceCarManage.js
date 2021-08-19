@@ -1,5 +1,5 @@
 import {Link} from 'react-router-dom';
-const ServiceCarManage = ({id, title, model,driver,type,fare,availability, image,serviceCarManageDeletecallback})=>{
+const ServiceCarManage = ({id, title, model, driver, type, fare, availability, serviceCarManageDeletecallback})=>{
     return(
         <>
 
@@ -11,9 +11,9 @@ const ServiceCarManage = ({id, title, model,driver,type,fare,availability, image
             <td>{fare}</td>
             <td>{type}</td>
             <td>{availability}</td>
-            <td><img className="userimg" src={process.env.PUBLIC_URL + "/images/" + image}/></td>
+            {/* <td><img className="userimg" src={process.env.PUBLIC_URL + "/images/" + image}/></td> */}
             <td> 
-            <Link to={`/carDashboard/caredit/${id}`} className='edit-button'>Edit</Link>
+            <Link to={`/carDashboard/caredit/${id}`} id="editBtn">Edit </Link> 
             <button className='delete-button' onClick={()=>serviceCarManageDeletecallback(id)}>Delete</button>
             </td>
 

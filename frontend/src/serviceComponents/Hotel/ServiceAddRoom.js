@@ -1,12 +1,12 @@
 import { useState } from "react";
 import { useHistory } from 'react-router-dom';
 
-const ServiceAddRoom = ({ status, callback }) => {
+const ServiceAddRoom = ({ callback }) => {
     
     const [name, setName] = useState("");
     const [price, setPrice] = useState("");
     const [description, setDescription] = useState("");
-    const [image, setImage] = useState("");
+    // const [image, setImage] = useState("");
 
 
     const history = useHistory();
@@ -14,7 +14,7 @@ const ServiceAddRoom = ({ status, callback }) => {
     const onSubmit = (e) => {
         e.preventDefault();
        
-        callback({ name: name, price: price,description:description, image: image});
+        callback({ name: name, price: price,description:description});
         history.push('/hotelDashboard/addhotelroom');
     };
     return (
@@ -44,13 +44,12 @@ const ServiceAddRoom = ({ status, callback }) => {
                 <br />
                 <br />
 
-                <label>
+                {/* <label>
                    Room Image:
                     <input type="file" name="image" value={image} onChange={(e) => setImage(e.target.value)}
                     />
-                </label>
+                </label> */}
                 
-                <br />
                 <input id='submit' type="submit" value="Add" />
             </form>
         </div>
