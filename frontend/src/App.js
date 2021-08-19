@@ -389,32 +389,32 @@ const employeePackageDeletecallback = (id) => {
 
  
 
-// Profile update by employee
-const employeeProfileUpdate =async (newProfile) => { 
+// // Profile update by employee
+// const employeeProfileUpdate =async (newProfile) => { 
 
-  const axios = require('axios').default;
+//   const axios = require('axios').default;
 
-  const status = await axios({
-      method: 'post',
-      url: 'http://127.0.0.1:8000/api/employee/profile',
-      //data: JSON.stringify(newUser)
-      data:newProfile,
-    });
-    if (status)
-    {
-      alert("Profile Updated successfully");
+//   const status = await axios({
+//       method: 'post',
+//       url: 'http://127.0.0.1:8000/api/employee/profile',
+//       //data: JSON.stringify(newUser)
+//       data:newProfile,
+//     });
+//     if (status)
+//     {
+//       alert("Profile Updated successfully");
       
-      setLoginFirstname(newProfile.firstname);
-      setLoginLastname(newProfile.lastname);
-      setLoginGender(newProfile.gender);
-      setLoginEmail(newProfile.email);
-      setLoginUsername(newProfile.username);
+//       setLoginFirstname(newProfile.firstname);
+//       setLoginLastname(newProfile.lastname);
+//       setLoginGender(newProfile.gender);
+//       setLoginEmail(newProfile.email);
+//       setLoginUsername(newProfile.username);
 
-      console.log(newProfile);
-    }
+//       console.log(newProfile);
+//     }
 
 
-};
+// };
 
 //*****************EMP END**************** */
   return (
@@ -690,7 +690,7 @@ const employeeProfileUpdate =async (newProfile) => {
         </Route>
 
 
-        <Route exact path="/employee/profile">
+        {/* <Route exact path="/employee/profile">
                     <div className="wrapper">
 
                         <EmployeeNavbar />
@@ -705,7 +705,7 @@ const employeeProfileUpdate =async (newProfile) => {
                         </div>
 
                     </div>
-                </Route>
+                </Route> */}
 
 
         <Route path="*">
