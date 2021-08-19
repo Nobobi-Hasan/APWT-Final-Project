@@ -901,10 +901,10 @@ function App() {
                                   {
                                     alert("Profile Updated successfully");
 
-                                  setCarLoginName(newProfile.name);
-                                  setCarLoginPhone(newProfile.phone);
-                                  setCarLoginEmail(newProfile.email);
-                                  setCarLoginType(newProfile.type);
+                                  // setCarLoginName(newProfile.name);
+                                  // setCarLoginPhone(newProfile.phone);
+                                  // setCarLoginEmail(newProfile.email);
+                                  // setCarLoginType(newProfile.type);
                                   
                                   console.log(newProfile);
                                 }
@@ -930,10 +930,10 @@ function App() {
                                 {
                                   alert("Profile Updated successfully");
 
-                                setFlightLoginName(newProfile.name);
-                                setFlightLoginPhone(newProfile.phone);
-                                setFlightLoginEmail(newProfile.email);
-                                setFlightLoginType(newProfile.type);
+                                // setFlightLoginName(newProfile.name);
+                                // setFlightLoginPhone(newProfile.phone);
+                                // setFlightLoginEmail(newProfile.email);
+                                // setFlightLoginType(newProfile.type);
                                 
                                 console.log(newProfile);
                               }
@@ -959,12 +959,12 @@ function App() {
                               {
                                 alert("Profile Updated successfully");
 
-                              setHotelLoginName(newProfile.name);
-                              setHotelLoginAddress(newProfile.address);
-                              setHotelLoginLocation(newProfile.location);
-                              setHotelLoginPhone(newProfile.phone);
-                              setHotelLoginEmail(newProfile.email);
-                              setHotelLoginType(newProfile.type);
+                              // setHotelLoginName(newProfile.name);
+                              // setHotelLoginAddress(newProfile.address);
+                              // setHotelLoginLocation(newProfile.location);
+                              // setHotelLoginPhone(newProfile.phone);
+                              // setHotelLoginEmail(newProfile.email);
+                              // setHotelLoginType(newProfile.type);
                               
                               console.log(newProfile);
                             }
@@ -1012,7 +1012,7 @@ function App() {
                     </div>      
             </Route>
 
-            <Route exact exact path="/hotelDashboard/profile">
+            {/* <Route exact exact path="/hotelDashboard/profile">
                     <div className="wrapper">
                         <HotelNavbar />
                         <div className="main-container"> 
@@ -1026,7 +1026,7 @@ function App() {
                             callback={hotelProfileUpdate} />  
                         </div>
                     </div>
-            </Route>
+            </Route> */}
 
             <Route exact path="/hotelDashboard/addhotelfacility">
                   <div className="wrapper">
@@ -1150,7 +1150,7 @@ function App() {
                     </div>      
             </Route>
 
-            <Route exact path="/carDashboard/profile">
+            {/* <Route exact path="/carDashboard/profile">
                     <div className="wrapper">
 
                         <CarNavbar />
@@ -1163,7 +1163,7 @@ function App() {
                             callback={carProfileUpdate} />  
                         </div>
                     </div>
-            </Route>
+            </Route> */}
 
             <Route exact path="/carDashboard/addcar">
                   <div className="wrapper">
@@ -1278,7 +1278,7 @@ function App() {
                     </div>      
             </Route>
 
-            <Route exact path="/flightDashboard/profile">
+            {/* <Route exact path="/flightDashboard/profile">
                     <div className="wrapper">
                         <FlightNavbar />
                         <div className="main-container"> 
@@ -1290,7 +1290,7 @@ function App() {
                             callback={flightProfileUpdate} />  
                         </div>
                     </div>
-            </Route>
+            </Route> */}
 
             <Route exact path="/flightDashboard/addflight">
                   <div className="wrapper">
