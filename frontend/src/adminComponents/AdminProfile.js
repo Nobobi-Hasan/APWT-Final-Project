@@ -53,7 +53,7 @@ const AdminProfile = ({ idl, firstnamel, lastnamel, genderl, emaill, usernamel, 
     const onSubmit = (e) => {
         e.preventDefault();
 
-        if(firstname != "" && lastname != "" && gender != "" && email != "" && username != "" && password != "" && conPassword != "" ) 
+        if(firstname != "" && lastname != "" && gender != "" && email != "" && username != "" && password != "" && conPassword != "" && password == conPassword) 
         {
             setFirstnameErr("")
             setLastnameErr("")
@@ -104,6 +104,11 @@ const AdminProfile = ({ idl, firstnamel, lastnamel, genderl, emaill, usernamel, 
 
             if(conPassword == "")
                 setConPasswordErr("Please fill the Confirm Password");
+            else
+                setConPasswordErr("")
+
+            if(password != conPassword)
+                setConPasswordErr("Doestn't Match");
             else
                 setConPasswordErr("")
                 

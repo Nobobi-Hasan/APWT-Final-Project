@@ -17,14 +17,14 @@ a:focus, a:active {
   -webkit-transition: all 300ms ease 0s;
   -o-transition: all 300ms ease 0s;
   -ms-transition: all 300ms ease 0s; }
-
+/* 
 input, select, textarea {
   outline: none;
   appearance: unset !important;
   -moz-appearance: unset !important;
   -webkit-appearance: unset !important;
   -o-appearance: unset !important;
-  -ms-appearance: unset !important; }
+  -ms-appearance: unset !important; } */
 
 input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
   appearance: none !important;
@@ -55,11 +55,11 @@ input[type=radio] {
   -webkit-appearance: radio !important;
   -o-appearance: radio !important;
   -ms-appearance: radio !important; }
-
+/* 
 img {
   height: 900px;
   max-width: 100%;
-  }
+  } */
 
 figure {
   margin: 0; }
@@ -75,16 +75,16 @@ input:-webkit-autofill {
   -webkit-box-shadow: 0 0 0 30px transparent inset;
   -o-box-shadow: 0 0 0 30px transparent inset;
   -ms-box-shadow: 0 0 0 30px transparent inset; }
-
+/* 
 h2 {
   line-height: 1.66;
   margin: 0;
   padding: 0;
   font-weight: 700;
-  color: #222;
+  color: rgb(255, 255, 255);
   font-size: 20px;
   text-transform: uppercase;
-  margin-bottom: 32px; }
+  margin-bottom: 32px; } */
 
 .clear {
   clear: both; }
@@ -132,7 +132,7 @@ h2 {
   margin-bottom: 20px;
   position: relative; }
 
-input, select {
+/* input, select {
   display: block;
   width: 100%;
   border: 1px solid #ebebeb;
@@ -141,13 +141,13 @@ input, select {
   font-weight: 500;
   font-size: 13px; }
   input:focus, select:focus {
-    border: 1px solid #ff6801; }
-
+    border: 1px solid #ff6801; } */
+/* 
 label {
   font-size: 14px;
   font-weight: bold;
   margin-bottom: 2px;
-  display: block; }
+  display: block; } */
 
 .form-radio {
   margin-bottom: 18px; }
@@ -230,7 +230,7 @@ input[type=radio] {
 }
 
 
-select {
+/* select {
   appearance: none !important;
   -moz-appearance: none !important;
   -webkit-appearance: none !important;
@@ -239,7 +239,7 @@ select {
   position: relative;
   background: 0 0;
   z-index: 10;
-  cursor: pointer; }
+  cursor: pointer; } */
 
 .select-icon {
   z-index: 0;

@@ -13,6 +13,9 @@ const AdminGuidelines = ({list})=>{
 			</ul>
 
 			<br/>
+            <center>
+			    <img src={process.env.PUBLIC_URL + "/images/guidelines.jpg" } alt=""  height="300px" width = "70%"/>
+			</center>
 
 			<br/>
             <div className="content">

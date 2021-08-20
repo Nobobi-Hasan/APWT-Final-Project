@@ -1047,8 +1047,24 @@ const adminProfileUpdate =async (newProfile) => {
             alert("Updated successfully");
         }
 
-        // const data = adminPackage.filter((packageD) => packageD.id != id);
+        const data = adminPackage.filter((packageD) => packageD.place != place);
+        const data2 = adminPackage.filter((packageD) => packageD.place == place);
+        const data3 = adminPackage.filter((packageD) => packageD.place == place);
+
+        
+        data3.id=data2[0].id;
+        data3.place=data2[0].place;
+        data3.location=data2[0].location;
+        data3.image=data2[0].image;
+        data3.description=data2[0].description;
+        data3.duration=data2[0].duration;
+        data3.transport=data2[0].transport;
+        data3.cost=data2[0].cost;
+        data3.status=status;
+
+
         // setAdminPackage(data);
+        setAdminPackage([...data, data3]);
     };
     
 

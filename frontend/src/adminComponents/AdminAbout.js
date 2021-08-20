@@ -14,6 +14,10 @@ const AdminAbout = ({list})=>{
 
 			<br/>
 
+            <center>
+			    <img src={process.env.PUBLIC_URL + "/images/about.jpg" } alt=""  height="300px" width = "70%"/>
+			</center>
+
 			<br/>
             <div className="content">
                 <div dangerouslySetInnerHTML={{ __html: list.about }} />

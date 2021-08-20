@@ -2,11 +2,11 @@
 
 
 
-.search {
+/* .search {
   width: 100%;
   position: relative;
   display: flex;
-}
+} */
 
 .searchTerm {
   width: 100%;
@@ -23,7 +23,7 @@
   color: #00B4CC;
 }
 
-.searchButton {
+/* .searchButton {
   width: 40px;
   height: 50px;
   border: 1px solid #00B4CC;
@@ -33,16 +33,16 @@
   border-radius: 0 5px 5px 0;
   cursor: pointer;
   font-size: 20px;
-}
+} */
 
 /*Resize the wrap to see the search bar change!*/
-.wrap{
+/* .wrap{
   width: 30%;
   position: absolute;
   top: 30%;
   left: 50%;
   transform: translate(-50%, -50%);
-}
+} */
 
 .biscuits{
   width: 30%;
@@ -51,7 +51,7 @@
   left: 50%;
   transform: translate(-50%, -50%);
 }
-
+/* 
 .button {
   background-color: DodgerBlue;
   border: none;
@@ -65,4 +65,4 @@
 .button:hover {
   background-color: RoyalBlue;
   color: yellow;
-}
+} */

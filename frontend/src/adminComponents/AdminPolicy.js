@@ -14,6 +14,10 @@ const AdminPolicy = ({list})=>{
 
 			<br/>
 
+            <center>
+			    <img src={process.env.PUBLIC_URL + "/images/policy.jpg" } alt=""  height="300px" width = "70%"/>
+			</center>
+
 			<br/>
             <div className="content">
                 <div dangerouslySetInnerHTML={{ __html: list.policy }} />
