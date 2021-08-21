@@ -7,7 +7,7 @@ const UserPackages = ({id, place, location, image, description, duration, transp
             <td>{id}</td>
             <td>{place}</td>
             <td>{location}</td>
-            <td><img className="userimg" src={process.env.PUBLIC_URL + "/images/" + image}/></td>
+            <td><img src={process.env.PUBLIC_URL + "/images/" + image} height="60px" width="60px" /></td>
             <td>{description}</td>
             <td>{duration}</td>
             <td>{transport}</td>

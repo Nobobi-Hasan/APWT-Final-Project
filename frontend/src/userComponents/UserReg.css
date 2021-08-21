@@ -165,7 +165,7 @@ display-flex, .signup-content, .form-row, .form-radio, .select-icon, .select-ico
     /* IE9 Compat Modes */
     src: local("Poppins Black"), local("Poppins-Black"), url("../fonts/poppins/poppins-v5-latin-900.eot?#iefix") format("embedded-opentype"), url("../fonts/poppins/poppins-v5-latin-900.woff2") format("woff2"), url("../fonts/poppins/poppins-v5-latin-900.woff") format("woff"), url("../fonts/poppins/poppins-v5-latin-900.ttf") format("truetype"), url("../fonts/poppins/poppins-v5-latin-900.svg#Poppins") format("svg");
     /* Legacy iOS */ }
-  a:focus, a:active {
+    .user-wrapper a:focus, a:active {
     text-decoration: none;
     outline: none;
     transition: all 300ms ease 0s;
@@ -174,7 +174,7 @@ display-flex, .signup-content, .form-row, .form-radio, .select-icon, .select-ico
     -o-transition: all 300ms ease 0s;
     -ms-transition: all 300ms ease 0s; }
   
-  input, select, textarea {
+    .user-wrapper input, select, textarea {
     outline: none;
     appearance: unset !important;
     -moz-appearance: unset !important;
@@ -182,7 +182,7 @@ display-flex, .signup-content, .form-row, .form-radio, .select-icon, .select-ico
     -o-appearance: unset !important;
     -ms-appearance: unset !important; }
   
-  input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
+    .user-wrapper input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
     appearance: none !important;
     -moz-appearance: none !important;
     -webkit-appearance: none !important;
@@ -190,7 +190,7 @@ display-flex, .signup-content, .form-row, .form-radio, .select-icon, .select-ico
     -ms-appearance: none !important;
     margin: 0; }
   
-  input:focus, select:focus, textarea:focus {
+    .user-wrapper input:focus, select:focus, textarea:focus {
     outline: none;
     box-shadow: none !important;
     -moz-box-shadow: none !important;
@@ -198,41 +198,41 @@ display-flex, .signup-content, .form-row, .form-radio, .select-icon, .select-ico
     -o-box-shadow: none !important;
     -ms-box-shadow: none !important; }
   
-  input[type=checkbox] {
+    .user-wrapper input[type=checkbox] {
     appearance: checkbox !important;
     -moz-appearance: checkbox !important;
     -webkit-appearance: checkbox !important;
     -o-appearance: checkbox !important;
     -ms-appearance: checkbox !important; }
   
-  input[type=radio] {
+    .user-wrapper input[type=radio] {
     appearance: radio !important;
     -moz-appearance: radio !important;
     -webkit-appearance: radio !important;
     -o-appearance: radio !important;
     -ms-appearance: radio !important; }
   
-  img {
+    .user-wrapper img {
     height: 800px;
     max-width: 100%;
     }
   
-  figure {
+    .user-wrapper figure {
     margin: 0; }
   
-  input[type=number] {
+    .user-wrapper input[type=number] {
     -moz-appearance: textfield !important;
     appearance: none !important;
     -webkit-appearance: none !important; }
   
-  input:-webkit-autofill {
+    .user-wrapper input:-webkit-autofill {
     box-shadow: 0 0 0 30px transparent inset;
     -moz-box-shadow: 0 0 0 30px transparent inset;
     -webkit-box-shadow: 0 0 0 30px transparent inset;
     -o-box-shadow: 0 0 0 30px transparent inset;
     -ms-box-shadow: 0 0 0 30px transparent inset; }
   
-  h2 {
+    .user-wrapper h2 {
     line-height: 1.66;
     margin: 0;
     padding: 0;
@@ -243,10 +243,10 @@ display-flex, .signup-content, .form-row, .form-radio, .select-icon, .select-ico
     text-transform: uppercase;
     margin-bottom: 32px; }
   
-  .clear {
+    .user-wrapper .clear {
     clear: both; }
   
-  body {
+  body .user-wrapper {
     font-size: 13px;
     line-height: 1.8;
     color: #222;
@@ -254,36 +254,36 @@ display-flex, .signup-content, .form-row, .form-radio, .select-icon, .select-ico
     background: #282828;
     padding: 90px 0; }
   
-  .container {
+    .user-wrapper .container {
     height: 800px;
     width: 1100px;
     position: relative;
     margin: 0 auto;
     background: #fff; }
   
-  .signup-img, .signup-form {
+    .user-wrapper .signup-img, .signup-form {
     width: 90%;
       
    }
   
-  .signup-img {
+   .user-wrapper .signup-img {
       
     margin-bottom: -7px; }
   
-  .register-form {
+    .user-wrapper .register-form {
     padding: 50px 50px 50px 70px; }
   
-  .form-row {
+    .user-wrapper .form-row {
         margin: 0 -15px; }
         .form-row .form-group {
          width: 100%;
           padding: 0 15px; }
   
-  .form-group {
+          .user-wrapper .form-group {
     margin-bottom: 20px;
     position: relative; }
   
-  input, select {
+    .user-wrapper input, select {
     display: block;
     width: 100%;
     border: 1px solid #ebebeb;
@@ -295,26 +295,26 @@ display-flex, .signup-content, .form-row, .form-radio, .select-icon, .select-ico
     input:focus, select:focus {
       border: 1px solid #ff6801; }
   
-  label {
+      .user-wrapper label {
     font-size: 14px;
     font-weight: bold;
     font-family: 'Montserrat';
     margin-bottom: 2px;
     display: block; }
   
-  .form-radio {
+  .user-wrapper .form-radio {
     margin-bottom: 18px; }
     .form-radio input {
       width: auto;
       display: inline-block; }
   
-  .radio-label {
+      .user-wrapper .radio-label {
     padding-right: 72px; }
   
-  .form-radio-item {
+    .user-wrapper .form-radio-item {
     position: relative;
     margin-right: 45px; }
-    .form-radio-item label {
+    .user-wrapper .form-radio-item label {
       font-weight: 500;
       font-size: 13px;
       padding-left: 25px;
@@ -323,7 +323,7 @@ display-flex, .signup-content, .form-row, .form-radio, .select-icon, .select-ico
       display: block;
       cursor: pointer; }
   
-  .check {
+      .user-wrapper .check {
     display: inline-block;
     position: absolute;
     border: 1px solid #ebebeb;
@@ -339,7 +339,7 @@ display-flex, .signup-content, .form-row, .form-radio, .select-icon, .select-ico
     z-index: 5;
     transition: border .25s linear;
     -webkit-transition: border .25s linear; }
-    .check:before {
+    .user-wrapper .check:before {
       position: absolute;
       display: block;
       content: '';
@@ -356,18 +356,18 @@ display-flex, .signup-content, .form-row, .form-radio, .select-icon, .select-ico
       transition: background 0.25s linear;
       -webkit-transition: background 0.25s linear; }
   
-  input[type=radio] {
+      .user-wrapper  input[type=radio] {
     position: absolute;
     visibility: hidden; }
-    input[type=radio]:checked ~ .check {
+    .user-wrapper input[type=radio]:checked ~ .check {
       border: 1px solid #ff6801; }
-    input[type=radio]:checked ~ .check::before {
+      .user-wrapper input[type=radio]:checked ~ .check::before {
       background: #ff6801; }
   
-  .form-select {
+      .user-wrapper .form-select {
     position: relative; }
   
-  select {
+    .user-wrapper select {
     appearance: none !important;
     -moz-appearance: none !important;
     -webkit-appearance: none !important;
@@ -378,7 +378,7 @@ display-flex, .signup-content, .form-row, .form-radio, .select-icon, .select-ico
     z-index: 10;
     cursor: pointer; }
   
-  .select-icon {
+    .user-wrapper .select-icon {
     z-index: 0;
     position: absolute;
     top: 0;
@@ -394,7 +394,7 @@ display-flex, .signup-content, .form-row, .form-radio, .select-icon, .select-ico
     -webkit-align-items: center;
     -o-align-items: center;
     -ms-align-items: center; }
-    .select-icon i {
+    .user-wrapper .select-icon i {
       justify-content: center;
       -moz-justify-content: center;
       -webkit-justify-content: center;
@@ -410,11 +410,11 @@ display-flex, .signup-content, .form-row, .form-radio, .select-icon, .select-ico
       font-size: 18px;
       color: #999; }
   
-  .form-submit {
+      .user-wrapper .form-submit {
     text-align: left;
     padding-top: 27px; }
   
-  .submit {
+    .user-wrapper .submit {
     width: 140px;
     height: 40px;
     display: inline-block;
@@ -425,17 +425,11 @@ display-flex, .signup-content, .form-row, .form-radio, .select-icon, .select-ico
     border: none;
     cursor: pointer; }
   
-  #submit {
+    .user-wrapper #submit {
     background: #ff6801;
     color: #fff; }
-    #submit:hover {
+    .user-wrapper #submit:hover {
       background-color: #cd5300; }
   
-    .signup-img, .signup-form {
+      .user-wrapper .signup-img, .signup-form {
       width: 100%; } 
-  
-   
-  
-  
-  
-  

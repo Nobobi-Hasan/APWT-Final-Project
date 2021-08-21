@@ -7,7 +7,7 @@ const UserDestinationDetails = ({id, place, district, image})=>{
             <td>{id}</td>
             <td>{place}</td>
             <td>{district}</td>
-            <td><img className="userimg" src={process.env.PUBLIC_URL + "/images/" + image}/></td>
+            <td><img src={process.env.PUBLIC_URL + "/images/" + image} height="60px" width="60px" /></td>
             <td><Link to='/user/show_hotels'className='edit-button'>All Hotels</Link></td>
 
                 

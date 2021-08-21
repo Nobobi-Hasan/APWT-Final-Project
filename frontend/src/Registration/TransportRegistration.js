@@ -11,14 +11,71 @@ const TransportRegistration = ({ callback }) => {
     const [password, setPassword] = useState("");
     const [rpassword, setRpassword] = useState("");
 
+    const [typeErr, setTypeErr] = useState("");
+    const [nameErr, setNameErr] = useState("");
+    const [phoneErr, setPhoneErr] = useState("");
+    const [emailErr, setEmailErr] = useState("");
+    const [passwordErr, setPasswordErr] = useState("");
+    const [rpasswordErr, setRpasswordErr] = useState("");
+
 
     const history = useHistory();
 
     const onSubmit = (e) => {
         e.preventDefault();
+
+        if(type != "" && name != ""  && phone != "" && email != "" &&  password != "" && rpassword != "" && password==rpassword ) 
+        { 
+
+        setTypeErr("")
+        setNameErr("")
+        setPhoneErr("")
+        setEmailErr("")
+        setPasswordErr("")
+        setRpasswordErr("")
        
         callback({type:type, name: name, phone:phone, email:email, password:password, rpassword:rpassword});
         history.push('/register');
+        }
+
+        else{
+            if(type == "")
+                 setTypeErr("Please fill the service");
+            else
+                setTypeErr("")
+            
+            if(name == "")
+                setNameErr("Please fill the name");
+            else
+                setNameErr("")
+                
+
+            if(phone == "")
+                setPhoneErr("Please fill the phone number");
+            else
+                setPhoneErr("")
+
+            if(email == "")
+                setEmailErr("Please fill the Email");
+            else
+                setEmailErr("")
+
+            if(password == "")
+                setPasswordErr("Please fill the Password");
+            else
+                setPasswordErr("")
+
+            if(rpassword == "")
+                setRpasswordErr("Please fill the Confirm Password");
+            else
+                setRpasswordErr("")
+                
+            if(password != rpassword)
+                setRpasswordErr("Doestn't Match");
+            else
+                setRpasswordErr("")
+                
+        }
     };
 
     return (
@@ -41,6 +98,7 @@ const TransportRegistration = ({ callback }) => {
                                                     <option value="Car">Car</option>
                                                     <option value="Flight">Flight </option>
                                                 </select>
+                                            <p style={{color: "red"}}>{typeErr}</p>
                                         </div>
                                         
                                         <div class="form-group">
@@ -48,6 +106,7 @@ const TransportRegistration = ({ callback }) => {
                                                 Name :
                                                 <input type="text" name="name" value={name} onChange={(e) => setName(e.target.value)} />
                                             </label>
+                                            <p style={{color: "red"}}>{nameErr}</p>
                                         </div>
 
                                         <div class="form-group">
@@ -55,6 +114,7 @@ const TransportRegistration = ({ callback }) => {
                                                 Email :
                                                 <input type="text" name="email" value={email} onChange={(e) => setEmail(e.target.value)} />
                                             </label>
+                                            <p style={{color: "red"}}>{emailErr}</p>
                                         </div>
                         
                                         <div class="form-group">
@@ -62,6 +122,7 @@ const TransportRegistration = ({ callback }) => {
                                                 Phone Number :
                                                 <input type="text" name="phone" value={phone} onChange={(e) => setPhone(e.target.value)} />
                                             </label>
+                                            <p style={{color: "red"}}>{phoneErr}</p>
                                         </div>
 
                                         <div class="form-group">
@@ -69,6 +130,7 @@ const TransportRegistration = ({ callback }) => {
                                                 Password :
                                                 <input type="password" name="password" value={password} onChange={(e) => setPassword(e.target.value)} />
                                             </label>
+                                            <p style={{color: "red"}}>{passwordErr}</p>
                                         </div>
 
                                         <div class="form-group">
@@ -76,6 +138,7 @@ const TransportRegistration = ({ callback }) => {
                                                 Re-type Password :
                                                 <input type="password" name="rpassword" value={rpassword} onChange={(e) => setRpassword(e.target.value)} />
                                             </label>
+                                            <p style={{color: "red"}}>{rpasswordErr}</p>
                                         </div>
 
                                         <div class="form-submit">

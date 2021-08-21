@@ -23,7 +23,7 @@ const UserHotelRoom = ({id, name, location, address, phone, email, image, userHo
             <td>{address}</td>
             <td>Phone: {phone}<br/>
                 Email: {email}</td>
-            <td><img className="userimg" src={process.env.PUBLIC_URL + "/images/" + image}/></td>
+                <td><img src={process.env.PUBLIC_URL + "/images/" + image} height="60px" width="60px" /></td>
             <td><button className='details-button' onClick={routeChange}>Book</button></td>
                 
         </tr>

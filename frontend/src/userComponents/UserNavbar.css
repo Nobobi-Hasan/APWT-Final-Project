@@ -1,13 +1,13 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
 
-/* *{
+*{
   list-style: none;
   text-decoration: none;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: 'Montserrat', sans-serif;
-} */
+}
 
 .wrapper{
   margin: 20px;
@@ -46,20 +46,20 @@
   transition: all 0.3s linear;
 }
 
-.wrapper .navbar .main_ul li:hover  a{
+.user-wrapper  .navbar .main_ul li:hover  a{
   /* background: #154f7d; */
   color: rgb(0, 153, 255);
   transition: all 0.3s linear;
 }
 
-.wrapper .navbar .main_ul  li:hover a .arrow{
+.user-wrapper .navbar .main_ul  li:hover a .arrow{
   top: 29px;
   transform: rotate(135deg);
   border-color: transparent transparent rgb(0, 153, 255) rgb(0, 153, 255);
   transition: all 0.4s linear;
 }
 
-.wrapper .navbar .main_ul li a .arrow{
+.user-wrapper .navbar .main_ul li a .arrow{
   width: 12px;
   height: 12px;
   display: inline-block;
@@ -72,7 +72,7 @@
   transition: all 0.4s linear;
 }
 
-.wrapper .navbar .main_ul  > li .dropdown{
+.user-wrapper .navbar .main_ul  > li .dropdown{
   background: #000000;
   position: absolute;
   top: 64px;
@@ -81,17 +81,17 @@
   display: none;
 }
 
-.wrapper .navbar .main_ul  > li .dropdown a{
+.user-wrapper .navbar .main_ul  > li .dropdown a{
   display: block;
   padding: 20px;
   text-align: center;
   color: #748ea2;
 }
 
-.wrapper .navbar .main_ul  > li .dropdown a:hover{
+.user-wrapper .navbar .main_ul  > li .dropdown a:hover{
   color: yellow;
 }
 
-.wrapper .navbar .main_ul  > li:hover .dropdown{
+.user-wrapper .navbar .main_ul  > li:hover .dropdown{
   display: block;
 }

@@ -10,7 +10,7 @@ const AdminTransportAD = ({id, name, phone, email, type, adminTransportApproveCa
             <td>{email}</td>
             <td>{type}</td>
             <td>
-                <button className='delete-button' onClick={()=>adminTransportApproveCallback(id)}>Approve</button>
+                <button className='approve-button' onClick={()=>adminTransportApproveCallback(id)}>Approve</button>
                 <button className='delete-button' onClick={()=>adminTransportDeclineCallback(id)}>Decline</button>
             </td>
         </tr>

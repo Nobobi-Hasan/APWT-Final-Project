@@ -7,7 +7,7 @@ h1{
     text-align: center;
 }
 
-.wrapper .main-container .big-form {
+.admin-wrapper .main-container .big-form {
   width:90%;
   margin:  auto;
   padding:30px;
@@ -18,12 +18,12 @@ h1{
   margin-top: 5vh;
 }
 
-.wrapper .main-container .big-form  label {
+.admin-wrapper .main-container .big-form  label {
   display:block;
   font-weight: bold;
 }
 
-.wrapper .main-container .big-form  input {
+.admin-wrapper .main-container .big-form  input {
   display:block;
   width: 100%;
   border: 1px solid #000;
@@ -31,7 +31,7 @@ h1{
   box-sizing: border-box;
 }
 
-.wrapper .main-container .big-form  textarea {
+.admin-wrapper .main-container .big-form  textarea {
   display:block;
   width: 100%;
   border: 1px solid #000;
@@ -40,7 +40,7 @@ h1{
   margin-bottom: 10px;
 }
 
-.wrapper .main-container #submit{
+.admin-wrapper .main-container #submit{
   display: inline-block; 
   padding: 15px 80px;
   margin-top: 10px;
@@ -52,28 +52,28 @@ h1{
   border-radius: 5px;
   cursor: pointer;
 }
-.wrapper .main-container legend{
+.admin-wrapper .main-container legend{
   text-align: center;
   font-weight: bold;
 }
 
-.wrapper .main-container fieldset{
+.admin-wrapper .main-container fieldset{
   padding: 10px;
 }
 
 
 
-.main-container{
+.admin-wrapper .main-container{
     width: 80%;
 }
 
-.content{
+.admin-wrapper .content{
     width: 80%;
     margin: auto;
     text-align: justify;
 }
 
-.wrapper .main-container ul li a{
+.admin-wrapper .main-container ul li a{
     background: #fff;
     color: #000;
     display: block;

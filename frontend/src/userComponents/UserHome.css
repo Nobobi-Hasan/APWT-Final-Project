@@ -2,13 +2,13 @@
 
 
 
-/* .search {
+.user-wrapper .search {
   width: 100%;
   position: relative;
   display: flex;
-} */
+}
 
-.searchTerm {
+.user-wrapper .searchTerm {
   width: 100%;
   border: 3px solid #00B4CC;
   border-right: none;
@@ -19,11 +19,11 @@
   color: #9DBFAF;
 }
 
-.searchTerm:focus{
+.user-wrapper .searchTerm:focus{
   color: #00B4CC;
 }
 
-/* .searchButton {
+.user-wrapper .searchButton {
   width: 40px;
   height: 50px;
   border: 1px solid #00B4CC;
@@ -33,26 +33,26 @@
   border-radius: 0 5px 5px 0;
   cursor: pointer;
   font-size: 20px;
-} */
+}
 
 /*Resize the wrap to see the search bar change!*/
-/* .wrap{
+.user-wrapper .wrap{
   width: 30%;
   position: absolute;
   top: 30%;
   left: 50%;
   transform: translate(-50%, -50%);
-} */
+}
 
-.biscuits{
+.user-wrapper .biscuits{
   width: 30%;
   position: absolute;
   top: 40%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
-/* 
-.button {
+
+.user-wrapper .button {
   background-color: DodgerBlue;
   border: none;
   color: white;
@@ -62,7 +62,7 @@
   cursor: pointer;
 }
 
-.button:hover {
+.user-wrapper .button:hover {
   background-color: RoyalBlue;
   color: yellow;
-} */
+}
