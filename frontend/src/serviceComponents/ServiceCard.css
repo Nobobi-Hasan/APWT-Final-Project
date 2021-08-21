@@ -1,10 +1,10 @@
-.card-section{
+.service-wrapper .card-section{
 width:80%;
 margin:0 auto;
 text-align: center;
 padding: 0px 5px;
 }
-.dashbord{
+.service-wrapper .dashbord{
 width:32%;
 display: inline-block;
 background-color:#34495E;
@@ -13,10 +13,10 @@ margin-top: 70px;
 margin-left: 5px;
 margin-right: 5px;
 }
-.icon-section {
+.service-wrapper .service-wrapper .icon-section {
 padding:0px;
 }
-.icon-section i{
+.service-wrapper .icon-section i{
 font-size: 30px;
 padding:10px;
 border:1px solid #fff;
@@ -25,56 +25,56 @@ margin-top:-25px;
 margin-bottom: 30px;
 background-color:#34495E;
 }
-.icon-section p{
+.service-wrapper .icon-section p{
 margin:0px;
 font-size: 20px;
 padding-bottom: 30px;
 }
-.detail-section{
+.service-wrapper .detail-section{
 background-color: #2F4254;
 padding: 5px 0px;
 }
-.dashbord .detail-section:hover{
+.service-wrapper .dashbord .detail-section:hover{
 background-color: #5a5a5a;
 cursor: pointer;
 }
-.detail-section a{
+.service-wrapper .detail-section a{
 color:#fff;
 text-decoration: none;
 }
-.dashbord-green .icon-section,.dashbord-green .icon-section i{
+.service-wrapper .dashbord-green .icon-section,.dashbord-green .icon-section i{
 background-color: #16A085;
 }
-.dashbord-green .detail-section{
+.service-wrapper .dashbord-green .detail-section{
 background-color: #149077;
 }
-.dashbord-orange .icon-section,.dashbord-orange .icon-section i{
+.service-wrapper .dashbord-orange .icon-section,.dashbord-orange .icon-section i{
 background-color: #33a54f;
 }
-.dashbord-orange .detail-section{
+.service-wrapper .dashbord-orange .detail-section{
 background-color: #4fb961;
 }
-.dashbord-blue .icon-section,.dashbord-blue .icon-section i{
+.service-wrapper .dashbord-blue .icon-section,.dashbord-blue .icon-section i{
 background-color: #2980B9;
 }
-.dashbord-blue .detail-section{
+.service-wrapper .dashbord-blue .detail-section{
 background-color:#2573A6;
 }
-.dashbord-red .icon-section,.dashbord-red .icon-section i{
+.service-wrapper .dashbord-red .icon-section,.dashbord-red .icon-section i{
 background-color:#E74C3C;
 }
-.dashbord-red .detail-section{
+.service-wrapper .dashbord-red .detail-section{
 background-color:#CF4436;
 }
-.dashbord-skyblue .icon-section,.dashbord-skyblue .icon-section i{
+.service-wrapper .dashbord-skyblue .icon-section,.dashbord-skyblue .icon-section i{
 background-color:#8E44AD;
 }
-.dashbord-skyblue .detail-section{
+.service-wrapper .dashbord-skyblue .detail-section{
 background-color:#803D9B;
 }
-.dashbord-new .icon-section,.dashbord-new .icon-section i{
+.service-wrapper .dashbord-new .icon-section,.dashbord-new .icon-section i{
 background-color:#FF8C28;
 }
-.dashbord-new .detail-section{
+.service-wrapper .dashbord-new .detail-section{
 background-color:#E58938;
 }
