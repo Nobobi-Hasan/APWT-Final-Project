@@ -9,7 +9,7 @@ const UserFlightBooking = ({id, title, model, type, fare, image})=>{
             <td>{title}</td>
             <td>{type}</td>
             <td>{fare}</td>
-            <td><img className="userimg" src={process.env.PUBLIC_URL + "/images/" + image}/></td>
+            <td><img src={process.env.PUBLIC_URL + "/images/" + image} height="60px" width="60px" /></td>
             <td><Link to={`/user/flight/book/${id}`}className='edit-button'>Book</Link></td>
                 
         </tr>

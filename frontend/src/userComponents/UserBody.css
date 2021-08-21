@@ -1,12 +1,12 @@
-.content-section {
+.user-wrapper .content-section {
     background: rgb(255, 255, 255);
   }
   
-  .scrolled-nav {
+  .user-wrapper .scrolled-nav {
     height: auto;
   }
   
-  .counter {
+  .user-wrapper .counter {
     width: 20px;
     height: 20px;
     background: black;

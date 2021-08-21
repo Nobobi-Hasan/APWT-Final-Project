@@ -11,7 +11,7 @@ const UserHotelRoom = ({id, hotel_id, name, description, price, image})=>{
             <td>{name}</td>
             <td>{description}</td>
             <td>{price}</td>
-            <td><img className="userimg" src={process.env.PUBLIC_URL + "/images/" + image}/></td>
+            <td><img src={process.env.PUBLIC_URL + "/images/" + image} height="60px" width="60px" /></td>
             <td><Link to={`/user/confirm_hotel/${id}`}className='edit-button'>Book Now</Link></td> 
 
         </tr>

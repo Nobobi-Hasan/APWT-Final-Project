@@ -14,12 +14,12 @@ body{
   background: #fff;
 }
 
-h2{
+.admin-wrapper h2{
   text-align: center;
 }
 
 
-.wrapper .header{
+.admin-wrapper .header{
   z-index: 1;
   background: #22242A;
   position: fixed;
@@ -29,7 +29,7 @@ h2{
   top: 0;
 }
 
-.wrapper .header .header-menu{
+.admin-wrapper .header .header-menu{
   width: calc(100% - 0%);
   height: 100%;
   display: flex;
@@ -38,18 +38,18 @@ h2{
   padding: 0 20px;
 }
 
-.wrapper .header .header-menu .title{
+.admin-wrapper .header .header-menu .title{
   color: #fff;
   font-size: 25px;
   text-transform: uppercase;
   font-weight: 900;
 }
 
-.wrapper .header .header-menu .title span{
+.admin-wrapper .header .header-menu .title span{
   color: #4CCEE8;
 }
 
-.wrapper .header .header-menu .sidebar-btn{
+.admin-wrapper .header .header-menu .sidebar-btn{
   color: #fff;
   position: absolute;
   margin-left: 240px;
@@ -60,7 +60,7 @@ h2{
   transition-property: color;
 }
 
-.PDFDownload{
+.admin-wrapper .PDFDownload{
   background: none;
   border: none;
   color: #fff;
@@ -77,11 +77,11 @@ h2{
   color: #4CCEE8;
 } */
 
-.wrapper .header .header-menu ul{
+.admin-wrapper .header .header-menu ul{
   display: flex;
 }
 
-.wrapper .header .header-menu ul li a{
+.admin-wrapper .header .header-menu ul li a{
   background: #fff;
   color: #000;
   display: block;
@@ -96,12 +96,12 @@ h2{
   transition-property: background, color;
 }
 
-.wrapper .header .header-menu ul li a:hover{
+.admin-wrapper .header .header-menu ul li a:hover{
   background: #4CCEE8;
   color: #fff;
 }
 
-.wrapper .sidebar{
+.admin-wrapper .sidebar{
   z-index: 1;
   background: #2F323A;
   position: fixed;
@@ -113,29 +113,29 @@ h2{
   overflow-y: auto;
 }
 
-.wrapper .sidebar .sidebar-menu{
+.admin-wrapper .sidebar .sidebar-menu{
   overflow: hidden;
 }
 
-.wrapper .sidebar .sidebar-menu .profile img{
+.admin-wrapper .sidebar .sidebar-menu .profile img{
   margin: 20px 0;
   width: 100px;
   height: 100px;
   border-radius: 50%;
 }
 
-.wrapper .sidebar .sidebar-menu .profile p{
+.admin-wrapper .sidebar .sidebar-menu .profile p{
   color: #bbb;
   font-weight: 700;
   margin-bottom: 10px;
 }
 
-.wrapper .sidebar .sidebar-menu .item{
+.admin-wrapper .sidebar .sidebar-menu .item{
   width: 250px;
   overflow: hidden;
 }
 
-.wrapper .sidebar .sidebar-menu .item .menu-btn{
+.admin-wrapper .sidebar .sidebar-menu .item .menu-btn{
   display: block;
   color: #fff;
   position: relative;
@@ -144,21 +144,21 @@ h2{
   transition-property: color;
 }
 
-.wrapper .sidebar .sidebar-menu .item .menu-btn:hover{
+.admin-wrapper .sidebar .sidebar-menu .item .menu-btn:hover{
   color: #4CCEE8;
 }
 
-.wrapper .sidebar .sidebar-menu .item .menu-btn i{
+.admin-wrapper .sidebar .sidebar-menu .item .menu-btn i{
   margin-right: 20px;
 }
 
-.wrapper .sidebar .sidebar-menu .item .menu-btn .drop-down{
+.admin-wrapper .sidebar .sidebar-menu .item .menu-btn .drop-down{
   float: right;
   font-size: 12px;
   margin-top: 3px;
 }
 
-.wrapper .sidebar .sidebar-menu .item .sub-menu{
+.admin-wrapper .sidebar .sidebar-menu .item .sub-menu{
   background: #3498DB;
   overflow: hidden;
   max-height: 0;
@@ -166,7 +166,7 @@ h2{
   transition-property: background, max-height;
 }
 
-.wrapper .sidebar .sidebar-menu .item .sub-menu a{
+.admin-wrapper .sidebar .sidebar-menu .item .sub-menu a{
   display: block;
   position: relative;
   color: rgb(255, 255, 255);
@@ -177,24 +177,24 @@ h2{
   transition-property: background;
 }
 
-.wrapper .sidebar .sidebar-menu .item .sub-menu a:hover{
+.admin-wrapper .sidebar .sidebar-menu .item .sub-menu a:hover{
   background: #55B1F0;
 }
 
-.wrapper .sidebar .sidebar-menu .item .sub-menu a:not(last-child){
+.admin-wrapper .sidebar .sidebar-menu .item .sub-menu a:not(last-child){
   border-bottom: 1px solid #8FC5E9;
 }
 
-.wrapper .sidebar .sidebar-menu .item .sub-menu i{
+.admin-wrapper .sidebar .sidebar-menu .item .sub-menu i{
   padding-right: 20px;
   font-size: 10px;
 }
 
-.wrapper .sidebar .sidebar-menu .item:target .sub-menu{
+.admin-wrapper .sidebar .sidebar-menu .item:target .sub-menu{
   max-height: 900px;
 }
 
-.wrapper .main-container{
+.admin-wrapper .main-container{
   width: (100% - 250px);
   margin-top: 70px;
   margin-left: 250px;
@@ -205,47 +205,47 @@ h2{
   transition: 0.3s;
 }
 
-.wrapper.collapse .sidebar{
+.admin-wrapper.collapse .sidebar{
   width: 70px;
 }
 
-.wrapper.collapse .sidebar .profile img,
-.wrapper.collapse .sidebar .profile p,
-.wrapper.collapse .sidebar a span{
+.admin-wrapper.collapse .sidebar .profile img,
+.admin-wrapper.collapse .sidebar .profile p,
+.admin-wrapper.collapse .sidebar a span{
   display: none;
 }
 
-.wrapper.collapse .sidebar .sidebar-menu .item .menu-btn{
+.admin-wrapper.collapse .sidebar .sidebar-menu .item .menu-btn{
   font-size: 23px;
 }
 
-.wrapper.collapse .sidebar .sidebar-menu .item .sub-menu i{
+.admin-wrapper.collapse .sidebar .sidebar-menu .item .sub-menu i{
   font-size: 18px;
   padding-left: 3px;
 }
 
 
-.wrapper.collapse .main-container{
+.admin-wrapper.collapse .main-container{
   width: calc(100% - 70px);
   margin-left: 70px;
 }
 
-.wrapper .main-container .card{
+.admin-wrapper .main-container .card{
   background: #fff;
   padding: 15px;
   margin-bottom: 10px;
   font-size: 14px;
 }
       
-h1{
+.admin-wrapper h1{
     text-align: center;
   }
 
-  .wrapper .main-container{
+  .admin-wrapper .main-container{
     width: 80%;
   }
 
-  .wrapper .main-container.content{
+  .admin-wrapper .main-container.content{
     width: 80%;
     margin: auto;
     text-align: justify;
@@ -259,7 +259,7 @@ h1{
 
 /* Form Start */
 
-.form {
+.admin-wrapper .form {
   width:450px;
   margin:  auto;
   padding:30px;
@@ -270,12 +270,12 @@ h1{
   margin-top: 5vh;
 }
 
-.form  label {
+.admin-wrapper .form  label {
   display:block;
   font-weight: bold;
 }
 
-.form  input {
+.admin-wrapper .form  input {
   display:block;
   width: 100%;
   border: 1px solid #000;
@@ -283,7 +283,7 @@ h1{
   box-sizing: border-box;
 }
 
-.form  select {
+.admin-wrapper .form  select {
   display:block;
   width: 100%;
   border: 1px solid #000;
@@ -291,7 +291,7 @@ h1{
   box-sizing: border-box;
 }
 
-.form  textarea {
+.admin-wrapper .form  textarea {
   display:block;
   width: 100%;
   border: 1px solid #000;
@@ -300,7 +300,7 @@ h1{
   margin-bottom: 10px;
 }
 
-#submit{
+.admin-wrapper #submit{
   display: inline-block; 
   padding: 15px 80px;
   margin-top: 10px;
@@ -313,7 +313,7 @@ h1{
   cursor: pointer;
 }
 
-#submit:hover{
+.admin-wrapper #submit:hover{
   display: inline-block; 
   padding: 15px 80px;
   margin-top: 10px;
@@ -326,12 +326,12 @@ h1{
   cursor: pointer;
 }
 
-legend{
+.admin-wrapper legend{
   text-align: center;
   font-weight: bold;
 }
 
-fieldset{
+.admin-wrapper fieldset{
   padding: 10px;
 }
 /* Form End */
@@ -339,7 +339,7 @@ fieldset{
 
 /*table start*/
 
-  #table {
+.admin-wrapper #table {
     font-family: Arial, Helvetica, sans-serif;
     border-collapse: collapse;
     width: 70%;
@@ -352,22 +352,22 @@ fieldset{
     margin-top: 5vh;
   }
   
-  #table td, #table th {
+  .admin-wrapper  #table td, #table th {
     padding: 10px;
   }
   
-  #table tr:nth-child(even){
+  .admin-wrapper #table tr:nth-child(even){
     background-color: #f2f2f2;
   }
-  #table tr:nth-child(odd){
+  .admin-wrapper #table tr:nth-child(odd){
     background-color: #cdcfd0;
   }
 
-  #table tr:hover {
+  .admin-wrapper #table tr:hover {
     background-color: #ddd;
   }
   
-  #table th {
+  .admin-wrapper #table th {
     padding-top: 12px;
     padding-bottom: 12px;
     text-align: center; 
@@ -375,14 +375,14 @@ fieldset{
     color: white;
   }
   
-  #table tr td a{
+  .admin-wrapper #table tr td a{
     color: #34495e;
     cursor: pointer;
     transition: 0.3s;
     transition-property: color;
   }
   
-  #table tr td a:hover{
+  .admin-wrapper #table tr td a:hover{
     color: red;
   }
   /*table end*/
@@ -392,7 +392,7 @@ fieldset{
 
   /* Button Start */
 
-  .delete-button{
+  .admin-wrapper .delete-button{
     background-color: #ac3939;
     color: white;
     height: 25px;
@@ -400,7 +400,7 @@ fieldset{
     border-radius: 25px;
   }
 
-  .delete-button:hover{
+  .admin-wrapper .delete-button:hover{
     background-color:white;
     color: #ac3939;
     height: 25px;
@@ -408,7 +408,7 @@ fieldset{
     border-radius: 25px;
   }
 
-  .approve-button{
+  .admin-wrapper .approve-button{
     background-color: green;
     color: white;
     height: 25px;
@@ -416,7 +416,7 @@ fieldset{
     border-radius: 25px;
   }
 
-  .approve-button:hover{
+  .admin-wrapper .approve-button:hover{
     background-color:white;
     color: green;
     height: 25px;
@@ -424,7 +424,7 @@ fieldset{
     border-radius: 25px;
   }
 
-  .details-button{
+  .admin-wrapper .details-button{
     background-color: #3955d3;
     color: white;
     height: 25px;
@@ -432,7 +432,7 @@ fieldset{
     border-radius: 25px;
   }
 
-  .details-button:hover{
+  .admin-wrapper .details-button:hover{
     background-color:white;
     color: #3955d3;
     height: 25px;
@@ -440,7 +440,7 @@ fieldset{
     border-radius: 25px;
   }
 
-  .add-button{
+  .admin-wrapper .add-button{
     background-color: #081553;
     color: white;
     height: 25px;
@@ -448,7 +448,7 @@ fieldset{
     border-radius: 25px;
   }
 
-  .add-button:hover{
+  .admin-wrapper .add-button:hover{
     background-color:white;
     color: #081553;
     height: 25px;
@@ -463,7 +463,7 @@ fieldset{
 
   /* USer Image Start */
 
-  .userimg{
+  .admin-wrapper .userimg{
 
     height: 60px;
   }
@@ -474,7 +474,7 @@ fieldset{
 
   /* Registration Form Start */
 
-  #registration-form {
+  .admin-wrapper #registration-form {
     font-family:'Open Sans Condensed', sans-serif;
     width: 500px;
     min-width:250px;
@@ -484,13 +484,13 @@ fieldset{
     position: relative;
   }
   
-  #registration-form .fieldset {
+  .admin-wrapper #registration-form .fieldset {
     background-color:#d5d5d5;
     border-radius: 3px;
     
   }
   
-  #registration-form legend {
+  .admin-wrapper #registration-form legend {
     text-align: center;
     background: #364351;
     width: 100%;
@@ -500,7 +500,7 @@ fieldset{
     font-size:2em;
   }
   
-  .fieldset form{
+  .admin-wrapper .fieldset form{
     border:1px solid #2f2f2f;
     margin:0 auto;
     display:block;
@@ -511,7 +511,7 @@ fieldset{
   }
   
   
-    #registration-form label{
+  .admin-wrapper #registration-form label{
     margin-left:5px;
     position:relative;
     display:inline-block;
@@ -520,7 +520,7 @@ fieldset{
     font-weight:bold;
   }
   
-  #registration-form input[type=text] {
+  .admin-wrapper #registration-form input[type=text] {
     padding: 15px 20px;
     border-radius: 1px;
     margin:5px auto;
@@ -542,7 +542,7 @@ fieldset{
   }
 
 
-  #registration-form select {
+  .admin-wrapper #registration-form select {
     padding: 15px 20px;
     border-radius: 1px;
     margin:5px auto;
@@ -563,7 +563,7 @@ fieldset{
     transition:background-color .5s ease;
   }
   
-  #registration-form input[type=submit] {
+  .admin-wrapper #registration-form input[type=submit] {
     font-family:'Open Sans Condensed', sans-serif;
     text-transform:uppercase;
     outline:none;

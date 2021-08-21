@@ -20,15 +20,15 @@ const Register = ()=>{
                                     <div className="form-select">
                                         <label for="service"><h4> Choose Option :</h4></label>
                                         <br />
-                                            <div className="type">
+                                            <div className="regtype">
                                                 <Link to="/user/registration" className='edit-button'>User Registration</Link>
                                             </div>
                                             <br />
-                                            <div className="type">
+                                            <div className="regtype">
                                                 <Link to="/hotelreg" className='edit-button'>Hotel Service</Link>
                                             </div>
                                             <br />
-                                            <div className="type">
+                                            <div className="regtype">
                                                 <Link to="/transportreg" className='edit-button'>Transport Service</Link>
                                             </div>
                                             <br />

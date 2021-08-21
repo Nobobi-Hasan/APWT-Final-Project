@@ -41,7 +41,6 @@ const UserNavbar2 = ()=>{
                                 <li><Link to='/user/contact'>Contact Us</Link></li>
                                 <li><Link to='/user/privay_policy'>Privacy Policy</Link></li>
                                 <li><Link to='/user/faq'>FAQ</Link></li>
-                                <li><Link to='/user/registration'>User Registraion</Link></li>
                         </ul>  
                         </li>
                         <li><Link to='/user/give_review'>Review</Link></li> 

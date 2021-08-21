@@ -14,7 +14,6 @@ const AdminNavbar = ({callbackGoogle, googletf})=>{
 	const [showloginButton, setShowloginButton] = useState(false);
 	const [showlogoutButton, setShowlogoutButton] = useState(googletf);
 
-
 	const onSignoutSuccess = () => {
         alert("You have been logged out successfully");
         console.clear();
@@ -33,7 +32,7 @@ const AdminNavbar = ({callbackGoogle, googletf})=>{
 					{/* <div className="sidebar-btn">
 					</div> */}
 					<ul>
-						{/* <li>{{date("l jS \of F")}}</li> */}
+						{/* <li>{date}</li> */}
 						<li><Link to='/admin/profile'><i class="fa fa-user-circle"></i></Link></li>
 						<li><Link to='/login'><i class="fa fa-sign-out" aria-hidden="true"></i></Link></li>
 						<li>

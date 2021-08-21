@@ -10,17 +10,36 @@ const EmployeeEditPlace = ({ callback }) => {
     const [place, setPlace] = useState("");
     const [district, setDistrict] = useState("");
     
-
+    const [placeErr, setPlaceErr] = useState("");
+    const [districtErr, setDistrictErr] = useState("");
 
     const history = useHistory();
 
     const onSubmit = (e) => {
         e.preventDefault();
 
-       console.log({ id: eid,  place: place, district: district });
-        
+       //console.log({ id: eid,  place: place, district: district });
+       if(place != "" && district != "")
+       {
+       setPlaceErr("")
+       setDistrictErr("")
+       
         callback({ id: eid,  place: place, district: district });
         history.push('/employee/place');
+    }
+
+    else{
+        if(place == "")
+    setPlaceErr("Please fillup place name");
+    else
+    setPlaceErr("")
+
+    if(district == "")
+    setDistrictErr("Please fillup district name");
+    else
+    setDistrictErr("")
+
+    }
     };
     return (
         <div>
@@ -32,11 +51,13 @@ const EmployeeEditPlace = ({ callback }) => {
                 Place:
                 <input type="text" name="place" value={place} onChange={(e) => setPlace(e.target.value)} />
             </label>
+            <p style={{color: "red"}}>{placeErr}</p>
             <br />
             <label>
                 District:
                 <input  type="text" name="district" value={district} onChange={(e) => setDistrict(e.target.value)} />
             </label>
+            <p style={{color: "red"}}>{districtErr}</p>
             <br />
 
             </fieldset>

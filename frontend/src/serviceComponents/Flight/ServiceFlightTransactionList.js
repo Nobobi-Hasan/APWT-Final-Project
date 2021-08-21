@@ -16,7 +16,7 @@ const ServiceFlightTransactionList = ({list})=>{
 
     return(
     <>
-        <button className = "PDFDownload" onClick={handleExportWithComponent}><i class="fa fa-download" aria-hidden="true"></i></button>
+        <button className = "PDFFDownload" onClick={handleExportWithComponent}><i class="fa fa-download" aria-hidden="true"></i></button>
 
         <PDFExport ref = {pdfExportComponent} paperSize = "A2">
                 <div>

@@ -1047,8 +1047,24 @@ const adminProfileUpdate =async (newProfile) => {
             alert("Updated successfully");
         }
 
-        // const data = adminPackage.filter((packageD) => packageD.id != id);
+        const data = adminPackage.filter((packageD) => packageD.place != place);
+        const data2 = adminPackage.filter((packageD) => packageD.place == place);
+        const data3 = adminPackage.filter((packageD) => packageD.place == place);
+
+        
+        data3.id=data2[0].id;
+        data3.place=data2[0].place;
+        data3.location=data2[0].location;
+        data3.image=data2[0].image;
+        data3.description=data2[0].description;
+        data3.duration=data2[0].duration;
+        data3.transport=data2[0].transport;
+        data3.cost=data2[0].cost;
+        data3.status=status;
+
+
         // setAdminPackage(data);
+        setAdminPackage([...data, data3]);
     };
     
 
@@ -2787,7 +2803,7 @@ const employeeProfileUpdate =async (newProfile) => {
 
           
                 <Route exact path="/admin/home">
-                    <div className="wrapper">
+                    <div className="admin-wrapper">
 
                         <AdminNavbar2 callbackGoogle ={googlef} googletf = {google}/>
                         <div className="main-container"> 
@@ -2800,7 +2816,7 @@ const employeeProfileUpdate =async (newProfile) => {
 
                 
                 <Route exact path="/admin/add-admin">
-                    <div className="wrapper">
+                    <div className="admin-wrapper">
 
                         <AdminNavbar2 callbackGoogle ={googlef} googletf = {google}/>
                         <div className="main-container"> 
@@ -2812,7 +2828,7 @@ const employeeProfileUpdate =async (newProfile) => {
 
                 <Route exact path="/admin/all-admins">
 
-                    <div className="wrapper">
+                    <div className="admin-wrapper">
 
                         <AdminNavbar2 callbackGoogle ={googlef} googletf = {google}/>
                         <div className="main-container"> 
@@ -2824,7 +2840,7 @@ const employeeProfileUpdate =async (newProfile) => {
                 </Route>
 
                 <Route exact path="/admin/all-users">
-                    <div className="wrapper">
+                    <div className="admin-wrapper">
 
                         <AdminNavbar2 callbackGoogle ={googlef} googletf = {google}/>
                         <div className="main-container"> 
@@ -2835,7 +2851,7 @@ const employeeProfileUpdate =async (newProfile) => {
                 </Route>
 
                 <Route exact path="/admin/active-users">
-                    <div className="wrapper">
+                    <div className="admin-wrapper">
 
                         <AdminNavbar2 callbackGoogle ={googlef} googletf = {google}/>
                         <div className="main-container"> 
@@ -2847,7 +2863,7 @@ const employeeProfileUpdate =async (newProfile) => {
 
 
                 <Route exact path="/admin/user/details/:id">
-                    <div className="wrapper">
+                    <div className="admin-wrapper">
                         <AdminNavbar2 callbackGoogle ={googlef} googletf = {google}/>
                         <div className="main-container"> 
                             <AdminUserDetailsList list={adminUserDetails}/>
@@ -2859,7 +2875,7 @@ const employeeProfileUpdate =async (newProfile) => {
                 <Route exact path="/admin/add-employee">
 
 
-                    <div className="wrapper">
+                    <div className="admin-wrapper">
 
                         <AdminNavbar2 callbackGoogle ={googlef} googletf = {google}/>
                         <div className="main-container"> 
@@ -2872,7 +2888,7 @@ const employeeProfileUpdate =async (newProfile) => {
 
                 <Route exact path="/admin/all-employees">
 
-                    <div className="wrapper">
+                    <div className="admin-wrapper">
 
                         <AdminNavbar2 callbackGoogle ={googlef} googletf = {google}/>
                         <div className="main-container"> 
@@ -2884,7 +2900,7 @@ const employeeProfileUpdate =async (newProfile) => {
                 </Route>
 
                 <Route exact path="/admin/active-employees">
-                    <div className="wrapper">
+                    <div className="admin-wrapper">
 
                         <AdminNavbar2 callbackGoogle ={googlef} googletf = {google}/>
                         <div className="main-container"> 
@@ -2895,7 +2911,7 @@ const employeeProfileUpdate =async (newProfile) => {
                 </Route>
 
                 <Route exact path="/admin/hotels-pending">
-                    <div className="wrapper">
+                    <div className="admin-wrapper">
 
                         <AdminNavbar2 callbackGoogle ={googlef} googletf = {google}/>
                         <div className="main-container"> 
@@ -2906,7 +2922,7 @@ const employeeProfileUpdate =async (newProfile) => {
                 </Route>
 
                 <Route exact path="/admin/all-hotels">
-                    <div className="wrapper">
+                    <div className="admin-wrapper">
 
                         <AdminNavbar2 callbackGoogle ={googlef} googletf = {google}/>
                         <div className="main-container"> 
@@ -2917,7 +2933,7 @@ const employeeProfileUpdate =async (newProfile) => {
                 </Route>
 
                 <Route exact path="/admin/hotel-bookings">adminHotelBookings
-                    <div className="wrapper">
+                    <div className="admin-wrapper">
 
                         <AdminNavbar2 callbackGoogle ={googlef} googletf = {google}/>
                         <div className="main-container"> 
@@ -2928,7 +2944,7 @@ const employeeProfileUpdate =async (newProfile) => {
                 </Route>
 
                 <Route exact path="/admin/transports-pending">
-                    <div className="wrapper">
+                    <div className="admin-wrapper">
 
                         <AdminNavbar2 callbackGoogle ={googlef} googletf = {google}/>
                         <div className="main-container"> 
@@ -2939,7 +2955,7 @@ const employeeProfileUpdate =async (newProfile) => {
                 </Route>
 
                 <Route exact path="/admin/all-cars">
-                    <div className="wrapper">
+                    <div className="admin-wrapper">
 
                         <AdminNavbar2 callbackGoogle ={googlef} googletf = {google}/>
                         <div className="main-container"> 
@@ -2950,7 +2966,7 @@ const employeeProfileUpdate =async (newProfile) => {
                 </Route>
 
                 <Route exact path="/admin/all-flight">
-                    <div className="wrapper">
+                    <div className="admin-wrapper">
 
                         <AdminNavbar2 callbackGoogle ={googlef} googletf = {google}/>
                         <div className="main-container"> 
@@ -2961,7 +2977,7 @@ const employeeProfileUpdate =async (newProfile) => {
                 </Route>
 
                 <Route exact path="/admin/car-bookings">
-                    <div className="wrapper">
+                    <div className="admin-wrapper">
 
                         <AdminNavbar2 callbackGoogle ={googlef} googletf = {google}/>
                         <div className="main-container"> 
@@ -2972,7 +2988,7 @@ const employeeProfileUpdate =async (newProfile) => {
                 </Route>
 
                 <Route exact path="/admin/flight-bookings">
-                    <div className="wrapper">
+                    <div className="admin-wrapper">
 
                         <AdminNavbar2 callbackGoogle ={googlef} googletf = {google}/>
                         <div className="main-container"> 
@@ -2986,7 +3002,7 @@ const employeeProfileUpdate =async (newProfile) => {
 
 
                 <Route exact path="/admin/package-pending">
-                    <div className="wrapper">
+                    <div className="admin-wrapper">
 
                         <AdminNavbar2 callbackGoogle ={googlef} googletf = {google}/>
                         <div className="main-container"> 
@@ -2997,7 +3013,7 @@ const employeeProfileUpdate =async (newProfile) => {
                 </Route>
 
                 <Route exact path="/admin/all-packages">
-                    <div className="wrapper">
+                    <div className="admin-wrapper">
 
                         <AdminNavbar2 callbackGoogle ={googlef} googletf = {google}/>
                         <div className="main-container"> 
@@ -3008,7 +3024,7 @@ const employeeProfileUpdate =async (newProfile) => {
                 </Route>
 
                 <Route exact path="/admin/package-bookings">
-                    <div className="wrapper">
+                    <div className="admin-wrapper">
 
                         <AdminNavbar2 callbackGoogle ={googlef} googletf = {google}/>
                         <div className="main-container"> 
@@ -3019,7 +3035,7 @@ const employeeProfileUpdate =async (newProfile) => {
                 </Route>
 
                 <Route exact path="/admin/package-status">
-                    <div className="wrapper">
+                    <div className="admin-wrapper">
 
                         <AdminNavbar2 callbackGoogle ={googlef} googletf = {google}/>
                         <div className="main-container"> 
@@ -3033,7 +3049,7 @@ const employeeProfileUpdate =async (newProfile) => {
 
 
                 <Route exact path="/admin/place-pending">
-                    <div className="wrapper">
+                    <div className="admin-wrapper">
 
                         <AdminNavbar2 callbackGoogle ={googlef} googletf = {google}/>
                         <div className="main-container"> 
@@ -3044,7 +3060,7 @@ const employeeProfileUpdate =async (newProfile) => {
                 </Route>
 
                 <Route exact path="/admin/all-places">
-                    <div className="wrapper">
+                    <div className="admin-wrapper">
 
                         <AdminNavbar2 callbackGoogle ={googlef} googletf = {google}/>
                         <div className="main-container"> 
@@ -3056,7 +3072,7 @@ const employeeProfileUpdate =async (newProfile) => {
 
                 
                 <Route exact path="/admin/income-statement">
-                    <div className="wrapper">
+                    <div className="admin-wrapper">
 
                         <AdminNavbar2 callbackGoogle ={googlef} googletf = {google}/>
                         <div className="main-container"> 
@@ -3067,7 +3083,7 @@ const employeeProfileUpdate =async (newProfile) => {
                 </Route>
 
                 <Route exact path="/admin/transaction-history">
-                    <div className="wrapper">
+                    <div className="admin-wrapper">
 
                         <AdminNavbar2 callbackGoogle ={googlef} googletf = {google}/>
                         <div className="main-container"> 
@@ -3078,7 +3094,7 @@ const employeeProfileUpdate =async (newProfile) => {
                 </Route>
 
                 <Route exact path="/admin/pending-salary">
-                    <div className="wrapper">
+                    <div className="admin-wrapper">
 
                         <AdminNavbar2 callbackGoogle ={googlef} googletf = {google}/>
                         <div className="main-container"> 
@@ -3089,7 +3105,7 @@ const employeeProfileUpdate =async (newProfile) => {
                 </Route>
 
                 <Route exact path="/admin/support">
-                    <div className="wrapper">
+                    <div className="admin-wrapper">
 
                         <AdminNavbar2 callbackGoogle ={googlef} googletf = {google}/>
                         <div className="main-container"> 
@@ -3100,7 +3116,7 @@ const employeeProfileUpdate =async (newProfile) => {
                 </Route>
 
                 <Route exact exact path="/admin/policy">
-                    <div className="wrapper">
+                    <div className="admin-wrapper">
 
                         <AdminNavbar2 callbackGoogle ={googlef} googletf = {google}/>
                         <div className="main-container"> 
@@ -3111,7 +3127,7 @@ const employeeProfileUpdate =async (newProfile) => {
                 </Route>
 
                 <Route exact path="/admin/policy/edit">
-                    <div className="wrapper">
+                    <div className="admin-wrapper">
 
                         <AdminNavbar2 callbackGoogle ={googlef} googletf = {google}/>
                         <div className="main-container"> 
@@ -3122,8 +3138,8 @@ const employeeProfileUpdate =async (newProfile) => {
                 </Route>
 
 
-                <Route exact exact path="/admin/guidelines">
-                    <div className="wrapper">
+                <Route exact path="/admin/guidelines">
+                    <div className="admin-wrapper">
                         <AdminNavbar2 callbackGoogle ={googlef} googletf = {google}/>
                         <div className="main-container"> 
                             <AdminGuidelines list={adminGuidelines} />
@@ -3133,7 +3149,7 @@ const employeeProfileUpdate =async (newProfile) => {
 
 
                 <Route exact path="/admin/guidelines/edit">
-                    <div className="wrapper">
+                    <div className="admin-wrapper">
 
                         <AdminNavbar2 callbackGoogle ={googlef} googletf = {google}/>
                         <div className="main-container"> 
@@ -3146,7 +3162,7 @@ const employeeProfileUpdate =async (newProfile) => {
 
 
                 <Route exact path="/admin/about">
-                    <div className="wrapper">
+                    <div className="admin-wrapper">
 
                         <AdminNavbar2 callbackGoogle ={googlef} googletf = {google}/>
                         <div className="main-container"> 
@@ -3158,7 +3174,7 @@ const employeeProfileUpdate =async (newProfile) => {
 
 
                 <Route exact path="/admin/about/edit">
-                    <div className="wrapper">
+                    <div className="admin-wrapper">
 
                         <AdminNavbar2 callbackGoogle ={googlef} googletf = {google}/>
                         <div className="main-container"> 
@@ -3171,7 +3187,7 @@ const employeeProfileUpdate =async (newProfile) => {
 
 
                 <Route exact path="/admin/profile">
-                    <div className="wrapper">
+                    <div className="admin-wrapper">
 
                         <AdminNavbar2 callbackGoogle ={googlef} googletf = {google}/>
                         <div className="main-container"> 
@@ -3227,15 +3243,21 @@ const employeeProfileUpdate =async (newProfile) => {
           {/* ------------------------- Service Registration Route -------------------------------- */}
 
             <Route exact path="/register">
-              <Register />
+                <div className="reg-wrapper">
+                    <Register />
+                </div>
             </Route>
 
             <Route exact path="/hotelreg">
-                <HotelRegistration  callback={hotelRegistration} />
+                <div className="reg-wrapper">
+                    <HotelRegistration  callback={hotelRegistration} />
+                </div>
             </Route>
 
             <Route exact path="/transportreg">
-                <TransportRegistration  callback={transportRegistration} />
+                <div className="reg-wrapper">
+                    <TransportRegistration  callback={transportRegistration} />
+                </div>
             </Route>
 
 
@@ -3244,7 +3266,7 @@ const employeeProfileUpdate =async (newProfile) => {
       {/* ---------------------------------   Service Hotel Route  --------------------------------------------  */}
 
            <Route exact path="/hotelDashboard/index">
-                    <div className="wrapper">
+                    <div className="service-wrapper">
                         <HotelNavbar />
                         <div className="main-container"> 
                             <HotelHome/>
@@ -3253,7 +3275,7 @@ const employeeProfileUpdate =async (newProfile) => {
             </Route>
 
             <Route exact exact path="/hotelDashboard/profile">
-                    <div className="wrapper">
+                    <div className="service-wrapper">
                         <HotelNavbar />
                         <div className="main-container"> 
                             <HotelProfile hotelidl = {hotelloginId} 
@@ -3269,7 +3291,7 @@ const employeeProfileUpdate =async (newProfile) => {
             </Route>
 
             <Route exact path="/hotelDashboard/addhotelfacility">
-                  <div className="wrapper">
+                  <div className="service-wrapper">
                         <HotelNavbar />
                         <div className="main-container"> 
                             <ServiceAddFacility status="Facility" callback={serviceAddFacility} />
@@ -3278,7 +3300,7 @@ const employeeProfileUpdate =async (newProfile) => {
             </Route>
 
             <Route exact path="/hotelDashboard/addhotelroom">
-                  <div className="wrapper"> 
+                  <div className="service-wrapper"> 
                           <HotelNavbar />
                         <div className="main-container"> 
                              <ServiceAddRoom status="Room" callback={serviceAddRoom} />
@@ -3287,7 +3309,7 @@ const employeeProfileUpdate =async (newProfile) => {
             </Route>
 
             <Route exact path="/hotelDashboard/hotelsupport">
-                  <div className="wrapper"> 
+                  <div className="service-wrapper"> 
                           <HotelNavbar />
                        <div className="main-container"> 
                             <ServiceHotelSupport status="Support" callback={serviceHotelSupport} />
@@ -3296,7 +3318,7 @@ const employeeProfileUpdate =async (newProfile) => {
             </Route>
 
             <Route exact path="/hotelDashboard/managehotelfacility">
-                  <div className="wrapper"> 
+                  <div className="service-wrapper"> 
                           <HotelNavbar />
                         <div className="main-container"> 
                         <ServiceFacilityList list={servicefacility} callback={serviceFacilityDeletecallback} />
@@ -3305,7 +3327,7 @@ const employeeProfileUpdate =async (newProfile) => {
             </Route>
 
                 <Route exact path="/hotelDashboard/facilityedit/:id">
-                  <div className="wrapper">
+                  <div className="service-wrapper">
                           <HotelNavbar />
                         <div className="main-container">
                         <ServiceEditFacility callback={serviceEditFacility} />
@@ -3314,7 +3336,7 @@ const employeeProfileUpdate =async (newProfile) => {
             </Route>
 
             <Route exact path="/hotelDashboard/managehotelroom">
-                  <div className="wrapper">
+                  <div className="service-wrapper">
                         <HotelNavbar />
                       <div className="main-container"> 
                         <ServiceRoomList list={serviceroom} callback={serviceRoomDeletecallback} />
@@ -3323,7 +3345,7 @@ const employeeProfileUpdate =async (newProfile) => {
             </Route>
 
             <Route exact path="/hotelDashboard/details/:id">
-                    <div className="wrapper">
+                    <div className="service-wrapper">
                         <HotelNavbar />
                         <div className="main-container"> 
                             <ServiceBookingDetailsList list={serviceBookingDetails}/>
@@ -3332,7 +3354,7 @@ const employeeProfileUpdate =async (newProfile) => {
             </Route>
 
             <Route exact path="/hotelDashboard/roomedit/:id">
-                  <div className="wrapper">
+                  <div className="service-wrapper">
                           <HotelNavbar />
                         <div className="main-container">
                         <ServiceEditRoom callback={serviceEditRoom} />
@@ -3341,7 +3363,7 @@ const employeeProfileUpdate =async (newProfile) => {
             </Route>
 
             <Route exact path="/hotelDashboard/showhotelallboking">
-                <div className="wrapper">
+                <div className="service-wrapper">
                         <HotelNavbar />
                       <div className="main-container"> 
                         <ServiceBookingList list={servicebooking} callbackD={serviceBookingDetailscallback} callback={serviceBookingDeletecallback} />
@@ -3350,7 +3372,7 @@ const employeeProfileUpdate =async (newProfile) => {
             </Route>
 
             <Route exact path="/hotelDashboard/room-book-pending">
-                  <div className="wrapper">
+                  <div className="service-wrapper">
                           <HotelNavbar />
                       <div className="main-container"> 
                         <ServicePendingBookingList list={servicependingbooking} callbackA={servicePendingBookingApprovecallback} callbackD={servicePendingBookingDeclinecallback} />
@@ -3359,7 +3381,7 @@ const employeeProfileUpdate =async (newProfile) => {
             </Route>
 
             <Route exact path="/hotelDashboard/checkhotelreview">
-                    <div className="wrapper">
+                    <div className="service-wrapper">
                           <HotelNavbar />
                         <div className="main-container">
                             <ServiceReviewList list={servicereview} />
@@ -3368,7 +3390,7 @@ const employeeProfileUpdate =async (newProfile) => {
             </Route>
 
             <Route exact path="/hotelDashboard/hoteltransactionhistory">
-                  <div className="wrapper">
+                  <div className="service-wrapper">
                           <HotelNavbar />
                       <div className="main-container">
                         <ServiceTransactionList list={servicetransaction} />
@@ -3382,7 +3404,7 @@ const employeeProfileUpdate =async (newProfile) => {
   {/* ------------------------------------ Service Car Route -------------------------------------------------- */}
 
             <Route exact path="/carDashboard/index">
-                    <div className="wrapper">
+                    <div className="service-wrapper">
                         <CarNavbar />
                         <div className="main-container"> 
                             <CarHome/>
@@ -3391,7 +3413,7 @@ const employeeProfileUpdate =async (newProfile) => {
             </Route>
 
             <Route exact path="/carDashboard/profile">
-                    <div className="wrapper">
+                    <div className="service-wrapper">
 
                         <CarNavbar />
                         <div className="main-container"> 
@@ -3406,7 +3428,7 @@ const employeeProfileUpdate =async (newProfile) => {
             </Route>
 
             <Route exact path="/carDashboard/addcar">
-                  <div className="wrapper">
+                  <div className="service-wrapper">
                           <CarNavbar />
                         <div className="main-container">
                            <ServiceAddCar callback={serviceAddCar} />
@@ -3415,7 +3437,7 @@ const employeeProfileUpdate =async (newProfile) => {
             </Route>
 
             <Route exact path="/carDashboard/caredit/:id">
-                  <div className="wrapper">
+                  <div className="service-wrapper">
                           <CarNavbar />
                         <div className="main-container">
                         <ServiceEditCar callback={serviceEditCar} />
@@ -3424,7 +3446,7 @@ const employeeProfileUpdate =async (newProfile) => {
             </Route>
 
             <Route exact path="/carDashboard/managecar">
-                  <div className="wrapper"> 
+                  <div className="service-wrapper"> 
                           <CarNavbar />
                         <div className="main-container"> 
                         <ServiceCarManageList list={servicecarmanage} callback={serviceCarManageDeletecallback} />
@@ -3433,7 +3455,7 @@ const employeeProfileUpdate =async (newProfile) => {
                 </Route>
 
             <Route exact path="/carDashboard/car-booking-list">
-                <div className="wrapper">
+                <div className="service-wrapper">
                         <CarNavbar />
                       <div className="main-container"> 
                         <ServiceCarBookingList list={servicecarbooking} callbackD={serviceCarBookingDetailscallback} callback={serviceCarBookingDeletecallback} />
@@ -3442,7 +3464,7 @@ const employeeProfileUpdate =async (newProfile) => {
             </Route>
 
             <Route exact path="/carDashboard/details/:id">
-                    <div className="wrapper">
+                    <div className="service-wrapper">
                         <CarNavbar />
                         <div className="main-container"> 
                             <ServiceCarBookingDetailsList list={serviceCarBookingDetails}/>
@@ -3451,7 +3473,7 @@ const employeeProfileUpdate =async (newProfile) => {
             </Route>
 
             <Route exact path="/carDashboard/car-pending-list">
-                  <div className="wrapper">
+                  <div className="service-wrapper">
                           <CarNavbar />
                       <div className="main-container"> 
                         <ServiceCarPendingBookingList list={servicecarpendingbooking} callbackA={serviceCarPendingBookingApprovecallback} callbackD={serviceCarPendingBookingDeclinecallback} />
@@ -3460,7 +3482,7 @@ const employeeProfileUpdate =async (newProfile) => {
             </Route>
             
             <Route exact path="/carDashboard/cartype">
-                  <div className="wrapper">
+                  <div className="service-wrapper">
                             <CarNavbar />
                       <div className="main-container">
                         <ServiceCarType list={serviceCarType} callback={carTypeCallback} /> 
@@ -3469,7 +3491,7 @@ const employeeProfileUpdate =async (newProfile) => {
             </Route>
 
             <Route exact path="/carDashboard/caravailability">
-                   <div className="wrapper">
+                   <div className="service-wrapper">
                               <CarNavbar />
                         <div className="main-container">
                             <ServiceCarAvailability list={serviceCarAvailability} callback={carAvailabilityCallback} /> 
@@ -3478,7 +3500,7 @@ const employeeProfileUpdate =async (newProfile) => {
             </Route>
 
             <Route exact path="/carDashboard/carsupport">
-                  <div className="wrapper">
+                  <div className="service-wrapper">
                         <CarNavbar />
                       <div className="main-container">
 
@@ -3488,7 +3510,7 @@ const employeeProfileUpdate =async (newProfile) => {
             </Route>
 
             <Route exact path="/carDashboard/checkcarreview">
-                    <div className="wrapper">
+                    <div className="service-wrapper">
                           <CarNavbar />
                         <div className="main-container">
                             <ServiceCarReviewList list={servicecarreview} />
@@ -3497,7 +3519,7 @@ const employeeProfileUpdate =async (newProfile) => {
             </Route>
 
             <Route exact path="/carDashboard/cartransactionhistory">
-                  <div className="wrapper">
+                  <div className="service-wrapper">
                           <CarNavbar />
                       <div className="main-container">
                         <ServiceCarTransactionList list={servicecartransaction} />
@@ -3510,7 +3532,7 @@ const employeeProfileUpdate =async (newProfile) => {
     {/* --------------------------------------Service Flight Route ----------------------------------- */}
 
             <Route exact path="/flightDashboard/index">
-                    <div className="wrapper">
+                    <div className="service-wrapper">
                         <FlightNavbar />
                         <div className="main-container"> 
                             <FlightHome/>
@@ -3519,7 +3541,7 @@ const employeeProfileUpdate =async (newProfile) => {
             </Route>
 
             <Route exact path="/flightDashboard/profile">
-                    <div className="wrapper">
+                    <div className="service-wrapper">
                         <FlightNavbar />
                         <div className="main-container"> 
                             <FlightProfile flightidl = {flightloginId} 
@@ -3533,7 +3555,7 @@ const employeeProfileUpdate =async (newProfile) => {
             </Route>
 
             <Route exact path="/flightDashboard/addflight">
-                  <div className="wrapper">
+                  <div className="service-wrapper">
                           <FlightNavbar />
                       <div className="main-container"> 
                         <ServiceAddFlight status="Flight" callback={serviceAddFlight} />
@@ -3542,7 +3564,7 @@ const employeeProfileUpdate =async (newProfile) => {
             </Route>
 
             <Route exact path="/flightDashboard/flightedit/:id">
-                  <div className="wrapper">
+                  <div className="service-wrapper">
                           <FlightNavbar />
                         <div className="main-container">
                         <ServiceEditFlight callback={serviceEditFlight} />
@@ -3551,7 +3573,7 @@ const employeeProfileUpdate =async (newProfile) => {
             </Route>
 
             <Route exact path="/flightDashboard/manageflight">
-                  <div className="wrapper"> 
+                  <div className="service-wrapper"> 
                           <FlightNavbar />
                         <div className="main-container"> 
                         <ServiceFlightManageList list={serviceflightmanage}  callback={serviceFlightManageDeletecallback} />
@@ -3560,7 +3582,7 @@ const employeeProfileUpdate =async (newProfile) => {
             </Route>
 
             <Route exact path="/flightDashboard/details/:id">
-                    <div className="wrapper">
+                    <div className="service-wrapper">
                         <FlightNavbar />
                         <div className="main-container"> 
                             <ServiceFlightBookingDetailsList list={serviceFlightBookingDetails}/>
@@ -3569,7 +3591,7 @@ const employeeProfileUpdate =async (newProfile) => {
             </Route>
                
             <Route exact path="/flightDashboard/flight-booking-list">
-                <div className="wrapper">
+                <div className="service-wrapper">
                         <FlightNavbar />
                       <div className="main-container"> 
                         <ServiceFlightBookingList list={serviceflightbooking} callbackD={serviceFlightBookingDetailscallback} callback={serviceFlightBookingDeletecallback} />
@@ -3578,7 +3600,7 @@ const employeeProfileUpdate =async (newProfile) => {
             </Route>
 
             <Route exact path="/flightDashboard/flight-pending-list">
-                  <div className="wrapper">
+                  <div className="service-wrapper">
                           <FlightNavbar />
                       <div className="main-container"> 
                         <ServiceFlightPendingBookingList list={serviceflightpendingbooking} callbackA={serviceFlightPendingBookingApprovecallback} callbackD={serviceFlightPendingBookingDeclinecallback} />
@@ -3587,7 +3609,7 @@ const employeeProfileUpdate =async (newProfile) => {
             </Route>
 
             <Route exact path="/flightDashboard/flighttype">
-                  <div className="wrapper">
+                  <div className="service-wrapper">
                             <FlightNavbar />
                       <div className="main-container">
                         <ServiceFlightType list={serviceFlightType} callback={flightTypeCallback} /> 
@@ -3596,7 +3618,7 @@ const employeeProfileUpdate =async (newProfile) => {
             </Route>
 
             <Route exact path="/flightDashboard/flightavailability">
-                   <div className="wrapper">
+                   <div className="service-wrapper">
                               <FlightNavbar />
                         <div className="main-container">
                             <ServiceFlightAvailability list={serviceFlightAvailability} callback={flightAvailabilityCallback} /> 
@@ -3605,7 +3627,7 @@ const employeeProfileUpdate =async (newProfile) => {
             </Route>
 
             <Route exact path="/flightDashboard/checkflightreview">
-                    <div className="wrapper">
+                    <div className="service-wrapper">
                           <FlightNavbar />
                         <div className="main-container">
                             <ServiceFlightReviewList list={serviceflightreview} />
@@ -3614,7 +3636,7 @@ const employeeProfileUpdate =async (newProfile) => {
             </Route>
 
             <Route exact path="/flightDashboard/flighttransactionhistory">
-                  <div className="wrapper">
+                  <div className="service-wrapper">
                           <FlightNavbar />
                       <div className="main-container">
                         <ServiceFlightTransactionList list={serviceflighttransaction} />
@@ -3624,7 +3646,7 @@ const employeeProfileUpdate =async (newProfile) => {
 
 
             <Route exact path="/flightDashboard/flightsupport">
-                  <div className="wrapper">
+                  <div className="service-wrapper">
                         <FlightNavbar />
                     <div className="main-container"> 
                         <ServiceFlightSupport status="Support" callback={serviceFlightSupport} />
@@ -3646,7 +3668,7 @@ const employeeProfileUpdate =async (newProfile) => {
 
             
                 <Route exact path="/employee">
-                    <div className="wrapper">
+                    <div className="emp-wrapper">
                         <EmployeeNavbar />
                         <div className="main-container">   
                         <EmployeeHome/>   
@@ -3656,7 +3678,7 @@ const employeeProfileUpdate =async (newProfile) => {
                 </Route>
 
                 <Route exact path="/employee/userList">
-                <div className="wrapper">
+                <div className="emp-wrapper">
                     <EmployeeNavbar />
                     <div className="main-container">  
                     <EmployeeUserList list={employeeUser}  callback={employeeUserDetailscallback} />    
@@ -3666,7 +3688,7 @@ const employeeProfileUpdate =async (newProfile) => {
                 </Route>
 
                 <Route exact path="/employee/user/details/:id">
-                    <div className="wrapper">
+                    <div className="emp-wrapper">
                         <EmployeeNavbar />
                         <div className="main-container"> 
                             <EmployeeUserDetailsList list={employeeUserDetails}/>
@@ -3676,7 +3698,7 @@ const employeeProfileUpdate =async (newProfile) => {
                 </Route>
 
                 <Route exact path="/employee/packageAdd">
-                <div className="wrapper">
+                <div className="emp-wrapper">
                     <EmployeeNavbar />
                     <div className="main-container">  
                     <EmployeeAddPackage status="Package" callback={employeeAddPackage} />       
@@ -3686,7 +3708,7 @@ const employeeProfileUpdate =async (newProfile) => {
                 </Route>
 
                 <Route exact path="/employee/package">
-                <div className="wrapper">
+                <div className="emp-wrapper">
                     <EmployeeNavbar />
                     <div className="main-container"> 
                     <EmployeePackageList list={employeePackage} callback={employeePackageDeletecallback} />       
@@ -3697,7 +3719,7 @@ const employeeProfileUpdate =async (newProfile) => {
 
 
                 <Route path="/employee/packageEdit/:id">
-                    <div className="wrapper">
+                    <div className="emp-wrapper">
                             <EmployeeNavbar />
                             <div className="main-container">
                             <EmployeeEditPackage callback={employeeEditPackage} />
@@ -3707,7 +3729,7 @@ const employeeProfileUpdate =async (newProfile) => {
 
 
                 <Route exact path="/employee/placeAdd">
-                <div className="wrapper">
+                <div className="emp-wrapper">
                     <EmployeeNavbar />
                         <div className="main-container">
                         <EmployeeAddPlace status="Place" callback={employeeAddPlace} />          
@@ -3717,7 +3739,7 @@ const employeeProfileUpdate =async (newProfile) => {
                 </Route>
 
                 <Route exact path="/employee/place">
-                <div className="wrapper">
+                <div className="emp-wrapper">
                     <EmployeeNavbar />
                     <div className="main-container">    
                     <EmployeePlaceList list={employeePlace} callback={employeePlaceDeletecallback} />  
@@ -3727,7 +3749,7 @@ const employeeProfileUpdate =async (newProfile) => {
                 </Route>
 
                 <Route path="/employee/placeEdit/:id">
-                    <div className="wrapper">
+                    <div className="emp-wrapper">
                             <EmployeeNavbar />
                             <div className="main-container">
                             <EmployeeEditPlace callback={employeeEditPlace} />
@@ -3736,7 +3758,7 @@ const employeeProfileUpdate =async (newProfile) => {
                 </Route>
 
                 <Route exact path="/employee/salary">
-                <div className="wrapper">
+                <div className="emp-wrapper">
                     <EmployeeNavbar />
                     <div className="main-container">   
                     <EmployeeAddSalary status="Salary" callback={employeeAddSalary} />   
@@ -3746,7 +3768,7 @@ const employeeProfileUpdate =async (newProfile) => {
                 </Route>
 
                 <Route exact path="/employee/salary/list">
-                <div className="wrapper">
+                <div className="emp-wrapper">
                     <EmployeeNavbar />
                     <div className="main-container">   
                     <EmployeeSalaryList list={employeesalary} />   
@@ -3755,7 +3777,7 @@ const employeeProfileUpdate =async (newProfile) => {
                 </Route>
 
                 <Route exact path="/employee/statementAdd">
-                <div className="wrapper">
+                <div className="emp-wrapper">
                     <EmployeeNavbar />
                     <div className="main-container">   
                     <EmployeeAddStatement status="Statement" callback={employeeAddStatement} />   
@@ -3765,7 +3787,7 @@ const employeeProfileUpdate =async (newProfile) => {
                 </Route>
 
                 <Route exact path="/employee/statement">
-                <div className="wrapper">
+                <div className="emp-wrapper">
                     <EmployeeNavbar />
                     <div className="main-container">   
                             <EmployeeStatementList list={employeestatement} />
@@ -3774,7 +3796,7 @@ const employeeProfileUpdate =async (newProfile) => {
                 </Route>
 
                 <Route exact path="/employee/transactionAdd">
-                <div className="wrapper">
+                <div className="emp-wrapper">
                     <EmployeeNavbar />
                     <div className="main-container">   
                             <EmployeeAddTransaction status="Transaction" callback={employeeAddTransaction} />
@@ -3783,7 +3805,7 @@ const employeeProfileUpdate =async (newProfile) => {
                 </Route>
 
                 <Route exact path="/employee/transaction">
-                <div className="wrapper">
+                <div className="emp-wrapper">
                     <EmployeeNavbar />
                     <div className="main-container">   
                             <EmployeeTransactionList list={employeetransaction} />
@@ -3792,7 +3814,7 @@ const employeeProfileUpdate =async (newProfile) => {
                 </Route>
 
                 <Route exact path="/employee/advertisement">
-                <div className="wrapper">
+                <div className="emp-wrapper">
                     <EmployeeNavbar />
                     <div className="main-container">      
                     <EmployeeAddAdvertisement status="Advertisement" callback={employeeAddAdvertisement} />  
@@ -3802,7 +3824,7 @@ const employeeProfileUpdate =async (newProfile) => {
                 </Route>
 
                 <Route exact path="/employee/advertisement/list">
-                <div className="wrapper">
+                <div className="emp-wrapper">
                     <EmployeeNavbar />
                     <div className="main-container">   
                     <EmployeeAdvertisementList list={employeeadvertisement} callback={employeeAdvertisementDeletecallback} />    
@@ -3812,7 +3834,7 @@ const employeeProfileUpdate =async (newProfile) => {
                 </Route>
 
                 <Route exact path="/employee/promo">
-                <div className="wrapper">
+                <div className="emp-wrapper">
                     <EmployeeNavbar />
                     <div className="main-container">    
                     <EmployeeAddPromo status="Promo" callback={employeeAddPromo} />  
@@ -3822,7 +3844,7 @@ const employeeProfileUpdate =async (newProfile) => {
                 </Route>
 
                 <Route exact path="/employee/promo/list">
-                <div className="wrapper">
+                <div className="emp-wrapper">
                     <EmployeeNavbar />
                     <div className="main-container">     
                     <EmployeePromoList list={employeepromo} callback={employeePromoDeletecallback} /> 
@@ -3832,7 +3854,7 @@ const employeeProfileUpdate =async (newProfile) => {
                 </Route>
 
                 <Route exact path="/employee/review">
-                <div className="wrapper">
+                <div className="emp-wrapper">
                     <EmployeeNavbar />
                     <div className="main-container">   
                             <EmployeeReviewList list={employeereview} />
@@ -3841,7 +3863,7 @@ const employeeProfileUpdate =async (newProfile) => {
                 </Route>
 
                 <Route exact path="/employee/support">
-                <div className="wrapper">
+                <div className="emp-wrapper">
                     <EmployeeNavbar />
                     <div className="main-container">   
                     <EmployeeSupportList list={employeesupport} callback={employeeSupportDeletecallback} />   
@@ -3851,7 +3873,7 @@ const employeeProfileUpdate =async (newProfile) => {
                 </Route>
 
                 <Route exact path="/employee/guidelines">
-                <div className="wrapper">
+                <div className="emp-wrapper">
                     <EmployeeNavbar />
                     <div className="main-container">   
                     <EmployeeGuidelines list={employeeGuidelines} />   
@@ -3861,7 +3883,7 @@ const employeeProfileUpdate =async (newProfile) => {
                 </Route>
 
                 <Route path="/employee/guidelines/edit">
-                            <div className="wrapper">
+                            <div className="emp-wrapper">
 
                                 <EmployeeNavbar />
                                 <div className="main-container"> 
@@ -3872,7 +3894,7 @@ const employeeProfileUpdate =async (newProfile) => {
                         </Route>
 
                 <Route exact path="/employee/faq">
-                <div className="wrapper">
+                <div className="emp-wrapper">
                     <EmployeeNavbar />
                     <div className="main-container">   
                                 <EmployeeAddFaq status="Faq" callback={employeeAddFaq} />
@@ -3881,7 +3903,7 @@ const employeeProfileUpdate =async (newProfile) => {
                 </Route>
 
                 <Route exact path="/employee/faq/list">
-                <div className="wrapper">
+                <div className="emp-wrapper">
                     <EmployeeNavbar />
                     <div className="main-container">   
                                 <EmployeeFaqList list={employeefaq} callback={employeeFaqDeletecallback} />
@@ -3890,7 +3912,7 @@ const employeeProfileUpdate =async (newProfile) => {
                 </Route>
 
                 <Route exact path="/employee/transportList">
-                <div className="wrapper">
+                <div className="emp-wrapper">
                     <EmployeeNavbar />
                     <div className="main-container">   
                             <EmployeeTransportList list={employeetransport} />
@@ -3899,7 +3921,7 @@ const employeeProfileUpdate =async (newProfile) => {
                 </Route>
 
                 <Route exact path="/employee/hotelList">
-                <div className="wrapper">
+                <div className="emp-wrapper">
                     <EmployeeNavbar />
                     <div className="main-container">   
                             <EmployeeHotelList list={employeehotel} />
@@ -3909,7 +3931,7 @@ const employeeProfileUpdate =async (newProfile) => {
 
 
                 <Route exact path="/employee/profile">
-                    <div className="wrapper">
+                    <div className="emp-wrapper">
 
                         <EmployeeNavbar />
                         <div className="main-container"> 
@@ -3939,170 +3961,220 @@ const employeeProfileUpdate =async (newProfile) => {
                 {/* Employee END*************************************************** */}
 
                 <Route exact path="/user">
+                <div className="user-wrapper">
                   <UserNavbar />
                   <h2>Home</h2>
                   <UserHomePage callback={userSrcHotel} />
                   <UserFooter />
+                  </div>
               </Route>
 
               <Route exact path="/user/flight">
+              <div className="user-wrapper">
                   <UserNavbar />
                   <h2>Flight List</h2>
                   <UserBookedFlightList list={userbookedflight} />
                   <UserFooter />
+                  </div>
               </Route>
 
               <Route exact path="/user/hotel">
+              <div className="user-wrapper">
                   <UserNavbar />
                   <h2>Hotel List</h2>
                   <UserBookedHotelList list={userbookedhotel} />
                   <UserFooter />
+                  </div>
               </Route>
 
               <Route exact path="/user/car">
+              <div className="user-wrapper">
                   <UserNavbar />
                   <h2>Car List</h2>
                   <UserBookedCarList list={userbookedcar} />
                   <UserFooter />
+                  </div>
               </Route>
 
               <Route exact path="/user/destination">
+              <div className="user-wrapper">
                   <UserNavbar />
                   <h2>Destination</h2>
                   <UserDestinationList list={userdestinationlist} callback={userDestinationDetailscallback} />
                   <UserFooter />
+                  </div>
               </Route>
 
               <Route exact path="/user/destination_details/:id">
+              <div className="user-wrapper">
                   <UserNavbar />
                   <h2>Destination Details</h2>
                   <UserShowDestinationDetails list={userdestinationdetails} />
                   <UserFooter />
+                  </div>
               </Route>
 
               <Route exact path="/user/package">
+              <div className="user-wrapper">
                   <UserNavbar />
                   <h2>Packages</h2>
                   <UserPackageList list={usershowpackage} callback={userBookPackageCallback}/>
                   <UserFooter />
+                  </div>
               </Route>
 
               <Route exact path="/user/show_hotels">
+              <div className="user-wrapper">
                   <UserNavbar />
                   <h2>Hotels</h2>
                   <UserShowHotelList list={usershowhotel} callback={userHotelRoomscallback} />
                   <UserFooter />
+                  </div>
               </Route>
 
               <Route exact path="/user/show_hotels/:id">
+              <div className="user-wrapper">
                   <UserNavbar />
                   <h2>Hotels</h2>
                   <UserShowHotelList list={usershowhotelsrc} callback={userHotelRoomscallback} />
                   <UserFooter />
+                  </div>
               </Route>
 
               <Route exact path="/user/hotel_rooms/:src_hotel">
+              <div className="user-wrapper">
                   <UserNavbar />
                   <h2>Hotel Room</h2>
                   <UserHotelRoomList list={userhotelroomsrc} />
                   <UserFooter />
+                  </div>
               </Route>
 
               <Route exact path="/user/confirm_hotel/:id">
+              <div className="user-wrapper">
                   <UserNavbar />
                   <h2>Confirm Hotel</h2>
                   <UserConfirmHotel callback={userConfirmHotel} />
                   <UserFooter />
+                  </div>
               </Route>
 
               <Route exact path="/user/hotel_facility">
+              <div className="user-wrapper">
                   <UserNavbar />
                   <h2>Hotel Facility</h2>
                   <UserHotelFacilityList list={userhotelfacility} />
                   <UserFooter />
+                  </div>
               </Route>
 
               <Route exact path="/user/flight_list">
+              <div className="user-wrapper">
                   <UserNavbar />
                   <h2>Flight</h2>
                   <UserFlightBookingList list={userflightbooking} />
                   <UserFooter />
+                  </div>
               </Route>
 
               <Route path="/user/flight/book/:id">
+              <div className="user-wrapper">
                   <UserNavbar />
                   <UserConfirmFlight callback={userConfirmFlight} />
                   <UserFooter />
+                  </div>
               </Route>
 
               <Route exact path="/user/Car_list">
+              <div className="user-wrapper">
                   <UserNavbar />
                   <h2>Car</h2>
                   <UserCarBookingList list={usercarbooking} />
                   <UserFooter />
+                  </div>
               </Route>
 
               <Route exact path="/user/car/book/:id">
+              <div className="user-wrapper">
                   <UserNavbar />
                   <UserConfirmCar status="User" callback={userConfirmCar} />
                   <UserFooter />
+                  </div>
               </Route>
 
               <Route exact path="/user/travel_history">
+              <div className="user-wrapper">
                   <UserNavbar />
                   <h2>Travel History</h2>
                   <UserTravelHistoryList list={usertravelhistory} />
                   <UserFooter />
+                  </div>
               </Route>
 
               <Route exact path="/user/guideline">
+              <div className="user-wrapper">
                   <UserNavbar />
                   <UserShowTravelGuideline list={usershowguideline} />
                   <UserFooter />
+                  </div>
               </Route>
 
               <Route exact path="/user/notification">
+              <div className="user-wrapper">
                   <UserNavbar />
                   <h2>Notification</h2>
                   <UserShowNotification list={usershowpromos} />
                   <UserFooter />
+                  </div>
               </Route>
 
               <Route exact path="/user/about">
+              <div className="user-wrapper">
                   <UserNavbar />
                   {/* <h2>About Us</h2> */}
                   <UserShowAboutUs list={usershowaboutus} />
                   <UserFooter />
+                  </div>
               </Route>
 
               <Route path="/user/contact">
+              <div className="user-wrapper">
                   <UserNavbar />
                   <UserContactUs callback={userContactUs} />
                   <UserFooter />
+                  </div>
               </Route>
 
               <Route exact path="/user/privay_policy">
+              <div className="user-wrapper">
                   <UserNavbar />
                   {/* <h2>Privacy Policy</h2> */}
                   <UserShowPrivacyPolicy list={usershowprivacypolicy} />
                   <UserFooter />
+                  </div>
               </Route>
 
               <Route exact path="/user/faq">
+              <div className="user-wrapper">
                   <UserNavbar />
                   <h2>FAQ</h2>
                   <UserShowFAQ list={usershowfaq} />
                   <UserFooter />
+                  </div>
               </Route>
 
               <Route path="/user/give_review">
+              <div className="user-wrapper">
                   <UserNavbar />
                   <UserReview callback={userReview} />
                   <UserFooter />
+                  </div>
               </Route>
 
               <Route exact path="/user/registration">
+              <div className="user-wrapper">
                   <UserRegistration callback={userRegistration} />
+                  </div>
               </Route>
 
               {/* <Route exact path="/user/profile">
@@ -4112,6 +4184,7 @@ const employeeProfileUpdate =async (newProfile) => {
               </Route> */}
 
                  <Route exact path="/user/profile">
+                 <div className="user-wrapper">
                     
                         <UserNavbar />
                         
@@ -4124,6 +4197,7 @@ const employeeProfileUpdate =async (newProfile) => {
                             callback={userProfileUpdate} />
             
                         <UserFooter />
+                        </div>
                 </Route>
 
                 {/* User END****************************************************** */}
@@ -4139,9 +4213,9 @@ const employeeProfileUpdate =async (newProfile) => {
 
 
                 <Route path="*">
-                    <div className="wrapper">
+                    <div className="admin-wrapper">
 
-                        <AdminNavbar2 callbackGoogle ={googlef} googletf = {google}/>
+                        {/* <AdminNavbar2 callbackGoogle ={googlef} googletf = {google}/> */}
                         <div className="main-container"> 
                             <h3>404 not found</h3>
                         </div>

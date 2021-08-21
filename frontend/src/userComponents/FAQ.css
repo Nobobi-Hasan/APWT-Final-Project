@@ -1,4 +1,4 @@
-:root {
+.user-wrapper :root {
     
     /* colors */
     --purple: #7276e1;
@@ -13,20 +13,20 @@
 
 }
 
-.attribution { 
+.user-wrapper .attribution { 
     color: #fff;
     font-size: 11px; 
     margin-top: 25px;
     text-align: center;  
 }
 
-.attribution a { color:#fff; }
+.user-wrapper .attribution a { color:#fff; }
 
 * { box-sizing: border-box; }
 
 
 
-.faq { 
+.user-wrapper .faq { 
     background-color: #fff;
     border-radius: 25px;
     padding: 50px 25px;
@@ -35,7 +35,7 @@
     max-width: 320px;
 }
 
-.faq__logo {
+.user-wrapper .faq__logo {
     background: url('https://bobmatyas.github.io/fm-faq-accordion/images/bg-pattern-mobile.svg') center bottom no-repeat;
     background-color: transparent;
     margin: 0 auto;
@@ -45,38 +45,38 @@
 }
 
 
-.faq__heading { 
+.user-wrapper .faq__heading { 
     color: var(--blue-dark);
     font-size: 2rem;
     font-weight: 600;
     text-align: center; 
 }
 
-.faq__detail {
+.user-wrapper .faq__detail {
     border-bottom: 1px solid hsl(240, 5%, 91%);
     margin: 20px 0 0 0;
     padding: 5px 0 20px 0;
 }
 
-.faq__summary:hover,
-.faq__summary:active { 
+.user-wrapper .faq__summary:hover,
+.user-wrapper .faq__summary:active { 
     color: var(--orange);
     cursor: pointer; 
 }
 
-.faq__detail[open] > .faq__summary { 
+.user-wrapper .faq__detail[open] > .faq__summary { 
     font-weight: 700; 
 }
 
-.faq__summary {
+.user-wrapper .faq__summary {
     list-style: none;
   }
 
-.faq__summary::-webkit-details-marker {
+  .user-wrapper .faq__summary::-webkit-details-marker {
     display: none;
   }
 
-.faq__summary { 
+  .user-wrapper .faq__summary { 
     display: block;
     padding: 0;
     position: relative;
@@ -84,7 +84,7 @@
 }
 
     
-.faq__summary:after {
+.user-wrapper .faq__summary:after {
     display: inline-block;
     content: url("https://bobmatyas.github.io/fm-faq-accordion/images/icon-arrow-down.svg");
     background-repeat: no-repeat;
@@ -93,7 +93,7 @@
     padding-bottom: 20px;
   }
   
-details[open] .faq__summary:after {
+  .user-wrapper details[open] .faq__summary:after {
     display: inline-block;
     width: 18px;
     height: 10px;
@@ -105,7 +105,7 @@ details[open] .faq__summary:after {
 }
   
 
-.faq__question {
+.user-wrapper .faq__question {
     left: 0;
     position: absolute;
     text-align: left;
@@ -113,38 +113,38 @@ details[open] .faq__summary:after {
     width: 90%;
 }
 
-.faq__question {
+.user-wrapper .faq__question {
     display: inline-block;
     margin: 5px 0;
     text-align: left;
     width: 90%;
 }
 
-.faq__summary {
+.user-wrapper .faq__summary {
     color: var(--blue-dark);
     font-size: 1.4rem; 
 }
 
-.faq__summary:focus {
+.user-wrapper .faq__summary:focus {
     color: var(--orange); 
     font-weight: bold;
     outline: none;
 }
 
-.faq__text {
+.user-wrapper .faq__text {
     color: var(--blue-mid);
     font-size: var(--base-font-size);
     line-height: 1.6;
     margin: 10px 0 0 0;
 }
 
-.hidden-lg { display: block; }
+.user-wrapper .hidden-lg { display: block; }
     
-.visible-lg { display: none; }
+.user-wrapper .visible-lg { display: none; }
 
 
 @media (min-width: 900px) {
-    .faq {
+    .user-wrapper .faq {
         align-items: center;
         display: flex;
         justify-content: space-between;
@@ -153,21 +153,21 @@ details[open] .faq__summary:after {
         margin: 0;
     }
 
-    .faq__logo__holder { 
+    .user-wrapper .faq__logo__holder { 
         display: flex;
         align-items: center;
         height: 100%;
         justify-content: center;
     }
 
-    .faq__holder {
+    .user-wrapper .faq__holder {
         margin: 0 50px;
         padding: 70px 0;
         max-width: 350px;
         width: 350px;
     }
 
-    .faq__logo {
+    .user-wrapper .faq__logo {
         display: flex;
         align-items: center;
         background-image: url(https://bobmatyas.github.io/fm-faq-accordion/images/illustration-woman-online-desktop.svg), url(https://bobmatyas.github.io/fm-faq-accordion/images/bg-pattern-desktop.svg);
@@ -182,24 +182,24 @@ details[open] .faq__summary:after {
         position: relative;
     }
 
-    .faq__heading {
+    .user-wrapper .faq__heading {
         text-align: left;
     }
 
-    .hidden-lg { display: none; }
+    .user-wrapper .hidden-lg { display: none; }
 
-    .visible-lg { 
+    .user-wrapper .visible-lg { 
         display: block; 
         position: absolute;
         margin-top: 120px;
         left: -80px;    
     }
 
-    .faq__text {
+    .user-wrapper .faq__text {
         margin: 0 0 10px 0;
     }
 
-    .faq__detail {
+    .user-wrapper .faq__detail {
         margin: 10px 0 0 0 0;
         padding: 0;
     }
