@@ -1,19 +1,19 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
 
-*{
+/* *{
   list-style: none;
   text-decoration: none;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: 'Montserrat', sans-serif;
-}
+} */
 
-.user-wrapper {
+.user-wrapper{
   margin: 20px;
 }
 
-.user-wrapper  .navbar{
+.user-wrapper .navbar{
   width: auto;
   color: rgba(255, 255, 255, 1);
   margin: 0 auto;
@@ -21,19 +21,19 @@
   border-radius: 5px;
 }
 
-.user-wrapper  .navbar .main_ul{
+.user-wrapper .navbar .main_ul{
   display: flex;
   height: 100%;
   width: 80%;
   justify-content: center;
   margin: 0 auto;
 }
-
 .user-wrapper  .navbar .main_ul > li{
   position: relative;
 }
 
-.user-wrapper  .navbar .main_ul > li > a{
+
+.user-wrapper .navbar .main_ul > li > a{
   color: white;
   display: block;
   width: 150px;
